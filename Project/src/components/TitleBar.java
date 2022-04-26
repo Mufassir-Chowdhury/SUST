@@ -1,4 +1,4 @@
-package login;
+package components;
 
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;
@@ -11,7 +11,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseListener;
 
-class LogInTitlebar extends JPanel implements MouseMotionListener, MouseListener {
+public class TitleBar extends JPanel implements MouseMotionListener, MouseListener {
 	private int x, y;
 	private static final long serialVersionUID = 1L;
 	public ImageIcon makeLogo(Image image, int width, int height){
@@ -19,7 +19,7 @@ class LogInTitlebar extends JPanel implements MouseMotionListener, MouseListener
     	return new ImageIcon(scaled);
     }
 	
-	public LogInTitlebar() {
+	public TitleBar() {
 		setBackground(new Color(0, 191, 255));
 		setBounds(0, 0, 1000, 25);
 		setLayout(null);
@@ -38,12 +38,6 @@ class LogInTitlebar extends JPanel implements MouseMotionListener, MouseListener
 		add(cancelIcon);
 	}
 
-	// public void addMouseMotionListener(new MouseMotionAdapter() {
-	// 	@Override
-	// 	public void mouseDragged(MouseEvent e) {
-			
-	// 	}
-	// });
 	@Override
 	public void mouseDragged(MouseEvent e) {
 		int xx = e.getXOnScreen();

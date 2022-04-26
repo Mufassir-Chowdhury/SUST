@@ -27,8 +27,8 @@ class LogInRight extends JPanel {
     private RoundJButton logInButton = new RoundJButton(20);
     private String emailPlaceholder = " Email address";
     private String passwordPlaceholder = " Password"; 
-    private RoundJTextField emailField = new RoundJTextField(20);
-    private RoundJPasswordField passwordField = new RoundJPasswordField(20);
+    private RoundJTextField emailField = new RoundJTextField(20, " Email Address");
+    private RoundJPasswordField passwordField = new RoundJPasswordField(20, false);
     private JCheckBox showPasswordCheckBox = new JCheckBox();
     private JLabel forgetPasswordText = new JLabel();
     private JLabel registerText = new JLabel();
@@ -39,72 +39,7 @@ class LogInRight extends JPanel {
         setBackground(new Color(0, 0, 0));
         setLayout(null);
 
-        
-        emailField.setBounds(40, 160, 340, 40);
-        emailField.setBackground(new Color(135, 206, 250));
-        emailField.setForeground(Color.black);
-        emailField.setFont(new Font("Segoe UI", Font.ITALIC, 16));
-        emailField.setMargin(new Insets(2, 10, 2, 2));
-        emailField.setText(emailPlaceholder);
-        emailField.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                if(emailField.getText().equals(emailPlaceholder)){	
-                	emailField.setText("");
-                }                    
-            }
-
-        });
-        emailField.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                emailField.setBackground(new Color(0, 191, 255));
-            }
-            @Override
-            public void focusLost(FocusEvent e) {
-                if(emailField.getText().isEmpty() || emailField.getText().equals(emailPlaceholder)) {
-                    emailField.setBackground(new Color(135, 206, 250));
-                    emailField.setText(emailPlaceholder);
-                }
-            }
-        });
         add(emailField);
-        
-        
-        
-        passwordField.setBounds(40, 250, 340, 40);
-        passwordField.setBackground(new Color(135, 206, 250));
-        passwordField.setForeground(Color.black);
-        passwordField.setFont(new Font("Segoe UI", Font.ITALIC, 16));
-        passwordField.setMargin(new Insets(2, 10, 2, 2));
-        passwordField.setText(passwordPlaceholder);
-        passwordField.setEchoChar('\u0000');
-        passwordField.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                if(passwordField.getPassword().equals(passwordPlaceholder))
-                {
-                    passwordField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
-                    if(showPasswordCheckBox.isSelected()==false) passwordField.setEchoChar('\u25cf');
-                    passwordField.setText("");
-                }
-            }
-        });
-        passwordField.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-            	passwordField.setBackground(new Color(0, 191, 255));
-            }
-            @Override
-            public void focusLost(FocusEvent e) {
-                if(passwordField.getPassword().length == 0 || passwordField.getPassword().equals(passwordPlaceholder)) {
-                    passwordField.setEchoChar('\u0000');
-                    passwordField.setBackground(new Color(135, 206, 250));
-                    passwordField.setFont(new Font("Segoe UI", Font.ITALIC, 16));
-                    passwordField.setText(passwordPlaceholder);
-                }
-            }
-        });
         add(passwordField);
         
         

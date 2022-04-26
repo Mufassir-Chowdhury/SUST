@@ -2,12 +2,14 @@ package login;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import components.TitleBar;
+
 public class LogInPage extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel logInPageMainPanel = new JPanel();
 	private JPanel logInComponentPanel = new LogInComponentPanel();
-	private LogInTitlebar logInTitlebar = new LogInTitlebar();
+	private TitleBar logInTitlebar = new TitleBar();
 
 	public LogInPage() {
 		setUndecorated(true);
