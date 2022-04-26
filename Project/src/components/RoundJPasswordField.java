@@ -16,11 +16,13 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
 	private int size;
     String placeholder = " Password";
     Boolean showPassword = false;
+
     public RoundJPasswordField(int size, boolean showPassword) {
         super(size);
         this.size = size;
-        setOpaque(false);
         this.showPassword = showPassword;
+    
+        setOpaque(false);
         setBounds(40, 250, 340, 40);
         setBackground(new Color(135, 206, 250));
         setForeground(Color.black);
@@ -29,11 +31,13 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
         setText(placeholder);
         setEchoChar('\u0000');
     }
+    
     protected void paintComponent(Graphics g) {
             g.setColor(getBackground());
             g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);
             super.paintComponent(g);
     }
+    
     protected void paintBorder(Graphics g) {
             g.setColor(getForeground());
             g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);

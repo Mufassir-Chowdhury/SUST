@@ -7,15 +7,13 @@ import javax.swing.SwingConstants;
 import components.RoundJButton;
 import components.RoundJTextField;
 import components.RoundJPasswordField;
+import components.RoundJButton.Style;
 
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
-import java.awt.Insets;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
@@ -24,8 +22,7 @@ import java.util.Map;
 
 class LogInRight extends JPanel {
 
-    private RoundJButton logInButton = new RoundJButton(20);
-    private String emailPlaceholder = " Email address";
+    private RoundJButton logInButton = new RoundJButton(20, "Log In", Style.ACCENT);
     private String passwordPlaceholder = " Password"; 
     private RoundJTextField emailField = new RoundJTextField(20, " Email Address");
     private RoundJPasswordField passwordField = new RoundJPasswordField(20, false);
@@ -68,37 +65,7 @@ class LogInRight extends JPanel {
         });
         add(showPasswordCheckBox);
         
-        
-        
-        logInButton.setText("Log  In");
-        logInButton.setBounds(40, 340, 340, 40);
-        logInButton.setContentAreaFilled(false);
-        logInButton.setFocusPainted(false);
-        logInButton.setFont(new Font("MS UI Gothic", Font.BOLD, 23));
-        logInButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        logInButton.setForeground(new Color(135, 206, 250));
-        logInButton.setBackground(new Color(0, 0, 0));
-        logInButton.setBorder(null);
-        logInButton.addFocusListener(new FocusAdapter() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                logInButton.setForeground(new Color(30, 144, 255));
-            }
-            @Override
-            public void focusLost(FocusEvent e) {
-                logInButton.setForeground(new Color(135, 206, 250));
-            }
-        });
         logInButton.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                logInButton.setForeground(new Color(30, 144, 255));
-            }
-            @Override
-            public void mouseExited(MouseEvent e) {
-                if(logInButton.isFocusOwner()) return;
-                logInButton.setForeground(new Color(135, 206, 250));
-            }
         	
 //         	public void mouseClicked(MouseEvent e) {
 //         		try {

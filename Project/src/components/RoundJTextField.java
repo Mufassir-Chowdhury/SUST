@@ -14,11 +14,13 @@ public class RoundJTextField extends JTextField implements KeyListener, FocusLis
 	private static final long serialVersionUID = 1L;
 	private int size;
     private String placeholder;
+    
     public RoundJTextField(int size, String placeholder) {
         super(size);
         this.size = size;
-        setOpaque(false);
         this.placeholder = placeholder;
+
+        setOpaque(false);
         setText(placeholder);
         setBounds(40, 160, 340, 40);
         setBackground(new Color(135, 206, 250));
@@ -26,11 +28,13 @@ public class RoundJTextField extends JTextField implements KeyListener, FocusLis
         setFont(new Font("Segoe UI", Font.ITALIC, 16));
         setMargin(new Insets(2, 10, 2, 2));
     }
+
     protected void paintComponent(Graphics g) {
          g.setColor(getBackground());
          g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);
          super.paintComponent(g);
     }
+
     protected void paintBorder(Graphics g) {
          g.setColor(getForeground());
          g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);
