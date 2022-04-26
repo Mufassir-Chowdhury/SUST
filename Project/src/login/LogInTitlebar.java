@@ -8,9 +8,11 @@ import java.awt.Color;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseListener;
 
-class LogInTitlebar extends JPanel {
-
+class LogInTitlebar extends JPanel implements MouseMotionListener, MouseListener {
+	private int x, y;
 	private static final long serialVersionUID = 1L;
 	public ImageIcon makeLogo(Image image, int width, int height){
     	Image scaled = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
@@ -25,7 +27,6 @@ class LogInTitlebar extends JPanel {
 		
 		ImageIcon cancelImage = new ImageIcon(ClassLoader.getSystemResource("static/images/cancel.png"));
         ImageIcon cancelLogo = makeLogo(cancelImage.getImage(), 15, 15);
-		
         JLabel cancelIcon = new JLabel(cancelLogo);
         cancelIcon.addMouseListener(new MouseAdapter() {
         	@Override
@@ -35,5 +36,54 @@ class LogInTitlebar extends JPanel {
         });
 		cancelIcon.setBounds(975, 0, 25, 25);
 		add(cancelIcon);
+	}
+
+	// public void addMouseMotionListener(new MouseMotionAdapter() {
+	// 	@Override
+	// 	public void mouseDragged(MouseEvent e) {
+			
+	// 	}
+	// });
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		int xx = e.getXOnScreen();
+		int yy = e.getYOnScreen();
+		setLocation(xx-x,yy-y);
+	}
+	
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		x = e.getX();
+		y = e.getY();		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

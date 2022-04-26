@@ -1,6 +1,5 @@
 package login;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -16,18 +15,19 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
-import java.sql.ResultSet;
+// import java.sql.ResultSet;
 import java.util.Map;
 
 class LogInRight extends JPanel {
 
-    public RoundJButton logInButton;
+    private RoundJButton logInButton = new RoundJButton(20);
     private String emailPlaceholder = " Email address";
     private String passwordPlaceholder = " Password"; 
-    RoundJTextField emailField;
-    RoundJPasswordField passwordField;
-    JCheckBox showPasswordCheckBox;
-    JLabel forgetPasswordText, registerText;
+    private RoundJTextField emailField = new RoundJTextField(20);
+    private RoundJPasswordField passwordField = new RoundJPasswordField(20);
+    private JCheckBox showPasswordCheckBox = new JCheckBox();
+    private JLabel forgetPasswordText = new JLabel();
+    private JLabel registerText = new JLabel();
     private static final long serialVersionUID = 1L;    
     
     
@@ -35,13 +35,6 @@ class LogInRight extends JPanel {
         setBackground(new Color(0, 0, 0));
         setLayout(null);
 
-        emailField = new RoundJTextField(20);
-        passwordField = new RoundJPasswordField(20);
-        showPasswordCheckBox = new JCheckBox();
-        logInButton = new RoundJButton(20);
-        forgetPasswordText = new JLabel();
-        registerText = new JLabel();
-        
         
         emailField.setBounds(40, 160, 340, 40);
         emailField.setBackground(new Color(135, 206, 250));
@@ -52,14 +45,11 @@ class LogInRight extends JPanel {
         emailField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-//            	if(e.getKeyCode()==KeyEvent.VK_BACK_SPACE) emailField.setText("");
-                if(emailField.getText().equals(emailPlaceholder))
-                {
-                	
+                if(emailField.getText().equals(emailPlaceholder)){	
                 	emailField.setText("");
-                }
-                    
+                }                    
             }
+
         });
         emailField.addFocusListener(new FocusAdapter() {
             @Override
@@ -88,7 +78,7 @@ class LogInRight extends JPanel {
         passwordField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(passwordField.getText().equals(passwordPlaceholder))
+                if(passwordField.getPassword().equals(passwordPlaceholder))
                 {
                     passwordField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
                     if(showPasswordCheckBox.isSelected()==false) passwordField.setEchoChar('\u25cf');
@@ -103,7 +93,7 @@ class LogInRight extends JPanel {
             }
             @Override
             public void focusLost(FocusEvent e) {
-                if(passwordField.getText().isEmpty() || passwordField.getText().equals(passwordPlaceholder)) {
+                if(passwordField.getPassword().length == 0 || passwordField.getPassword().equals(passwordPlaceholder)) {
                     passwordField.setEchoChar('\u0000');
                     passwordField.setBackground(new Color(135, 206, 250));
                     passwordField.setFont(new Font("Segoe UI", Font.ITALIC, 16));
@@ -171,25 +161,25 @@ class LogInRight extends JPanel {
                 logInButton.setForeground(new Color(135, 206, 250));
             }
         	
-        	public void mouseClicked(MouseEvent e) {
-        		try {
-        			String email = emailField.getText();
-        			String password = passwordField.getText();
-        			String query = "select * from login where email='"+email+"' and password='"+password+"'";
+//         	public void mouseClicked(MouseEvent e) {
+//         		try {
+//         			String email = emailField.getText();
+//         			String password = passwordField.getText();
+//         			String query = "select * from login where email='"+email+"' and password='"+password+"'";
         			
-        			conn c1 = new conn();
-        			ResultSet exist = c1.s.executeQuery(query);
+//         			conn c1 = new conn();
+//         			ResultSet exist = c1.s.executeQuery(query);
         			
-        			if(exist.next()) {
-        				JFrame frame = new JFrame();
-//        				LogInPage().setVisible(false);
-        				frame.setBounds(100,100,100,100);
-        				frame.setVisible(true);
-        			}
-        		}catch(Exception ee) {
-        			ee.printStackTrace();
-        		}
-        	}
+//         			if(exist.next()) {
+//         				JFrame frame = new JFrame();
+// //        				LogInPage().setVisible(false);
+//         				frame.setBounds(100,100,100,100);
+//         				frame.setVisible(true);
+//         			}
+//         		}catch(Exception ee) {
+//         			ee.printStackTrace();
+//         		}
+//         	}
         });
         add(logInButton);
         
