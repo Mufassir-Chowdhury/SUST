@@ -1,5 +1,6 @@
 package login;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -15,15 +16,17 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.sql.ResultSet;
 import java.util.Map;
 
 class LogInRight extends JPanel {
+
+    public RoundJButton logInButton;
     private String emailPlaceholder = " Email address";
     private String passwordPlaceholder = " Password"; 
     RoundJTextField emailField;
     RoundJPasswordField passwordField;
     JCheckBox showPasswordCheckBox;
-    RoundJButton logInButton;
     JLabel forgetPasswordText, registerText;
     private static final long serialVersionUID = 1L;    
     
@@ -49,8 +52,13 @@ class LogInRight extends JPanel {
         emailField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
+//            	if(e.getKeyCode()==KeyEvent.VK_BACK_SPACE) emailField.setText("");
                 if(emailField.getText().equals(emailPlaceholder))
-                    emailField.setText("");
+                {
+                	
+                	emailField.setText("");
+                }
+                    
             }
         });
         emailField.addFocusListener(new FocusAdapter() {
@@ -80,7 +88,7 @@ class LogInRight extends JPanel {
         passwordField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if(passwordField.getPassword().equals(passwordPlaceholder))
+                if(passwordField.getText().equals(passwordPlaceholder))
                 {
                     passwordField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
                     if(showPasswordCheckBox.isSelected()==false) passwordField.setEchoChar('\u25cf');
@@ -91,10 +99,7 @@ class LogInRight extends JPanel {
         passwordField.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent e) {
-                if(passwordField.getPassword().equals(passwordPlaceholder))
-                {
-                    passwordField.setBackground(new Color(0, 191, 255));
-                }
+            	passwordField.setBackground(new Color(0, 191, 255));
             }
             @Override
             public void focusLost(FocusEvent e) {
@@ -165,6 +170,26 @@ class LogInRight extends JPanel {
                 if(logInButton.isFocusOwner()) return;
                 logInButton.setForeground(new Color(135, 206, 250));
             }
+        	
+        	public void mouseClicked(MouseEvent e) {
+        		try {
+        			String email = emailField.getText();
+        			String password = passwordField.getText();
+        			String query = "select * from login where email='"+email+"' and password='"+password+"'";
+        			
+        			conn c1 = new conn();
+        			ResultSet exist = c1.s.executeQuery(query);
+        			
+        			if(exist.next()) {
+        				JFrame frame = new JFrame();
+//        				LogInPage().setVisible(false);
+        				frame.setBounds(100,100,100,100);
+        				frame.setVisible(true);
+        			}
+        		}catch(Exception ee) {
+        			ee.printStackTrace();
+        		}
+        	}
         });
         add(logInButton);
         

@@ -10,8 +10,10 @@ import java.awt.event.MouseMotionAdapter;
 public class LogInPage extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel logInPageMainPanel;
+	public JPanel logInPageMainPanel;
+	public JPanel logInComponentPanel;
 	private LogInTitlebar logInTitlebar;
+	
 	private int x,y;
 
 	public LogInPage() {
@@ -40,9 +42,10 @@ public class LogInPage extends JFrame {
 				y = e.getY();
 			}
 		});
+		
 		logInPageMainPanel.add(logInTitlebar);
 		
-		logInPageMainPanel.add(new LogInComponentPanel());
-	
+		logInComponentPanel = new LogInComponentPanel();
+		logInPageMainPanel.add(logInComponentPanel);
 	}
 }

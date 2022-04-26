@@ -7,6 +7,7 @@ import java.awt.BorderLayout;
 class LogInComponentPanel extends JPanel {
 		
     private static final long serialVersionUID = 1L;
+    public JPanel logInRight;
 
     public LogInComponentPanel() {
         setBounds(0, 25, 1000, 575);
@@ -19,9 +20,11 @@ class LogInComponentPanel extends JPanel {
         add(logInSplitPane, BorderLayout.CENTER);
         
         LogInLeft left = new LogInLeft();
-
+        logInRight = new LogInRight();
+        
         logInSplitPane.setLeftComponent(left);
-        logInSplitPane.setRightComponent(new LogInRight());	
+        logInSplitPane.setRightComponent(logInRight);	
+        
     }
 
 }

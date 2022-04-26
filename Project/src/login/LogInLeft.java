@@ -20,7 +20,7 @@ class LogInLeft extends JPanel {
         logo.setHorizontalAlignment(SwingConstants.CENTER);
         logo.setBounds(0, 65, 494, 290);
         add(logo);
-        ImageIcon sustImage = new ImageIcon(".\\Project\\src\\static\\images\\logo.png");
+        ImageIcon sustImage = new ImageIcon(ClassLoader.getSystemResource("static/images/logo.png"));
         logo.setIcon(sustImage);
         
         JLabel logInPageAppName = new JLabel("SUST APP");

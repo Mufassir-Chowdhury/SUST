@@ -23,7 +23,7 @@ class LogInTitlebar extends JPanel {
 		setLayout(null);
 		
 		
-		ImageIcon cancelImage = new ImageIcon(".\\Project\\src\\static\\images\\cancel.png");
+		ImageIcon cancelImage = new ImageIcon(ClassLoader.getSystemResource("static/images/cancel.png"));
         ImageIcon cancelLogo = makeLogo(cancelImage.getImage(), 15, 15);
 		
         JLabel cancelIcon = new JLabel(cancelLogo);
