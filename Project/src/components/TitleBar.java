@@ -1,4 +1,4 @@
-package components;
+package Components;
 
 import javax.swing.JPanel;
 import javax.swing.ImageIcon;

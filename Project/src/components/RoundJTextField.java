@@ -1,4 +1,4 @@
-package components;
+package Components;
 
 import javax.swing.JTextField;
 import java.awt.Graphics;

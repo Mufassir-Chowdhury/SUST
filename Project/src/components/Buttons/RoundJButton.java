@@ -1,4 +1,4 @@
-package components;
+package Components.Buttons;
 import java.awt.event.MouseListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -24,7 +24,7 @@ public class RoundJButton extends JButton implements MouseListener, FocusListene
         setBounds(40, 340, 340, 40);
         setContentAreaFilled(false);
         setFocusPainted(false);
-        setFont(new Font("MS UI Gothic", Font.BOLD, 23));
+        setFont(new Font("Segoe UI", Font.BOLD, 23));
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setForeground(new Color(135, 206, 250));
         setBackground(new Color(0, 0, 0));
