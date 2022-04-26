@@ -4,6 +4,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import components.RoundJButton;
+import components.RoundJTextField;
+import components.RoundJPasswordField;
+
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;

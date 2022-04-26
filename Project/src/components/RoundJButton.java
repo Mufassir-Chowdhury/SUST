@@ -1,14 +1,14 @@
-package login;
-import javax.swing.JTextField;
+package components;
+import javax.swing.JButton;
 import java.awt.Graphics;
 
-class RoundJTextField extends JTextField {
-	private static final long serialVersionUID = 1L;
-	private int size;
-    public RoundJTextField(int size) {
-        super(size);
+public class RoundJButton extends JButton {
+    private static final long serialVersionUID = 1L;
+    private int size;
+    public RoundJButton(int size) {
+        super();
         this.size = size;
-        setOpaque(false);
+        setOpaque(false); 
     }
     protected void paintComponent(Graphics g) {
          g.setColor(getBackground());

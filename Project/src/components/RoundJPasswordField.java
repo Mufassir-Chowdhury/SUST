@@ -1,8 +1,10 @@
-package login;
+package components;
+
 import javax.swing.JPasswordField;
+
 import java.awt.Graphics;
 
-class RoundJPasswordField extends JPasswordField {
+public class RoundJPasswordField extends JPasswordField {
 	private static final long serialVersionUID = 1L;
 	private int size;
     public RoundJPasswordField(int size) {
