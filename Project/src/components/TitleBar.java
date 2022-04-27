@@ -38,6 +38,28 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
         });
 		cancelIcon.setBounds(975, 0, 25, 25);
 		add(cancelIcon);
+		ImageIcon fullScreen = new ImageIcon(ClassLoader.getSystemResource("static/images/full-screen.png"));
+        ImageIcon fullScreenLogo = makeLogo(fullScreen.getImage(), 15, 15);
+        JLabel fullScreenIcon = new JLabel(fullScreenLogo);
+        fullScreenIcon.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		System.exit(0);
+        	}
+        });
+		fullScreenIcon.setBounds(950, 0, 25, 25);
+		add(fullScreenIcon);
+		ImageIcon minimize = new ImageIcon(ClassLoader.getSystemResource("static/images/minimize.png"));
+        ImageIcon minimizeLogo = makeLogo(minimize.getImage(), 15, 15);
+        JLabel minimizeIcon = new JLabel(minimizeLogo);
+        minimizeIcon.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		System.exit(0);
+        	}
+        });
+		minimizeIcon.setBounds(925, 0, 25, 25);
+		add(minimizeIcon);
 	}
 	
 	
