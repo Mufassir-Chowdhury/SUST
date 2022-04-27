@@ -22,12 +22,12 @@ import java.util.Map;
 class LogInRight extends JPanel {
 
     private RoundJButton logInButton = new RoundJButton(20, "Log In", Style.ACCENT);
-    private String passwordPlaceholder = " Password"; 
     private RoundJTextField emailField = new RoundJTextField(20, " Email Address");
     private RoundJPasswordField passwordField = new RoundJPasswordField(20, false);
     private JCheckBox showPasswordCheckBox = new JCheckBox();
     private JLabel forgetPasswordText = new JLabel();
     private JLabel registerText = new JLabel();
+    private char[] defaultPassword = new char[]{' ', 'p','a','s','s','w','o','r','d'};
     private static final long serialVersionUID = 1L;    
     
     
@@ -63,7 +63,7 @@ class LogInRight extends JPanel {
                 if(showPasswordCheckBox.isSelected()==false){
                     showPasswordCheckBox.setForeground(new Color(135, 206, 250));
 //                    if(passwordField.getPassword().equals(passwordPlaceholder)==false)
-                    if(Arrays.equals(passwordField.getPassword(), new char[]{'p','a','s','s','w','o','r','d'})==false)
+                    if(Arrays.equals(passwordField.getPassword(), defaultPassword)==false)
                         passwordField.setEchoChar('\u25cf');
                 }
             }

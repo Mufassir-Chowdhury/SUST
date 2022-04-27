@@ -15,7 +15,8 @@ import java.awt.event.FocusListener;
 public class RoundJPasswordField extends JPasswordField implements KeyListener, FocusListener {
 	private static final long serialVersionUID = 1L;
 	private int size;
-    String placeholder = "password";
+    String placeholder = " password";
+    private char[] defaultPassword = new char[]{' ', 'p','a','s','s','w','o','r','d'};
     // char[] placeholder = " Password".toCharArray();
     Boolean showPassword = false;
 
@@ -53,7 +54,7 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
 	@Override
     public void focusLost(FocusEvent e) {
 //		if(getPassword().length == 0 || getPassword().equals(placeholder)) {
-        if(getPassword().length == 0 || Arrays.equals(getPassword(), new char[]{'p','a','s','s','w','o','r','d'})) {
+        if(getPassword().length == 0 || Arrays.equals(getPassword(), defaultPassword)) {
             setEchoChar('\u0000');
             setBackground(new Color(135, 206, 250));
             setText(placeholder);
@@ -66,14 +67,14 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
 //    	System.out.println(placeholder.toCharArray());
 //    	System.out.println(getPassword().equals(placeholder.toCharArray()));
 //        if(getPassword().equals(placeholder)){
-    if (Arrays.equals(getPassword(), new char[]{'p','a','s','s','w','o','r','d'})){
+    if (Arrays.equals(getPassword(), defaultPassword)){
             setText("");
             if(showPassword==false) setEchoChar('\u25cf');
         }
     }
     @Override
     public void keyPressed(KeyEvent e) {
-    	if(Arrays.equals(getPassword(), new char[]{'p','a','s','s','w','o','r','d'}) && e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+    	if(Arrays.equals(getPassword(), defaultPassword) && e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
             setText(" ");
             if(showPassword==false) setEchoChar('\u25cf');
         }
