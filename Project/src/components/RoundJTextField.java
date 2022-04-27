@@ -1,4 +1,4 @@
-package Components;
+package components;
 
 import javax.swing.JTextField;
 import java.awt.Graphics;
@@ -39,6 +39,7 @@ public class RoundJTextField extends JTextField implements KeyListener, FocusLis
          g.setColor(getForeground());
          g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);
     }
+    
     @Override
     public void keyTyped(KeyEvent e) {
         if(getText().equals(placeholder)){	
@@ -47,12 +48,12 @@ public class RoundJTextField extends JTextField implements KeyListener, FocusLis
     }
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
+    	if(getText().equals(placeholder) && e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+            setText(" ");
+        }
     }
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
         
     }
     @Override
@@ -68,6 +69,7 @@ public class RoundJTextField extends JTextField implements KeyListener, FocusLis
         }
         
     }
+
 }
 
 

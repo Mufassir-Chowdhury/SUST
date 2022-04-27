@@ -1,4 +1,4 @@
-package Components;
+package components;
 
 import javax.swing.JPasswordField;
 
@@ -15,6 +15,7 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
 	private static final long serialVersionUID = 1L;
 	private int size;
     String placeholder = " Password";
+    // char[] placeholder = " Password".toCharArray();
     Boolean showPassword = false;
 
     public RoundJPasswordField(int size, boolean showPassword) {
@@ -29,6 +30,7 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
         setFont(new Font("Segoe UI", Font.ITALIC, 16));
         setMargin(new Insets(2, 10, 2, 2));
         setText(placeholder);
+//        placeholder = getPassword().toString();
         setEchoChar('\u0000');
     }
     
@@ -47,32 +49,36 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
         setBackground(new Color(0, 191, 255));
         
     }
-    @Override
+	@Override
     public void focusLost(FocusEvent e) {
-        if(getPassword().length == 0 || getPassword().equals(placeholder)) {
+//		if(getPassword().length == 0 || getPassword().equals(placeholder)) {
+        if(getPassword().length == 0 || getText().equals(placeholder)) {
             setEchoChar('\u0000');
             setBackground(new Color(135, 206, 250));
-            setFont(new Font("Segoe UI", Font.ITALIC, 16));
             setText(placeholder);
         }
         
     }
     @Override
     public void keyTyped(KeyEvent e) {
-        if(getPassword().equals(placeholder)){
-            setFont(new Font("Segoe UI", Font.PLAIN, 16));
-            if(showPassword==false) setEchoChar('\u25cf');
+//    	System.out.println(getPassword());
+//    	System.out.println(placeholder.toCharArray());
+//    	System.out.println(getPassword().equals(placeholder.toCharArray()));
+//        if(getPassword().equals(placeholder)){
+        if(getText().equals(placeholder)){
             setText("");
+            if(showPassword==false) setEchoChar('\u25cf');
         }
     }
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
+    	if(getText().equals(placeholder) && e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+            setText(" ");
+            if(showPassword==false) setEchoChar('\u25cf');
+        }
     }
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
         
     }
 }

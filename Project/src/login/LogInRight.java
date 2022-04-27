@@ -4,10 +4,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import Components.RoundJPasswordField;
-import Components.RoundJTextField;
-import Components.Buttons.RoundJButton;
-import Components.Buttons.RoundJButton.Style;
+import components.RoundJPasswordField;
+import components.RoundJTextField;
+import components.Buttons.RoundJButton;
+import components.Buttons.RoundJButton.Style;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -33,9 +33,15 @@ class LogInRight extends JPanel {
     public LogInRight() {
         setBackground(new Color(0, 0, 0));
         setLayout(null);
-
+        
+        emailField.addFocusListener(emailField);
+        emailField.addKeyListener(emailField);
         add(emailField);
+        
+        passwordField.addFocusListener(passwordField);
+        passwordField.addKeyListener(passwordField);
         add(passwordField);
+        
         
         
         showPasswordCheckBox.setBounds(270, 295, 110, 23);
@@ -45,6 +51,7 @@ class LogInRight extends JPanel {
         showPasswordCheckBox.setBorder(null);
         showPasswordCheckBox.setText("Show Password");
         showPasswordCheckBox.setContentAreaFilled(false);
+        showPasswordCheckBox.setFocusable(false);
         showPasswordCheckBox.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -54,7 +61,8 @@ class LogInRight extends JPanel {
                 }
                 if(showPasswordCheckBox.isSelected()==false){
                     showPasswordCheckBox.setForeground(new Color(135, 206, 250));
-                    if(passwordField.getPassword().equals(passwordPlaceholder)==false)
+//                    if(passwordField.getPassword().equals(passwordPlaceholder)==false)
+                    if(passwordField.getText().equals(passwordPlaceholder)==false)
                         passwordField.setEchoChar('\u25cf');
                 }
             }
@@ -83,6 +91,10 @@ class LogInRight extends JPanel {
 // //         		}
 // //         	}
 //         });
+        
+        logInButton.addKeyListener(logInButton);
+        logInButton.addMouseListener(logInButton);
+        
         add(logInButton);
         
         forgetPasswordText.setText("Forgotten Password?");

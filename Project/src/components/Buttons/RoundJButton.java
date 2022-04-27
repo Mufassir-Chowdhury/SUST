@@ -1,7 +1,9 @@
-package Components.Buttons;
+package components.Buttons;
 import java.awt.event.MouseListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
@@ -10,7 +12,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Cursor;
 
-public class RoundJButton extends JButton implements MouseListener, FocusListener {
+public class RoundJButton extends JButton implements MouseListener, KeyListener {
     private static final long serialVersionUID = 1L;
     private int size;
     public enum Style {
@@ -29,6 +31,7 @@ public class RoundJButton extends JButton implements MouseListener, FocusListene
         setForeground(new Color(135, 206, 250));
         setBackground(new Color(0, 0, 0));
         setBorder(null);
+        setFocusable(false);
     }
     protected void paintComponent(Graphics g) {
          g.setColor(getBackground());
@@ -40,38 +43,42 @@ public class RoundJButton extends JButton implements MouseListener, FocusListene
          g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);
     }
     @Override
-    public void focusGained(FocusEvent e) {
-        setForeground(new Color(30, 144, 255));
-    }
-    @Override
-    public void focusLost(FocusEvent e) {
-        setForeground(new Color(135, 206, 250));
-        
-    }
-    @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+    	
+        //fetching data and checking database
+    	
     }
     @Override
     public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
         
     }
     @Override
     public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
         
     }
     @Override
     public void mouseEntered(MouseEvent e) {
         setForeground(new Color(30, 144, 255));
-        
     }
     @Override
     public void mouseExited(MouseEvent e) {
         if(isFocusOwner()) return;
         setForeground(new Color(135, 206, 250));
-        
     }
+	@Override
+	public void keyTyped(KeyEvent e) {
+		
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyChar() == KeyEvent.VK_ENTER)
+		{
+			//fetching data and checking database
+		}
+		
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		
+	}
 }

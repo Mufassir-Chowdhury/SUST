@@ -1,9 +1,11 @@
-package Components;
+package components;
 
 import javax.swing.JPanel;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Image;
+import java.awt.Point;
 import java.awt.Color;
 
 import java.awt.event.MouseAdapter;
@@ -12,7 +14,8 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseListener;
 
 public class TitleBar extends JPanel implements MouseMotionListener, MouseListener {
-	private int x, y;
+	private int x, y, xx, yy;
+	public  Point point;
 	private static final long serialVersionUID = 1L;
 	public ImageIcon makeLogo(Image image, int width, int height){
     	Image scaled = image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
@@ -37,23 +40,23 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		cancelIcon.setBounds(975, 0, 25, 25);
 		add(cancelIcon);
 	}
+	
+	
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
-		int xx = e.getXOnScreen();
-		int yy = e.getYOnScreen();
+		xx = e.getXOnScreen();
+		yy = e.getYOnScreen();
 		setLocation(xx-x,yy-y);
 	}
 	
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -65,19 +68,16 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 }

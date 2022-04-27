@@ -9,7 +9,6 @@ public class Main {
 			public void run() {
 				LogInPage logInPage = new LogInPage();
 				logInPage.setVisible(true);
-//				logInPage.logInComponentPanel.
 			}
 		});
 	}
