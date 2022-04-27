@@ -17,7 +17,6 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
 	private int size;
     String placeholder = " password";
     private char[] defaultPassword = new char[]{' ', 'p','a','s','s','w','o','r','d'};
-    // char[] placeholder = " Password".toCharArray();
     Boolean showPassword = false;
 
     public RoundJPasswordField(int size, boolean showPassword) {
@@ -32,7 +31,6 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
         setFont(new Font("Segoe UI", Font.ITALIC, 16));
         setMargin(new Insets(2, 10, 2, 2));
         setText(placeholder);
-//        placeholder = getPassword().toString();
         setEchoChar('\u0000');
     }
     
@@ -53,7 +51,6 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
     }
 	@Override
     public void focusLost(FocusEvent e) {
-//		if(getPassword().length == 0 || getPassword().equals(placeholder)) {
         if(getPassword().length == 0 || Arrays.equals(getPassword(), defaultPassword)) {
             setEchoChar('\u0000');
             setBackground(new Color(135, 206, 250));
@@ -63,10 +60,6 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
     }
     @Override
     public void keyTyped(KeyEvent e) {
-//    	System.out.println(getPassword());
-//    	System.out.println(placeholder.toCharArray());
-//    	System.out.println(getPassword().equals(placeholder.toCharArray()));
-//        if(getPassword().equals(placeholder)){
     if (Arrays.equals(getPassword(), defaultPassword)){
             setText("");
             if(showPassword==false) setEchoChar('\u25cf');
