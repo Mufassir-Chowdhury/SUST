@@ -1,5 +1,4 @@
 import javax.swing.SwingUtilities;
-
 import login.LogInPage;
 
 public class Main {
