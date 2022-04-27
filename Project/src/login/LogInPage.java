@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import Components.BackgroundImage;
 import Components.TitleBar;
+import java.awt.BorderLayout;
 
 
 public class LogInPage extends JFrame{
@@ -17,9 +18,9 @@ public class LogInPage extends JFrame{
 	public LogInPage() {
 		setUndecorated(true);
 		setSize(1000, 600);
-		logInPageMainPanel.setBounds(0, 0, 1000, 600);
-		logInPageMainPanel.setIcon(bgImage.setBackgroundImage("static/images/background.png",1000,600));
-		logInPageMainPanel.setLayout(null);
+		logInPageMainPanel.setBounds(0, 0, getWidth(), getHeight());
+		logInPageMainPanel.setIcon(bgImage.setBackgroundImage("static/images/background-2.png",getWidth(),getHeight()));
+		logInPageMainPanel.setLayout(new BorderLayout());
 		
 		logInPageMainPanel.add(logInTitleBar);
 		logInTitleBar.addComponentListener(new java.awt.event.ComponentAdapter() {

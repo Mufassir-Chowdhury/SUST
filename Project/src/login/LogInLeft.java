@@ -14,11 +14,12 @@ class LogInLeft extends JPanel {
 
     
     public LogInLeft() {
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        // setAlignmentX(SwingConstants.CENTER);
+        // setAlignmentY(SwingConstants.CENTER);
         setOpaque(false);
         add(new Logo());
-        add(new AppName());
-        add(new Slogan());
+        add(new Text());
     }
 
 
@@ -29,6 +30,15 @@ class LogInLeft extends JPanel {
             ImageIcon sustImage = new ImageIcon(ClassLoader.getSystemResource("static/images/logo.png"));
             setIcon(sustImage);
             
+        }
+    }
+    private class Text extends JPanel {
+        public Text(){
+            setOpaque(false);
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            setSize(getHeight(), getWidth());
+            add(new AppName());
+            add(new Slogan());
         }
     }
     private class AppName extends JLabel{

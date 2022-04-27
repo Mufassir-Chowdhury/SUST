@@ -23,9 +23,10 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
     }
 	
 	public TitleBar() {
-		setBackground(new Color(0, 191, 255));
+		// setBackground(new Color(0, 191, 255));
 		setBounds(0, 0, 1000, 25);
 		setLayout(null);
+		setOpaque(true);
 		
 		
 		ImageIcon cancelImage = new ImageIcon(ClassLoader.getSystemResource("static/images/cancel.png"));
