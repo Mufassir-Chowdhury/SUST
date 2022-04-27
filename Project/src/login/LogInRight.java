@@ -31,7 +31,8 @@ class LogInRight extends JPanel {
     
     public LogInRight() {
         setLayout(null);
-        
+        setOpaque(false);
+
         emailField.addFocusListener(emailField);
         emailField.addKeyListener(emailField);
         add(emailField);

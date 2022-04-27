@@ -15,7 +15,7 @@ class LogInLeft extends JPanel {
     
     public LogInLeft() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        
+        setOpaque(false);
         add(new Logo());
         add(new AppName());
         add(new Slogan());
@@ -28,6 +28,7 @@ class LogInLeft extends JPanel {
             setSize(getHeight(), 290);
             ImageIcon sustImage = new ImageIcon(ClassLoader.getSystemResource("static/images/logo.png"));
             setIcon(sustImage);
+            
         }
     }
     private class AppName extends JLabel{
