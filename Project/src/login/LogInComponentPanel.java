@@ -2,7 +2,7 @@ package login;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
 class LogInComponentPanel extends JPanel {
 
@@ -13,15 +13,16 @@ class LogInComponentPanel extends JPanel {
 
     public LogInComponentPanel() {
         setBounds(0, 25, 1000, 575);
-        setLayout(new BorderLayout(0, 0));
+        setLayout(new GridLayout(0, 2));
         
-        logInSplitPane.setOneTouchExpandable(false);
-        logInSplitPane.setResizeWeight(0.5);
-        logInSplitPane.setDividerSize(0);
-        add(logInSplitPane, BorderLayout.CENTER);
+        // logInSplitPane.setOneTouchExpandable(false);
+        // logInSplitPane.setResizeWeight(0.5);
+        // logInSplitPane.setDividerSize(0);
+        // add(logInSplitPane);
         
-        
-        logInSplitPane.setLeftComponent(left);
-        logInSplitPane.setRightComponent(logInRight);	
+        add(left);
+        add(logInRight);
+        // logInSplitPane.setLeftComponent(left);
+        // logInSplitPane.setRightComponent(logInRight);	
     }
 }

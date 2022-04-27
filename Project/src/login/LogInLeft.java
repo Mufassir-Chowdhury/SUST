@@ -1,4 +1,5 @@
 package login;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,7 +14,7 @@ class LogInLeft extends JPanel {
 
     
     public LogInLeft() {
-        setLayout(null);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
         add(new Logo());
         add(new AppName());
@@ -24,7 +25,7 @@ class LogInLeft extends JPanel {
     private class Logo extends JLabel {
         public Logo(){
             setHorizontalAlignment(SwingConstants.CENTER);
-            setBounds(0, 65, 494, 290);
+            setSize(getHeight(), 290);
             ImageIcon sustImage = new ImageIcon(ClassLoader.getSystemResource("static/images/logo.png"));
             setIcon(sustImage);
         }
@@ -32,7 +33,7 @@ class LogInLeft extends JPanel {
     private class AppName extends JLabel{
         public AppName(){
             setText("SUST APP");
-            setBounds(0, 360, 494, 45);
+            setSize(getHeight(), 45);
             setFont(new Font("Verdana", Font.BOLD, 36));
             setHorizontalAlignment(SwingConstants.CENTER);
             setForeground(Color.decode("#D5AF36"));
@@ -41,7 +42,7 @@ class LogInLeft extends JPanel {
     private class Slogan extends JLabel{
         public Slogan(){
             setText("Bringing Everything In One PlaSe");
-            setBounds(0, 433, 494, 30);
+            setSize(getHeight(), 30);
             setFont(new Font("Times New Roman", Font.BOLD, 26));
             setHorizontalAlignment(SwingConstants.CENTER);
             setForeground(Color.decode("#C1C0C0"));

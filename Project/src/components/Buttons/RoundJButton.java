@@ -1,7 +1,5 @@
 package Components.Buttons;
 import java.awt.event.MouseListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
@@ -71,8 +69,7 @@ public class RoundJButton extends JButton implements MouseListener, KeyListener 
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyChar() == KeyEvent.VK_ENTER)
-		{
+		if(e.getKeyChar() == KeyEvent.VK_ENTER){
 			//fetching data and checking database
 		}
 		
