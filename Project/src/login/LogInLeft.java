@@ -52,7 +52,7 @@ class LogInLeft extends JPanel {
     }
     private class Slogan extends JLabel{
         public Slogan(){
-            setText("Bringing Everything In One PlaSe");
+            setText("Bringing Everything In One Place");
             setSize(getHeight(), 30);
             setFont(new Font("Times New Roman", Font.BOLD, 26));
             setHorizontalAlignment(SwingConstants.CENTER);
