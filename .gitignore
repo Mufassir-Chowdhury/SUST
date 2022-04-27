@@ -1,0 +1,5 @@
+# ignore bin folder inside Project folder
+Project/bin/
+/bin/
+Project/.project
+.project
