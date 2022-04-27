@@ -13,7 +13,6 @@ class LogInLeft extends JPanel {
 
     
     public LogInLeft() {
-        setBackground(new Color(0, 0, 0));
         setLayout(null);
         
         add(new Logo());
@@ -24,7 +23,6 @@ class LogInLeft extends JPanel {
 
     private class Logo extends JLabel {
         public Logo(){
-            // JLabel logo = new JLabel("");
             setHorizontalAlignment(SwingConstants.CENTER);
             setBounds(0, 65, 494, 290);
             ImageIcon sustImage = new ImageIcon(ClassLoader.getSystemResource("static/images/logo.png"));
@@ -33,7 +31,6 @@ class LogInLeft extends JPanel {
     }
     private class AppName extends JLabel{
         public AppName(){
-            // JLabel logInPageAppName = new JLabel("SUST APPa");
             setText("SUST APP");
             setBounds(0, 360, 494, 45);
             setFont(new Font("Verdana", Font.BOLD, 36));

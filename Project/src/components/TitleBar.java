@@ -14,7 +14,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseListener;
 
 public class TitleBar extends JPanel implements MouseMotionListener, MouseListener {
-	private int x, y, xx, yy;
+	public int x, y, xx, yy;
 	public  Point point;
 	private static final long serialVersionUID = 1L;
 	public ImageIcon makeLogo(Image image, int width, int height){
@@ -47,7 +47,9 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	public void mouseDragged(MouseEvent e) {
 		xx = e.getXOnScreen();
 		yy = e.getYOnScreen();
-		setLocation(xx-x,yy-y);
+		point = new Point(xx - x, yy - y);
+		setLocation(xx,yy);
+		setLocation(0, 0);
 	}
 	
 	@Override
@@ -63,7 +65,7 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	@Override
 	public void mousePressed(MouseEvent e) {
 		x = e.getX();
-		y = e.getY();		
+		y = e.getY();
 	}
 
 	@Override

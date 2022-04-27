@@ -14,10 +14,8 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.font.TextAttribute;
 import java.util.Arrays;
 // import java.sql.ResultSet;
-import java.util.Map;
 
 class LogInRight extends JPanel {
 
@@ -32,7 +30,6 @@ class LogInRight extends JPanel {
     
     
     public LogInRight() {
-        setBackground(new Color(0, 0, 0));
         setLayout(null);
         
         emailField.addFocusListener(emailField);
@@ -62,7 +59,6 @@ class LogInRight extends JPanel {
                 }
                 if(showPasswordCheckBox.isSelected()==false){
                     showPasswordCheckBox.setForeground(new Color(135, 206, 250));
-//                    if(passwordField.getPassword().equals(passwordPlaceholder)==false)
                     if(Arrays.equals(passwordField.getPassword(), defaultPassword)==false)
                         passwordField.setEchoChar('\u25cf');
                 }
@@ -104,20 +100,6 @@ class LogInRight extends JPanel {
         forgetPasswordText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         forgetPasswordText.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         forgetPasswordText.setForeground(new Color(30, 144, 255));
-        forgetPasswordText.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                Font font = forgetPasswordText.getFont();
-                Map adding = font.getAttributes();
-                adding.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-                forgetPasswordText.setFont(font.deriveFont(adding));
-                
-            }
-            @Override
-            public void mouseExited(MouseEvent e) {
-                forgetPasswordText.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-            }
-        });
         add(forgetPasswordText);
         
         registerText.setText("Register");
@@ -126,20 +108,6 @@ class LogInRight extends JPanel {
         registerText.setFont(new Font("Segoe UI", Font.PLAIN, 15));
         registerText.setBounds(255, 396, 60, 25);
         registerText.setForeground(new Color(30, 144, 255));
-        registerText.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                Font font = registerText.getFont();
-                Map adding = font.getAttributes();
-                adding.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-                registerText.setFont(font.deriveFont(adding));
-                
-            }
-            @Override
-            public void mouseExited(MouseEvent e) {
-                registerText.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-            }
-        });
         add(registerText);
 
 
