@@ -6,7 +6,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Image;
 import java.awt.Point;
-import java.awt.Color;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -23,13 +22,12 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
     }
 	
 	public TitleBar() {
-		// setBackground(new Color(0, 191, 255));
 		setBounds(0, 0, 1000, 25);
 		setLayout(null);
 		setOpaque(false);
 		
 		
-		ImageIcon cancelImage = new ImageIcon(ClassLoader.getSystemResource("static/images/cancel.png"));
+		ImageIcon cancelImage = new ImageIcon(ClassLoader.getSystemResource("static/images/cancel-white.png"));
         ImageIcon cancelLogo = makeLogo(cancelImage.getImage(), 15, 15);
         JLabel cancelIcon = new JLabel(cancelLogo);
         cancelIcon.addMouseListener(new MouseAdapter() {
