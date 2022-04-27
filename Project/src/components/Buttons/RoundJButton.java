@@ -1,4 +1,4 @@
-package components.Buttons;
+package Components.Buttons;
 import java.awt.event.MouseListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;

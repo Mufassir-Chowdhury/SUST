@@ -2,7 +2,7 @@ package login;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import components.TitleBar;
+import Components.TitleBar;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseEvent;
 

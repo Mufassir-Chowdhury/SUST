@@ -4,10 +4,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import components.RoundJPasswordField;
-import components.RoundJTextField;
-import components.Buttons.RoundJButton;
-import components.Buttons.RoundJButton.Style;
+import Components.RoundJPasswordField;
+import Components.RoundJTextField;
+import Components.Buttons.RoundJButton;
+import Components.Buttons.RoundJButton.Style;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -15,6 +15,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.util.Arrays;
 // import java.sql.ResultSet;
 import java.util.Map;
 
@@ -62,7 +63,7 @@ class LogInRight extends JPanel {
                 if(showPasswordCheckBox.isSelected()==false){
                     showPasswordCheckBox.setForeground(new Color(135, 206, 250));
 //                    if(passwordField.getPassword().equals(passwordPlaceholder)==false)
-                    if(passwordField.getText().equals(passwordPlaceholder)==false)
+                    if(Arrays.equals(passwordField.getPassword(), new char[]{'p','a','s','s','w','o','r','d'})==false)
                         passwordField.setEchoChar('\u25cf');
                 }
             }

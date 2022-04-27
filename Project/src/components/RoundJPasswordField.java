@@ -1,4 +1,4 @@
-package components;
+package Components;
 
 import javax.swing.JPasswordField;
 
@@ -8,13 +8,14 @@ import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Arrays;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 public class RoundJPasswordField extends JPasswordField implements KeyListener, FocusListener {
 	private static final long serialVersionUID = 1L;
 	private int size;
-    String placeholder = " Password";
+    String placeholder = "password";
     // char[] placeholder = " Password".toCharArray();
     Boolean showPassword = false;
 
@@ -52,7 +53,7 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
 	@Override
     public void focusLost(FocusEvent e) {
 //		if(getPassword().length == 0 || getPassword().equals(placeholder)) {
-        if(getPassword().length == 0 || getText().equals(placeholder)) {
+        if(getPassword().length == 0 || Arrays.equals(getPassword(), new char[]{'p','a','s','s','w','o','r','d'})) {
             setEchoChar('\u0000');
             setBackground(new Color(135, 206, 250));
             setText(placeholder);
@@ -65,14 +66,14 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
 //    	System.out.println(placeholder.toCharArray());
 //    	System.out.println(getPassword().equals(placeholder.toCharArray()));
 //        if(getPassword().equals(placeholder)){
-        if(getText().equals(placeholder)){
+    if (Arrays.equals(getPassword(), new char[]{'p','a','s','s','w','o','r','d'})){
             setText("");
             if(showPassword==false) setEchoChar('\u25cf');
         }
     }
     @Override
     public void keyPressed(KeyEvent e) {
-    	if(getText().equals(placeholder) && e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+    	if(Arrays.equals(getPassword(), new char[]{'p','a','s','s','w','o','r','d'}) && e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
             setText(" ");
             if(showPassword==false) setEchoChar('\u25cf');
         }
