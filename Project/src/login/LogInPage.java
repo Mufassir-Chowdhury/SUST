@@ -1,32 +1,39 @@
 package login;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import Components.Tools;
 import Components.TitleBar;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
-
-public class LogInPage extends JFrame{
+public class LogInPage extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JLabel 	 backgroundImage  = new JLabel();
-	private JPanel 	 logInComponentPanel = new LogInComponentPanel();
-	private TitleBar logInTitleBar       = new TitleBar();
+	private JLabel backgroundImage = new JLabel();
+	private TitleBar logInTitleBar = new TitleBar();
 	private String sourceBackgroundImage2 = "static/images/background-2.png";
 	private Tools tools = new Tools();
 	private int width, height;
+	private JPanel logInRight = new LogInRight();
+	private LogInLeft logInLeft = new LogInLeft();
+	private JPanel componentPanel = new JPanel();
 
 	public LogInPage() {
 		setUndecorated(true);
 		setSize(1000, 600);
 		setLayout(new BorderLayout());
-		
+
+		componentPanel.setBounds(0, 25, 1000, 575);
+		componentPanel.setLayout(new GridLayout(0, 2));
+		componentPanel.setOpaque(false);
+
 		width = getWidth();
 		height = getHeight();
 
 		backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, width, height));
-		setContentPane(backgroundImage);		
+		setContentPane(backgroundImage);
 
 		add(logInTitleBar);
 		logInTitleBar.addComponentListener(new java.awt.event.ComponentAdapter() {
@@ -35,14 +42,14 @@ public class LogInPage extends JFrame{
 				setLocation(logInTitleBar.point);
 			}
 		});
-		
-		
-		
 
-		add(logInComponentPanel);
-		
+		componentPanel.add(logInLeft);
+		componentPanel.add(logInRight);
+
+		add(componentPanel);
+
 		logInTitleBar.addMouseListener(logInTitleBar);
 		logInTitleBar.addMouseMotionListener(logInTitleBar);
-		
+
 	}
 }
