@@ -18,6 +18,13 @@ public class Background extends JFrame {
         logInTitleBar.setSize(getWidth(), 25);
     }
 
+    public void Normal(){
+        setExtendedState(Frame.NORMAL);
+        backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
+        setContentPane(backgroundImage);
+        logInTitleBar.setSize(getWidth(), 25);
+    }
+
     public Background(){
         setUndecorated(true);
 		setSize(1000, 600);
