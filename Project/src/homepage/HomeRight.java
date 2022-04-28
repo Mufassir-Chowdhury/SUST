@@ -1,4 +1,4 @@
-package login;
+package homepage;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,11 +15,9 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 // import java.sql.ResultSet;
 
-class LogInRight extends JPanel {
+class HomeRight extends JPanel {
 
     private RoundJButton logInButton = new RoundJButton(20, "Log In", Style.ACCENT);
     private RoundJTextField emailField = new RoundJTextField(20, " Email Address");
@@ -31,7 +29,7 @@ class LogInRight extends JPanel {
     private static final long serialVersionUID = 1L;    
     
     
-    public LogInRight(LogInPage page) {
+    public HomeRight() {
         setLayout(null);
         setOpaque(false);
 
@@ -94,14 +92,6 @@ class LogInRight extends JPanel {
         
         logInButton.addKeyListener(logInButton);
         logInButton.addMouseListener(logInButton);
-        logInButton.addActionListener(new ActionListener(){
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                page.LogIn();
-            }
-
-        });
         
         add(logInButton);
         

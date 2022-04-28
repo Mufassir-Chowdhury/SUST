@@ -1,18 +1,14 @@
-package login;
+package homepage;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import Components.Tools;
-import Main.Main;
-import homepage.HomePage;
 import Components.TitleBar;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class LogInPage extends JFrame {
+public class HomePage extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel backgroundImage = new JLabel();
@@ -20,19 +16,11 @@ public class LogInPage extends JFrame {
 	private String sourceBackgroundImage2 = "static/images/background-2.png";
 	private Tools tools = new Tools();
 	private int width, height;
-	private JPanel logInRight = new LogInRight(this);
-	private LogInLeft logInLeft = new LogInLeft();
+	private JPanel logInRight = new HomeRight();
+	private HomeLeft logInLeft = new HomeLeft();
 	private JPanel componentPanel = new JPanel();
-	private Main frame;
-	public void LogIn(){
-		frame.changeFrame(new HomePage());
-		// Timer timer = new Timer();
-		// timer.schedule(setVisible(false), 1000);
-		setVisible(false);
-	}
 
-	public LogInPage(Main frame) {
-		this.frame = frame;
+	public HomePage() {
 		setUndecorated(true);
 		setSize(1000, 600);
 		setLayout(new BorderLayout());
