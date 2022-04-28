@@ -2,7 +2,11 @@ package Components;
 
 import javax.swing.JPanel;
 
+import login.LogInPage;
+
+import javax.security.auth.login.LoginContext;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Color;
@@ -27,8 +31,10 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	private String sourceWhiteRestoreLogo = "static/images/restore-white.png";
 	private JLabel minimizeIcon, cancelIcon, fullScreenIcon;
 	private ImageIcon cancelLogo, fullScreenLogo, minimizeLogo, restoreLogo;
+	private Background frame;
 	
-	public TitleBar() {
+	public TitleBar(Background frame) {
+		this.frame = frame;
 		setBounds(0, 0, 1000, 25);
 		setLayout(null);
 		setOpaque(false);
@@ -56,8 +62,7 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		add(minimizeIcon);
 	}
 	
-	private void createIcons()
-	{
+	private void createIcons(){
 		cancelLogo 		= tools.imageScale(sourceWhiteCancelLogo, 15, 15);
 		fullScreenLogo 	= tools.imageScale(sourceFullScreenLogo, 15, 15);
 		minimizeLogo 	= tools.imageScale(sourceMinimizeLogo, 15, 15);
@@ -90,19 +95,16 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		else if(e.getSource() == fullScreenIcon) {
 			size = Toolkit.getDefaultToolkit().getScreenSize();
 			if(fullScreenIcon.getIcon() == fullScreenLogo) {
+				frame.Extend();
 				fullScreenIcon.setIcon(restoreLogo);
-				//getRootPane().setSize(size);
-				//make the frame full size
 			}
-			else
-			{
+			else{
 				fullScreenIcon.setIcon(fullScreenLogo);
-				//make the screen default size
+				frame.setExtendedState(Frame.NORMAL);
 			}
 		}
 		else if(e.getSource() == minimizeIcon) {
-//			.setState(Frame.ICONIFIED);
-			////set the state to ICONIFIED
+			frame.setState(Frame.ICONIFIED);
 		}
 	}
 
