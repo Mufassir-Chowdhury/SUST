@@ -15,14 +15,14 @@ public class Background extends JFrame {
         setExtendedState(Frame.MAXIMIZED_BOTH);
         backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
 		setContentPane(backgroundImage);
-        logInTitleBar.setSize(getWidth(), 25);
+        logInTitleBar.setSize(getWidth(), 35);
     }
 
     public void Normal(){
         setExtendedState(Frame.NORMAL);
         backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
         setContentPane(backgroundImage);
-        logInTitleBar.setSize(getWidth(), 25);
+        logInTitleBar.setSize(getWidth(), 35);
     }
 
     public Background(){

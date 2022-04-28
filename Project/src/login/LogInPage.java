@@ -18,7 +18,7 @@ public class LogInPage extends JPanel {
 	public LogInPage(Main frame) {
 		this.frame = frame;
 
-		setBounds(0, 25, 1000, 600);
+		setBounds(0, 35, 1000, 600);
 		setLayout(new GridLayout(0, 2));
 		setOpaque(false);
 

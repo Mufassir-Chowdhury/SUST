@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import Constants.Colors;
+
 import java.awt.Color;
 import java.awt.Font;
 
@@ -43,18 +45,18 @@ class LogInLeft extends JPanel {
     }
     private class AppName extends JLabel{
         public AppName(){
-            setText("SUST APP");
+            setText("SUST");
             setSize(getHeight(), 45);
-            setFont(new Font("Verdana", Font.BOLD, 36));
+            setFont(new Font("Segoe UI", Font.BOLD, 68));
             setHorizontalAlignment(SwingConstants.CENTER);
-            setForeground(Color.decode("#D5AF36"));
+            setForeground(Colors.ACCENT);
         }
     }
     private class Slogan extends JLabel{
         public Slogan(){
             setText("Bringing Everything In One Place");
             setSize(getHeight(), 30);
-            setFont(new Font("Times New Roman", Font.BOLD, 26));
+            setFont(new Font("Segoe UI", Font.BOLD, 28));
             setHorizontalAlignment(SwingConstants.CENTER);
             setForeground(Color.decode("#C1C0C0"));
         }
