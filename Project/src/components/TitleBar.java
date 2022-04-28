@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseListener;
+import java.awt.FlowLayout;
 
 public class TitleBar extends JPanel implements MouseMotionListener, MouseListener {
 	public int x, y, xx, yy;
@@ -27,31 +28,35 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	private JLabel minimizeIcon, cancelIcon, fullScreenIcon;
 	private ImageIcon cancelLogo, fullScreenLogo, minimizeLogo, restoreLogo;
 	private Background frame;
-	
-	public TitleBar(Background frame) {
+	public int width, height;
+
+	public TitleBar(Background frame, int width, int height) {
 		this.frame = frame;
-		setBounds(0, 0, 1000, 25);
-		setLayout(null);
+		setBounds(0, 0, width, height);
+		setLayout(new FlowLayout());
 		setOpaque(false);
 		
 		createIcons();
 		
         cancelIcon = new JLabel(cancelLogo);
-		cancelIcon.setBounds(975, 0, 25, 25);
+		// cancelIcon.setBounds(975, 0, 25, 25);
+		cancelIcon.setSize(25, 25);
 		cancelIcon.addMouseListener(this);
 		cancelIcon.addMouseMotionListener(this);
 		add(cancelIcon);
 
 
         fullScreenIcon = new JLabel(fullScreenLogo);
-		fullScreenIcon.setBounds(945, 0, 25, 25);
+		// fullScreenIcon.setBounds(945, 0, 25, 25);
+		fullScreenIcon.setSize(25, 25);
 		fullScreenIcon.addMouseListener(this);
 		fullScreenIcon.addMouseMotionListener(this);
 		add(fullScreenIcon);
 
         
         minimizeIcon = new JLabel(minimizeLogo);
-		minimizeIcon.setBounds(915, 0, 25, 25);
+		// minimizeIcon.setBounds(915, 0, 25, 25);
+		minimizeIcon.setSize(25, 25);
 		minimizeIcon.addMouseListener(this);
 		minimizeIcon.addMouseMotionListener(this);
 		add(minimizeIcon);

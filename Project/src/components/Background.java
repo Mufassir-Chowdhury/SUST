@@ -9,18 +9,20 @@ public class Background extends JFrame {
     private JLabel backgroundImage = new JLabel();
 	private String sourceBackgroundImage2 = "static/images/background-2.png";
     private Tools tools = new Tools();
-    private TitleBar logInTitleBar = new TitleBar(this);
+    private TitleBar logInTitleBar;
 
     public void Extend(){
         setExtendedState(Frame.MAXIMIZED_BOTH);
         backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
 		setContentPane(backgroundImage);
+        logInTitleBar.setSize(getWidth(), 25);
     }
 
     public Background(){
         setUndecorated(true);
 		setSize(1000, 600);
 		setLayout(new BorderLayout());
+        logInTitleBar = new TitleBar(this, 1000, 600);
 
 		backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
 		setContentPane(backgroundImage);
