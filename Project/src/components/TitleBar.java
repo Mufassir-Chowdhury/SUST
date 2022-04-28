@@ -2,11 +2,7 @@ package Components;
 
 import javax.swing.JPanel;
 
-import login.LogInPage;
-
-import javax.security.auth.login.LoginContext;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Color;
@@ -14,7 +10,6 @@ import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseListener;

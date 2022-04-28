@@ -1,11 +1,6 @@
 package homepage;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import Components.Tools;
-import Components.TitleBar;
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 public class HomePage extends JPanel {

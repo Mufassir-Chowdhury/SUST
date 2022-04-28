@@ -1,12 +1,8 @@
 package login;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import Components.Tools;
 import Main.Main;
 import homepage.HomePage;
-import Components.TitleBar;
 import java.awt.GridLayout;
 
 public class LogInPage extends JPanel {
