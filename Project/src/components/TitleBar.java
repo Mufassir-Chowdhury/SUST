@@ -14,6 +14,8 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseListener;
 import java.awt.FlowLayout;
+import javax.swing.SpringLayout;
+
 
 public class TitleBar extends JPanel implements MouseMotionListener, MouseListener {
 	public int x, y, xx, yy;
@@ -32,10 +34,8 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 
 	public TitleBar(Background frame, int width, int height) {
 		this.frame = frame;
-		setBounds(0, 0, width, height);
-		setLayout(new FlowLayout());
 		setOpaque(false);
-		
+		setBounds(0, 0, width, height);
 		createIcons();
 		
         cancelIcon = new JLabel(cancelLogo);
@@ -43,10 +43,16 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		cancelIcon.setSize(25, 25);
 		cancelIcon.addMouseListener(this);
 		cancelIcon.addMouseMotionListener(this);
+		SpringLayout springLayout = new SpringLayout();
+		springLayout.putConstraint(SpringLayout.NORTH, cancelIcon, 0, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, cancelIcon, 0, SpringLayout.EAST, this);
+		setLayout(springLayout);
 		add(cancelIcon);
 
 
         fullScreenIcon = new JLabel(fullScreenLogo);
+        springLayout.putConstraint(SpringLayout.NORTH, fullScreenIcon, 0, SpringLayout.NORTH, this);
+        springLayout.putConstraint(SpringLayout.EAST, fullScreenIcon, -5, SpringLayout.WEST, cancelIcon);
 		// fullScreenIcon.setBounds(945, 0, 25, 25);
 		fullScreenIcon.setSize(25, 25);
 		fullScreenIcon.addMouseListener(this);
@@ -55,6 +61,8 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 
         
         minimizeIcon = new JLabel(minimizeLogo);
+        springLayout.putConstraint(SpringLayout.NORTH, minimizeIcon, 0, SpringLayout.NORTH, this);
+        springLayout.putConstraint(SpringLayout.EAST, minimizeIcon, -5, SpringLayout.WEST, fullScreenIcon);
 		// minimizeIcon.setBounds(915, 0, 25, 25);
 		minimizeIcon.setSize(25, 25);
 		minimizeIcon.addMouseListener(this);
