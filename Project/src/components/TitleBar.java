@@ -33,10 +33,10 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	private Background frame;
 	public int width, height;
 
-	public TitleBar(Background frame, int width, int height) {
+	public TitleBar(Background frame, int width) {
 		this.frame = frame;
 		setOpaque(false);
-		setBounds(0, 0, width, height);
+		setSize(width, 35);
 		createIcons();
 		
         cancelIcon = new JLabel(cancelLogo);

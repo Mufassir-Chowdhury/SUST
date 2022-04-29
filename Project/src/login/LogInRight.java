@@ -1,15 +1,18 @@
 package login;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import Components.RoundJPasswordField;
 import Components.RoundJTextField;
 import Components.Buttons.RoundJButton;
 import Components.Buttons.RoundJButton.Style;
+import Constants.Colors;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -17,6 +20,7 @@ import java.awt.event.MouseEvent;
 import java.util.Arrays;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Dimension;
 // import java.sql.ResultSet;
 
 class LogInRight extends JPanel {
@@ -32,23 +36,31 @@ class LogInRight extends JPanel {
     
     
     public LogInRight(LogInPage page) {
-        setLayout(null);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setAlignmentY(Component.CENTER_ALIGNMENT);
         setOpaque(false);
+        add(Box.createVerticalGlue());
 
         emailField.addFocusListener(emailField);
         emailField.addKeyListener(emailField);
+        emailField.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(emailField);
+
+        add(Box.createVerticalStrut(30));
         
         passwordField.addFocusListener(passwordField);
         passwordField.addKeyListener(passwordField);
+        passwordField.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(passwordField);
         
+        add(Box.createVerticalStrut(10));
+
+        Box line = Box.createHorizontalBox();
         
-        
-        showPasswordCheckBox.setBounds(270, 295, 110, 23);
+        showPasswordCheckBox.setSize(110, 23);
         showPasswordCheckBox.setFocusPainted(false);
         showPasswordCheckBox.setBackground(new Color(0,0,0));
-        showPasswordCheckBox.setForeground(new Color(135, 206, 250));
+        showPasswordCheckBox.setForeground(Colors.ACCENT);
         showPasswordCheckBox.setBorder(null);
         showPasswordCheckBox.setText("Show Password");
         showPasswordCheckBox.setContentAreaFilled(false);
@@ -67,7 +79,12 @@ class LogInRight extends JPanel {
                 }
             }
         });
-        add(showPasswordCheckBox);
+        line.add(Box.createRigidArea(new Dimension(240, 23)));
+        line.add(showPasswordCheckBox);
+        line.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(line);
+        add(Box.createVerticalStrut(20));
+
         
 //         logInButton.addMouseListener(new MouseAdapter() {
         	
@@ -91,7 +108,7 @@ class LogInRight extends JPanel {
 // //         		}
 // //         	}
 //         });
-        
+
         logInButton.addKeyListener(logInButton);
         logInButton.addMouseListener(logInButton);
         logInButton.addActionListener(new ActionListener(){
@@ -102,25 +119,35 @@ class LogInRight extends JPanel {
             }
 
         });
-        
+        logInButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(logInButton);
+
+        add(Box.createVerticalStrut(20));
+
+        line = Box.createHorizontalBox() ;
+        line.add(Box.createHorizontalGlue());
         
         forgetPasswordText.setText("Forgotten Password?");
-        forgetPasswordText.setHorizontalAlignment(SwingConstants.RIGHT);
-        forgetPasswordText.setBounds(105, 396, 140, 25);
+        forgetPasswordText.setSize(140, 25);
         forgetPasswordText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        forgetPasswordText.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        forgetPasswordText.setForeground(new Color(30, 144, 255));
-        add(forgetPasswordText);
+        forgetPasswordText.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        forgetPasswordText.setForeground(Colors.ACCENT);
+        line.add(forgetPasswordText);
+        
+        line.add(Box.createHorizontalGlue());
         
         registerText.setText("Register");
-        registerText.setHorizontalAlignment(SwingConstants.LEFT);
         registerText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        registerText.setFont(new Font("Segoe UI", Font.PLAIN, 15));
-        registerText.setBounds(255, 396, 60, 25);
-        registerText.setForeground(new Color(30, 144, 255));
-        add(registerText);
-
+        registerText.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        registerText.setSize(140, 25);
+        registerText.setForeground(Colors.ACCENT);
+        line.add(registerText);
+        
+        line.add(Box.createHorizontalGlue());
+        line.setAlignmentX(Component.CENTER_ALIGNMENT);
+        add(line);
+        
+        add(Box.createVerticalGlue());
 
     }
 

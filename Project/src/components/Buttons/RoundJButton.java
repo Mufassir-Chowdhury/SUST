@@ -5,10 +5,15 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
+
+import Constants.Colors;
+
 import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Cursor;
+import java.awt.Dimension;
 
 public class RoundJButton extends JButton implements MouseListener, KeyListener {
     private static final long serialVersionUID = 1L;
@@ -21,24 +26,26 @@ public class RoundJButton extends JButton implements MouseListener, KeyListener 
         this.size = size;
         setOpaque(false); 
         setText(text);
-        setBounds(40, 340, 340, 40);
+        setSize(120, 32);
+        setMaximumSize(new Dimension(120, 32));
+        setMinimumSize(new Dimension(120, 32));
         setContentAreaFilled(false);
         setFocusPainted(false);
-        setFont(new Font("Segoe UI", Font.BOLD, 23));
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        setForeground(new Color(135, 206, 250));
-        setBackground(new Color(0, 0, 0));
-        setBorder(null);
+        setBackground(Color.WHITE);
+        setForeground(Color.BLACK);
+        setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        setMargin(new Insets(5, 10, 5, 10));
         setFocusable(false);
     }
     protected void paintComponent(Graphics g) {
-         g.setColor(getBackground());
-         g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);
+        g.setColor(Colors.ACCENT);
+        g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 4, 4);
          super.paintComponent(g);
     }
     protected void paintBorder(Graphics g) {
-         g.setColor(getForeground());
-         g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);
+        g.setColor(Colors.ACCENT);
+        g.drawRoundRect(0, 0, 0, 0, 0, 0);
     }
     @Override
     public void mouseClicked(MouseEvent e) {

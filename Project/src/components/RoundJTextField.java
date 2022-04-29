@@ -1,6 +1,9 @@
 package Components;
 
 import javax.swing.JTextField;
+
+import Constants.Colors;
+
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;
@@ -9,6 +12,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.Dimension;
 
 public class RoundJTextField extends JTextField implements KeyListener, FocusListener {
 	private static final long serialVersionUID = 1L;
@@ -22,22 +26,24 @@ public class RoundJTextField extends JTextField implements KeyListener, FocusLis
 
         setOpaque(false);
         setText(placeholder);
-        setBounds(40, 160, 340, 40);
-        setBackground(new Color(135, 206, 250));
-        setForeground(Color.black);
-        setFont(new Font("Segoe UI", Font.ITALIC, 16));
-        setMargin(new Insets(2, 10, 2, 2));
+        setSize(350, 32);
+        setMaximumSize(new Dimension(350, 32));
+        setMinimumSize(new Dimension(350, 32));
+        setBackground(Color.WHITE);
+        setForeground(Color.WHITE);
+        setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        setMargin(new Insets(8, 10, 8, 10));
     }
 
     protected void paintComponent(Graphics g) {
-         g.setColor(getBackground());
-         g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);
+         g.setColor(new Color(53, 40, 47));
+         g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 4, 4);
          super.paintComponent(g);
     }
 
     protected void paintBorder(Graphics g) {
-         g.setColor(getForeground());
-         g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, size, size);
+         g.setColor(new Color(156, 150, 154));
+         g.drawRoundRect(0, getHeight(), getWidth()-1, 0, 0, 0);
     }
     
     @Override

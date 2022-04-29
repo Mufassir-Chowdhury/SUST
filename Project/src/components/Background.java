@@ -29,7 +29,7 @@ public class Background extends JFrame {
         setUndecorated(true);
 		setSize(1000, 600);
 		setLayout(new BorderLayout());
-        logInTitleBar = new TitleBar(this, 1000, 600);
+        logInTitleBar = new TitleBar(this, 1000);
 
 		backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
 		setContentPane(backgroundImage);
