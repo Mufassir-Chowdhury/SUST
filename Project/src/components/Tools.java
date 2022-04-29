@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 
 public class Tools{
 
-    public ImageIcon imageScale(String source, int width, int height){
+    public static ImageIcon imageScale(String source, int width, int height){
         ImageIcon bgIcon = new ImageIcon(ClassLoader.getSystemResource(source));
 	    Image bgImage = bgIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
 	    return new ImageIcon(bgImage);

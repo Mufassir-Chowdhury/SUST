@@ -2,36 +2,38 @@ package Components;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import Constants.Sizes;
+
 import java.awt.BorderLayout;
 import java.awt.Frame;
 
 public class Background extends JFrame {
     private JLabel backgroundImage = new JLabel();
 	private String sourceBackgroundImage2 = "static/images/background-2.png";
-    private Tools tools = new Tools();
     private TitleBar logInTitleBar;
 
     public void Extend(){
         setExtendedState(Frame.MAXIMIZED_BOTH);
-        backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
+        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
 		setContentPane(backgroundImage);
-        logInTitleBar.setSize(getWidth(), 35);
+        logInTitleBar.setSize(getWidth(), Sizes.TITLE_BAR_HEIGHT);
     }
 
     public void Normal(){
         setExtendedState(Frame.NORMAL);
-        backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
+        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
         setContentPane(backgroundImage);
-        logInTitleBar.setSize(getWidth(), 35);
+        logInTitleBar.setSize(getWidth(), Sizes.TITLE_BAR_HEIGHT);
     }
 
     public Background(){
         setUndecorated(true);
-		setSize(1000, 600);
+		setSize(Sizes.DEFAULT_WINDOW_SIZE);
 		setLayout(new BorderLayout());
-        logInTitleBar = new TitleBar(this, 1000);
+        logInTitleBar = new TitleBar(this, getWidth());
 
-		backgroundImage.setIcon(tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
+		backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
 		setContentPane(backgroundImage);
         add(logInTitleBar);
 

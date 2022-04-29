@@ -1,8 +1,6 @@
 package Components;
 
 import javax.swing.JPanel;
-
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import java.awt.Dimension;
@@ -15,7 +13,9 @@ import java.awt.event.MouseListener;
 import javax.swing.SpringLayout;
 
 import Constants.Colors;
+import Constants.Icons;
 import Constants.Padding;
+import Constants.Sizes;
 
 
 public class TitleBar extends JPanel implements MouseMotionListener, MouseListener {
@@ -23,61 +23,46 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	public  Point point;
 	public Dimension size;
 	private static final long serialVersionUID = 1L;
-	private Tools tools = new Tools();
-	private String sourceWhiteCancelLogo = "static/images/cancel-white.png";
-	private String sourceFullScreenLogo = "static/images/full-screen.png";
-	private String sourceMinimizeLogo = "static/images/minimize.png";
-	private String sourceWhiteRestoreLogo = "static/images/restore-white.png";
-	private JLabel minimizeIcon, cancelIcon, fullScreenIcon;
-	private ImageIcon cancelLogo, fullScreenLogo, minimizeLogo, restoreLogo;
+	private JLabel minimizeIcon, closeIcon, fullScreenIcon;
 	private Background frame;
 	public int width, height;
 
 	public TitleBar(Background frame, int width) {
 		this.frame = frame;
 		setOpaque(false);
-		setSize(width, 35);
-		createIcons();
+		setSize(width, Sizes.TITLE_BAR_HEIGHT);
 		
-        cancelIcon = new JLabel(cancelLogo);
-		cancelIcon.setSize(15, 15);
-		cancelIcon.addMouseListener(this);
-		cancelIcon.addMouseMotionListener(this);
+        closeIcon = new JLabel(Icons.CLOSE);
+		closeIcon.setSize(Sizes.ICON_SIZE);
+		closeIcon.addMouseListener(this);
+		closeIcon.addMouseMotionListener(this);
 		SpringLayout springLayout = new SpringLayout();
-		springLayout.putConstraint(SpringLayout.NORTH, cancelIcon, 0, SpringLayout.NORTH, this);
-		springLayout.putConstraint(SpringLayout.EAST, cancelIcon, 0, SpringLayout.EAST, this);
-		cancelIcon.setBorder(Padding.titleBarItem);
+		springLayout.putConstraint(SpringLayout.NORTH, closeIcon, 0, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, closeIcon, 0, SpringLayout.EAST, this);
+		closeIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		setLayout(springLayout);
-		add(cancelIcon);
+		add(closeIcon);
 
 
-        fullScreenIcon = new JLabel(fullScreenLogo);
+        fullScreenIcon = new JLabel(Icons.FULL_SCREEN);
         springLayout.putConstraint(SpringLayout.NORTH, fullScreenIcon, 0, SpringLayout.NORTH, this);
-        springLayout.putConstraint(SpringLayout.EAST, fullScreenIcon, -5, SpringLayout.WEST, cancelIcon);
-		fullScreenIcon.setSize(15, 15);
-		fullScreenIcon.setBorder(Padding.titleBarItem);
+        springLayout.putConstraint(SpringLayout.EAST, fullScreenIcon, -5, SpringLayout.WEST, closeIcon);
+		fullScreenIcon.setSize(Sizes.ICON_SIZE);
+		fullScreenIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		fullScreenIcon.addMouseListener(this);
 		fullScreenIcon.addMouseMotionListener(this);
 		add(fullScreenIcon);
 
         
-        minimizeIcon = new JLabel(minimizeLogo);
+        minimizeIcon = new JLabel(Icons.MINIMIZE);
         springLayout.putConstraint(SpringLayout.NORTH, minimizeIcon, 0, SpringLayout.NORTH, this);
         springLayout.putConstraint(SpringLayout.EAST, minimizeIcon, -5, SpringLayout.WEST, fullScreenIcon);
-		minimizeIcon.setSize(15, 15);
-		minimizeIcon.setBorder(Padding.titleBarItem);
+		minimizeIcon.setSize(Sizes.ICON_SIZE);
+		minimizeIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		minimizeIcon.addMouseListener(this);
 		minimizeIcon.addMouseMotionListener(this);
 		add(minimizeIcon);
 	}
-	
-	private void createIcons(){
-		cancelLogo 		= tools.imageScale(sourceWhiteCancelLogo, 15, 15);
-		fullScreenLogo 	= tools.imageScale(sourceFullScreenLogo, 15, 15);
-		minimizeLogo 	= tools.imageScale(sourceMinimizeLogo, 15, 15);
-		restoreLogo 	= tools.imageScale(sourceWhiteRestoreLogo, 15, 15);
-	}
-	
 
 	@Override
 	public void mouseDragged(MouseEvent e) {
@@ -98,17 +83,17 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	@Override
 	//https://javapointers.com/java/java-se/mouse-listener/
 	public void mouseClicked(MouseEvent e) {
-		if(e.getSource() == cancelIcon) {
+		if(e.getSource() == closeIcon) {
 			System.exit(0);
 		}
 		else if(e.getSource() == fullScreenIcon) {
 			size = Toolkit.getDefaultToolkit().getScreenSize();
-			if(fullScreenIcon.getIcon() == fullScreenLogo) {
+			if(fullScreenIcon.getIcon() == Icons.FULL_SCREEN) {
 				frame.Extend();
-				fullScreenIcon.setIcon(restoreLogo);
+				fullScreenIcon.setIcon(Icons.RESTORE);
 			}
 			else{
-				fullScreenIcon.setIcon(fullScreenLogo);
+				fullScreenIcon.setIcon(Icons.FULL_SCREEN);
 				frame.Normal();
 			}
 		}
@@ -130,25 +115,25 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if(e.getSource() == cancelIcon) {
-			cancelIcon.setOpaque(true);
-			cancelIcon.setBackground(Colors.closeButtonHover);
+		if(e.getSource() == closeIcon) {
+			closeIcon.setOpaque(true);
+			closeIcon.setBackground(Colors.CLOSE_BUTTON_HOVER);
 		}
 		else if(e.getSource() == fullScreenIcon) {
 			fullScreenIcon.setOpaque(true);
-			fullScreenIcon.setBackground(Colors.standardButtonHover);
+			fullScreenIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
 		}
 		else if(e.getSource() == minimizeIcon) {
 			minimizeIcon.setOpaque(true);
-			minimizeIcon.setBackground(Colors.standardButtonHover);
+			minimizeIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
 		}
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		if(e.getSource() == cancelIcon) {
-			cancelIcon.setOpaque(false);
-			cancelIcon.setBackground(null);
+		if(e.getSource() == closeIcon) {
+			closeIcon.setOpaque(false);
+			closeIcon.setBackground(null);
 		}
 		else if(e.getSource() == fullScreenIcon) {
 			fullScreenIcon.setOpaque(false);

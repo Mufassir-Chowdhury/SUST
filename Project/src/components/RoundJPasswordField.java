@@ -2,6 +2,12 @@ package Components;
 
 import javax.swing.JPasswordField;
 
+import Constants.Colors;
+import Constants.Fonts;
+import Constants.Margins;
+import Constants.Sizes;
+import Constants.Values;
+
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;
@@ -11,38 +17,33 @@ import java.awt.event.KeyListener;
 import java.util.Arrays;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.awt.Dimension;
 
 public class RoundJPasswordField extends JPasswordField implements KeyListener, FocusListener {
 	private static final long serialVersionUID = 1L;
-    String placeholder = " password";
-    private char[] defaultPassword = new char[]{' ', 'p','a','s','s','w','o','r','d'};
     Boolean showPassword = false;
 
     public RoundJPasswordField(boolean showPassword) {
         this.showPassword = showPassword;
     
         setOpaque(false);
-        setSize(350, 32);
-        setMaximumSize(new Dimension(350, 32));
-        setMinimumSize(new Dimension(350, 32));
-        setBackground(Color.WHITE);
-        setForeground(Color.WHITE);
-        setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        setMargin(new Insets(8, 10, 8, 10));
-        setText(placeholder);
-        setEchoChar('\u0000');
+        setSize(Sizes.TEXT_FIELD_SIZE);
+        setMaximumSize(Sizes.TEXT_FIELD_SIZE);
+        setForeground(Colors.PLAIN_TEXT);
+        setFont(Fonts.PLAIN_TEXT);
+        setMargin(Margins.TEXT_FIELD);
+        setText(Values.PASSWORD_PLACEHOLDER);
+        setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
     }
     
     protected void paintComponent(Graphics g) {
-        g.setColor(new Color(53, 40, 47));
+        g.setColor(Colors.TEXT_FIELD_BACKGROUND);
         g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 4, 4);
         super.paintComponent(g);
     }
     
     protected void paintBorder(Graphics g) {
-        g.setColor(new Color(156, 150, 154));
-         g.drawRoundRect(0, getHeight(), getWidth()-1, 0, 0, 0);
+        g.setColor(Colors.TEXT_FIELD_BORDER);
+        g.drawRoundRect(0, getHeight(), getWidth()-1, 0, 0, 0);
     }
     @Override
     public void focusGained(FocusEvent e) {
@@ -51,25 +52,25 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
     }
 	@Override
     public void focusLost(FocusEvent e) {
-        if(getPassword().length == 0 || Arrays.equals(getPassword(), defaultPassword)) {
-            setEchoChar('\u0000');
+        if(getPassword().length == 0 || Arrays.equals(getPassword(), Values.DEFAULT_PASSWORD)) {
+            setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
             setBackground(new Color(135, 206, 250));
-            setText(placeholder);
+            setText(Values.PASSWORD_PLACEHOLDER);
         }
         
     }
     @Override
     public void keyTyped(KeyEvent e) {
-    if (Arrays.equals(getPassword(), defaultPassword)){
+    if (Arrays.equals(getPassword(), Values.DEFAULT_PASSWORD)){
             setText("");
-            if(showPassword==false) setEchoChar('\u25cf');
+            if(showPassword==false) setEchoChar(Values.PASSWORD_ECHO_CHAR);
         }
     }
     @Override
     public void keyPressed(KeyEvent e) {
-    	if(Arrays.equals(getPassword(), defaultPassword) && e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
+    	if(Arrays.equals(getPassword(), Values.DEFAULT_PASSWORD) && e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
             setText(" ");
-            if(showPassword==false) setEchoChar('\u25cf');
+            if(showPassword==false) setEchoChar(Values.PASSWORD_ECHO_CHAR);
         }
     }
     @Override

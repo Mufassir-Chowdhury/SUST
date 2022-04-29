@@ -1,9 +1,12 @@
 package login;
 
+import java.awt.GridLayout;
+
 import javax.swing.JPanel;
+
+import Constants.Sizes;
 import Main.Main;
 import homepage.HomePage;
-import java.awt.GridLayout;
 
 public class LogInPage extends JPanel {
 
@@ -18,7 +21,7 @@ public class LogInPage extends JPanel {
 	public LogInPage(Main frame) {
 		this.frame = frame;
 
-		setSize(1000, 600);
+		setSize(Sizes.DEFAULT_WINDOW_SIZE);
 		setLayout(new GridLayout(0, 2));
 		setOpaque(false);
 

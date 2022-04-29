@@ -7,13 +7,12 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 
 import Constants.Colors;
+import Constants.Fonts;
+import Constants.Margins;
+import Constants.Sizes;
 
 import java.awt.Graphics;
-import java.awt.Insets;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Cursor;
-import java.awt.Dimension;
 
 public class RoundJButton extends JButton implements MouseListener, KeyListener {
     private static final long serialVersionUID = 1L;
@@ -23,16 +22,16 @@ public class RoundJButton extends JButton implements MouseListener, KeyListener 
     public RoundJButton(String text, Style style) {
         setOpaque(false); 
         setText(text);
-        setSize(120, 32);
-        setMaximumSize(new Dimension(120, 32));
-        setMinimumSize(new Dimension(120, 32));
+        setSize(Sizes.BUTTON_SIZE);
+        setMaximumSize(Sizes.BUTTON_SIZE);
+        setMinimumSize(Sizes.BUTTON_SIZE);
         setContentAreaFilled(false);
         setFocusPainted(false);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        setBackground(Color.WHITE);
-        setForeground(Color.BLACK);
-        setFont(new Font("Segoe UI", Font.PLAIN, 14));
-        setMargin(new Insets(5, 10, 5, 10));
+        setBackground(Colors.PLAIN_TEXT);
+        setForeground(Colors.PLAIN_TEXT_BLACK);
+        setFont(Fonts.PLAIN_TEXT);
+        setMargin(Margins.BUTTON);
         setFocusable(false);
     }
     protected void paintComponent(Graphics g) {
@@ -60,12 +59,12 @@ public class RoundJButton extends JButton implements MouseListener, KeyListener 
     }
     @Override
     public void mouseEntered(MouseEvent e) {
-        setForeground(new Color(30, 144, 255));
+        setForeground(Colors.ACCENT_BUTTON_HOVER);
     }
     @Override
     public void mouseExited(MouseEvent e) {
         if(isFocusOwner()) return;
-        setForeground(new Color(135, 206, 250));
+        setForeground(Colors.ACCENT);
     }
 	@Override
 	public void keyTyped(KeyEvent e) {

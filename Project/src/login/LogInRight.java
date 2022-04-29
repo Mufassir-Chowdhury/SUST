@@ -10,11 +10,13 @@ import Components.RoundJTextField;
 import Components.Buttons.RoundJButton;
 import Components.Buttons.RoundJButton.Style;
 import Constants.Colors;
+import Constants.Fonts;
+import Constants.Sizes;
+import Constants.Values;
 
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
@@ -31,7 +33,6 @@ class LogInRight extends JPanel {
     private JCheckBox showPasswordCheckBox = new JCheckBox();
     private JLabel forgetPasswordText = new JLabel();
     private JLabel registerText = new JLabel();
-    private char[] defaultPassword = new char[]{' ', 'p','a','s','s','w','o','r','d'};
     private static final long serialVersionUID = 1L;    
     
     
@@ -57,9 +58,9 @@ class LogInRight extends JPanel {
 
         Box line = Box.createHorizontalBox();
         
-        showPasswordCheckBox.setSize(110, 23);
+        showPasswordCheckBox.setSize(Sizes.CHECKBOX_SIZE);
         showPasswordCheckBox.setFocusPainted(false);
-        showPasswordCheckBox.setBackground(new Color(0,0,0));
+        showPasswordCheckBox.setBackground(Colors.PLAIN_TEXT);
         showPasswordCheckBox.setForeground(Colors.ACCENT);
         showPasswordCheckBox.setBorder(null);
         showPasswordCheckBox.setText("Show Password");
@@ -69,13 +70,13 @@ class LogInRight extends JPanel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(showPasswordCheckBox.isSelected()){
-                    passwordField.setEchoChar('\u0000');
+                    passwordField.setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
                     showPasswordCheckBox.setForeground(new Color(0, 191, 255));
                 }
                 if(showPasswordCheckBox.isSelected()==false){
                     showPasswordCheckBox.setForeground(new Color(135, 206, 250));
-                    if(Arrays.equals(passwordField.getPassword(), defaultPassword)==false)
-                        passwordField.setEchoChar('\u25cf');
+                    if(Arrays.equals(passwordField.getPassword(), Values.DEFAULT_PASSWORD)==false)
+                        passwordField.setEchoChar(Values.PASSWORD_ECHO_CHAR);
                 }
             }
         });
@@ -130,7 +131,7 @@ class LogInRight extends JPanel {
         forgetPasswordText.setText("Forgotten Password?");
         forgetPasswordText.setSize(140, 25);
         forgetPasswordText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        forgetPasswordText.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        forgetPasswordText.setFont(Fonts.PLAIN_TEXT);
         forgetPasswordText.setForeground(Colors.ACCENT);
         line.add(forgetPasswordText);
         
@@ -138,7 +139,7 @@ class LogInRight extends JPanel {
         
         registerText.setText("Register");
         registerText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        registerText.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        registerText.setFont(Fonts.PLAIN_TEXT);
         registerText.setSize(140, 25);
         registerText.setForeground(Colors.ACCENT);
         line.add(registerText);
