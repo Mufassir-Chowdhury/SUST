@@ -2,8 +2,6 @@ package Components;
 
 import javax.swing.JPasswordField;
 
-import Constants.Colors;
-
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;
@@ -17,14 +15,11 @@ import java.awt.Dimension;
 
 public class RoundJPasswordField extends JPasswordField implements KeyListener, FocusListener {
 	private static final long serialVersionUID = 1L;
-	private int size;
     String placeholder = " password";
     private char[] defaultPassword = new char[]{' ', 'p','a','s','s','w','o','r','d'};
     Boolean showPassword = false;
 
-    public RoundJPasswordField(int size, boolean showPassword) {
-        super(size);
-        this.size = size;
+    public RoundJPasswordField(boolean showPassword) {
         this.showPassword = showPassword;
     
         setOpaque(false);

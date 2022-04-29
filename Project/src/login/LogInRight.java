@@ -25,9 +25,9 @@ import java.awt.Dimension;
 
 class LogInRight extends JPanel {
 
-    private RoundJButton logInButton = new RoundJButton(20, "Log In", Style.ACCENT);
-    private RoundJTextField emailField = new RoundJTextField(20, " Email Address");
-    private RoundJPasswordField passwordField = new RoundJPasswordField(20, false);
+    private RoundJButton logInButton = new RoundJButton("Log In", Style.ACCENT);
+    private RoundJTextField emailField = new RoundJTextField(" Email Address");
+    private RoundJPasswordField passwordField = new RoundJPasswordField(false);
     private JCheckBox showPasswordCheckBox = new JCheckBox();
     private JLabel forgetPasswordText = new JLabel();
     private JLabel registerText = new JLabel();

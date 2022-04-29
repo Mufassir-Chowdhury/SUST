@@ -17,13 +17,10 @@ import java.awt.Dimension;
 
 public class RoundJButton extends JButton implements MouseListener, KeyListener {
     private static final long serialVersionUID = 1L;
-    private int size;
     public enum Style {
         ACCENT, STANDARD, HYPERLINK
     }
-    public RoundJButton(int size, String text, Style style) {
-        super();
-        this.size = size;
+    public RoundJButton(String text, Style style) {
         setOpaque(false); 
         setText(text);
         setSize(120, 32);

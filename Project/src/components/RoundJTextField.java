@@ -2,8 +2,6 @@ package Components;
 
 import javax.swing.JTextField;
 
-import Constants.Colors;
-
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;
@@ -16,12 +14,9 @@ import java.awt.Dimension;
 
 public class RoundJTextField extends JTextField implements KeyListener, FocusListener {
 	private static final long serialVersionUID = 1L;
-	private int size;
     private String placeholder;
     
-    public RoundJTextField(int size, String placeholder) {
-        super(size);
-        this.size = size;
+    public RoundJTextField(String placeholder) {
         this.placeholder = placeholder;
 
         setOpaque(false);
