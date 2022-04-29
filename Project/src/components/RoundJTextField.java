@@ -9,6 +9,8 @@ import Constants.Sizes;
 
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Component;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.FocusEvent;
@@ -29,6 +31,7 @@ public class RoundJTextField extends JTextField implements KeyListener, FocusLis
         setForeground(Colors.PLAIN_TEXT);
         setFont(Fonts.PLAIN_TEXT);
         setMargin(Margins.TEXT_FIELD);
+        setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
     protected void paintComponent(Graphics g) {

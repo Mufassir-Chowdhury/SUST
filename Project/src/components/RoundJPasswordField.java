@@ -10,6 +10,8 @@ import Constants.Values;
 
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Component;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Arrays;
@@ -31,6 +33,7 @@ public class RoundJPasswordField extends JPasswordField implements KeyListener, 
         setMargin(Margins.TEXT_FIELD);
         setText(Values.PASSWORD_PLACEHOLDER);
         setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
+        setAlignmentX(Component.CENTER_ALIGNMENT);
     }
     
     protected void paintComponent(Graphics g) {

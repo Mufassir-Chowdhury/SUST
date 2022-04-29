@@ -1,6 +1,7 @@
 package Components.Buttons;
 
 import java.awt.Graphics;
+import java.awt.Component;
 
 import java.awt.event.MouseListener;
 import java.awt.event.KeyEvent;
@@ -14,6 +15,7 @@ public class AccentButton extends RoundJButton implements MouseListener, KeyList
         super(text);
         setBackground(Colors.PLAIN_TEXT);
         setForeground(Colors.PLAIN_TEXT_BLACK);
+        setAlignmentX(Component.CENTER_ALIGNMENT);
     }
     protected void paintComponent(Graphics g) {
         g.setColor(Colors.ACCENT);
