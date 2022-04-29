@@ -16,10 +16,8 @@ import java.awt.Cursor;
 
 public class RoundJButton extends JButton implements MouseListener, KeyListener {
     private static final long serialVersionUID = 1L;
-    public enum Style {
-        ACCENT, STANDARD, HYPERLINK
-    }
-    public RoundJButton(String text, Style style) {
+
+    public RoundJButton(String text) {
         setOpaque(false); 
         setText(text);
         setSize(Sizes.BUTTON_SIZE);

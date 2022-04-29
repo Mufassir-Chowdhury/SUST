@@ -1,5 +1,6 @@
 package login;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,8 +19,12 @@ class LogInLeft extends JPanel {
     public LogInLeft() {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setOpaque(false);
+        
+        add(Box.createHorizontalGlue());
         add(new Logo());
+        add(Box.createHorizontalGlue());
         add(new Text());
+        add(Box.createHorizontalGlue());
     }
 
 
@@ -28,7 +33,7 @@ class LogInLeft extends JPanel {
             setHorizontalAlignment(SwingConstants.CENTER);
             setSize(Sizes.LOGO_SIZE);
             setMaximumSize(Sizes.LOGO_SIZE);
-            setIcon(Icons.SUST);
+            setIcon(Icons.SUST_LOGO);
             
         }
     }
@@ -43,18 +48,14 @@ class LogInLeft extends JPanel {
     private class AppName extends JLabel{
         public AppName(){
             setText("SUST");
-            setSize(getHeight(), 45);
             setFont(Fonts.DISPLAY);
-            setHorizontalAlignment(SwingConstants.CENTER);
             setForeground(Colors.ACCENT);
         }
     }
     private class Slogan extends JLabel{
         public Slogan(){
             setText("Bringing Everything In One Place");
-            setSize(getHeight(), 30);
             setFont(Fonts.SUBTITLE);
-            setHorizontalAlignment(SwingConstants.CENTER);
             setForeground(Colors.PLAIN_TEXT);
         }
     }

@@ -7,8 +7,7 @@ import javax.swing.JPanel;
 
 import Components.RoundJPasswordField;
 import Components.RoundJTextField;
-import Components.Buttons.RoundJButton;
-import Components.Buttons.RoundJButton.Style;
+import Components.Buttons.AccentButton;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Sizes;
@@ -27,7 +26,7 @@ import java.awt.Dimension;
 
 class LogInRight extends JPanel {
 
-    private RoundJButton logInButton = new RoundJButton("Log In", Style.ACCENT);
+    private AccentButton logInButton = new AccentButton("Log In");
     private RoundJTextField emailField = new RoundJTextField(" Email Address");
     private RoundJPasswordField passwordField = new RoundJPasswordField(false);
     private JCheckBox showPasswordCheckBox = new JCheckBox();
@@ -80,7 +79,7 @@ class LogInRight extends JPanel {
                 }
             }
         });
-        line.add(Box.createRigidArea(new Dimension(240, 23)));
+        line.add(Box.createRigidArea(new Dimension(Sizes.TEXT_FIELD_SIZE.width - Sizes.CHECKBOX_SIZE.width, Sizes.BUTTON_SIZE.height)));
         line.add(showPasswordCheckBox);
         line.setAlignmentX(Component.CENTER_ALIGNMENT);
         add(line);
@@ -129,7 +128,7 @@ class LogInRight extends JPanel {
         line.add(Box.createHorizontalGlue());
         
         forgetPasswordText.setText("Forgotten Password?");
-        forgetPasswordText.setSize(140, 25);
+        forgetPasswordText.setSize(Sizes.BUTTON_SIZE);
         forgetPasswordText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         forgetPasswordText.setFont(Fonts.PLAIN_TEXT);
         forgetPasswordText.setForeground(Colors.ACCENT);
@@ -140,7 +139,7 @@ class LogInRight extends JPanel {
         registerText.setText("Register");
         registerText.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         registerText.setFont(Fonts.PLAIN_TEXT);
-        registerText.setSize(140, 25);
+        registerText.setSize(Sizes.BUTTON_SIZE);
         registerText.setForeground(Colors.ACCENT);
         line.add(registerText);
         

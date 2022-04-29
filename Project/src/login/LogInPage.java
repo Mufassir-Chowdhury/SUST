@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 import Constants.Sizes;
 import Main.Main;
-import homepage.HomePage;
 
 public class LogInPage extends JPanel {
 
@@ -15,7 +14,7 @@ public class LogInPage extends JPanel {
 	private LogInLeft logInLeft = new LogInLeft();
 	private Main frame;
 	public void LogIn(){
-		frame.changeFrame(new HomePage());
+		// frame.changeFrame(new HomePage());
 	}
 
 	public LogInPage(Main frame) {

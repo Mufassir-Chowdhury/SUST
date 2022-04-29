@@ -15,14 +15,14 @@ public class Background extends JFrame {
 
     public void Extend(){
         setExtendedState(Frame.MAXIMIZED_BOTH);
-        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
+        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getSize()));
 		setContentPane(backgroundImage);
         logInTitleBar.setSize(getWidth(), Sizes.TITLE_BAR_HEIGHT);
     }
 
     public void Normal(){
         setExtendedState(Frame.NORMAL);
-        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
+        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getSize()));
         setContentPane(backgroundImage);
         logInTitleBar.setSize(getWidth(), Sizes.TITLE_BAR_HEIGHT);
     }
@@ -33,7 +33,7 @@ public class Background extends JFrame {
 		setLayout(new BorderLayout());
         logInTitleBar = new TitleBar(this, getWidth());
 
-		backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getWidth(), getHeight()));
+		backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getSize()));
 		setContentPane(backgroundImage);
         add(logInTitleBar);
 
