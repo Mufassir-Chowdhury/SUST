@@ -2,7 +2,6 @@ package login;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-
 import Components.RoundJPasswordField;
 import Components.RoundJTextField;
 import Components.Buttons.AccentButton;
@@ -10,19 +9,22 @@ import Components.Buttons.HyperLinkButton;
 import Constants.Sizes;
 import Constants.Values;
 import login.Utilities.showPassword;
-
-import java.awt.Color;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.awt.event.KeyListener;
+import java.awt.event.FocusListener;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.Arrays;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.FocusEvent;
+import java.awt.event.KeyEvent;
 import java.awt.Dimension;
 // import java.sql.ResultSet;
 
-class LogInRight extends JPanel {
+public class LogInRight extends JPanel implements KeyListener, FocusListener, MouseListener, MouseMotionListener{
 
-    private AccentButton logInButton = new AccentButton("Log In");
+    public AccentButton logInButton = new AccentButton("Log In");
     private RoundJTextField emailField = new RoundJTextField(" Email Address");
     private RoundJPasswordField passwordField = new RoundJPasswordField(false);
     private showPassword showPasswordCheckBox = new Utilities.showPassword();
@@ -31,6 +33,8 @@ class LogInRight extends JPanel {
     private static final long serialVersionUID = 1L;  
     private Box line = Box.createHorizontalBox();
     private LogInPage page;
+    private Component source;
+    private char key;
     
     public LogInRight(LogInPage page) {
         this.page = page;
@@ -61,7 +65,6 @@ class LogInRight extends JPanel {
         add(Box.createVerticalGlue());
 
         addListeners();
-
     }
 
     private void showPassword(){
@@ -78,27 +81,149 @@ class LogInRight extends JPanel {
     }
 
     private void addListeners(){
-        emailField.addFocusListener(emailField);
-        emailField.addKeyListener(emailField);
+        emailField.addFocusListener(this);
+        emailField.addKeyListener(this);
         
-        passwordField.addFocusListener(passwordField);
-        passwordField.addKeyListener(passwordField);
-        
-        showPasswordCheckBox.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                showPassword();
-            }
-        });
+        passwordField.addFocusListener(this);
+        passwordField.addKeyListener(this);
 
-        logInButton.addKeyListener(logInButton);
-        logInButton.addMouseListener(logInButton);
-        logInButton.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                page.LogIn();
+        showPasswordCheckBox.addMouseListener(this);
+
+        logInButton.addMouseListener(this);
+        logInButton.addMouseMotionListener(this);
+
+        forgetPasswordText.addMouseListener(this);
+        forgetPasswordText.addMouseMotionListener(this);
+
+        registerText.addMouseListener(this);
+        registerText.addMouseMotionListener(this);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        source = e.getComponent();
+        key = e.getKeyChar();
+        if (key == KeyEvent.VK_ENTER)
+                System.out.println("hi");
+        else if(source == emailField)
+            emailField.cleanField();
+        else if(source == passwordField)
+            passwordField.cleanField();
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        key = e.getKeyChar();
+        source = e.getComponent();
+        if (key == KeyEvent.VK_BACK_SPACE)
+        {
+            if(source == emailField)
+                emailField.cleanField();
+            else if(source == passwordField)
+                passwordField.cleanField();
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {
+        source = e.getComponent();
+        if(source == emailField || source == passwordField)
+        {
+            source.setBackground(new Color(0, 191, 255));
+        }
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        source = e.getComponent();
+        if(source == emailField)
+        {
+            if (emailField.isEmpty() || emailField.checkPlaceholder()) {
+                emailField.setBackground(new Color(135, 206, 250));
+                emailField.setPlaceholder();
             }
-        });
+        }
+        else if(source == passwordField)
+        {
+            if (passwordField.isEmpty() || passwordField.checkPlaceholder()) {
+                passwordField.setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
+                passwordField.setBackground(new Color(135, 206, 250));
+                passwordField.setText(Values.PASSWORD_PLACEHOLDER);
+            }
+        } 
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        source = e.getComponent();
+        if(source == showPasswordCheckBox)
+            showPassword();
+        else if(source == logInButton)
+        {
+            //TODO fetch data and complete authentication 
+        }
+        else if(source == forgetPasswordText)
+        {
+            //TODO open recovering page
+        }
+        else if(source == registerText)
+        {
+            //TODO open register page
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        source = e.getComponent();
+        if(source == forgetPasswordText)
+        {
+            //TODO set hovering effect
+        }
+        else if(source == registerText)
+        {
+            //TODO set hovering effect
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        source = e.getComponent();
+        if(source == forgetPasswordText)
+        {
+            //TODO undo hovering effect
+        }
+        else if(source == forgetPasswordText)
+        {
+            //TODO undo hovering effect
+        }
+        
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

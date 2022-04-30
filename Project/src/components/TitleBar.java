@@ -16,6 +16,7 @@ import Constants.Colors;
 import Constants.Icons;
 import Constants.Padding;
 import Constants.Sizes;
+import java.awt.Component;
 
 
 public class TitleBar extends JPanel implements MouseMotionListener, MouseListener {
@@ -26,42 +27,49 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	private JLabel minimizeIcon, closeIcon, fullScreenIcon;
 	private Background frame;
 	public int width, height;
+	public Component source;
+	SpringLayout springLayout = new SpringLayout();
 
 	public TitleBar(Background frame, int width) {
 		this.frame = frame;
 		setOpaque(false);
 		setSize(width, Sizes.TITLE_BAR_HEIGHT);
-		
-        closeIcon = new JLabel(Icons.CLOSE);
+		setLayout(springLayout);
+
+		closeIcon = new JLabel(Icons.CLOSE);
 		closeIcon.setSize(Sizes.ICON_SIZE);
-		closeIcon.addMouseListener(this);
-		closeIcon.addMouseMotionListener(this);
-		SpringLayout springLayout = new SpringLayout();
 		springLayout.putConstraint(SpringLayout.NORTH, closeIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, closeIcon, 0, SpringLayout.EAST, this);
 		closeIcon.setBorder(Padding.TITLE_BAR_ITEM);
-		setLayout(springLayout);
 		add(closeIcon);
 
-
-        fullScreenIcon = new JLabel(Icons.FULL_SCREEN);
-        springLayout.putConstraint(SpringLayout.NORTH, fullScreenIcon, 0, SpringLayout.NORTH, this);
-        springLayout.putConstraint(SpringLayout.EAST, fullScreenIcon, -5, SpringLayout.WEST, closeIcon);
+		fullScreenIcon = new JLabel(Icons.FULL_SCREEN);
 		fullScreenIcon.setSize(Sizes.ICON_SIZE);
+		springLayout.putConstraint(SpringLayout.NORTH, fullScreenIcon, 0, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, fullScreenIcon, -5, SpringLayout.WEST, closeIcon);
 		fullScreenIcon.setBorder(Padding.TITLE_BAR_ITEM);
-		fullScreenIcon.addMouseListener(this);
-		fullScreenIcon.addMouseMotionListener(this);
 		add(fullScreenIcon);
 
-        
-        minimizeIcon = new JLabel(Icons.MINIMIZE);
-        springLayout.putConstraint(SpringLayout.NORTH, minimizeIcon, 0, SpringLayout.NORTH, this);
-        springLayout.putConstraint(SpringLayout.EAST, minimizeIcon, -5, SpringLayout.WEST, fullScreenIcon);
+		minimizeIcon = new JLabel(Icons.MINIMIZE);
+		springLayout.putConstraint(SpringLayout.NORTH, minimizeIcon, 0, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, minimizeIcon, -5, SpringLayout.WEST, fullScreenIcon);
 		minimizeIcon.setSize(Sizes.ICON_SIZE);
 		minimizeIcon.setBorder(Padding.TITLE_BAR_ITEM);
+		add(minimizeIcon);
+
+		addListeners();
+	}
+	
+	private void addListeners()
+	{
+		closeIcon.addMouseListener(this);
+		closeIcon.addMouseMotionListener(this);
+
+		fullScreenIcon.addMouseListener(this);
+		fullScreenIcon.addMouseMotionListener(this);
+
 		minimizeIcon.addMouseListener(this);
 		minimizeIcon.addMouseMotionListener(this);
-		add(minimizeIcon);
 	}
 
 	@Override
@@ -115,15 +123,16 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if(e.getSource() == closeIcon) {
+		source = e.getComponent();
+		if(source == closeIcon) {
 			closeIcon.setOpaque(true);
 			closeIcon.setBackground(Colors.CLOSE_BUTTON_HOVER);
 		}
-		else if(e.getSource() == fullScreenIcon) {
+		else if(source == fullScreenIcon) {
 			fullScreenIcon.setOpaque(true);
 			fullScreenIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
 		}
-		else if(e.getSource() == minimizeIcon) {
+		else if(source == minimizeIcon) {
 			minimizeIcon.setOpaque(true);
 			minimizeIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
 		}
@@ -131,15 +140,16 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		if(e.getSource() == closeIcon) {
+		source = e.getComponent();
+		if(source == closeIcon) {
 			closeIcon.setOpaque(false);
 			closeIcon.setBackground(null);
 		}
-		else if(e.getSource() == fullScreenIcon) {
+		else if(source == fullScreenIcon) {
 			fullScreenIcon.setOpaque(false);
 			fullScreenIcon.setBackground(null);
 		}
-		else if(e.getSource() == minimizeIcon) {
+		else if(source == minimizeIcon) {
 			minimizeIcon.setOpaque(false);
 			minimizeIcon.setBackground(null);
 		}
