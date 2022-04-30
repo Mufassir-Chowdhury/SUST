@@ -4,7 +4,6 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import java.awt.GridBagLayout;
 import java.awt.Component;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
 
 import javax.swing.JLabel;

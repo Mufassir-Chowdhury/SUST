@@ -2,7 +2,6 @@ package Main;
 import javax.swing.SwingUtilities;
 
 import Components.Background;
-import login.LogInPage;
 import mainView.MainPage;
 
 import javax.swing.JFrame;
