@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import Constants.Colors;
 
-public class AccentButton extends RoundJButton implements MouseListener, KeyListener {
+public class AccentButton extends Button implements MouseListener, KeyListener {
 
     public AccentButton(String text) {
         super(text);
@@ -19,12 +19,12 @@ public class AccentButton extends RoundJButton implements MouseListener, KeyList
     }
     protected void paintComponent(Graphics g) {
         g.setColor(Colors.ACCENT);
-        g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 4, 4);
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
          super.paintComponent(g);
     }
     protected void paintBorder(Graphics g) {
         g.setColor(Colors.ACCENT);
-        g.drawRoundRect(0, 0, 0, 0, 0, 0);
+        g.drawRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
     }
     @Override
     public void mouseEntered(MouseEvent e) {

@@ -7,7 +7,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-public class HyperLinkButton extends RoundJButton implements MouseListener, KeyListener  {
+public class HyperLinkButton extends Button implements MouseListener, KeyListener  {
 
     public HyperLinkButton(String text) {
         super(text);
