@@ -1,17 +1,23 @@
 package login;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
+import com.mysql.cj.protocol.Resultset;
+
 import Components.RoundJPasswordField;
 import Components.RoundJTextField;
 import Components.Buttons.AccentButton;
 import Components.Buttons.HyperLinkButton;
 import Constants.Sizes;
 import Constants.Values;
+import Constants.conn;
 import login.Utilities.showPassword;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.sql.ResultSet;
 import java.awt.event.KeyListener;
 import java.awt.event.FocusListener;
 import java.awt.Color;
@@ -20,7 +26,6 @@ import java.util.Arrays;
 import java.awt.event.FocusEvent;
 import java.awt.event.KeyEvent;
 import java.awt.Dimension;
-// import java.sql.ResultSet;
 
 public class LogInRight extends JPanel implements KeyListener, FocusListener, MouseListener, MouseMotionListener{
 
@@ -80,10 +85,10 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener, Mo
        
     }
 
-    private void addListeners(){
+    private void addListeners() {
         emailField.addFocusListener(this);
         emailField.addKeyListener(this);
-        
+
         passwordField.addFocusListener(this);
         passwordField.addKeyListener(this);
 
@@ -98,13 +103,40 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener, Mo
         registerText.addMouseListener(this);
         registerText.addMouseMotionListener(this);
     }
+    
+    private void fetchData() {
+        try{
+            String email = emailField.getText();
+            String password = passwordField.getText();
+            String query = "select * from login where email = '" + email + "' and password = '" + password + "'";
+
+            conn c1 = new conn();
+            ResultSet exist = c1.s.executeQuery(query);
+            if (exist.next()) {
+                page.LogIn();
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Invalid LogIn");
+                //TODO seti visibility of logInPage false
+            }
+
+            System.out.println(query);
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        
+        
+    }
+
 
     @Override
     public void keyTyped(KeyEvent e) {
         source = e.getComponent();
         key = e.getKeyChar();
-        if (key == KeyEvent.VK_ENTER)
-                System.out.println("hi");
+        if (key == KeyEvent.VK_ENTER) {
+            fetchData();
+        }
         else if(source == emailField)
             emailField.cleanField();
         else if(source == passwordField)
@@ -165,6 +197,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener, Mo
             showPassword();
         else if(source == logInButton)
         {
+            fetchData();
             //TODO fetch data and complete authentication 
         }
         else if(source == forgetPasswordText)
