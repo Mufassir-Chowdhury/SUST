@@ -29,7 +29,7 @@ import java.awt.Dimension;
 
 public class LogInRight extends JPanel implements KeyListener, FocusListener, MouseListener, MouseMotionListener{
 
-    public AccentButton logInButton = new AccentButton("Log In");
+    private AccentButton logInButton = new AccentButton("Log In");
     private RoundJTextField emailField = new RoundJTextField(" Email Address");
     private RoundJPasswordField passwordField = new RoundJPasswordField(false);
     private showPassword showPasswordCheckBox = new Utilities.showPassword();

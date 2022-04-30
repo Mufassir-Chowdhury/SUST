@@ -8,10 +8,10 @@ import Constants.Sizes;
 
 import java.awt.Cursor;
 
-public class RoundJButton extends JButton {
+public class Button extends JButton {
     private static final long serialVersionUID = 1L;
 
-    public RoundJButton(String text) {
+    public Button(String text) {
         setOpaque(false); 
         setText(text);
         setSize(Sizes.BUTTON_SIZE);
@@ -23,5 +23,6 @@ public class RoundJButton extends JButton {
         setFont(Fonts.PLAIN_TEXT);
         setMargin(Margins.BUTTON);
         setFocusable(false);
+
     }
 }

@@ -5,11 +5,11 @@ import java.awt.Component;
 import login.LogInRight;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import Constants.Colors;
 
-public class AccentButton extends RoundJButton implements MouseListener {
-
-    private LogInRight logInRight;
+public class AccentButton extends Button implements MouseListener, KeyListener {
 
     public AccentButton(String text) {
         super(text);
@@ -20,12 +20,12 @@ public class AccentButton extends RoundJButton implements MouseListener {
     }
     protected void paintComponent(Graphics g) {
         g.setColor(Colors.ACCENT);
-        g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 4, 4);
-        super.paintComponent(g);
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
+         super.paintComponent(g);
     }
     protected void paintBorder(Graphics g) {
         g.setColor(Colors.ACCENT);
-        g.drawRoundRect(0, 0, 0, 0, 0, 0);
+        g.drawRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
     }
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -47,6 +47,21 @@ public class AccentButton extends RoundJButton implements MouseListener {
     }
     @Override
     public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void keyPressed(KeyEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void keyReleased(KeyEvent e) {
         // TODO Auto-generated method stub
         
     }
