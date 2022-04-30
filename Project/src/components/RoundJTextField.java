@@ -8,15 +8,9 @@ import Constants.Margins;
 import Constants.Sizes;
 
 import java.awt.Graphics;
-import java.awt.Color;
 import java.awt.Component;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-
-public class RoundJTextField extends JTextField implements KeyListener, FocusListener {
+public class RoundJTextField extends JTextField {
 	private static final long serialVersionUID = 1L;
     private String placeholder;
     
@@ -41,38 +35,29 @@ public class RoundJTextField extends JTextField implements KeyListener, FocusLis
     }
 
     protected void paintBorder(Graphics g) {
-         g.setColor(Colors.TEXT_FIELD_BORDER);
-         g.drawRoundRect(0, getHeight(), getWidth()-1, 0, 0, 0);
+        g.setColor(Colors.TEXT_FIELD_BORDER);
+        g.drawRoundRect(0, getHeight(), getWidth() - 1, 0, 0, 0);
     }
     
-    @Override
-    public void keyTyped(KeyEvent e) {
-        if(getText().equals(placeholder)){	
+    public boolean checkPlaceholder()
+    {
+        return getText().equals(placeholder);
+    }
+
+    public boolean isEmpty()
+    {
+        return getText().isEmpty();
+    }
+    
+    public void setPlaceholder()
+    {
+        setText(placeholder);
+    }
+
+    public void cleanField()
+    {
+        if (checkPlaceholder())
             setText("");
-        }   
-    }
-    @Override
-    public void keyPressed(KeyEvent e) {
-    	if(getText().equals(placeholder) && e.getKeyChar() == KeyEvent.VK_BACK_SPACE){
-            setText(" ");
-        }
-    }
-    @Override
-    public void keyReleased(KeyEvent e) {
-        
-    }
-    @Override
-    public void focusGained(FocusEvent e) {
-        setBackground(new Color(0, 191, 255));
-        
-    }
-    @Override
-    public void focusLost(FocusEvent e) {
-        if(getText().isEmpty() || getText().equals(placeholder)) {
-            setBackground(new Color(135, 206, 250));
-            setText(placeholder);
-        }
-        
     }
 
 }

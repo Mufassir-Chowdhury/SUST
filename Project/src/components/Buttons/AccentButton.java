@@ -2,7 +2,7 @@ package Components.Buttons;
 
 import java.awt.Graphics;
 import java.awt.Component;
-
+import login.LogInRight;
 import java.awt.event.MouseListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -16,6 +16,7 @@ public class AccentButton extends Button implements MouseListener, KeyListener {
         setBackground(Colors.PLAIN_TEXT);
         setForeground(Colors.PLAIN_TEXT_BLACK);
         setAlignmentX(Component.CENTER_ALIGNMENT);
+        addMouseListener(this);
     }
     protected void paintComponent(Graphics g) {
         g.setColor(Colors.ACCENT);
@@ -37,7 +38,6 @@ public class AccentButton extends Button implements MouseListener, KeyListener {
     }
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
         
     }
     @Override
@@ -65,5 +65,4 @@ public class AccentButton extends Button implements MouseListener, KeyListener {
         // TODO Auto-generated method stub
         
     }
-    
 }
