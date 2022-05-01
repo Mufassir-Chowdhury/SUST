@@ -3,9 +3,9 @@ package Components.Buttons;
 import java.awt.Graphics;
 import java.awt.Component;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
 import Constants.Colors;
 
 public class AccentButton extends Button implements MouseListener, KeyListener {
@@ -20,7 +20,7 @@ public class AccentButton extends Button implements MouseListener, KeyListener {
     protected void paintComponent(Graphics g) {
         g.setColor(Colors.ACCENT);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
-         super.paintComponent(g);
+        super.paintComponent(g);
     }
     protected void paintBorder(Graphics g) {
         g.setColor(Colors.ACCENT);
