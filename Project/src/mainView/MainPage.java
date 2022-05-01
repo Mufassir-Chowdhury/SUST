@@ -11,7 +11,7 @@ import java.awt.GridBagConstraints ;
 
 public class MainPage extends JPanel {
     public MainPage(){
-        setOpaque(false);
+        // setOpaque(false);
         setSize(Sizes.DEFAULT_WINDOW_SIZE);
         setBorder(Padding.MAIN_VIEW_PORT);
         setLayout(new GridBagLayout());

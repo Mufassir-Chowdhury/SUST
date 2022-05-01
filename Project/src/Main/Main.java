@@ -12,13 +12,17 @@ public class Main extends JFrame {
 	public JFrame currentFrame;
 	public Main(){
 		currentFrame = new Background();
-		// currentFrame.add(new LogInPage(this), 0);
-		currentFrame.add(new MainPage(), 0);
+		currentFrame.add(new LogInPage(this), 0);
+		// currentFrame.add(new MainPage(), 0);
 		currentFrame.setVisible(true);
 	}
-	public void changeFrame(JPanel panel){
+
+	public void changeFrame(JPanel panel) {
+		// currentFrame.re
+		currentFrame.getComponent(0).setVisible(false);
 		// currentFrame.add(panel, 1);
 		// currentFrame.remove(0);
+		currentFrame.repaint();
 	}
 
 	public static void main(String[] args) {
