@@ -1,10 +1,21 @@
 package login;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+// import java.sql.ResultSet;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.util.Arrays;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-import com.mysql.cj.protocol.Resultset;
 
 import Components.RoundJPasswordField;
 import Components.RoundJTextField;
@@ -14,18 +25,8 @@ import Constants.Sizes;
 import Constants.Values;
 import Constants.conn;
 import login.Utilities.showPassword;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.sql.ResultSet;
-import java.awt.event.KeyListener;
-import java.awt.event.FocusListener;
-import java.awt.Color;
-import java.awt.Component;
-import java.util.Arrays;
-import java.awt.event.FocusEvent;
-import java.awt.event.KeyEvent;
-import java.awt.Dimension;
+
 
 public class LogInRight extends JPanel implements KeyListener, FocusListener, MouseListener, MouseMotionListener{
 

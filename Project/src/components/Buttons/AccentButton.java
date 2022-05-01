@@ -20,7 +20,7 @@ public class AccentButton extends Button implements MouseListener, KeyListener {
     protected void paintComponent(Graphics g) {
         g.setColor(Colors.ACCENT);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
-         super.paintComponent(g);
+        super.paintComponent(g);
     }
     protected void paintBorder(Graphics g) {
         g.setColor(Colors.ACCENT);
