@@ -5,16 +5,20 @@ import java.awt.Dimension;
 public class Sizes {
     public static final int TITLE_BAR_HEIGHT = 35;
     public static final int CARD_SPACING = 10;
+    public static final int CARD_SPACING_LONG = 50;
 
     public static final Dimension BUTTON_SIZE = new Dimension(120, 32);
     public static final Dimension DEFAULT_WINDOW_SIZE = new Dimension(1280, 675);
     public static final Dimension TEXT_FIELD_SIZE = new Dimension(350, 32);
 
     public static final Dimension ICON_SIZE = new Dimension(15, 15);
+    public static final Dimension GUI_BIG_SIZE = new Dimension(150, 150);
+    public static final Dimension GUI_SMALL_SIZE = new Dimension(40, 40);
 
     public static final Dimension LOGO_SIZE = new Dimension(156, 173);
 
     public static final Dimension CHECKBOX_SIZE = new Dimension(110, 23);
     
     public static final Dimension CARD_SIZE = new Dimension(200, 115);
+    public static final Dimension CARD_SIZE_2 = new Dimension(350, 200);
 }
