@@ -11,6 +11,7 @@ import Components.Background;
 import Components.RoundedPanel;
 import Components.TitleBar;
 import Constants.Icons;
+import Constants.Navigation;
 import Constants.Sizes;
 public class RegistrationPage extends JPanel {
     
@@ -33,12 +34,14 @@ public class RegistrationPage extends JPanel {
         setBackground(Color.GRAY);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box line = Box.createHorizontalBox();
-        line.add(new Card(20, "STUDENT", Icons.STUDENT, Color.white));
-        line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
-        line.add(new Card(20, "TEACHER", Icons.TEACHER, Color.white));
-        line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
-        line.add(new Card(20, "ADMINISTRATOR", Icons.ADMINISTRATOR, Color.white));
-        // line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
+        for (int i = 1; i <= Navigation.CLIENT.length; i++)
+        {
+            Navigation.Page pair = Navigation.CLIENT[i-1];
+            line.add(new Card(20, pair.name, pair.icon, Color.white));
+            if (i != Navigation.CLIENT.length)
+                line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
+        }
+
         add(Box.createVerticalStrut(Sizes.CARD_SPACING_LONG));
         add(line);
         add(Box.createVerticalStrut(Sizes.CARD_SPACING_LONG));

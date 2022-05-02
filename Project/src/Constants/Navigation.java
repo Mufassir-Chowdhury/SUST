@@ -29,4 +29,10 @@ public class Navigation {
             new Page("Events", Icons.EVENTS),
             new Page("Map", Icons.MAP)}
     };
+
+    public static final Page[] CLIENT = {
+        new Page("STUDENT", Icons.STUDENT),
+        new Page("TEACHER", Icons.TEACHER),
+        new Page("ADMINISTRATOR", Icons.ADMINISTRATOR)    
+    };
 }
