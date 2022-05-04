@@ -1,14 +1,10 @@
 package Components;
 
 import java.awt.Image;
-import java.awt.Insets;
 
 import javax.swing.ImageIcon;
-import javax.swing.border.Border;
 
-import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Graphics;
 
 public class Tools{
 

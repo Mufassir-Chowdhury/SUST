@@ -1,11 +1,8 @@
 package Components;
 
-import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Insets;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 public class RoundedPanel extends JPanel
