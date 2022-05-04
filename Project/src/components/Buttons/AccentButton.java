@@ -5,8 +5,6 @@ import java.awt.Component;
 import java.awt.Color;
 import java.awt.event.MouseListener;
 
-import Components.Background;
-
 import java.awt.event.MouseEvent;
 import Constants.Colors;
 
