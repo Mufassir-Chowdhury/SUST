@@ -8,21 +8,20 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Components.RoundedPanel;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Sizes;
 
-// class Card extends JPanel {
-class Card extends RoundedPanel {
+class Card extends JPanel {
+// class Card extends RoundedPanel {
     JLabel logo = new JLabel();
     JLabel label = new JLabel();
 
-    // public Card(String text, Icon icon) {
-    public Card(int radius, String text, Icon icon, Color rong) {
-        super(radius, text, icon, rong);
+    public Card(String text, Icon icon) {
+    // public Card(int radius, String text, Icon icon, Color rong) {
+        // super(radius, text, icon, rong);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        // setBackground(Colors.CARD);
+        setBackground(Colors.CARD);
         setSize(Sizes.CARD_SIZE);
         setMinimumSize(Sizes.CARD_SIZE);
         setMaximumSize(Sizes.CARD_SIZE);

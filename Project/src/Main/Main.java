@@ -13,8 +13,8 @@ public class Main extends JFrame {
 	public JFrame currentFrame;
 	public Main(){
 		currentFrame = new Background();
-		currentFrame.add(new LogInPage(this), 0);
-		// currentFrame.add(new MainPage(), 0);
+		// currentFrame.add(new LogInPage(this), 0);
+		currentFrame.add(new MainPage(), 0);
 		// currentFrame.add(new RegistrationPage(), 0);
 		currentFrame.setVisible(true);
 	}

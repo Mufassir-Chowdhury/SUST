@@ -3,7 +3,6 @@ package mainView;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 
-import java.awt.Color;
 import java.awt.Component;
 
 import javax.swing.JLabel;
@@ -29,7 +28,7 @@ class AllPages extends JPanel {
             
             Box line = Box.createHorizontalBox();
             for(Navigation.Page pair: Navigation.PAGES[i]){
-                line.add(new Card(20,pair.name, pair.icon, Colors.CARD));
+                line.add(new Card(pair.name, pair.icon));
                 line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING));
             }
             line.setAlignmentX(Component.LEFT_ALIGNMENT);

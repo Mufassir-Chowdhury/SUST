@@ -82,7 +82,6 @@ public class RoundJPasswordField extends JPasswordField implements MouseListener
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
         EventQueue.invokeLater(new Runnable() {
 
             @Override
@@ -119,7 +118,6 @@ public class RoundJPasswordField extends JPasswordField implements MouseListener
 
     @Override
     public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
         if(showPassword == false && checkPlaceholder()){
             setText("");
             setEchoChar(Values.PASSWORD_ECHO_CHAR);
@@ -130,13 +128,11 @@ public class RoundJPasswordField extends JPasswordField implements MouseListener
 
     @Override
     public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
         
     }
 }

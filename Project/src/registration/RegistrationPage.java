@@ -4,13 +4,8 @@ import java.awt.*;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import Components.Background;
-import Components.RoundedPanel;
-import Components.TitleBar;
-import Constants.Icons;
 import Constants.Navigation;
 import Constants.Sizes;
 public class RegistrationPage extends JPanel {

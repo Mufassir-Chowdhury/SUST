@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 
 public class HyperLinkButton extends Button implements MouseListener  {
-    private Color background = null;
     public HyperLinkButton(String text) {
         super(text);
         setOpaque(false);

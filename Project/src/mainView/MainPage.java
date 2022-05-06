@@ -27,6 +27,7 @@ public class MainPage extends JPanel {
         add(new AllPages(), gbc);
 
         gbc.gridx = 2;
+        gbc.weightx = .5;
         gbc.gridwidth = 1;
 
         add(new DashBoard(), gbc);
