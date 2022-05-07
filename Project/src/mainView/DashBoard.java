@@ -17,48 +17,11 @@ import java.awt.GridLayout;
 import java.awt.Dimension;
 
 import Constants.Colors;
+import Constants.Datapoints;
 import Constants.Fonts;
 import Constants.Icons;
 
 class DashBoard extends JPanel {
-    class Notification{
-        String title, date;
-        Severity severity;
-        Boolean dismissable;
-        enum Severity{
-            CRITICAL, INFORMATIONAL, SUCCESS, WARNING
-        }
-        public Notification(Severity severity, String title, String date, Boolean dismissable){
-            this.severity = severity;
-            this.title = title;
-            this.date = date;
-            this.dismissable = dismissable;
-        }
-    }
-    private String[] details = {
-        "Mufassir Ahmad Chowdhury",
-        "Student",
-        "Computer Science and Engineering",
-        "2nd year 1st semester"
-    };
-    private Notification[] exams = {
-        new Notification(Notification.Severity.CRITICAL, "STAT", "Today", false),
-        new Notification(Notification.Severity.INFORMATIONAL, "Algo", "9th April", false),
-    };
-    private Notification[] assignment = {
-        new Notification(Notification.Severity.INFORMATIONAL, "Algo", "Tuesday", false),
-    };
-    private Notification[] registration = {
-        new Notification(Notification.Severity.CRITICAL, "Fee Overdue", "Contact with register office today!", false),
-        new Notification(Notification.Severity.SUCCESS, "Registration", "Registration successful!", false),
-    };
-    private Notification[] notifications = {
-        new Notification(Notification.Severity.INFORMATIONAL, "Class Routine", "Class Routine is just updated", true),
-        new Notification(Notification.Severity.WARNING, "Exam", "New Exam Posted", true),
-        new Notification(Notification.Severity.INFORMATIONAL, "Resources", "Someone uploaded a resource", true),
-        new Notification(Notification.Severity.CRITICAL, "Fee Overdue", "Contact with register office today!", true),
-    };
-    
     public DashBoard(){
         setOpaque(false);
         setLayout(new GridBagLayout());
@@ -76,12 +39,12 @@ class DashBoard extends JPanel {
         add(new Due(), gbc);
         
         gbc.gridy = 2;
-        add(new DashBoardItem("Due Registrations", registration), gbc);
+        add(new DashBoardItem("Due Registrations", Datapoints.REGISTRATION), gbc);
 
         gbc.gridy = 3;
         gbc.weighty = 1;
         gbc.gridheight = 2;
-        add(new DashBoardItem("Notifications", notifications), gbc);
+        add(new DashBoardItem("Notifications", Datapoints.NOTIFICATIONS), gbc);
     }
 
     class Profile extends JPanel{
@@ -97,8 +60,8 @@ class DashBoard extends JPanel {
             
             Box line = Box.createVerticalBox();
             line.add(Box.createVerticalGlue());
-            for(int i=0; i<details.length; i++){
-                JLabel detail = new JLabel(details[i]);
+            for(int i=0; i<Datapoints.DETAILS.length; i++){
+                JLabel detail = new JLabel(Datapoints.DETAILS[i]);
                 detail.setForeground(Colors.PLAIN_TEXT);
                 detail.setAlignmentX(Component.RIGHT_ALIGNMENT);
                 line.add(detail);
@@ -114,8 +77,8 @@ class DashBoard extends JPanel {
         public Due(){
             setLayout(new GridLayout(1, 2, 10, 0));
             setOpaque(false);
-            add(new DashBoardItem("Upcoming Exams", exams));
-            add(new DashBoardItem("Due Assignments", assignment));
+            add(new DashBoardItem("Upcoming Exams", Datapoints.EXAM));
+            add(new DashBoardItem("Due Assignments", Datapoints.ASSIGNMENT));
         }
     }
 
@@ -134,15 +97,15 @@ class DashBoard extends JPanel {
         }
         class DashBoardInfo extends JPanel {
             class DashBoardInfoCard extends JPanel {
-                public DashBoardInfoCard(Notification notification){
+                public DashBoardInfoCard(Datapoints.Notification notification){
                     setLayout(new BorderLayout());
-                    if(notification.severity == Notification.Severity.INFORMATIONAL)
+                    if(notification.severity == Datapoints.Notification.Severity.INFORMATIONAL)
                         setBackground(new Color(80, 70, 70));
-                    else if(notification.severity == Notification.Severity.SUCCESS)
+                    else if(notification.severity == Datapoints.Notification.Severity.SUCCESS)
                         setBackground(new Color(57, 61, 27));
-                    else if(notification.severity == Notification.Severity.WARNING)
+                    else if(notification.severity == Datapoints.Notification.Severity.WARNING)
                         setBackground(new Color(67, 53, 25));
-                    else if(notification.severity == Notification.Severity.CRITICAL)
+                    else if(notification.severity == Datapoints.Notification.Severity.CRITICAL)
                         setBackground(new Color(68, 39, 38));
                     setMaximumSize(new Dimension(1000, 40));
                     setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
@@ -161,7 +124,7 @@ class DashBoard extends JPanel {
                     add(date, BorderLayout.EAST);
                 }
             }
-            public DashBoardInfo(Notification[] notifications){
+            public DashBoardInfo(Datapoints.Notification[] notifications){
                 setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
                 setOpaque(false);
                 setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
@@ -172,7 +135,7 @@ class DashBoard extends JPanel {
                 }
             }
         }
-        public DashBoardItem(String title, Notification[] notifications){
+        public DashBoardItem(String title, Datapoints.Notification[] notifications){
             setLayout(new BorderLayout());
             add(new Title(title), BorderLayout.PAGE_START);
             add(new DashBoardInfo(notifications), BorderLayout.CENTER);

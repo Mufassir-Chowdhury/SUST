@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 import Constants.Colors;
 import Constants.Fonts;
-import Constants.Navigation;
+import Constants.Datapoints;
 import Constants.Padding;
 import Constants.Sizes;
 
@@ -19,15 +19,15 @@ class AllPages extends JPanel {
     public AllPages(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        for(int i=0; i<Navigation.TITLES.length; i++){
-            JLabel title = new JLabel(Navigation.TITLES[i]);
+        for(int i=0; i<Datapoints.TITLES.length; i++){
+            JLabel title = new JLabel(Datapoints.TITLES[i]);
             title.setForeground(Colors.PLAIN_TEXT);
             title.setFont(Fonts.TITLE);
             title.setAlignmentX(Component.LEFT_ALIGNMENT);
             title.setBorder(Padding.TITLE_LINE_HEIGHT);
             
             Box line = Box.createHorizontalBox();
-            for(Navigation.Page pair: Navigation.PAGES[i]){
+            for(Datapoints.Page pair: Datapoints.PAGES[i]){
                 line.add(new Card(pair.name, pair.icon));
                 line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING));
             }

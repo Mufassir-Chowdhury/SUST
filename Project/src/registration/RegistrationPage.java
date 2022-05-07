@@ -6,7 +6,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import Constants.Navigation;
+import Constants.Datapoints;
 import Constants.Sizes;
 public class RegistrationPage extends JPanel {
     
@@ -29,11 +29,11 @@ public class RegistrationPage extends JPanel {
         setBackground(Color.GRAY);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box line = Box.createHorizontalBox();
-        for (int i = 1; i <= Navigation.CLIENT.length; i++)
+        for (int i = 1; i <= Datapoints.CLIENT.length; i++)
         {
-            Navigation.Page pair = Navigation.CLIENT[i-1];
+            Datapoints.Page pair = Datapoints.CLIENT[i-1];
             line.add(new Card(20, pair.name, pair.icon, Color.white));
-            if (i != Navigation.CLIENT.length)
+            if (i != Datapoints.CLIENT.length)
                 line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
         }
 
