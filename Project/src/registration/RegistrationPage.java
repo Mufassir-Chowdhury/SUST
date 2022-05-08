@@ -29,13 +29,13 @@ public class RegistrationPage extends JPanel {
         setBackground(Color.GRAY);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box line = Box.createHorizontalBox();
-        for (int i = 1; i <= Datapoints.CLIENT.length; i++)
-        {
-            Datapoints.Page pair = Datapoints.CLIENT[i-1];
-            line.add(new Card(20, pair.name, pair.icon, Color.white));
-            if (i != Datapoints.CLIENT.length)
-                line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
-        }
+        // for (int i = 1; i <= Datapoints.CLIENT.length; i++)
+        // {
+        //     Datapoints.Page pair = Datapoints.CLIENT[i-1];
+        //     line.add(new Card(20, pair.name, pair.icon, Color.white));
+        //     if (i != Datapoints.CLIENT.length)
+        //         line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
+        // }
 
         add(Box.createVerticalStrut(Sizes.CARD_SPACING_LONG));
         add(line);

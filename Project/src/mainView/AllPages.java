@@ -14,7 +14,8 @@ import Constants.Datapoints;
 import Constants.Padding;
 import Constants.Sizes;
 
-class AllPages extends JPanel {    
+class AllPages extends JPanel { 
+    Datapoints datapoints = new Datapoints();;   
 
     public AllPages(){
         setOpaque(false);
@@ -27,7 +28,7 @@ class AllPages extends JPanel {
             title.setBorder(Padding.TITLE_LINE_HEIGHT);
             
             Box line = Box.createHorizontalBox();
-            for(Datapoints.Page pair: Datapoints.PAGES[i]){
+            for(Datapoints.Page pair: datapoints.PAGES[i]){
                 line.add(new Card(pair.name, pair.icon));
                 line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING));
             }

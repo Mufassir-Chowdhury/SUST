@@ -5,6 +5,7 @@ import Components.Background;
 import login.LogInPage;
 import mainView.MainPage;
 import registration.RegistrationPage;
+import pages.sideNavView;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,9 +14,11 @@ public class Main extends JFrame {
 	public JFrame currentFrame;
 	public Main(){
 		currentFrame = new Background();
+		currentFrame.add(new sideNavView());
 		// currentFrame.add(new LogInPage(this), 0);
-		currentFrame.add(new MainPage(), 0);
+		// currentFrame.add(new MainPage(), 0);
 		// currentFrame.add(new RegistrationPage(), 0);
+		currentFrame.pack();
 		currentFrame.setVisible(true);
 	}
 
