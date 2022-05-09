@@ -29,6 +29,7 @@ public class sideNavView extends JPanel{
         JPanel buttonPane = new sideNav(this);
         
         cards = new JPanel(new CardLayout());
+        cards.setOpaque(false);
         for(Datapoints.Page[] page: datapoints.PAGES){
             for(Datapoints.Page pair: page){
                 cards.add(pair.panel, pair.name);
