@@ -8,6 +8,7 @@ import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Components.Card;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Datapoints;

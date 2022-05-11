@@ -51,23 +51,19 @@ public class RoundJTextField extends JTextField implements MouseListener, FocusL
         g.drawRoundRect(0, getHeight(), getWidth() - 1, 0, 0, 0);
     }
     
-    public boolean checkPlaceholder()
-    {
+    public boolean checkPlaceholder(){
         return getText().equals(placeholder);
     }
 
-    public boolean isEmpty()
-    {
+    public boolean isEmpty(){
         return getText().isEmpty();
     }
     
-    public void setPlaceholder()
-    {
+    public void setPlaceholder(){
         setText(placeholder);
     }
 
-    public void cleanField()
-    {
+    public void cleanField(){
         if (checkPlaceholder())
             setText("");
     }
