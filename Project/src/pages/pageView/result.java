@@ -18,7 +18,6 @@ public class result extends JPanel {
     public result(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(new EmptyBorder(new Insets(10, 0, 50, 40)));
         Box title = Box.createHorizontalBox();
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
         JLabel titleLabel = new JLabel("Results");

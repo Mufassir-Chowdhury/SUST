@@ -10,7 +10,6 @@ import javax.swing.border.EmptyBorder;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Insets;
 
 import Constants.Colors;
@@ -21,7 +20,6 @@ public class students extends JPanel {
     public students(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(new EmptyBorder(new Insets(10, 0, 50, 40)));
         Box title = Box.createHorizontalBox();
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
         JLabel titleLabel = new JLabel("Students");

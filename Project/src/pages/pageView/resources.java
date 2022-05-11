@@ -25,10 +25,9 @@ public class resources extends JPanel {
     public resources(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(new EmptyBorder(new Insets(10, 0, 50, 40)));
         Box title = Box.createHorizontalBox();
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        JLabel titleLabel = new JLabel("Students");
+        JLabel titleLabel = new JLabel("Resourses");
         titleLabel.setFont(Fonts.DISPLAY);
         titleLabel.setForeground(Colors.PLAIN_TEXT);
         title.add(titleLabel);
