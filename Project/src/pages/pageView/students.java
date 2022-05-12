@@ -23,6 +23,7 @@ public class students extends JPanel {
         Box title = Box.createHorizontalBox();
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
         JLabel titleLabel = new JLabel("Students");
+        
         titleLabel.setFont(Fonts.DISPLAY);
         titleLabel.setForeground(Colors.PLAIN_TEXT);
         title.add(titleLabel);
