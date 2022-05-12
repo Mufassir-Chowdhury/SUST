@@ -7,10 +7,11 @@ import Constants.Padding;
 import Constants.Sizes;
 
 import java.awt.GridBagLayout;
+import java.io.IOException;
 import java.awt.GridBagConstraints ;
 
 public class MainPage extends JPanel {
-    public MainPage(){
+    public MainPage() throws ClassNotFoundException, IOException{
         setOpaque(false);
         setSize(Sizes.DEFAULT_WINDOW_SIZE);
         setBorder(Padding.MAIN_VIEW_PORT);

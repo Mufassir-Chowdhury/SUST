@@ -1,6 +1,7 @@
 package login;
 
 import java.awt.GridBagLayout;
+import java.io.IOException;
 import java.awt.GridBagConstraints;
 
 import javax.swing.JPanel;
@@ -14,7 +15,7 @@ public class LogInPage extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Main frame;
-	public void LogIn(){
+	public void LogIn() throws ClassNotFoundException, IOException{
 		frame.changeFrame(new MainPage());
 	}
 

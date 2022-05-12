@@ -1,5 +1,6 @@
 package Server;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Vector;
 
@@ -9,35 +10,37 @@ import javax.swing.JPanel;
 import Constants.Icons;
 import pages.pageView.*;
 
-public class Datapoints {
+public class Datapoints{
     public static class Page{
         public String name;
         public Icon icon;
         public JPanel panel;
-        public Page(String name, Icon icon, JPanel panel){
+        public Page(String name, Icon icon, JPanel panel)  throws ClassNotFoundException, IOException{
             this.name = name;
             this.icon = icon;
             this.panel = panel;
         }
     };
+    public Page[][] getPages() throws ClassNotFoundException, IOException{
+        return new Page[][]{
+            {new Page("Class Routines", Icons.SCHEDULE, new routine()), 
+                new Page("Due Assignments", Icons.ASSIGNMENT, new assignment()),
+                new Page("Upcoming Exams", Icons.EXAM, new exam()),
+                new Page("Notice Board", Icons.NOTICE, new notice())},
+            { new Page("Resources", Icons.RESOURCES, new resources()),
+                new Page("Results", Icons.RESULT, new result()),
+                new Page("Attendance", Icons.ATTENDANCE, new attendance())},
+            { new Page("Payment", Icons.PAYMENT, new payment()),
+                new Page("Course Registration", Icons.COURSE_REGISTRATION, new course()),
+                new Page("Important Links", Icons.IMPORTANT_LINKS, new links())},
+            { new Page("Bus Schedule", Icons.BUS_SCHEDULE, new bus()),
+                new Page("Student Information", Icons.STUDENT_INFO, new students()),
+                new Page("Events", Icons.EVENTS, new event()),
+                new Page("Map", Icons.MAP, new map())},
+        };
+    }
 
     public static final String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
-    public final Page[][] PAGES = {
-        {new Page("Class Routines", Icons.SCHEDULE, new routine()), 
-            new Page("Due Assignments", Icons.ASSIGNMENT, new assignment()),
-            new Page("Upcoming Exams", Icons.EXAM, new exam()),
-            new Page("Notice Board", Icons.NOTICE, new notice())},
-        { new Page("Resources", Icons.RESOURCES, new resources()),
-            new Page("Results", Icons.RESULT, new result()),
-            new Page("Attendance", Icons.ATTENDANCE, new attendance())},
-        { new Page("Payment", Icons.PAYMENT, new payment()),
-            new Page("Course Registration", Icons.COURSE_REGISTRATION, new course()),
-            new Page("Important Links", Icons.IMPORTANT_LINKS, new links())},
-        { new Page("Bus Schedule", Icons.BUS_SCHEDULE, new bus()),
-            new Page("Student Information", Icons.STUDENT_INFO, new students()),
-            new Page("Events", Icons.EVENTS, new event()),
-            new Page("Map", Icons.MAP, new map())},
-    };
 
     // public static final Page[] CLIENT = {
     //     new Page("STUDENT", Icons.STUDENT, new students()),

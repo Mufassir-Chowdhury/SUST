@@ -21,10 +21,11 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Insets;
+import java.io.IOException;
 import java.util.Vector;
 
 public class sideNav extends JPanel {
-    public sideNav(sideNavView view) {
+    public sideNav(sideNavView view) throws ClassNotFoundException, IOException {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box line = Box.createHorizontalBox();
@@ -41,7 +42,7 @@ public class sideNav extends JPanel {
         add(line);
         add(Box.createVerticalStrut(10));
         Vector<Datapoints.Page> pageList = new Vector<>();
-        for(Datapoints.Page[] page: view.datapoints.PAGES){
+        for(Datapoints.Page[] page: view.datapoints.getPages()){
             for(Datapoints.Page pair: page){
                 pageList.add(pair);
                 // JButton button = new JButton(pair.name);
