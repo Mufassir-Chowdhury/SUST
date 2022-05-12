@@ -11,9 +11,9 @@ import javax.swing.border.EmptyBorder;
 
 import Components.RoundJTextField;
 import Constants.Colors;
-import Constants.Datapoints;
 import Constants.Fonts;
 import Constants.Icons;
+import Server.Datapoints;
 
 import javax.swing.DefaultListCellRenderer;
 

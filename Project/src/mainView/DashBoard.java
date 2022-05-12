@@ -17,9 +17,9 @@ import java.awt.GridLayout;
 import java.awt.Dimension;
 
 import Constants.Colors;
-import Constants.Datapoints;
 import Constants.Fonts;
 import Constants.Icons;
+import Server.Datapoints;
 
 class DashBoard extends JPanel {
     public DashBoard(){

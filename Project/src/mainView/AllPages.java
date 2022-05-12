@@ -11,9 +11,9 @@ import javax.swing.JPanel;
 import Components.Card;
 import Constants.Colors;
 import Constants.Fonts;
-import Constants.Datapoints;
 import Constants.Padding;
 import Constants.Sizes;
+import Server.Datapoints;
 
 class AllPages extends JPanel { 
     Datapoints datapoints = new Datapoints();;   

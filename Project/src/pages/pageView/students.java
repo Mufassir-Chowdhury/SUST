@@ -13,8 +13,8 @@ import java.awt.Component;
 import java.awt.Insets;
 
 import Constants.Colors;
-import Constants.Datapoints;
 import Constants.Fonts;
+import Server.Datapoints;
 
 public class students extends JPanel {
     public students(){

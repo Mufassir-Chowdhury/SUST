@@ -1,10 +1,12 @@
-package Constants;
+package Server;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import javax.swing.Icon;
 import javax.swing.JPanel;
 
+import Constants.Icons;
 import pages.pageView.*;
 
 public class Datapoints {
@@ -243,33 +245,33 @@ public class Datapoints {
         new Courses("CSE107", "Software Engineering", "3", "A", 4.00f, 16, 4, true, 0),
     };
 
-    public static class Link{
+    public static class Link implements Serializable{
         public String title;
         public String url;
         public Link(String title, String url){
             this.title = title;
             this.url = url;
         }
-        public static String[] LINK_TITLES = {
-            "OFFICIAL_LINKS",
-            "ORGANIZATION_LINKS",
-            "FACEBOOK_LINKS"
-        };
-        public static Link[][] LINKS = {
-            {
-                new Link("SUST", "https://www.sust.edu/"),
-                new Link("E-Payment", "https://epayment.sust.edu/"),
-                new Link("Services", "https://services.student.sust.edu/"),
-                new Link("Library", "http://library.sust.edu/"),
-                new Link("Course Registration", "http://services.student.sust.edu:9090/student_login.jsp"),
-            },{
-                new Link("IQAC-SUST", "https://iqacsust.org/"),
-                new Link("ACM SUST", "https://sustsc.acm.org/"),
-            },{
-                new Link("SUSTian View", "https://www.facebook.com/groups/1576654242498653/"),
-                new Link("Amra SUSTian", "https://www.facebook.com/groups/AMRASUSTIAN"),
-            }
-        };
+        // public static String[] LINK_TITLES = {
+        //     "OFFICIAL_LINKS",
+        //     "ORGANIZATION_LINKS",
+        //     "FACEBOOK_LINKS"
+        // };
+        // public static Link[][] LINKS = {
+        //     {
+        //         new Link("SUST", "https://www.sust.edu/"),
+        //         new Link("E-Payment", "https://epayment.sust.edu/"),
+        //         new Link("Services", "https://services.student.sust.edu/"),
+        //         new Link("Library", "http://library.sust.edu/"),
+        //         new Link("Course Registration", "http://services.student.sust.edu:9090/student_login.jsp"),
+        //     },{
+        //         new Link("IQAC-SUST", "https://iqacsust.org/"),
+        //         new Link("ACM SUST", "https://sustsc.acm.org/"),
+        //     },{
+        //         new Link("SUSTian View", "https://www.facebook.com/groups/1576654242498653/"),
+        //         new Link("Amra SUSTian", "https://www.facebook.com/groups/AMRASUSTIAN"),
+        //     }
+        // };
         
     }
 

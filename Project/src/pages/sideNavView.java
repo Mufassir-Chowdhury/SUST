@@ -2,10 +2,10 @@ package pages;
 
 import javax.swing.JPanel;
 
-import Constants.Datapoints;
 import Constants.Margins;
 import Constants.Padding;
 import Constants.Sizes;
+import Server.Datapoints;
 
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints ;

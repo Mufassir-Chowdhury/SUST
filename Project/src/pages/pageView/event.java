@@ -5,7 +5,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Constants.Datapoints;
+import Server.Datapoints;
 
 public class event extends JPanel {
     public event(){

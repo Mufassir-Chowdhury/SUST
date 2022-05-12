@@ -11,8 +11,8 @@ import java.awt.Color;
 import java.awt.Component;
 
 import Constants.Colors;
-import Constants.Datapoints;
 import Constants.Fonts;
+import Server.Datapoints;
 
 public class result extends JPanel {
     public result(){

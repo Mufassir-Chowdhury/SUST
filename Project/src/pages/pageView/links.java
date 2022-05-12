@@ -15,8 +15,8 @@ import java.awt.Color;
 import java.net.URISyntaxException;
 
 import Constants.Colors;
-import Constants.Datapoints;
 import Constants.Fonts;
+import Server.Datapoints;
 
 public class links extends JPanel {
     public links(){

@@ -6,8 +6,8 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import Constants.Datapoints;
 import Constants.Sizes;
+import Server.Datapoints;
 public class RegistrationPage extends JPanel {
     
 
