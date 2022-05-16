@@ -5,6 +5,7 @@ import java.awt.Dimension;
 // import java.sql.ResultSet;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.IOException;
 import java.util.Arrays;
 
 import javax.swing.Box;
@@ -102,12 +103,20 @@ public class LogInRight extends JPanel implements KeyListener {
         registerText.addFocusListener(registerText);
 
         showPasswordCheckBox.addActionListener(e -> showPassword());
-        logInButton.addActionListener(e -> fetchData());
+        logInButton.addActionListener(e -> {
+            try {
+                fetchData();
+            } catch (ClassNotFoundException | IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        });
         forgetPasswordText.addActionListener(l -> forgetPassword());
         registerText.addActionListener(l -> register());
     }
     
-    private void fetchData() {
+    private void fetchData() throws ClassNotFoundException, IOException {
+        page.LogIn();
         try{
             String email = emailField.getText();
             String password = passwordField.getText();
@@ -143,7 +152,12 @@ public class LogInRight extends JPanel implements KeyListener {
         source = e.getComponent();
         key = e.getKeyChar();
         if (key == KeyEvent.VK_ENTER) {
-            fetchData();
+            try {
+                fetchData();
+            } catch (ClassNotFoundException | IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
         }
         else if(source == emailField)
             emailField.cleanField();

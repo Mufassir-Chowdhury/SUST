@@ -19,10 +19,16 @@ import javax.swing.border.EmptyBorder;
 public class sideNavView extends JPanel{
     JPanel cards;
     Datapoints datapoints = new Datapoints();
+    sideNav buttonPane = new sideNav(this);
 
     public void changeCard(String cardName){
         CardLayout cl = (CardLayout)(cards.getLayout());
         cl.show(cards, cardName);
+    }
+    public void changePage(String cardName, String nameOfPage){
+        CardLayout cl = (CardLayout)(cards.getLayout());
+        cl.show(cards, nameOfPage);
+        buttonPane.setSelected(nameOfPage);
     }
 
     public sideNavView() throws ClassNotFoundException, IOException{
@@ -32,7 +38,6 @@ public class sideNavView extends JPanel{
         setBorder(Padding.MAIN_VIEW_PORT);
         setLayout(new GridBagLayout());
 
-        JPanel buttonPane = new sideNav(this);
         
         cards = new JPanel(new CardLayout());
         // cards.setBackground(new Color(40, 40, 40));

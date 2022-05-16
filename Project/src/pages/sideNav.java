@@ -25,6 +25,13 @@ import java.io.IOException;
 import java.util.Vector;
 
 public class sideNav extends JPanel {
+    JList<Datapoints.Page> list;
+    Vector<String> pageNames;
+
+    public void setSelected(String nameOfPage){
+        list.setSelectedIndex(pageNames.indexOf(nameOfPage));
+        list.repaint();
+    }
     public sideNav(sideNavView view) throws ClassNotFoundException, IOException {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -42,20 +49,14 @@ public class sideNav extends JPanel {
         add(line);
         add(Box.createVerticalStrut(10));
         Vector<Datapoints.Page> pageList = new Vector<>();
+        pageNames = new Vector<>();
         for(Datapoints.Page[] page: view.datapoints.getPages()){
             for(Datapoints.Page pair: page){
                 pageList.add(pair);
-                // JButton button = new JButton(pair.name);
-                // button.addActionListener(new ActionListener(){
-                //     public void actionPerformed(ActionEvent e){
-                //         view.changeCard(e.getActionCommand());
-                //     }
-                // });
-                // button.setIcon(pair.icon);
-                // add(button);
+                pageNames.add(pair.name);
             }
         }
-        JList<Datapoints.Page> list = new JList<>(pageList);
+        list = new JList<>(pageList);
         list.setAlignmentX(Component.LEFT_ALIGNMENT);
         list.setOpaque(false);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

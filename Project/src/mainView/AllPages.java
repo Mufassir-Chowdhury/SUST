@@ -8,18 +8,21 @@ import java.io.IOException;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import Components.Card;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Padding;
 import Constants.Sizes;
+import Main.Main;
 import Server.Datapoints;
 
 class AllPages extends JPanel { 
     Datapoints datapoints = new Datapoints();;   
 
-    public AllPages() throws ClassNotFoundException, IOException{
+    public AllPages(Main main) throws ClassNotFoundException, IOException{
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         for(int i=0; i<Datapoints.TITLES.length; i++){
@@ -31,7 +34,13 @@ class AllPages extends JPanel {
             
             Box line = Box.createHorizontalBox();
             for(Datapoints.Page pair: datapoints.getPages()[i]){
-                line.add(new Card(pair.name, pair.icon));
+                Card card = new Card(pair.name, pair.icon);
+                card.addMouseListener(new MouseAdapter(){
+                    public void mouseClicked(MouseEvent e){
+                        main.changeFrame("sideNav", pair.name);
+                    }
+                });
+                line.add(card);
                 line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING));
             }
             line.setAlignmentX(Component.LEFT_ALIGNMENT);
