@@ -4,7 +4,8 @@ import javax.swing.SwingUtilities;
 import Components.Background;
 import login.LogInPage;
 import mainView.MainPage;
-import registration.RegistrationPage;
+import registration.RegiPage;
+import registration.RegistrationEnquiry;
 
 import java.awt.Color;
 
@@ -15,9 +16,10 @@ public class Main extends JFrame {
 	public JFrame currentFrame;
 	public Main(){
 		currentFrame = new Background();
-		// currentFrame.add(new LogInPage(this), 0);
-		// currentFrame.add(new MainPage(), 0);
-		currentFrame.add(new RegistrationPage(), 0);
+		//  currentFrame.add(new LogInPage(this), 0);
+//		currentFrame.add(new MainPage(), 0);
+//		currentFrame.add(new RegistrationPage(), 0);
+		currentFrame.add(new RegiPage(), 0);
 		currentFrame.setVisible(true);
 	}
 

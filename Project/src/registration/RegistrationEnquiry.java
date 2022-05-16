@@ -13,12 +13,11 @@ import Components.TitleBar;
 import Constants.Icons;
 import Constants.Navigation;
 import Constants.Sizes;
-public class RegistrationPage extends JPanel {
+public class RegistrationEnquiry extends JPanel {
     
 
     public Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
     private Dimension frameSize = new Dimension(700, 300);
-    // private TitleBar titleBar = new TitleBar(frame, (int)size.getWidth());
     
     private int locationX() {
         return (int) (size.getWidth() - frameSize.getWidth()) / 2;
@@ -28,7 +27,7 @@ public class RegistrationPage extends JPanel {
         return (int) (size.getHeight() - frameSize.getHeight()) / 2;
     }
 
-    public RegistrationPage() {
+    public RegistrationEnquiry() {
         setLocation(locationX(), locationY());
         setSize(frameSize);
         setBackground(Color.GRAY);
