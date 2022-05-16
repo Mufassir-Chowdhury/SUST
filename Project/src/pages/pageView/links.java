@@ -37,6 +37,7 @@ public class links extends JPanel {
         add(title);
         add(Box.createVerticalStrut(20));
         AccentButton github = new AccentButton("Github");
+        github.setAlignmentX(Component.LEFT_ALIGNMENT);
         github.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Client client;
@@ -88,7 +89,8 @@ public class links extends JPanel {
                     // TODO Auto-generated catch block
                     f.printStackTrace();
                 }
-
+                repaint();
+                revalidate();
             }
         });
         add(github);
