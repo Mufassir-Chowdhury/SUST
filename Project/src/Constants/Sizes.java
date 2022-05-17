@@ -13,12 +13,12 @@ public class Sizes {
 
     public static final Dimension ICON_SIZE = new Dimension(15, 15);
     public static final Dimension GUI_BIG_SIZE = new Dimension(150, 150);
-    public static final Dimension GUI_SMALL_SIZE = new Dimension(40, 40);
+    public static final Dimension GUI_SMALL_SIZE = new Dimension(25, 25);
 
     public static final Dimension LOGO_SIZE = new Dimension(156, 173);
 
     public static final Dimension CHECKBOX_SIZE = new Dimension(110, 23);
     
-    public static final Dimension CARD_SIZE = new Dimension(200, 115);
+    public static final Dimension CARD_SIZE = new Dimension(190, 115);
     public static final Dimension CARD_SIZE_2 = new Dimension(350, 200);
 }

@@ -6,7 +6,6 @@ import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 
-import Constants.Colors;
 import Constants.Fonts;
 import Constants.Sizes;
 import Components.RoundedPanel;

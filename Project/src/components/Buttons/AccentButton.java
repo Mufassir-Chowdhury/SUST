@@ -2,38 +2,44 @@ package Components.Buttons;
 
 import java.awt.Graphics;
 import java.awt.Component;
+import java.awt.Color;
 import java.awt.event.MouseListener;
+
 import java.awt.event.MouseEvent;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import Constants.Colors;
 
-public class AccentButton extends Button implements MouseListener, KeyListener {
-
+public class AccentButton extends Button implements MouseListener {
+    private Color background = Colors.ACCENT;
     public AccentButton(String text) {
         super(text);
-        setBackground(Colors.PLAIN_TEXT);
         setForeground(Colors.PLAIN_TEXT_BLACK);
         setAlignmentX(Component.CENTER_ALIGNMENT);
-        addMouseListener(this);
     }
     protected void paintComponent(Graphics g) {
-        g.setColor(Colors.ACCENT);
+        g.setColor(background);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
         super.paintComponent(g);
     }
     protected void paintBorder(Graphics g) {
-        g.setColor(Colors.ACCENT);
+        if(isFocusOwner()) {
+            g.setColor(Colors.PLAIN_TEXT);
+        } else {
+            g.setColor(background);
+        }
         g.drawRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
     }
+
     @Override
     public void mouseEntered(MouseEvent e) {
-        setForeground(Colors.ACCENT_BUTTON_HOVER);
+        background = new Color(85, 175, 215);
+        repaint();
     }
+
     @Override
     public void mouseExited(MouseEvent e) {
         if(isFocusOwner()) return;
-        setForeground(Colors.PLAIN_TEXT_BLACK);
+        background = Colors.ACCENT;
+        repaint();
     }
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -41,27 +47,12 @@ public class AccentButton extends Button implements MouseListener, KeyListener {
     }
     @Override
     public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        background = new Color(85, 165, 205);
+        repaint();
     }
     @Override
     public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
+        background = Colors.ACCENT;
+        repaint();
     }
 }

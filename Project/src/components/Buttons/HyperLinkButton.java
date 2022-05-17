@@ -1,67 +1,51 @@
 package Components.Buttons;
 
 import Constants.Colors;
+import Constants.Margins;
 
 import java.awt.event.MouseListener;
-import java.awt.event.KeyListener;
-import java.awt.event.KeyEvent;
+
+import javax.swing.border.EmptyBorder;
+
+import java.awt.Color;
+
 import java.awt.event.MouseEvent;
 
-public class HyperLinkButton extends Button implements MouseListener, KeyListener  {
-
+public class HyperLinkButton extends Button implements MouseListener  {
     public HyperLinkButton(String text) {
         super(text);
+        setOpaque(false);
         setForeground(Colors.ACCENT);
-        setBorder(null);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        setBorder(new EmptyBorder(Margins.BUTTON));
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        // TODO Auto-generated method stub
-        
+        setBackground(new Color(55, 40, 44));
+        setOpaque(true);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        // TODO Auto-generated method stub
+        if(isFocusOwner()) return;
+        setBackground(null);
+        setOpaque(false);
+    }
+    @Override
+    public void mouseClicked(MouseEvent e) {
         
+    }
+    @Override
+    public void mousePressed(MouseEvent e) {
+        setBackground(new Color(52, 35, 40));
+        setOpaque(true);
+    }
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        if(isFocusOwner()) return;
+        setBackground(null);
+        setOpaque(false);
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
-    
     
 }
