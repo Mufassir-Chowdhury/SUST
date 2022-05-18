@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 import Constants.Margins;
 import Constants.Sizes;
 import Main.Main;
-import mainView.MainPage;
 
 public class LogInPage extends JPanel {
 

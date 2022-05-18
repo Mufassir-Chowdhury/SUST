@@ -13,6 +13,7 @@ import java.awt.event.MouseListener;
 import java.util.Arrays;
 
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import Constants.Colors;
 import Constants.Fonts;
@@ -84,7 +85,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
         if(type == TYPE.PASSWORD)
             return Arrays.equals(getPassword(), Values.DEFAULT_PASSWORD);
         else
-            return getText().equals(placeholder);
+            return ((JTextField) this).getText().equals(placeholder);
     }
     
     public boolean isEmpty() {
