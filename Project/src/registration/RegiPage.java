@@ -3,7 +3,9 @@ package registration;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
-import Components.RoundJTextField;
+import Components.InputFields.TextField;
+import Components.InputFields.TextField.CustomTextField;
+import Components.InputFields.TextField.TYPE;
 import Constants.Sizes;
 import java.awt.FlowLayout;
 
@@ -48,7 +50,7 @@ public class RegiPage extends JScrollPane {
 		col = new JPanel();
 		col.setLayout(new BoxLayout(col, BoxLayout.X_AXIS));
 		label = new JLabel(text);
-		field = new RoundJTextField("");
+		field = new TextField("", TYPE.PLAIN);
 		col.add(label);
 		col.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
 		col.add(field);
