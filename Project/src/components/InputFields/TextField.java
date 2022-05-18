@@ -21,21 +21,49 @@ import Constants.Sizes;
 import Constants.Values;
 
 public class TextField extends JPasswordField implements MouseListener, FocusListener, KeyListener {
-    private static final long serialVersionUID = 1L;
-    Boolean showPassword;
+    public class CustomTextField extends TextField{
+        public CustomTextField(String placeholder, TYPE type) {
+            super(placeholder, type);
+        }
+    }
+    public class CustomPasswordField extends TextField {
+        public CustomPasswordField(boolean showPassword, TYPE type) {
+            super(showPassword, type);
+        }
+    }
+    public Boolean showPassword;
     private Color background = Colors.TEXT_FIELD_BACKGROUND;
     private Color border = Colors.TEXT_FIELD_BORDER;
+    public enum TYPE{
+        PLAIN,
+        PASSWORD
+    }
+    private TYPE type;
+    private String placeholder;
 
-    public TextField(boolean showPassword) {
+    public TextField(boolean showPassword, TYPE type) {
         this.showPassword = showPassword;
-    
+        this.type = type;
+        initialize();
+    }
+    public TextField(String placeholder, TYPE type) {
+        this.type = type;
+        showPassword = true;
+        this.placeholder = placeholder;
+        initialize();
+    }
+
+    private void initialize(){
         setOpaque(false);
         setSize(Sizes.TEXT_FIELD_SIZE);
         setMaximumSize(Sizes.TEXT_FIELD_SIZE);
         setForeground(Colors.PLAIN_TEXT);
         setFont(Fonts.PLAIN_TEXT);
         setMargin(Margins.TEXT_FIELD);
-        setText(Values.PASSWORD_PLACEHOLDER);
+        if(type == TYPE.PASSWORD)
+            setText(Values.PASSWORD_PLACEHOLDER);
+        else
+            setText(placeholder);
         setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setCaretColor(Colors.PLAIN_TEXT);
@@ -53,7 +81,10 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     }
     
     public boolean checkPlaceholder(){
-        return Arrays.equals(getPassword(), Values.DEFAULT_PASSWORD);
+        if(type == TYPE.PASSWORD)
+            return Arrays.equals(getPassword(), Values.DEFAULT_PASSWORD);
+        else
+            return getText().equals(placeholder);
     }
     
     public boolean isEmpty() {
@@ -61,13 +92,16 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     }
     
     public void setPlaceholder(){
-        setText(Values.PASSWORD_PLACEHOLDER);
+        if(type == TYPE.PASSWORD)   
+            setText(Values.PASSWORD_PLACEHOLDER);
+        else
+            setText(placeholder);
     }
 
     public void cleanField(){
         if (checkPlaceholder()){
             setText("");
-            if(showPassword==false) setEchoChar(Values.PASSWORD_ECHO_CHAR);
+            if(showPassword==false && type == TYPE.PASSWORD) setEchoChar(Values.PASSWORD_ECHO_CHAR);
         }
     }
     @Override

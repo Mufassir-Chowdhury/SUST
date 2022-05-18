@@ -15,8 +15,7 @@ import javax.swing.JPanel;
 
 import Components.Buttons.AccentButton;
 import Components.Buttons.HyperLinkButton;
-import Components.InputFields.CustomPasswordField;
-import Components.InputFields.CustomTextField;
+import Components.InputFields.TextField;
 import Constants.Sizes;
 import Constants.Values;
 import Constants.conn;
@@ -27,8 +26,8 @@ import java.sql.ResultSet;
 public class LogInRight extends JPanel implements KeyListener {
 
     private AccentButton logInButton = new AccentButton("Log In");
-    private CustomTextField emailField = new CustomTextField(" Email Address");
-    private CustomPasswordField passwordField = new CustomPasswordField(false);
+    private TextField emailField = new TextField(" Email Address", TextField.TYPE.PLAIN);
+    private TextField passwordField = new TextField(false, TextField.TYPE.PASSWORD);
     private showPassword showPasswordCheckBox = new Utilities.showPassword();
     private HyperLinkButton forgetPasswordText = new HyperLinkButton("Forget Password?");
     private HyperLinkButton registerText = new HyperLinkButton("Create an account!");
