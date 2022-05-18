@@ -13,10 +13,10 @@ import javax.swing.BoxLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Components.RoundJPasswordField;
-import Components.RoundJTextField;
 import Components.Buttons.AccentButton;
 import Components.Buttons.HyperLinkButton;
+import Components.InputFields.CustomPasswordField;
+import Components.InputFields.CustomTextField;
 import Constants.Sizes;
 import Constants.Values;
 import Constants.conn;
@@ -27,8 +27,8 @@ import java.sql.ResultSet;
 public class LogInRight extends JPanel implements KeyListener {
 
     private AccentButton logInButton = new AccentButton("Log In");
-    private RoundJTextField emailField = new RoundJTextField(" Email Address");
-    private RoundJPasswordField passwordField = new RoundJPasswordField(false);
+    private CustomTextField emailField = new CustomTextField(" Email Address");
+    private CustomPasswordField passwordField = new CustomPasswordField(false);
     private showPassword showPasswordCheckBox = new Utilities.showPassword();
     private HyperLinkButton forgetPasswordText = new HyperLinkButton("Forget Password?");
     private HyperLinkButton registerText = new HyperLinkButton("Create an account!");

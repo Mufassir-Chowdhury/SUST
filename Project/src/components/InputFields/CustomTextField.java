@@ -1,75 +1,73 @@
-package Components;
+package Components.InputFields;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.awt.Graphics;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.Arrays;
-
-import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Margins;
 import Constants.Sizes;
-import Constants.Values;
 
-public class RoundJPasswordField extends JPasswordField implements MouseListener, FocusListener, KeyListener {
+import java.awt.Graphics;
+import java.awt.Component;
+import java.awt.Color;
+
+import java.awt.event.MouseListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.KeyListener;
+import java.awt.EventQueue;
+
+public class CustomTextField extends JTextField implements MouseListener, FocusListener, KeyListener {
 	private static final long serialVersionUID = 1L;
-    Boolean showPassword;
+    private String placeholder;
     private Color background = Colors.TEXT_FIELD_BACKGROUND;
     private Color border = Colors.TEXT_FIELD_BORDER;
-
-    public RoundJPasswordField(boolean showPassword) {
-        this.showPassword = showPassword;
     
+    public CustomTextField(String placeholder) {
+        this.placeholder = placeholder;
+
         setOpaque(false);
+        setText(placeholder);
         setSize(Sizes.TEXT_FIELD_SIZE);
         setMaximumSize(Sizes.TEXT_FIELD_SIZE);
+        setMinimumSize(Sizes.TEXT_FIELD_SIZE);
         setForeground(Colors.PLAIN_TEXT);
+        setCaretColor(Colors.PLAIN_TEXT);
         setFont(Fonts.PLAIN_TEXT);
         setMargin(Margins.TEXT_FIELD);
-        setText(Values.PASSWORD_PLACEHOLDER);
-        setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
         setAlignmentX(Component.CENTER_ALIGNMENT);
-        setCaretColor(Colors.PLAIN_TEXT);
     }
-    
+
     protected void paintComponent(Graphics g) {
-        g.setColor(background);
-        g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 4, 4);
-        super.paintComponent(g);
+         g.setColor(background);
+         g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 4, 4);
+         super.paintComponent(g);
     }
-    
+
     protected void paintBorder(Graphics g) {
         g.setColor(border);
         g.drawRoundRect(0, getHeight(), getWidth() - 1, 0, 0, 0);
     }
     
     public boolean checkPlaceholder(){
-        return Arrays.equals(getPassword(), Values.DEFAULT_PASSWORD);
+        return getText().equals(placeholder);
     }
-    
-    public boolean isEmpty() {
-        return getPassword().length == 0;
+
+    public boolean isEmpty(){
+        return getText().isEmpty();
     }
     
     public void setPlaceholder(){
-        setText(Values.PASSWORD_PLACEHOLDER);
+        setText(placeholder);
     }
 
-    public void cleanField(){
-        if (checkPlaceholder()){
+    public void cleanField() {
+        if (checkPlaceholder())
             setText("");
-            if(showPassword==false) setEchoChar(Values.PASSWORD_ECHO_CHAR);
-        }
     }
+
     @Override
     public void focusGained(FocusEvent e) {
         border = Colors.ACCENT;
@@ -134,10 +132,17 @@ public class RoundJPasswordField extends JPasswordField implements MouseListener
             if (isEmpty())
                 setText(" ");
         }
+           
+
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         
     }
+
 }
+
+
+

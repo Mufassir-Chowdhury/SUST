@@ -9,7 +9,7 @@ import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
-import Components.RoundJTextField;
+import Components.InputFields.CustomTextField;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
@@ -39,7 +39,7 @@ public class sideNav extends JPanel {
         line.setAlignmentX(Component.LEFT_ALIGNMENT);
         line.add(Box.createHorizontalStrut(5));
 
-        RoundJTextField searchField = new RoundJTextField("Search");
+        CustomTextField searchField = new CustomTextField("Search");
         searchField.addMouseListener(searchField);
         searchField.addFocusListener(searchField);
         searchField.addKeyListener(searchField);
