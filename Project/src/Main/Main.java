@@ -3,6 +3,8 @@ import javax.swing.SwingUtilities;
 
 import Components.Background;
 import Constants.Sizes;
+import Server.Client;
+import Server.Datapoints;
 import login.LogInPage;
 import mainView.MainPage;
 import registration.RegistrationPage;
@@ -46,7 +48,12 @@ public class Main extends JFrame {
 		((sideNavView)panel.getComponent(0)).changePage(cardName, nameOfPage);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
+		Client client = new Client();
+		Datapoints.Link[][] links = client.getLinks();
+		System.out.println(links[0][0].url);
+		Datapoints.LINKS = links;
+
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				try {

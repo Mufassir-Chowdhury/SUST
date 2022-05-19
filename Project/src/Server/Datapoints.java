@@ -47,6 +47,7 @@ public class Datapoints{
     //     new Page("TEACHER", Icons.TEACHER, new students()),
     //     new Page("ADMINISTRATOR", Icons.ADMINISTRATOR, new students()) 
     // };
+    public static Link[][] LINKS = null;
 
     public static class Notification{
         public String title, date;
