@@ -78,7 +78,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     
     protected void paintBorder(Graphics g) {
         g.setColor(border);
-        g.drawRoundRect(0, getHeight(), getWidth() - 1, 0, 0, 0);
+        g.drawRoundRect(0, getHeight()-1, getWidth() - 2, 1, 0, 0);
     }
     
     public boolean checkPlaceholder(){
@@ -93,8 +93,10 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     }
     
     public void setPlaceholder(){
-        if(type == TYPE.PASSWORD)   
+        if(type == TYPE.PASSWORD){   
             setText(Values.PASSWORD_PLACEHOLDER);
+            setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
+        }
         else
             setText(placeholder);
     }
@@ -103,6 +105,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
         if (checkPlaceholder()){
             setText("");
             if(showPassword==false && type == TYPE.PASSWORD) setEchoChar(Values.PASSWORD_ECHO_CHAR);
+            else if(showPassword==true && type == TYPE.PASSWORD) setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
         }
     }
     @Override
