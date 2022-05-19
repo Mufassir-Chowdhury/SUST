@@ -1,5 +1,8 @@
 package login;
 
+import java.awt.Cursor;
+import java.awt.event.MouseListener;
+
 import javax.swing.JCheckBox;
 
 import Constants.Colors;
@@ -16,6 +19,12 @@ class Utilities {
             setText("Show Password");
             setContentAreaFilled(false);
             setFocusable(false);
+        }
+        
+        @Override
+        public synchronized void addMouseListener(MouseListener l) {
+            super.addMouseListener(l);
+            setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
     }
 }
