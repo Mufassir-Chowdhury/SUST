@@ -14,8 +14,8 @@ public class LogInPage extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Main frame;
-	public void LogIn() throws ClassNotFoundException, IOException{
-		frame.changeFrame("mainPage");
+	public void LogIn(String page) throws ClassNotFoundException, IOException{
+		frame.changeFrame(page);
 	}
 
 	public LogInPage(Main frame) {
