@@ -7,6 +7,7 @@ import Server.Client;
 import Server.Datapoints;
 import login.LogInPage;
 import mainView.MainPage;
+import registration.RegiPage;
 import registration.RegistrationPage;
 import pages.sideNavView;
 
@@ -29,6 +30,8 @@ public class Main extends JFrame {
 		panel.add(new MainPage(this), "mainPage");
 		panel.add(new RegistrationPage(), "registrationPage");
 		panel.add(new LogInPage(this), "logInPage");
+		panel.add(new RegiPage(this), "regiPage");
+		
 		currentFrame.add(panel);
 		CardLayout cl = (CardLayout)(panel.getLayout());
 		cl.show(panel, "logInPage");
