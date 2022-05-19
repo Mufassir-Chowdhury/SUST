@@ -34,15 +34,15 @@ public class LogInRight extends JPanel implements KeyListener {
     private static final long serialVersionUID = 1L;  
     private Box line = Box.createHorizontalBox();
     private LogInPage page;
-    private Component source;
     private char key;
     
     public LogInRight(LogInPage page) {
         this.page = page;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setOpaque(false);
-        
-        line.add(Box.createRigidArea(new Dimension(Sizes.TEXT_FIELD_SIZE.width - Sizes.CHECKBOX_SIZE.width, Sizes.BUTTON_SIZE.height)));
+
+        line.add(Box.createRigidArea(
+                new Dimension(Sizes.TEXT_FIELD_SIZE.width - Sizes.CHECKBOX_SIZE.width, Sizes.BUTTON_SIZE.height)));
         line.add(showPasswordCheckBox);
 
         add(Box.createVerticalGlue());
@@ -55,14 +55,14 @@ public class LogInRight extends JPanel implements KeyListener {
         add(logInButton);
         add(Box.createVerticalStrut(20));
 
-        line = Box.createHorizontalBox() ;
+        line = Box.createHorizontalBox();
         line.add(Box.createHorizontalGlue());
         line.add(forgetPasswordText);
         line.add(Box.createHorizontalGlue());
         line.add(registerText);
         line.add(Box.createHorizontalGlue());
         add(line);
-    
+
         add(Box.createVerticalGlue());
 
         addListeners();
@@ -70,15 +70,16 @@ public class LogInRight extends JPanel implements KeyListener {
 
     private void showPassword(){
         if(showPasswordCheckBox.isSelected()){
-            passwordField.setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
             showPasswordCheckBox.setForeground(new Color(0, 191, 255));
+            passwordField.showPassword = true;
+            passwordField.setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
+            
         }
         if(showPasswordCheckBox.isSelected()==false){
             showPasswordCheckBox.setForeground(new Color(135, 206, 250));
             if(Arrays.equals(passwordField.getPassword(), Values.DEFAULT_PASSWORD)==false)
                 passwordField.setEchoChar(Values.PASSWORD_ECHO_CHAR);
         }
-       
     }
 
     private void addListeners() {
@@ -89,8 +90,6 @@ public class LogInRight extends JPanel implements KeyListener {
         passwordField.addFocusListener(passwordField);
         passwordField.addMouseListener(passwordField);
         passwordField.addKeyListener(passwordField);
-
-        // showPasswordCheckBox.addMouseListener(showPasswordCheckBox);
 
         logInButton.addMouseListener(logInButton);
         logInButton.addFocusListener(logInButton);
@@ -106,16 +105,21 @@ public class LogInRight extends JPanel implements KeyListener {
             try {
                 fetchData();
             } catch (ClassNotFoundException | IOException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
         });
         forgetPasswordText.addActionListener(l -> forgetPassword());
-        registerText.addActionListener(l -> register());
+        registerText.addActionListener(e -> {
+            try {
+                register();
+            } catch (ClassNotFoundException | IOException e1) {
+                e1.printStackTrace();
+            }
+        });
     }
     
     private void fetchData() throws ClassNotFoundException, IOException {
-        page.LogIn();
+        page.LogIn("mainPage");
         try{
             String email = emailField.getText();
             String password = passwordField.getText();
@@ -124,7 +128,7 @@ public class LogInRight extends JPanel implements KeyListener {
             conn c1 = new conn();
             ResultSet exist = c1.s.executeQuery(query);
             if (exist.next()) {
-                page.LogIn();
+                page.LogIn("mainPage");
             }
             else {
                 JOptionPane.showMessageDialog(null, "Invalid LogIn");
@@ -141,8 +145,8 @@ public class LogInRight extends JPanel implements KeyListener {
     private void forgetPassword(){
 
     }
-    private void register(){
-
+    private void register() throws ClassNotFoundException, IOException{
+        page.LogIn("regiPage");
     }
 
     @Override
