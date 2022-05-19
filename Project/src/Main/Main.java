@@ -50,9 +50,6 @@ public class Main extends JFrame {
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		Client client = new Client();
-		Datapoints.Link[][] links = client.getLinks();
-		System.out.println(links[0][0].url);
-		Datapoints.LINKS = links;
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {

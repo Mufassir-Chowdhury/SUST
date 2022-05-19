@@ -3,22 +3,15 @@ package Server;
 import java.io.*;
 import java.net.*;
 
+import Server.Datapoints.Courses;
+import Server.Datapoints.Event;
 import Server.Datapoints.Link;
+import Server.Datapoints.Notification;
+import Server.Datapoints.Student;
 
 public class Client {
     Socket clientSocket = null;  
-    DataOutputStream os = null;
-    BufferedReader is = null;
-    ObjectOutputStream oos = null;
     ObjectInputStream ois = null;
-
-    public Link[][] getLinks() throws ClassNotFoundException, IOException{
-        os.writeBytes( "1" + "\n" );
-        Link[][] links = (Link[][]) ois.readObject();
- 
-
-        return links;
-    }
 
     public Client() throws IOException, ClassNotFoundException {
         String hostname = "localhost";
@@ -27,9 +20,6 @@ public class Client {
 
         try {
             clientSocket = new Socket(hostname, port);
-            os = new DataOutputStream(clientSocket.getOutputStream());
-            is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            oos = new ObjectOutputStream(clientSocket.getOutputStream());
             ois = new ObjectInputStream(clientSocket.getInputStream());
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host: " + hostname);
@@ -38,41 +28,30 @@ public class Client {
             System.err.println(e);
         }
 
-        if (clientSocket == null || os == null || is == null) {
+        if (clientSocket == null) {
             System.err.println( "Something is wrong. One variable is null." );
             return;
         }
-
-        // try {
-        //     while ( true ) {
-        //         System.out.print( "Enter an integer (0 to stop connection, -1 to stop server): " );
-        //         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        //         String keyboardInput = br.readLine();
-        //         os.writeBytes( keyboardInput + "\n" );
-
-        //         int n = Integer.parseInt( keyboardInput );
-        //         if ( n == 0 || n == -1 ) {
-        //             break;
-        //         }
-        //         if(n == 1){
-        //             Link[][] links = (Link[][]) ois.readObject();
-        //             for(Link[] link : links){
-        //                 for(Link l : link){
-        //                     System.out.println(l.title + " " + l.url);
-        //                 }
-        //             }
-        //         } else{
-        //             String responseLine = is.readLine();
-        //             System.out.println("Server returns its square as: " + responseLine);
-
-        //         }
-        //     }
-
-        // } catch (UnknownHostException e) {
-            //     System.err.println("Trying to connect to unknown host: " + e);
-            // } catch (IOException e) {
-                //     System.err.println("IOException:  " + e);
-                // }
-            }           
+        Link[][] links = (Link[][]) ois.readObject();
+        String[] linkTitles = (String[]) ois.readObject();
+        Event[] events = (Event[]) ois.readObject();
+        Courses[] courses = (Courses[]) ois.readObject();
+        String[] details = (String[]) ois.readObject();
+        Notification[] exam = (Notification[]) ois.readObject();
+        Notification[] assignment = (Notification[]) ois.readObject();
+        Notification[] registration = (Notification[]) ois.readObject();
+        Notification[] notification = (Notification[]) ois.readObject();
+        Student[] students = (Student[]) ois.readObject();
+        Datapoints.LINKS = links;
+        Datapoints.EVENTS = events;
+        Datapoints.LINK_TITLES = linkTitles;
+        Datapoints.COURSES = courses;
+        Datapoints.DETAILS = details;
+        Datapoints.EXAM = exam;
+        Datapoints.ASSIGNMENT = assignment;
+        Datapoints.REGISTRATION = registration;
+        Datapoints.NOTIFICATION = notification;
+        Datapoints.STUDENTS = students;
+    }           
 }
 

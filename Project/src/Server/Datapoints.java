@@ -39,17 +39,13 @@ public class Datapoints{
                 new Page("Map", Icons.MAP, new map())},
         };
     }
-
-    public static final String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
-
     // public static final Page[] CLIENT = {
     //     new Page("STUDENT", Icons.STUDENT, new students()),
     //     new Page("TEACHER", Icons.TEACHER, new students()),
     //     new Page("ADMINISTRATOR", Icons.ADMINISTRATOR, new students()) 
     // };
-    public static Link[][] LINKS = null;
 
-    public static class Notification{
+    public static class Notification  implements Serializable{
         public String title, date;
         public Severity severity;
         public Boolean dismissable;
@@ -63,31 +59,8 @@ public class Datapoints{
             this.dismissable = dismissable;
         }
     }
-    public static String[] DETAILS = {
-        "Mufassir Ahmad Chowdhury",
-        "Student",
-        "Computer Science and Engineering",
-        "2nd year 1st semester"
-    };
-    public static Notification[] EXAM = {
-        new Notification(Notification.Severity.CRITICAL, "STAT", "Today", false),
-        new Notification(Notification.Severity.INFORMATIONAL, "Algo", "9th April", false),
-    };
-    public static Notification[] ASSIGNMENT = {
-        new Notification(Notification.Severity.INFORMATIONAL, "Algo", "Tuesday", false),
-    };
-    public static Notification[] REGISTRATION = {
-        new Notification(Notification.Severity.CRITICAL, "Fee Overdue", "Contact with register office today!", false),
-        new Notification(Notification.Severity.SUCCESS, "Registration", "Registration successful!", false),
-    };
-    public static Notification[] NOTIFICATIONS = {
-        new Notification(Notification.Severity.INFORMATIONAL, "Class Routine", "Class Routine is just updated", true),
-        new Notification(Notification.Severity.WARNING, "Exam", "New Exam Posted", true),
-        new Notification(Notification.Severity.INFORMATIONAL, "Resources", "Someone uploaded a resource", true),
-        new Notification(Notification.Severity.CRITICAL, "Fee Overdue", "Contact with register office today!", true),
-    };
     
-    public static class Student{
+    public static class Student  implements Serializable{
         public String registration;
         public String name;
         public String email;
@@ -106,26 +79,8 @@ public class Datapoints{
         }
     }
 
-    public static Student[] STUDENTS = {
-        new Student("2019331053", "M. M. Kabid Hasan", "kabidhasan34@gmail.com", "1521575632", "A+", "27 October", "Rajbari"),
-        new Student("2019331054", "Syed Sazid Hossain Rezvi", "fazle.rabbi.mahin.539@gmail.com", "1884374959", "O+", "12 November", "Dhamrai, Dhaka"),
-        new Student("2019331055", "Niloy Roy", "niloyroy1715@gmail.com", "1705814064", "O+", "14 May, 2000", "Rangpur"),
-        new Student("2019331057", "Ihsan Mirani Rumi", "ihsanmirani9865@gmail.com", "1864024910", "AB+", "5 June", "Dhaka"),
-        new Student("2019331058", "Md. Shihab Raihan", "soebshihab@gmail.com", "1798942838", "O+", "23,September", "Bogra"),
-        new Student("2019331059", "Mehedi Hasan", "imehedi357@gmail.com", "1706007087", "A+", "2 July", "Sirajganj"),
-        new Student("2019331060", "Muktadir Ahmed Palash", "palashmuktadir84@gmail.com", "1742655094", "A+", "10 February", "Bogra"),
-        new Student("2019331062", "Ariful Islam Farhad", "arifulfarhad300@gmail.com", "1856870527", "B+", "25 October", "Kishoreganj"),
-        new Student("2019331063", "Rubayet Sadman Sami", "rssami.bd@gmail.com", "1754966414", "B+", "23 March", "Sylhet"),
-        new Student("2019331064", "Md. Muhtasim Ahmed Bhuiyan", "muhtasim.ahmed.nhuiyan@gmail.com", "1715036340", "O+", "28 March", "Dhaka"),
-        new Student("2019331065", "MD. Naimul Haque", "nhnahin65@gmail.com", "1622403404", "A-", "16 September", "Chittagong"),
-        new Student("2019331067", "Mubashshira Tasneem", "mubashshiratasneem140918@gmail.com", "1761429552", "O+", "28 December,2000", "Tangail"),
-        new Student("2019331068", "Abdullah All Ferdouse", "siababdullah3946@gmail.com", "1575087097", "A+", "13 November", "Dhaka"),
-        new Student("2019331070", "Mostahid Hasan Fahim", "mostahidhasanFahim@gmail.com", "1759300449", "O+", "8 November", "Gaibandha"),
-        new Student("2019331071", "Md Mostakim Billah", "mostakimbillah512@gmail.com", "1814560020", "B+", "15 July", "Lalmonirhat"),
-    };
-
-    public static class Courses{
-        public class Assignment{
+    public static class Courses  implements Serializable{
+        public class Assignment implements Serializable{
             public String title;
             public String date;
             public String description;
@@ -139,7 +94,7 @@ public class Datapoints{
                 this.marksObtained = marksObtained;
             }
         }
-        public class Exam{
+        public class Exam implements Serializable{
             public String title;
             public String date;
             public String description;
@@ -153,8 +108,8 @@ public class Datapoints{
                 this.marksObtained = marksObtained;
             }
         }
-        public class Resource{
-            public class Syllabus{
+        public class Resource implements Serializable{
+            public class Syllabus implements Serializable{
                 public String title;
                 public Vector<String> topics;
                 public String comment;
@@ -164,7 +119,7 @@ public class Datapoints{
                     this.comment = comment;
                 }
             }
-            public class Videos{
+            public class Videos implements Serializable{
                 public String title;
                 public String url;
                 public String uploader;
@@ -176,7 +131,7 @@ public class Datapoints{
                     this.date = date;
                 }
             }
-            public class ResourceItem{
+            public class ResourceItem implements Serializable{
                 public String session;
                 public String title;
                 public String uploader;
@@ -239,15 +194,6 @@ public class Datapoints{
             assignments.add(new Assignment(title, date, description, totalMarks, marksObtained));
         }
     }
-    public static Courses[] COURSES = {
-        new Courses("CSE101", "Data Structure", "3", "A", 4.00f, 20, 0, true, 0),
-        new Courses("CSE102", "Algorithm", "3", "A", 4.00f, 15, 5, true, 0),
-        new Courses("CSE103", "Computer Architecture", "3", "A", 4.00f, 16, 4, true, 0),
-        new Courses("CSE104", "Operating System", "3", "A", 4.00f, 5, 15, true, 2),
-        new Courses("CSE105", "Computer Network", "3", "A", 4.00f, 12, 8, false, 0),
-        new Courses("CSE106", "Data Base", "3", "A", 4.00f, 10, 10, false, 2),
-        new Courses("CSE107", "Software Engineering", "3", "A", 4.00f, 16, 4, true, 0),
-    };
 
     public static class Link implements Serializable{
         public String title;
@@ -256,30 +202,9 @@ public class Datapoints{
             this.title = title;
             this.url = url;
         }
-        // public static String[] LINK_TITLES = {
-        //     "OFFICIAL_LINKS",
-        //     "ORGANIZATION_LINKS",
-        //     "FACEBOOK_LINKS"
-        // };
-        // public static Link[][] LINKS = {
-        //     {
-        //         new Link("SUST", "https://www.sust.edu/"),
-        //         new Link("E-Payment", "https://epayment.sust.edu/"),
-        //         new Link("Services", "https://services.student.sust.edu/"),
-        //         new Link("Library", "http://library.sust.edu/"),
-        //         new Link("Course Registration", "http://services.student.sust.edu:9090/student_login.jsp"),
-        //     },{
-        //         new Link("IQAC-SUST", "https://iqacsust.org/"),
-        //         new Link("ACM SUST", "https://sustsc.acm.org/"),
-        //     },{
-        //         new Link("SUSTian View", "https://www.facebook.com/groups/1576654242498653/"),
-        //         new Link("Amra SUSTian", "https://www.facebook.com/groups/AMRASUSTIAN"),
-        //     }
-        // };
-        
     }
 
-    public static class Event{
+    public static class Event implements Serializable{
         public String title;
         public String date;
         public String description;
@@ -296,10 +221,15 @@ public class Datapoints{
             this.interested = interested;
         }
     }
-    public static Event[] EVENTS = {
-        new Event("SUSTian Event 1", "1st April", "This is event 1", "SUST", "This is event 1", 0, 0),
-        new Event("SUSTian Event 2", "2nd April", "This is event 2", "SUST", "This is event 2", 0, 0),
-        new Event("SUSTian Event 3", "3rd April", "This is event 3", "SUST", "This is event 3", 0, 0),
-        new Event("SUSTian Event 4", "4th April", "This is event 4", "SUST", "This is event 4", 0, 0),
-    };
+    public static String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
+    public static Event[] EVENTS = null;
+    public static String[] LINK_TITLES = null;
+    public static Link[][] LINKS = null;
+    public static Courses[] COURSES = null;
+    public static String[] DETAILS = null;
+    public static Notification[] EXAM = null;
+    public static Notification[] ASSIGNMENT = null;
+    public static Notification[] REGISTRATION = null;
+    public static Notification[] NOTIFICATION = null;
+    public static Student[] STUDENTS = null;
 }

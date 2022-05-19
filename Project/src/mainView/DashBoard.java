@@ -44,7 +44,7 @@ class DashBoard extends JPanel {
         gbc.gridy = 3;
         gbc.weighty = 1;
         gbc.gridheight = 2;
-        add(new DashBoardItem("Notifications", Datapoints.NOTIFICATIONS), gbc);
+        add(new DashBoardItem("Notifications", Datapoints.NOTIFICATION), gbc);
     }
 
     class Profile extends JPanel{
