@@ -23,7 +23,6 @@ public class students extends JPanel {
         Box title = Box.createHorizontalBox();
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
         JLabel titleLabel = new JLabel("Students");
-        
         titleLabel.setFont(Fonts.DISPLAY);
         titleLabel.setForeground(Colors.PLAIN_TEXT);
         title.add(titleLabel);
@@ -40,9 +39,9 @@ public class students extends JPanel {
             line.add(registration);
             line.add(Box.createHorizontalStrut(5));
             JPanel info = new JPanel();
-            info.setBackground(new Color(52, 50, 52));
+            info.setBackground(new Color(255, 255, 255, 13));
             info.setLayout(new BoxLayout(info, BoxLayout.X_AXIS));
-            info.setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
+            info.setBorder(new EmptyBorder(new Insets(10, 5, 10, 5)));
             Box congestedInfo = Box.createVerticalBox();
             JLabel name = new JLabel(student.name);
             name.setForeground(Colors.PLAIN_TEXT);

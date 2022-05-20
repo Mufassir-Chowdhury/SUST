@@ -40,7 +40,7 @@ public class sideNavView extends JPanel{
 
         
         cards = new JPanel(new CardLayout());
-        // cards.setBackground(new Color(40, 40, 40));
+        // cards.setBackground(new Color(58, 58, 58, 76));
         cards.setBorder(new EmptyBorder(new Insets(10, 0, 50, 40)));
         cards.setOpaque(false);
         for(Datapoints.Page[] page: datapoints.getPages()){

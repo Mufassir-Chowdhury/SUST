@@ -184,11 +184,8 @@ public class Datapoints{
             this.regular = regular;
             this.leave = leave;
             assignments.add(new Assignment("Assignment 1" + this.name, this.attendance + "th April", "This is assignment 1", 100, 80));
-            assignments.add(new Assignment("Assignment 2" + this.name, this.attendance + "th April", "This is assignment 2", 100, 80));
-            assignments.add(new Assignment("Assignment 3" + this.name, this.attendance + "th April", "This is assignment 3", 100, 80));
             exams.add(new Exam("Exam 1" + this.name, this.attendance + "th April", "This is exam 1", 100, 80));
             exams.add(new Exam("Exam 2" + this.name, this.attendance + "th April", "This is exam 2", 100, 80));
-            exams.add(new Exam("Exam 3" + this.name, this.attendance + "th April", "This is exam 3", 100, 80));
         }
         public void addAssignment(String title, String date, String description, int totalMarks, int marksObtained){
             assignments.add(new Assignment(title, date, description, totalMarks, marksObtained));

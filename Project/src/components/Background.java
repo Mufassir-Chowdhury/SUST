@@ -29,7 +29,8 @@ public class Background extends JFrame {
 
     public Background() {
         setUndecorated(true);
-        setSize(Sizes.DEFAULT_WINDOW_SIZE);
+        setBackground(new Color(32, 32, 32, 240));
+        setMinimumSize(Sizes.DEFAULT_WINDOW_SIZE);
         setLayout(new BorderLayout());
         logInTitleBar = new TitleBar(this, getWidth());
 
