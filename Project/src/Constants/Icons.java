@@ -12,6 +12,8 @@ public class Icons {
     public static final ImageIcon RESTORE = Tools.imageScale("static/images/restore-white.png", Sizes.ICON_SIZE);
 
     public static final ImageIcon INFO = Tools.imageScale("static/images/info.png", Sizes.ICON_SIZE);
+    
+    public static final ImageIcon DP = Tools.imageScale("static/images/2019331073.png", Sizes.DP);
     // PAGE ICONS 
     
     public static final ImageIcon SCHEDULE = Tools.imageScale("static/pages/routine.png", Sizes.GUI_SMALL_SIZE);

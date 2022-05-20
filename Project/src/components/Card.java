@@ -20,6 +20,7 @@ public class Card extends JPanel {
     public Card(String text, Icon icon) {
     // public Card(int radius, String text, Icon icon, Color rong) {
         // super(radius, text, icon, rong);
+        setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         // setBackground(Colors.CARD);
         setBackground(new Color(50, 50, 50));
@@ -45,10 +46,5 @@ public class Card extends JPanel {
         g.setColor(Colors.CARD);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
         super.paintComponent(g);
-    }
-    @Override
-    protected void paintBorder(Graphics g) {
-        g.setColor(Colors.CARD);
-        g.drawRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
     }
 }

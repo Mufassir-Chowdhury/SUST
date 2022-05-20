@@ -22,16 +22,6 @@ import Constants.Sizes;
 import Constants.Values;
 
 public class TextField extends JPasswordField implements MouseListener, FocusListener, KeyListener {
-    public class CustomTextField extends TextField{
-        public CustomTextField(String placeholder, TYPE type) {
-            super(placeholder, type);
-        }
-    }
-    public class CustomPasswordField extends TextField {
-        public CustomPasswordField(boolean showPassword, TYPE type) {
-            super(showPassword, type);
-        }
-    }
     public Boolean showPassword;
     private Color background = Colors.TEXT_FIELD_BACKGROUND;
     private Color border = Colors.TEXT_FIELD_BORDER;
@@ -111,7 +101,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     @Override
     public void focusGained(FocusEvent e) {
         border = Colors.ACCENT;
-        background = new Color(32, 30, 31);
+        background = new Color(30, 30, 30, 178);
         repaint();
     }
 
@@ -148,7 +138,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     @Override
     public void mouseEntered(MouseEvent e) {
         if(isFocusOwner()) return;
-        background = new Color(57, 48, 50);
+        background = new Color(255, 255, 255, 21);
         repaint();
     }
 

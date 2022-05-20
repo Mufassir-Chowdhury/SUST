@@ -6,6 +6,7 @@ public class Sizes {
     public static final int TITLE_BAR_HEIGHT = 35;
     public static final int CARD_SPACING = 10;
     public static final int CARD_SPACING_LONG = 50;
+    public static final Dimension DP = new Dimension(75, 75);
 
     public static final Dimension BUTTON_SIZE = new Dimension(120, 32);
     public static final Dimension DEFAULT_WINDOW_SIZE = new Dimension(1280, 675);

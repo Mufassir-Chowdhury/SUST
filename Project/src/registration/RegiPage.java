@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import Components.InputFields.TextField;
-import Components.InputFields.TextField.CustomTextField;
 import Components.InputFields.TextField.TYPE;
 import Constants.Sizes;
 import java.awt.*;

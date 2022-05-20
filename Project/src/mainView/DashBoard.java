@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Color;
@@ -19,6 +20,7 @@ import java.awt.Dimension;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
+import Constants.Sizes;
 import Server.Datapoints;
 
 class DashBoard extends JPanel {
@@ -52,9 +54,10 @@ class DashBoard extends JPanel {
             setOpaque(false);
             setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-            JLabel title = new JLabel("Profile");
+            JLabel title = new JLabel(Icons.DP);
             title.setForeground(Colors.PLAIN_TEXT);
             title.setAlignmentX(Component.LEFT_ALIGNMENT);
+            
             add(title);
             add(Box.createHorizontalGlue());
             
@@ -85,7 +88,7 @@ class DashBoard extends JPanel {
     class DashBoardItem extends JPanel {
         class Title extends JPanel{
             public Title(String title){
-                setBackground(new Color(80, 75, 75));
+                setOpaque(false);
                 setLayout(new BorderLayout());
                 setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
                 JLabel label = new JLabel(title);
@@ -94,19 +97,20 @@ class DashBoard extends JPanel {
                 label.setHorizontalAlignment(SwingConstants.CENTER);
                 add(label);
             }
+            @Override
+            protected void paintComponent(Graphics g) {
+                g.setColor(new Color(84, 84, 84, 163));
+                g.fillRoundRect(0, 0, getWidth(), getHeight()+7, 7, 7);
+                super.paintComponent(g);
+            }
         }
         class DashBoardInfo extends JPanel {
             class DashBoardInfoCard extends JPanel {
+                Datapoints.Notification.Severity severity;
                 public DashBoardInfoCard(Datapoints.Notification notification){
                     setLayout(new BorderLayout());
-                    if(notification.severity == Datapoints.Notification.Severity.INFORMATIONAL)
-                        setBackground(new Color(80, 70, 70));
-                    else if(notification.severity == Datapoints.Notification.Severity.SUCCESS)
-                        setBackground(new Color(57, 61, 27));
-                    else if(notification.severity == Datapoints.Notification.Severity.WARNING)
-                        setBackground(new Color(67, 53, 25));
-                    else if(notification.severity == Datapoints.Notification.Severity.CRITICAL)
-                        setBackground(new Color(68, 39, 38));
+                    setOpaque(false);
+                    this.severity = notification.severity;
                     setMaximumSize(new Dimension(1000, 40));
                     setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
                     add(new JLabel(Icons.INFO), BorderLayout.WEST);
@@ -123,6 +127,19 @@ class DashBoard extends JPanel {
                     date.setHorizontalTextPosition(SwingConstants.LEADING);
                     add(date, BorderLayout.EAST);
                 }
+                @Override
+                protected void paintComponent(Graphics g) {
+                    if(severity == Datapoints.Notification.Severity.INFORMATIONAL)
+                        g.setColor(new Color(80, 70, 70, 255));
+                    else if(severity == Datapoints.Notification.Severity.SUCCESS)
+                        g.setColor(new Color(57, 61, 27, 255));
+                    else if(severity == Datapoints.Notification.Severity.WARNING)
+                        g.setColor(new Color(67, 53, 25, 255));
+                    else if(severity == Datapoints.Notification.Severity.CRITICAL)
+                        g.setColor(new Color(68, 39, 38, 255));
+                    g.fillRoundRect(0, 0, getWidth(), getHeight()+7, 7, 7);
+                    super.paintComponent(g);
+                }
             }
             public DashBoardInfo(Datapoints.Notification[] notifications){
                 setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -137,9 +154,15 @@ class DashBoard extends JPanel {
         }
         public DashBoardItem(String title, Datapoints.Notification[] notifications){
             setLayout(new BorderLayout());
+            setOpaque(false);
             add(new Title(title), BorderLayout.PAGE_START);
             add(new DashBoardInfo(notifications), BorderLayout.CENTER);
-            setBackground(new Color(70, 65, 65));
+        }
+        @Override
+        protected void paintComponent(Graphics g) {
+            g.setColor(new Color(84, 84, 84, 163));
+            g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
+            super.paintComponent(g);
         }
     }
 }
