@@ -14,6 +14,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+// import Constants.Fields;
+
 import Constants.Fonts;
 import Constants.Colors;
 
@@ -77,6 +79,20 @@ public class RegiPage extends JScrollPane {
 		allFieldPanel.add(Box.createVerticalStrut(Sizes.CARD_SPACING));
 	}
 
+	private void createROw(JPanel row, JPanel col1, JPanel col2)
+	{
+		row = new JPanel();
+		row.setOpaque(false);
+		row.setLayout(new BoxLayout(row, BoxLayout.X_AXIS));
+
+		row.add(col1);
+		row.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
+		row.add(col2);
+
+		allFieldPanel.add(row);
+		allFieldPanel.add(Box.createVerticalStrut(Sizes.CARD_SPACING));
+	}
+
 	public RegiPage(Main main) {
 			setSize(Sizes.DEFAULT_WINDOW_SIZE);
 			setOpaque(false);
@@ -104,6 +120,8 @@ public class RegiPage extends JScrollPane {
 					emailLabel, secondaryEmailLabel,
 					"Email", "Secondary Email",
 					emailField, secondaryEmailField);
+			
+			// createROw(row1, emailPanel, secondaryEmailPanel);
 
 			createRow(row2, firstNamePanel, lastNamePanel,
 					firstNameLabel, lastNameLabel,

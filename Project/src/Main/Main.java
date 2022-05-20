@@ -59,7 +59,6 @@ public class Main extends JFrame {
 				try {
 					new Main();
 				} catch (ClassNotFoundException | IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
