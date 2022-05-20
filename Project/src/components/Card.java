@@ -13,32 +13,17 @@ import Constants.Fonts;
 import Constants.Sizes;
 
 public class Card extends JPanel {
-// class Card extends RoundedPanel {
-    JLabel logo = new JLabel();
-    JLabel label = new JLabel();
-
     public Card(String text, Icon icon) {
-    // public Card(int radius, String text, Icon icon, Color rong) {
-        // super(radius, text, icon, rong);
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        // setBackground(Colors.CARD);
-        setBackground(new Color(50, 50, 50));
-        setSize(Sizes.CARD_SIZE);
-        setMinimumSize(Sizes.CARD_SIZE);
         setMaximumSize(Sizes.CARD_SIZE);
-
-        logo.setIcon(icon);
+        
+        JLabel logo = new JLabel(icon);
         logo.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        label.setText(text);
-        label.setFont(Fonts.BODY_LARGE);
-        label.setForeground(Colors.ACCENT);
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         add(Box.createVerticalGlue());
         add(logo);
-        add(label);
+        add(new Label(text, Fonts.BODY_LARGE, Component.CENTER_ALIGNMENT));
         add(Box.createVerticalGlue());
     }
     @Override

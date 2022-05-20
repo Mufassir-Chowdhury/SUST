@@ -2,10 +2,9 @@ package pages.pageView;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Constants.Colors;
+import Components.Label;
 import Constants.Fonts;
 import Server.Datapoints;
 import java.awt.Component;
@@ -14,17 +13,13 @@ public class assignment extends JPanel {
     class line extends Box{
         public line(Datapoints.Courses.Assignment assignment){
             super(BoxLayout.X_AXIS);
-            JLabel name = new JLabel(assignment.title);
-            add(name);
+            add(new Label(assignment.title, Fonts.BODY_LARGE));
             add(Box.createHorizontalGlue());
-            JLabel date = new JLabel(assignment.date);
-            add(date);
+            add(new Label(assignment.date, Fonts.Body));
             add(Box.createHorizontalGlue());
-            JLabel weight = new JLabel(String.valueOf(assignment.totalMarks));
-            add(weight);
+            add(new Label(String.valueOf(assignment.totalMarks), Fonts.Body));
             add(Box.createHorizontalGlue());
-            JLabel marks = new JLabel(String.valueOf(assignment.marksObtained));
-            add(marks);
+            add(new Label(String.valueOf(assignment.marksObtained), Fonts.Body));
             add(Box.createHorizontalGlue());
         }
     }
@@ -33,23 +28,14 @@ public class assignment extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box title = Box.createHorizontalBox();
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        JLabel titleLabel = new JLabel("Students");
-        titleLabel.setFont(Fonts.DISPLAY);
-        titleLabel.setForeground(Colors.PLAIN_TEXT);
-        title.add(titleLabel);
+        title.add(new Label("Assignment", Fonts.DISPLAY));
         add(title);
         add(Box.createVerticalStrut(20));
-        JLabel regular = new JLabel("Regular Courses");
-        regular.setAlignmentX(Component.LEFT_ALIGNMENT);
-        add(regular);
+        add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.COURSES){
             if(course.regular.equals(true)){
-                JLabel registration = new JLabel(course.code);
-                registration.setAlignmentX(Component.LEFT_ALIGNMENT);
-                add(registration);
-                JLabel name = new JLabel(course.name);
-                name.setAlignmentX(Component.LEFT_ALIGNMENT);
-                add(name);
+                add(new Label(course.code, Fonts.Body, Component.LEFT_ALIGNMENT));
+                add(new Label(course.name, Fonts.Body, Component.LEFT_ALIGNMENT));
                 for(Datapoints.Courses.Assignment assignment: course.assignments){
                     line line = new line(assignment);
                     line.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -57,17 +43,11 @@ public class assignment extends JPanel {
                 }
             }
         }
-        JLabel drop = new JLabel("Drop Courses");
-        drop.setAlignmentX(Component.LEFT_ALIGNMENT);
-        add(drop);
+        add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.COURSES){
             if(course.regular.equals(false)){
-                JLabel registration = new JLabel(course.code);
-                registration.setAlignmentX(Component.LEFT_ALIGNMENT);
-                add(registration);
-                JLabel name = new JLabel(course.name);
-                name.setAlignmentX(Component.LEFT_ALIGNMENT);
-                add(name);
+                add(new Label(course.code, Fonts.Body, Component.LEFT_ALIGNMENT));
+                add(new Label(course.name, Fonts.Body, Component.LEFT_ALIGNMENT));
                 for(Datapoints.Courses.Assignment assignment: course.assignments){
                     line line = new line(assignment);
                     line.setAlignmentX(Component.LEFT_ALIGNMENT);

@@ -1,45 +1,41 @@
 package pages.pageView;
 
+import java.awt.Component;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Components.Label;
+import Constants.Fonts;
 import Server.Datapoints;
 
 public class attendance extends JPanel {
     class line extends Box{
         public line(Datapoints.Courses course){
             super(BoxLayout.X_AXIS);
-            JLabel registration = new JLabel(course.code);
-            add(registration);
+            add(new Label(course.code, Fonts.BODY_LARGE));
             add(Box.createHorizontalGlue());
-            JLabel name = new JLabel(course.name);
-            add(name);
+            add(new Label(course.name, Fonts.BODY_LARGE));
             add(Box.createHorizontalGlue());
-            JLabel attendance = new JLabel(String.valueOf(course.attendance));
-            add(attendance);
+            add(new Label(String.valueOf(course.attendance), Fonts.Body));
             add(Box.createHorizontalGlue());
-            JLabel absent = new JLabel(String.valueOf(course.absent));
-            add(absent);
+            add(new Label(String.valueOf(course.absent), Fonts.Body));
             add(Box.createHorizontalGlue());
-            JLabel leave = new JLabel(String.valueOf(course.leave));
-            add(leave);
+            add(new Label(String.valueOf(course.leave), Fonts.Body));
             add(Box.createHorizontalGlue());
         }
     }
     public attendance(){
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        JLabel regular = new JLabel("Regular Courses");
-        add(regular);
+        add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.COURSES){
             if(course.regular.equals(true)){
                 line line = new line(course);
                 add(line);
             }
         }
-        JLabel drop = new JLabel("Drop Courses");
-        add(drop);
+        add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.COURSES){
             if(course.regular.equals(false)){
                 line line = new line(course);

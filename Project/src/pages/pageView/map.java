@@ -1,11 +1,12 @@
 package pages.pageView;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Components.Label;
+import Constants.Fonts;
 
 public class map extends JPanel {
     public map(){
-        JLabel jlab = new JLabel("map");
-        add(jlab);
+        add(new Label("map", Fonts.DISPLAY));
     }
 }

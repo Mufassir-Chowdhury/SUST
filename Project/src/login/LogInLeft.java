@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import Components.Label;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
@@ -41,22 +42,8 @@ class LogInLeft extends JPanel {
         public Text(){
             setOpaque(false);
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-            add(new AppName());
-            add(new Slogan());
-        }
-    }
-    private class AppName extends JLabel{
-        public AppName(){
-            setText("SUST");
-            setFont(Fonts.DISPLAY);
-            setForeground(Colors.ACCENT);
-        }
-    }
-    private class Slogan extends JLabel{
-        public Slogan(){
-            setText("Bringing Everything In One Place");
-            setFont(Fonts.SUBTITLE);
-            setForeground(Colors.PLAIN_TEXT);
+            add(new Label("SUST", Fonts.DISPLAY, Colors.ACCENT));
+            add(new Label("Bringing Everything in One Place", Fonts.SUBTITLE));
         }
     }
 }

@@ -1,6 +1,5 @@
 package login;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 // import java.sql.ResultSet;
 import java.awt.event.KeyEvent;

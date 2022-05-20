@@ -7,13 +7,13 @@ import javax.swing.JComboBox;
 import java.awt.CardLayout;
 import java.awt.Color;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Insets;
 import java.awt.GridLayout;
 import javax.swing.border.EmptyBorder;
 
 import Components.Card;
+import Components.Label;
 import Components.Buttons.AccentButton;
 
 import java.awt.Component;
@@ -27,10 +27,7 @@ public class resources extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box title = Box.createHorizontalBox();
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        JLabel titleLabel = new JLabel("Resourses");
-        titleLabel.setFont(Fonts.DISPLAY);
-        titleLabel.setForeground(Colors.PLAIN_TEXT);
-        title.add(titleLabel);
+        title.add(new Label("Resources", Fonts.DISPLAY));
         title.add(Box.createHorizontalGlue());
         AccentButton addStudent = new AccentButton("Post New Material");
         title.add(addStudent);

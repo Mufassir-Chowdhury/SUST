@@ -1,13 +1,13 @@
 package pages.pageView;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Components.Label;
+import Constants.Fonts;
 
 public class notice extends JPanel {
     public notice(){
-        JLabel notice = new JLabel("Official Notices");
-        add(notice);
-        JLabel posts = new JLabel("Community Posts");
-        add(posts);
+        add(new Label("Official Notices", Fonts.TITLE));
+        add(new Label("Community Posts", Fonts.TITLE));
     }
 }

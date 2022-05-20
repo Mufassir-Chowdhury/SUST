@@ -1,11 +1,12 @@
 package pages.pageView;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Components.Label;
+import Constants.Fonts;
 
 public class bus extends JPanel {
     public bus(){
-        JLabel jlab = new JLabel("bus");
-        add(jlab);
+        add(new Label("BUS", Fonts.DISPLAY));
     }
 }

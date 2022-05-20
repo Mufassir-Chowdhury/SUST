@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Components.Label;
+
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -20,7 +22,6 @@ import java.awt.Dimension;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
-import Constants.Sizes;
 import Server.Datapoints;
 
 class DashBoard extends JPanel {
@@ -64,10 +65,7 @@ class DashBoard extends JPanel {
             Box line = Box.createVerticalBox();
             line.add(Box.createVerticalGlue());
             for(int i=0; i<Datapoints.DETAILS.length; i++){
-                JLabel detail = new JLabel(Datapoints.DETAILS[i]);
-                detail.setForeground(Colors.PLAIN_TEXT);
-                detail.setAlignmentX(Component.RIGHT_ALIGNMENT);
-                line.add(detail);
+                line.add(new Label(Datapoints.DETAILS[i], Fonts.PLAIN_TEXT, Component.RIGHT_ALIGNMENT));
                 if(i == 0)
                     line.add(Box.createVerticalGlue());
             }
@@ -91,11 +89,7 @@ class DashBoard extends JPanel {
                 setOpaque(false);
                 setLayout(new BorderLayout());
                 setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
-                JLabel label = new JLabel(title);
-                label.setForeground(Colors.PLAIN_TEXT);
-                label.setFont(Fonts.BODY_LARGE);
-                label.setHorizontalAlignment(SwingConstants.CENTER);
-                add(label);
+                add(new Label(title, Fonts.BODY_LARGE, SwingConstants.CENTER));
             }
             @Override
             protected void paintComponent(Graphics g) {
@@ -114,17 +108,12 @@ class DashBoard extends JPanel {
                     setMaximumSize(new Dimension(1000, 40));
                     setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
                     add(new JLabel(Icons.INFO), BorderLayout.WEST);
-                    JLabel title = new JLabel(notification.title);
-                    title.setForeground(Colors.PLAIN_TEXT);
+                    Label title = new Label(notification.title, Fonts.Body);
                     title.setBorder(new EmptyBorder(5, 10, 5, 10));
-                    title.setFont(Fonts.Body);
                     add(title, BorderLayout.CENTER);
-                    JLabel date = new JLabel(notification.date);
-                    date.setForeground(Colors.PLAIN_TEXT);
-                    date.setFont(Fonts.CAPTION);
+                    Label date = new Label(notification.date, Fonts.CAPTION, SwingConstants.LEADING);
                     if(notification.dismissable)
                         date.setIcon(Icons.CLOSE);
-                    date.setHorizontalTextPosition(SwingConstants.LEADING);
                     add(date, BorderLayout.EAST);
                 }
                 @Override

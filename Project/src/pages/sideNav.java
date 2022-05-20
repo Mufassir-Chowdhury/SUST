@@ -9,6 +9,7 @@ import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
+import Components.Label;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Constants.Colors;
@@ -91,12 +92,9 @@ public class sideNav extends JPanel {
         add(list);
         add(Box.createVerticalGlue());
         add(new JSeparator());
-        JLabel settings = new JLabel("Settings");
-        settings.setFont(Fonts.Body);
+        Label settings = new Label("Settings", Fonts.Body, Component.LEFT_ALIGNMENT);
         settings.setIcon(Icons.PAYMENT);
         settings.setOpaque(false);
-        settings.setForeground(Colors.PLAIN_TEXT);
-        settings.setAlignmentX(Component.LEFT_ALIGNMENT);
         settings.setIconTextGap(20);
         settings.setBorder(new EmptyBorder(new Insets(5, 0, 5,0)));
         add(settings);

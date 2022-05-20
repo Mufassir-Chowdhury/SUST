@@ -1,11 +1,12 @@
 package pages.pageView;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import Components.Label;
+import Constants.Fonts;
 
 public class routine extends JPanel{
     public routine(){
-        JLabel jlab = new JLabel("routine");
-        add(jlab);
+        add(new Label("Routine", Fonts.DISPLAY));
     }
 }
