@@ -10,6 +10,8 @@ public class Icons {
     public static final ImageIcon FULL_SCREEN = Tools.imageScale("static/images/full-screen.png", Sizes.ICON_SIZE);
     public static final ImageIcon MINIMIZE = Tools.imageScale("static/images/minimize.png", Sizes.ICON_SIZE);
     public static final ImageIcon RESTORE = Tools.imageScale("static/images/restore-white.png", Sizes.ICON_SIZE);
+    public static final ImageIcon BACK = Tools.imageScale("static/images/back-white.png", Sizes.ICON_SIZE);
+    public static final ImageIcon BACK_COLORED = Tools.imageScale("static/images/back-color.png", Sizes.ICON_SIZE);
 
     public static final ImageIcon INFO = Tools.imageScale("static/images/info.png", Sizes.ICON_SIZE);
     

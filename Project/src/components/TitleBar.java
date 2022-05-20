@@ -24,7 +24,7 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	public  Point point;
 	public Dimension size;
 	private static final long serialVersionUID = 1L;
-	private JLabel minimizeIcon, closeIcon, fullScreenIcon;
+	private JLabel minimizeIcon, closeIcon, fullScreenIcon, backIcon;
 	private Background frame;
 	public int width, height;
 	public Component source;
@@ -57,6 +57,14 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		minimizeIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		add(minimizeIcon);
 
+		backIcon = new JLabel(Icons.BACK_COLORED);
+		// backIcon = new JLabel(Icons.BACK);
+		springLayout.putConstraint(SpringLayout.NORTH, backIcon, 0, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.WEST, backIcon, 0, SpringLayout.WEST, this);
+		backIcon.setSize(Sizes.ICON_SIZE);
+		backIcon.setBorder(Padding.TITLE_BAR_ITEM);
+		add(backIcon);
+
 		addListeners();
 	}
 	
@@ -69,6 +77,9 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 
 		minimizeIcon.addMouseListener(this);
 		minimizeIcon.addMouseMotionListener(this);
+
+		backIcon.addMouseListener(this);
+		backIcon.addMouseMotionListener(this);
 	}
 
 	@Override
@@ -104,8 +115,11 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 				frame.Normal();
 			}
 		}
-		else if(e.getSource() == minimizeIcon) {
+		else if (e.getSource() == minimizeIcon) {
 			frame.setState(Frame.ICONIFIED);
+		}
+		else if (e.getSource() == backIcon) {
+			//TODO code goes here
 		}
 	}
 
@@ -131,9 +145,13 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 			fullScreenIcon.setOpaque(true);
 			fullScreenIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
 		}
-		else if(source == minimizeIcon) {
+		else if (source == minimizeIcon) {
 			minimizeIcon.setOpaque(true);
 			minimizeIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
+		}
+		else if (source == backIcon) {
+			backIcon.setOpaque(true);
+			backIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
 		}
 	}
 
@@ -148,9 +166,13 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 			fullScreenIcon.setOpaque(false);
 			fullScreenIcon.setBackground(null);
 		}
-		else if(source == minimizeIcon) {
+		else if (source == minimizeIcon) {
 			minimizeIcon.setOpaque(false);
 			minimizeIcon.setBackground(null);
+		}
+		else if(source == backIcon) {
+			backIcon.setOpaque(false);
+			backIcon.setBackground(null);
 		}
 	}
 }
