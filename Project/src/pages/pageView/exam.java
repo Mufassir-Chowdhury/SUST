@@ -3,48 +3,68 @@ package pages.pageView;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.Component;
+import java.awt.Dimension;
+
 import Components.Label;
+import Components.ListItem;
 import Constants.Fonts;
 import Server.Datapoints;
 
 public class exam extends JPanel {
-    class line extends Box{
-        public line(Datapoints.Courses.Exam exam){
-            super(BoxLayout.X_AXIS);
-            add(new Label(exam.title, Fonts.BODY_LARGE));
-            add(Box.createHorizontalGlue());
-            add(new Label(exam.date, Fonts.BODY_LARGE));
-            add(Box.createHorizontalGlue());
-            add(new Label(String.valueOf(exam.totalMarks), Fonts.Body));
-            add(Box.createHorizontalGlue());
-            add(new Label(String.valueOf(exam.marksObtained), Fonts.Body));
-            add(Box.createHorizontalGlue());
-        }
-    }
     public exam(){
+        setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
+        Box title = Box.createHorizontalBox();
+        title.setAlignmentX(Component.LEFT_ALIGNMENT);
+        title.add(new Label("Exams", Fonts.DISPLAY));
+        add(title);
+        add(Box.createVerticalStrut(20));
+        JPanel list = new JPanel();
+        list.setOpaque(false);
+        list.setAlignmentX(Component.LEFT_ALIGNMENT);
+        list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
+        list.add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.COURSES){
             if(course.regular.equals(true)){
-                add(new Label(course.code, Fonts.Body));
-                add(new Label(course.name, Fonts.Body));
                 for(Datapoints.Courses.Exam exam: course.exams){
-                    line line = new line(exam);
-                    add(line);
+                    Box line = Box.createHorizontalBox();
+                    line.setMaximumSize(new Dimension(1000, 60));
+                    line.setAlignmentX(Component.LEFT_ALIGNMENT);
+                    line.add(new ListItem(
+                        exam.title, 
+                        course.name, 
+                        exam.date, 
+                        String.format("%03d", exam.totalMarks) + "   " + String.format("%03d", exam.marksObtained)));
+                    list.add(line);
+                    list.add(Box.createVerticalStrut(10));
                 }
             }
         }
-        add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
+        list.add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.COURSES){
             if(course.regular.equals(false)){
-                add(new Label(course.code, Fonts.Body));
-                add(new Label(course.name, Fonts.Body));
                 for(Datapoints.Courses.Exam exam: course.exams){
-                    line line = new line(exam);
-                    add(line);
+                    Box line = Box.createHorizontalBox();
+                    line.setMaximumSize(new Dimension(1000, 60));
+                    line.setAlignmentX(Component.LEFT_ALIGNMENT);
+                    line.add(new ListItem(
+                        exam.title, 
+                        course.name, 
+                        exam.date, 
+                        String.format("%03d", exam.totalMarks) + "   " + String.format("%03d", exam.marksObtained)));
+                    list.add(line);
+                    list.add(Box.createVerticalStrut(10));
                 }
             }
         }
+        JScrollPane scroll = new JScrollPane(list);
+        scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
+        scroll.setOpaque(false);
+        scroll.getViewport().setOpaque(false);
+        scroll.setBorder(null);
+        add(scroll);
     }
 }

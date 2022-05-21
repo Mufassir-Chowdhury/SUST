@@ -3,26 +3,16 @@ package pages.pageView;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import Components.Label;
+import Components.ListItem;
 import Constants.Fonts;
 import Server.Datapoints;
 import java.awt.Component;
+import java.awt.Dimension;
 
 public class assignment extends JPanel {
-    class line extends Box{
-        public line(Datapoints.Courses.Assignment assignment){
-            super(BoxLayout.X_AXIS);
-            add(new Label(assignment.title, Fonts.BODY_LARGE));
-            add(Box.createHorizontalGlue());
-            add(new Label(assignment.date, Fonts.Body));
-            add(Box.createHorizontalGlue());
-            add(new Label(String.valueOf(assignment.totalMarks), Fonts.Body));
-            add(Box.createHorizontalGlue());
-            add(new Label(String.valueOf(assignment.marksObtained), Fonts.Body));
-            add(Box.createHorizontalGlue());
-        }
-    }
     public assignment(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -31,29 +21,49 @@ public class assignment extends JPanel {
         title.add(new Label("Assignment", Fonts.DISPLAY));
         add(title);
         add(Box.createVerticalStrut(20));
-        add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
+        JPanel list = new JPanel();
+        list.setOpaque(false);
+        list.setAlignmentX(Component.LEFT_ALIGNMENT);
+        list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
+        list.add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.COURSES){
             if(course.regular.equals(true)){
-                add(new Label(course.code, Fonts.Body, Component.LEFT_ALIGNMENT));
-                add(new Label(course.name, Fonts.Body, Component.LEFT_ALIGNMENT));
                 for(Datapoints.Courses.Assignment assignment: course.assignments){
-                    line line = new line(assignment);
+                    Box line = Box.createHorizontalBox();
+                    line.setMaximumSize(new Dimension(1000, 60));
                     line.setAlignmentX(Component.LEFT_ALIGNMENT);
-                    add(line);
+                    line.add(new ListItem(
+                        assignment.title, 
+                        course.name, 
+                        assignment.date, 
+                        String.format("%03d", assignment.totalMarks) + "   " + String.format("%03d", assignment.marksObtained)));
+                    list.add(line);
+                    list.add(Box.createVerticalStrut(10));
                 }
             }
         }
-        add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
+        list.add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.COURSES){
             if(course.regular.equals(false)){
-                add(new Label(course.code, Fonts.Body, Component.LEFT_ALIGNMENT));
-                add(new Label(course.name, Fonts.Body, Component.LEFT_ALIGNMENT));
                 for(Datapoints.Courses.Assignment assignment: course.assignments){
-                    line line = new line(assignment);
+                    Box line = Box.createHorizontalBox();
+                    line.setMaximumSize(new Dimension(1000, 60));
                     line.setAlignmentX(Component.LEFT_ALIGNMENT);
-                    add(line);
+                    line.add(new ListItem(
+                        assignment.title, 
+                        course.name, 
+                        assignment.date, 
+                        String.format("%03d", assignment.totalMarks) + "   " + String.format("%03d", assignment.marksObtained)));
+                    list.add(line);
+                    list.add(Box.createVerticalStrut(10));
                 }
             }
         }
+        JScrollPane scroll = new JScrollPane(list);
+        scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
+        scroll.setOpaque(false);
+        scroll.getViewport().setOpaque(false);
+        scroll.setBorder(null);
+        add(scroll);
     }
 }

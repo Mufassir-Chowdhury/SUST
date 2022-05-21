@@ -9,6 +9,7 @@ import Components.Label;
 import Components.ListItem;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 import Constants.Fonts;
 import Server.Datapoints;
@@ -27,6 +28,7 @@ public class students extends JPanel {
         list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
         for(Datapoints.Student student: Datapoints.STUDENTS){
             Box line = Box.createHorizontalBox();
+            line.setMaximumSize(new Dimension(1000, 60));
             line.add(new Label((student.registration.substring(student.registration.length() - 3)), Fonts.BODY_LARGE));
             line.add(Box.createHorizontalStrut(5));
             line.add(new ListItem(
