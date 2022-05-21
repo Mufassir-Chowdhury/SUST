@@ -2,8 +2,8 @@ package login;
 import java.awt.Color;
 import java.awt.Dimension;
 // import java.sql.ResultSet;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
+import java.awt.Component;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import Components.Buttons.AccentButton;
 import Components.Buttons.HyperLinkButton;
 import Components.InputFields.TextField;
+import Constants.Colors;
 import Constants.Sizes;
 import Constants.Values;
 import Constants.conn;
@@ -22,7 +23,7 @@ import login.Utilities.showPassword;
 import java.sql.ResultSet;
 
 
-public class LogInRight extends JPanel implements KeyListener {
+public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     private AccentButton logInButton = new AccentButton("Log In");
     private TextField emailField = new TextField(" Email Address", TextField.TYPE.PLAIN);
@@ -33,6 +34,7 @@ public class LogInRight extends JPanel implements KeyListener {
     private static final long serialVersionUID = 1L;  
     private Box line = Box.createHorizontalBox();
     private LogInPage page;
+    private Component source;
     private char key;
     
     public LogInRight(LogInPage page) {
@@ -85,6 +87,7 @@ public class LogInRight extends JPanel implements KeyListener {
         emailField.addFocusListener(emailField);
         emailField.addMouseListener(emailField);
         emailField.addKeyListener(emailField);
+        emailField.addFocusListener(this);
 
         passwordField.addFocusListener(passwordField);
         passwordField.addMouseListener(passwordField);
@@ -144,8 +147,22 @@ public class LogInRight extends JPanel implements KeyListener {
     private void forgetPassword(){
 
     }
-    private void register() throws ClassNotFoundException, IOException{
+
+    private void register() throws ClassNotFoundException, IOException {
         page.LogIn("regiPage");
+    }
+
+    private void checkValidity(String input)
+    {
+        String format = ".sust.edu";
+        if(input.equals(" Email Address")) return;
+        if (input.endsWith(format)) {
+            emailField.setForeground(Color.green);
+        }
+        else
+        {
+            emailField.setForeground(Color.red);
+        }
     }
 
     @Override
@@ -157,6 +174,7 @@ public class LogInRight extends JPanel implements KeyListener {
             } catch (ClassNotFoundException | IOException e1) {
                 e1.printStackTrace();
             }
+            return;
         }
     }
 
@@ -168,6 +186,25 @@ public class LogInRight extends JPanel implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         
+    }
+
+    @Override
+    public void focusGained(FocusEvent e) {
+        source = e.getComponent();
+        if(source == emailField)
+        {
+            emailField.setForeground(Colors.PLAIN_TEXT);
+        }
+        
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        source = e.getComponent();
+        if(source == emailField)
+        {
+            checkValidity(emailField.getText());
+        }
     }
 
 }

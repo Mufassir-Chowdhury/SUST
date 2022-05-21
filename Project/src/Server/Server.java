@@ -11,11 +11,16 @@ import Server.Datapoints.Student;
 
 public class Server {
     
-    public static String[] LINK_TITLES = {
+    public static  String[] LINK_TITLES = {
         "OFFICIAL_LINKS",
         "ORGANIZATION_LINKS",
         "FACEBOOK_LINKS"
     };
+
+    
+    
+    
+    
     public static Link[][] LINKS = {
         {
             new Link("SUST", "https://www.sust.edu/"),
