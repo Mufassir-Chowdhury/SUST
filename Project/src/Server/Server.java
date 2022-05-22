@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Constants.conn;
+import Constants.Connect;
 import Server.Datapoints.Courses;
 import Server.Datapoints.Event;
 import Server.Datapoints.Link;
@@ -128,8 +128,8 @@ public class Server {
         while ( true ) {
             try {
                 clientSocket = echoServer.accept();
-                ServerConnection oneconnection = new ServerConnection(clientSocket, this);
-                oneconnection.run();
+                ServerConnection oneConnection = new ServerConnection(clientSocket, this);
+                oneConnection.run();
             }   
             catch (IOException e) {
                 System.out.println(e);
@@ -154,33 +154,33 @@ class ServerConnection {
         }
     }
     void fetchData(){
-        conn c = new conn();
-        ArrayList<String> list = new ArrayList<>();
-        
+        Connect c = new Connect();
 
         ArrayList<ArrayList<Link>> links = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
         String query = "select * from link_titles;";
         try {
             ResultSet rs = c.s.executeQuery(query);
             while (rs.next()) {
                 String element = rs.getString("titles");
                 list.add(element);
-                // linkTitle.add(element);
             }
-            // ArrayList list to Array LINK_TITLES[]
-            Server.LINK_TITLES = list.toArray(new String[list.size()]);
-            // links = new Vector<>(linkTitle.size());
 
-            for (String key : list) {
+            Server.LINK_TITLES = list.toArray(new String[list.size()]);
+
+            for (String key : Server.LINK_TITLES) {
                 query = "select * from links where linker = '" + key + "';";
                 ResultSet rss = c.s.executeQuery(query);
-                // Vector<Link> element = new Vector<>();
+
                 ArrayList<Link> element = new ArrayList<Link>();
                 while (rss.next()) {
                     element.add(new Link(rss.getString("title"), rss.getString("url")));
                 }
                 links.add(element);
+
             }
+            //TODO transfer data from links to Server.LINKS
+            // Server.LINKS = links.toArray(new ArrayList<Link[links.size()>]);
         } catch (SQLException e2) {
             e2.printStackTrace();
         }

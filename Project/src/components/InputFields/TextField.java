@@ -151,7 +151,10 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
 
     @Override
     public void keyTyped(KeyEvent e) {
-        cleanField();
+        if (e.getKeyChar() == KeyEvent.VK_ENTER) {
+            e.consume();
+        }
+        else cleanField();
     }
 
     @Override

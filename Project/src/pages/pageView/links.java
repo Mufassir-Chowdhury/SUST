@@ -24,7 +24,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import Constants.Fonts;
-import Constants.conn;
+import Constants.Connect;
+import Constants.Connect;
 import Server.Datapoints;
 import Server.Server;
 import Server.Datapoints.Link;
@@ -33,10 +34,9 @@ public class links extends JPanel {
 
     private Vector<String> linkTitle = new Vector<>();
     private Vector<Vector<Link>> links = new Vector<>();
-    conn c = new conn();
+    Connect c = new Connect();
 
     public links() throws ClassNotFoundException, IOException {
-        // System.out.println("hi");
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box title = Box.createHorizontalBox();

@@ -2,11 +2,11 @@ package Constants;
 
 import java.sql.*;
 
-public class conn {
+public class Connect {
     Connection c;
     public Statement s;
 
-    public conn(){
+    public Connect(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             c = DriverManager.getConnection("jdbc:mysql:///sust", "root", "root");
