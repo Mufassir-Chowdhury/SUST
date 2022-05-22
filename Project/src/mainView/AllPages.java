@@ -19,17 +19,15 @@ import Main.Main;
 import Server.Datapoints;
 
 class AllPages extends JPanel { 
-    Datapoints datapoints = new Datapoints();;   
-
     public AllPages(Main main) throws ClassNotFoundException, IOException{
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        for(int i=0; i<Datapoints.TITLES.length; i++){
-            Label title = new Label(Datapoints.TITLES[i], Fonts.TITLE, Component.LEFT_ALIGNMENT);
+        for(int i=0; i<Datapoints.getInstance().TITLES.length; i++){
+            Label title = new Label(Datapoints.getInstance().TITLES[i], Fonts.TITLE, Component.LEFT_ALIGNMENT);
             title.setBorder(Padding.TITLE_LINE_HEIGHT);
             
             Box line = Box.createHorizontalBox();
-            for(Datapoints.Page pair: datapoints.getPages()[i]){
+            for(Datapoints.Page pair: Datapoints.getInstance().getPages()[i]){
                 Card card = new Card(pair.name, pair.icon);
                 card.addMouseListener(new MouseAdapter(){
                     public void mouseClicked(MouseEvent e){

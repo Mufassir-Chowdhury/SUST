@@ -52,7 +52,7 @@ public class sideNav extends JPanel {
         add(Box.createVerticalStrut(10));
         Vector<Datapoints.Page> pageList = new Vector<>();
         pageNames = new Vector<>();
-        for(Datapoints.Page[] page: view.datapoints.getPages()){
+        for(Datapoints.Page[] page: Datapoints.getInstance().getPages()){
             for(Datapoints.Page pair: page){
                 pageList.add(pair);
                 pageNames.add(pair.name);

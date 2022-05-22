@@ -26,7 +26,7 @@ public class event extends JPanel {
         list.setOpaque(false);
         list.setAlignmentX(Component.LEFT_ALIGNMENT);
         list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
-        for(Datapoints.Event event: Datapoints.EVENTS){
+        for(Datapoints.Event event: Datapoints.getInstance().EVENTS){
             Box line = Box.createHorizontalBox();
             line.setMaximumSize(new Dimension(1000, 60));
             line.setAlignmentX(Component.LEFT_ALIGNMENT);

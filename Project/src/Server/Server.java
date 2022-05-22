@@ -2,7 +2,11 @@ package Server;
 
 import java.io.*;
 import java.net.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
+import Constants.conn;
 import Server.Datapoints.Courses;
 import Server.Datapoints.Event;
 import Server.Datapoints.Link;
@@ -17,7 +21,6 @@ public class Server {
         "FACEBOOK_LINKS"
     };
 
-    
     
     
     
@@ -150,8 +153,41 @@ class ServerConnection {
             System.out.println(e);
         }
     }
+    void fetchData(){
+        conn c = new conn();
+        ArrayList<String> list = new ArrayList<>();
+        
+
+        ArrayList<ArrayList<Link>> links = new ArrayList<>();
+        String query = "select * from link_titles;";
+        try {
+            ResultSet rs = c.s.executeQuery(query);
+            while (rs.next()) {
+                String element = rs.getString("titles");
+                list.add(element);
+                // linkTitle.add(element);
+            }
+            // ArrayList list to Array LINK_TITLES[]
+            Server.LINK_TITLES = list.toArray(new String[list.size()]);
+            // links = new Vector<>(linkTitle.size());
+
+            for (String key : list) {
+                query = "select * from links where linker = '" + key + "';";
+                ResultSet rss = c.s.executeQuery(query);
+                // Vector<Link> element = new Vector<>();
+                ArrayList<Link> element = new ArrayList<Link>();
+                while (rss.next()) {
+                    element.add(new Link(rss.getString("title"), rss.getString("url")));
+                }
+                links.add(element);
+            }
+        } catch (SQLException e2) {
+            e2.printStackTrace();
+        }
+    }
 
     public void run() {
+        // fetchData();
         try {
             oos.writeObject(Server.LINKS);
             oos.writeObject(Server.LINK_TITLES);

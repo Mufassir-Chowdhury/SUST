@@ -42,16 +42,16 @@ public class Client {
         Notification[] registration = (Notification[]) ois.readObject();
         Notification[] notification = (Notification[]) ois.readObject();
         Student[] students = (Student[]) ois.readObject();
-        Datapoints.LINKS = links;
-        Datapoints.EVENTS = events;
-        Datapoints.LINK_TITLES = linkTitles;
-        Datapoints.COURSES = courses;
-        Datapoints.DETAILS = details;
-        Datapoints.EXAM = exam;
-        Datapoints.ASSIGNMENT = assignment;
-        Datapoints.REGISTRATION = registration;
-        Datapoints.NOTIFICATION = notification;
-        Datapoints.STUDENTS = students;
+        Datapoints.getInstance().LINKS = links;
+        Datapoints.getInstance().EVENTS = events;
+        Datapoints.getInstance().LINK_TITLES = linkTitles;
+        Datapoints.getInstance().COURSES = courses;
+        Datapoints.getInstance().DETAILS = details;
+        Datapoints.getInstance().EXAM = exam;
+        Datapoints.getInstance().ASSIGNMENT = assignment;
+        Datapoints.getInstance().REGISTRATION = registration;
+        Datapoints.getInstance().NOTIFICATION = notification;
+        Datapoints.getInstance().STUDENTS = students;
     }           
 }
 

@@ -59,7 +59,6 @@ public class Datapoints{
             this.dismissable = dismissable;
         }
     }
-    
     public static class Student  implements Serializable{
         public String registration;
         public String name;
@@ -80,7 +79,7 @@ public class Datapoints{
     }
 
     public static class Courses  implements Serializable{
-        public class Assignment implements Serializable{
+        public static class Assignment implements Serializable{
             public String title;
             public String date;
             public String description;
@@ -94,7 +93,7 @@ public class Datapoints{
                 this.marksObtained = marksObtained;
             }
         }
-        public class Exam implements Serializable{
+        public static class Exam implements Serializable{
             public String title;
             public String date;
             public String description;
@@ -108,8 +107,8 @@ public class Datapoints{
                 this.marksObtained = marksObtained;
             }
         }
-        public class Resource implements Serializable{
-            public class Syllabus implements Serializable{
+        public static class Resource implements Serializable{
+            public static class Syllabus implements Serializable{
                 public String title;
                 public Vector<String> topics;
                 public String comment;
@@ -119,7 +118,7 @@ public class Datapoints{
                     this.comment = comment;
                 }
             }
-            public class Videos implements Serializable{
+            public static class Videos implements Serializable{
                 public String title;
                 public String url;
                 public String uploader;
@@ -131,7 +130,7 @@ public class Datapoints{
                     this.date = date;
                 }
             }
-            public class ResourceItem implements Serializable{
+            public static class ResourceItem implements Serializable{
                 public String session;
                 public String title;
                 public String uploader;
@@ -218,15 +217,29 @@ public class Datapoints{
             this.interested = interested;
         }
     }
-    public static String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
-    public static Event[] EVENTS = null;
-    public static String[] LINK_TITLES = null;
-    public static Link[][] LINKS = null;
-    public static Courses[] COURSES = null;
-    public static String[] DETAILS = null;
-    public static Notification[] EXAM = null;
-    public static Notification[] ASSIGNMENT = null;
-    public static Notification[] REGISTRATION = null;
-    public static Notification[] NOTIFICATION = null;
-    public static Student[] STUDENTS = null;
+    public String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
+    public Event[] EVENTS = null;
+    public String[] LINK_TITLES = null;
+    public Link[][] LINKS = null;
+    public Courses[] COURSES = null;
+    public String[] DETAILS = null;
+    public Notification[] EXAM = null;
+    public Notification[] ASSIGNMENT = null;
+    public Notification[] REGISTRATION = null;
+    public Notification[] NOTIFICATION = null;
+    public Student[] STUDENTS = null;
+    private static Datapoints single_instance = null;
+  
+    public String s;
+  
+    private Datapoints(){
+        s = "Hello I am a string part of Singleton class";
+    }
+  
+    public static Datapoints getInstance(){
+        if (single_instance == null)
+            single_instance = new Datapoints();
+  
+        return single_instance;
+    }
 }

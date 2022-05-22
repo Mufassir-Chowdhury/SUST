@@ -42,12 +42,12 @@ class DashBoard extends JPanel {
         add(new Due(), gbc);
         
         gbc.gridy = 2;
-        add(new DashBoardItem("Due Registrations", Datapoints.REGISTRATION), gbc);
+        add(new DashBoardItem("Due Registrations", Datapoints.getInstance().REGISTRATION), gbc);
 
         gbc.gridy = 3;
         gbc.weighty = 1;
         gbc.gridheight = 2;
-        add(new DashBoardItem("Notifications", Datapoints.NOTIFICATION), gbc);
+        add(new DashBoardItem("Notifications", Datapoints.getInstance().NOTIFICATION), gbc);
     }
 
     class Profile extends JPanel{
@@ -64,8 +64,8 @@ class DashBoard extends JPanel {
             
             Box line = Box.createVerticalBox();
             line.add(Box.createVerticalGlue());
-            for(int i=0; i<Datapoints.DETAILS.length; i++){
-                line.add(new Label(Datapoints.DETAILS[i], Fonts.PLAIN_TEXT, Component.RIGHT_ALIGNMENT));
+            for(int i=0; i<Datapoints.getInstance().DETAILS.length; i++){
+                line.add(new Label(Datapoints.getInstance().DETAILS[i], Fonts.PLAIN_TEXT, Component.RIGHT_ALIGNMENT));
                 if(i == 0)
                     line.add(Box.createVerticalGlue());
             }
@@ -78,8 +78,8 @@ class DashBoard extends JPanel {
         public Due(){
             setLayout(new GridLayout(1, 2, 10, 0));
             setOpaque(false);
-            add(new DashBoardItem("Upcoming Exams", Datapoints.EXAM));
-            add(new DashBoardItem("Due Assignments", Datapoints.ASSIGNMENT));
+            add(new DashBoardItem("Upcoming Exams", Datapoints.getInstance().EXAM));
+            add(new DashBoardItem("Due Assignments", Datapoints.getInstance().ASSIGNMENT));
         }
     }
 

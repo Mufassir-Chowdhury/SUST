@@ -18,7 +18,6 @@ import javax.swing.border.EmptyBorder;
 
 public class sideNavView extends JPanel{
     JPanel cards;
-    Datapoints datapoints = new Datapoints();
     sideNav buttonPane = new sideNav(this);
 
     public void changeCard(String cardName){
@@ -43,7 +42,7 @@ public class sideNavView extends JPanel{
         // cards.setBackground(new Color(58, 58, 58, 76));
         cards.setBorder(new EmptyBorder(new Insets(10, 0, 50, 40)));
         cards.setOpaque(false);
-        for(Datapoints.Page[] page: datapoints.getPages()){
+        for(Datapoints.Page[] page: Datapoints.getInstance().getPages()){
             for(Datapoints.Page pair: page){
                 cards.add(pair.panel, pair.name);
             }

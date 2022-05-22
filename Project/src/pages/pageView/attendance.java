@@ -28,7 +28,7 @@ public class attendance extends JPanel {
         list.setAlignmentX(Component.LEFT_ALIGNMENT);
         list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
         list.add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
-        for(Datapoints.Courses course: Datapoints.COURSES){
+        for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(true)){
                 Box line = Box.createHorizontalBox();
                 line.setMaximumSize(new Dimension(1000, 60));
@@ -43,7 +43,7 @@ public class attendance extends JPanel {
             }
         }
         list.add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
-        for(Datapoints.Courses course: Datapoints.COURSES){
+        for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(false)){
                 Box line = Box.createHorizontalBox();
                 line.setMaximumSize(new Dimension(1000, 60));

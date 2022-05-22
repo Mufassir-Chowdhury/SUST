@@ -24,7 +24,7 @@ import Constants.Values;
 public class TextField extends JPasswordField implements MouseListener, FocusListener, KeyListener {
     public Boolean showPassword;
     private Color background = Colors.TEXT_FIELD_BACKGROUND;
-    private Color border = Colors.TEXT_FIELD_BORDER;
+    public Color border = Colors.TEXT_FIELD_BORDER;
     public enum TYPE{
         PLAIN,
         PASSWORD

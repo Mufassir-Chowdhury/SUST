@@ -26,7 +26,7 @@ public class students extends JPanel {
         JPanel list = new JPanel();
         list.setOpaque(false);
         list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
-        for(Datapoints.Student student: Datapoints.STUDENTS){
+        for(Datapoints.Student student: Datapoints.getInstance().STUDENTS){
             Box line = Box.createHorizontalBox();
             line.setMaximumSize(new Dimension(1000, 60));
             line.add(new Label((student.registration.substring(student.registration.length() - 3)), Fonts.BODY_LARGE));

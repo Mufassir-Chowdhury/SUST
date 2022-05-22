@@ -154,14 +154,18 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     private void checkValidity(String input)
     {
-        String format = ".sust.edu";
+        String format = "sust.edu";
         if(input.equals(" Email Address")) return;
         if (input.endsWith(format)) {
-            emailField.setForeground(Color.green);
+            // emailField.setForeground(Color.green);
+            emailField.border = Color.GREEN;
+            repaint();
         }
         else
         {
-            emailField.setForeground(Color.red);
+            emailField.border = Color.RED;
+            repaint();
+            // emailField.setForeground(Color.red);
         }
     }
 

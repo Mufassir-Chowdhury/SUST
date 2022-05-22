@@ -20,6 +20,8 @@ import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import Constants.Fonts;
 import Constants.conn;
@@ -43,17 +45,17 @@ public class links extends JPanel {
         add(title);
         add(Box.createVerticalStrut(20));
         
-        fetchData();
+        // fetchData();
 
         //for database
-        for (int i = 0; i < linkTitle.size(); i++) {
-            add(new Label(linkTitle.get(i), Fonts.TITLE));
-            for (Link link : links.get(i)) {
+        // for (int i = 0; i < linkTitle.size(); i++) {
+        //     add(new Label(linkTitle.get(i), Fonts.TITLE));
+        //     for (Link link : links.get(i)) {
 
         //for static
-        // for (int i = 0; i < Datapoints.LINKS.length; i++) {
-        //     add(new Label(Server.LINK_TITLES[i], Fonts.TITLE));
-        //     for(Datapoints.Link link: Datapoints.LINKS[i]){
+        for (int i = 0; i < Datapoints.getInstance().LINKS.length; i++) {
+            add(new Label(Server.LINK_TITLES[i], Fonts.TITLE));
+            for(Datapoints.Link link: Datapoints.getInstance().LINKS[i]){
                 JPanel info = new JPanel();
                 info.setAlignmentX(Component.LEFT_ALIGNMENT);
                 ;
@@ -93,6 +95,7 @@ public class links extends JPanel {
                 linkTitle.add(element);
             }
             links = new Vector<>(linkTitle.size());
+
             for (String key : linkTitle) {
                 query = "select * from links where linker = '" + key + "';";
                 ResultSet rss = c.s.executeQuery(query);
@@ -110,12 +113,12 @@ public class links extends JPanel {
     //don't call this function
     private void makeDatabaseFromStatic()
     {
-        for (int i = 0; i < Datapoints.LINKS.length; i++) {
+        for (int i = 0; i < Datapoints.getInstance().LINKS.length; i++) {
             add(new Label(Server.LINK_TITLES[i], Fonts.TITLE));
-            for (Datapoints.Link link : Datapoints.LINKS[i]) {
-                String command="insert into links values('"+Datapoints.LINK_TITLES[i]+"','"+link.title+"','"+
+            for (Datapoints.Link link : Datapoints.getInstance().LINKS[i]) {
+                String command="insert into links values('"+Datapoints.getInstance().LINK_TITLES[i]+"','"+link.title+"','"+
                 link.url + "');";
-                String query = "select * from links where linker = '" + Datapoints.LINK_TITLES[i] + "' and title = '"
+                String query = "select * from links where linker = '" + Datapoints.getInstance().LINK_TITLES[i] + "' and title = '"
                         + link.title + "' and url = '" + link.url + "';";
                 try {
                 ResultSet exist = c.s.executeQuery(query);

@@ -26,7 +26,7 @@ public class assignment extends JPanel {
         list.setAlignmentX(Component.LEFT_ALIGNMENT);
         list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
         list.add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
-        for(Datapoints.Courses course: Datapoints.COURSES){
+        for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(true)){
                 for(Datapoints.Courses.Assignment assignment: course.assignments){
                     Box line = Box.createHorizontalBox();
@@ -43,7 +43,7 @@ public class assignment extends JPanel {
             }
         }
         list.add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
-        for(Datapoints.Courses course: Datapoints.COURSES){
+        for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(false)){
                 for(Datapoints.Courses.Assignment assignment: course.assignments){
                     Box line = Box.createHorizontalBox();
