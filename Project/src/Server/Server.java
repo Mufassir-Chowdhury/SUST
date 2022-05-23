@@ -12,6 +12,7 @@ import Server.Datapoints.Event;
 import Server.Datapoints.Link;
 import Server.Datapoints.Notification;
 import Server.Datapoints.Student;
+import pages.pageView.links;
 
 public class Server {
     
@@ -155,8 +156,7 @@ class ServerConnection {
     }
     void fetchData(){
         Connect c = new Connect();
-
-        ArrayList<ArrayList<Link>> links = new ArrayList<>();
+        ArrayList<Link[]> links = new ArrayList<>();
         ArrayList<String> list = new ArrayList<>();
         String query = "select * from link_titles;";
         try {
@@ -176,11 +176,10 @@ class ServerConnection {
                 while (rss.next()) {
                     element.add(new Link(rss.getString("title"), rss.getString("url")));
                 }
-                links.add(element);
-
+                links.add(element.toArray(new Link[element.size()]));
             }
-            //TODO transfer data from links to Server.LINKS
-            // Server.LINKS = links.toArray(new ArrayList<Link[links.size()>]);
+
+            Server.LINKS = links.toArray(new Link[links.size()][]);
         } catch (SQLException e2) {
             e2.printStackTrace();
         }
@@ -188,6 +187,7 @@ class ServerConnection {
 
     public void run() {
         // fetchData();
+
         try {
             oos.writeObject(Server.LINKS);
             oos.writeObject(Server.LINK_TITLES);
@@ -199,6 +199,7 @@ class ServerConnection {
             oos.writeObject(Server.REGISTRATION);
             oos.writeObject(Server.NOTIFICATIONS);
             oos.writeObject(Server.STUDENTS);
+
         } catch (IOException e) {
             System.out.println(e);
         }

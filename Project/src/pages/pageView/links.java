@@ -45,16 +45,9 @@ public class links extends JPanel {
         add(title);
         add(Box.createVerticalStrut(20));
         
-        // fetchData();
 
-        //for database
-        // for (int i = 0; i < linkTitle.size(); i++) {
-        //     add(new Label(linkTitle.get(i), Fonts.TITLE));
-        //     for (Link link : links.get(i)) {
-
-        //for static
-        for (int i = 0; i < Datapoints.getInstance().LINKS.length; i++) {
-            add(new Label(Server.LINK_TITLES[i], Fonts.TITLE));
+        for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
+            add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
             for(Datapoints.Link link: Datapoints.getInstance().LINKS[i]){
                 JPanel info = new JPanel();
                 info.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -82,31 +75,6 @@ public class links extends JPanel {
                 });
             }
 
-        }
-    }
-
-    private void fetchData()
-    {
-        String query = "select * from link_titles;";
-        try {
-            ResultSet rs = c.s.executeQuery(query);
-            while (rs.next()) {
-                String element = rs.getString("titles");
-                linkTitle.add(element);
-            }
-            links = new Vector<>(linkTitle.size());
-
-            for (String key : linkTitle) {
-                query = "select * from links where linker = '" + key + "';";
-                ResultSet rss = c.s.executeQuery(query);
-                Vector<Link> element = new Vector<>();
-                while (rss.next()) {
-                    element.add(new Link(rss.getString("title"), rss.getString("url")));
-                }
-                links.add(element);
-            }
-        } catch (SQLException e2) {
-            e2.printStackTrace();
         }
     }
 
