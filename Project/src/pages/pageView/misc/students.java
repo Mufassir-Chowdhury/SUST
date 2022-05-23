@@ -1,4 +1,4 @@
-package pages.pageView;
+package pages.pageView.misc;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;

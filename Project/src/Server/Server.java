@@ -12,7 +12,7 @@ import Server.Datapoints.Event;
 import Server.Datapoints.Link;
 import Server.Datapoints.Notification;
 import Server.Datapoints.Student;
-import pages.pageView.links;
+import pages.pageView.administrivia.links;
 
 public class Server {
     

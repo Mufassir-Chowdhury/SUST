@@ -8,7 +8,11 @@ import javax.swing.Icon;
 import javax.swing.JPanel;
 
 import Constants.Icons;
-import pages.pageView.*;
+import pages.pageView.course_information.*;
+import pages.pageView.administrivia.*;
+import pages.pageView.misc.*;
+import pages.pageView.updates.*;
+import pages.pageView.updates.routine.routine;
 
 public class Datapoints{
     public static class Page{
