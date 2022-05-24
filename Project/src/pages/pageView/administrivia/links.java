@@ -16,24 +16,15 @@ import Components.Label;
 
 import java.awt.Color;
 import java.net.URISyntaxException;
-import java.sql.Array;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Vector;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import Constants.Fonts;
 import Constants.Connect;
-import Constants.Connect;
 import Server.Datapoints;
 import Server.Server;
-import Server.Datapoints.Link;
 
 public class links extends JPanel {
 
-    private Vector<String> linkTitle = new Vector<>();
-    private Vector<Vector<Link>> links = new Vector<>();
     Connect c = new Connect();
 
     public links() throws ClassNotFoundException, IOException {
@@ -44,14 +35,12 @@ public class links extends JPanel {
         title.add(new Label("Links", Fonts.DISPLAY));
         add(title);
         add(Box.createVerticalStrut(20));
-        
 
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
             add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
             for(Datapoints.Link link: Datapoints.getInstance().LINKS[i]){
                 JPanel info = new JPanel();
                 info.setAlignmentX(Component.LEFT_ALIGNMENT);
-                ;
                 info.setBackground(new Color(52, 50, 52));
                 info.setLayout(new BoxLayout(info, BoxLayout.X_AXIS));
                 info.setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));

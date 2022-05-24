@@ -8,13 +8,16 @@ import java.util.Arrays;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Components.Label;
 import Components.Buttons.AccentButton;
 import Components.Buttons.HyperLinkButton;
 import Components.InputFields.TextField;
 import Constants.Colors;
+import Constants.Fonts;
 import Constants.Sizes;
 import Constants.Values;
 import login.Utilities.showPassword;
@@ -23,21 +26,22 @@ import login.Utilities.showPassword;
 public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     private AccentButton logInButton = new AccentButton("Log In");
-    private TextField emailField = new TextField(" Email Address", TextField.TYPE.PLAIN);
-    private TextField passwordField = new TextField(false, TextField.TYPE.PASSWORD);
+    public TextField emailField = new TextField(Values.EMAIL_PLACEHOLDER, TextField.TYPE.PLAIN);
+    public TextField passwordField = new TextField(false, TextField.TYPE.PASSWORD);
     private showPassword showPasswordCheckBox = new Utilities.showPassword();
     private HyperLinkButton forgetPasswordText = new HyperLinkButton("Forget Password?");
     private HyperLinkButton registerText = new HyperLinkButton("Create an account!");
     private static final long serialVersionUID = 1L;  
     private Box line = Box.createHorizontalBox();
+    // private JLabel emailInstruction = new JLabel("hi");
+    // private JLabel passwordInstruction = new JLabel("hi");
     private LogInPage page;
     private Component source;
-    private char key;
+    private Character key = KeyEvent.VK_ENTER;
     private String email, password;
-    private boolean condition, flag;
+    private boolean condition;
     private FieldValidity fieldChecker = new FieldValidity();
     private Query database = new Query();
-
     
     public LogInRight(LogInPage page) {
         this.page = page;
@@ -96,6 +100,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         passwordField.addMouseListener(passwordField);
         passwordField.addKeyListener(passwordField);
         passwordField.addKeyListener(this);
+        passwordField.addFocusListener(this);
 
         logInButton.addMouseListener(logInButton);
         logInButton.addFocusListener(logInButton);
@@ -109,16 +114,12 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         showPasswordCheckBox.addActionListener(e -> showPassword());
         logInButton.addActionListener(e -> {
             logInWithoutTry();
-            tryingToLogIn();
+            letsLogIn();
 
         });
         forgetPasswordText.addActionListener(l -> forgetPassword());
         registerText.addActionListener(e -> {
-            try {
-                register();
-            } catch (ClassNotFoundException | IOException e1) {
-                e1.printStackTrace();
-            }
+            register();
         });
     }
     
@@ -127,18 +128,20 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     }
 
-    private void register() throws ClassNotFoundException, IOException {
-        page.LogIn("regiPage");
+    private void register(){
+        nextPage("regiPage");
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
         key = e.getKeyChar();
         if (key == KeyEvent.VK_ENTER) {
-            flag = true;
             e.consume();
+            logInButton.requestFocus();
+
+            updateEmailStatus(key.getClass());
+            letsLogIn();
             logInWithoutTry();
-            tryingToLogIn();
             return;
         }
     }
@@ -150,17 +153,19 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        
-    }
 
+    }
+    
     @Override
     public void focusGained(FocusEvent e) {
         source = e.getComponent();
         if (source == emailField) {
-            emailField.border = Colors.ACCENT;
-            repaint();
+            typing(emailField);
         }
 
+        if (source == passwordField) {
+            typing(passwordField);
+        }
         
     }
 
@@ -168,45 +173,11 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     public void focusLost(FocusEvent e) {
         source = e.getComponent();
         if (source == emailField) {
-            if (key == KeyEvent.VK_ENTER & flag)
-            {
-                flag = false;
-                return;
-            }
-            fetchData();
-            condition = fieldChecker.checkThisEmail(email);
-            showValidity(condition);
-        }
-    }
-    
-
-    private void logInWithoutTry()
-    {
-        try {
-            page.LogIn("mainPage");
-        } catch (ClassNotFoundException | IOException e) {
-            e.printStackTrace();
+            updateEmailStatus("".getClass());
         }
     }
 
-    private void tryingToLogIn()
-    {
-        fetchData();
 
-        if (isFieldFilled())
-        {
-            showValidity(condition);
-            if(condition)
-                if(database.runQuery(email, password))
-                    try {
-                        page.LogIn("mainPage");
-                    } catch (ClassNotFoundException | IOException e) {
-                        e.printStackTrace();
-                    }
-
-        }
-            
-    }
 
     private void fetchData()
     {
@@ -214,27 +185,100 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         password = passwordField.getText();
     }
 
-    public boolean isFieldFilled()
+    private void showFieldInstruction(String fieldName)
     {
-        boolean a, b;
-        a = fieldChecker.isEmailFieldFilled(email);
-        if(a)
-            condition = fieldChecker.checkThisEmail(email);
-        
-        if (a & !condition)
-            JOptionPane.showMessageDialog(null, "email format is not right");
-        
-        b = fieldChecker.isPasswordFieldFilled(passwordField.getPassword());
-
-        return a & b;
+        if(fieldName == "emailField")
+        {
+            //TODO emailfieldlabel change to the email is not is right format
+        }
+        else 
+        {
+            //TODO passswordfieldlabel change to please fill up this field
+        }
     }
     
-    private void showValidity(boolean c)
+    private void showFieldValidity(TextField field, boolean condition)
     {
-        if (c)
-            emailField.border = Color.green;
-        else
-            emailField.border = Color.red;
+        if (condition)
+            field.border = Color.green;
+        else {
+            field.border = Color.red;
+            showFieldInstruction(field.getName());
+        }
+
         repaint();
     }
+
+    private void updateEmailStatus(Class x)
+    {
+        fetchData();
+        if (fieldChecker.isEmailFieldFilled(email)) {
+            condition = fieldChecker.checkThisEmail(email);
+            showFieldValidity(emailField, condition);
+        }
+        else if(x == key.getClass())
+        {
+            //TODO emailFieldLabel change to "please fill up this field"
+        }
+    }
+    
+    private boolean isGreen()
+    {
+        if (emailField.border == Color.green)
+        {
+            if(fieldChecker.isPasswordFieldFilled(password.toCharArray()))
+                return true;
+            else 
+            {
+                showFieldInstruction(passwordField.getName());
+                return false;
+            }
+        }
+        else 
+        {
+            if(!fieldChecker.isPasswordFieldFilled(password.toCharArray()))
+                showFieldInstruction(passwordField.getName());
+            return false;
+        }
+    }
+    
+    private void nextPage(String panel)
+    {
+        try {
+            page.LogIn(panel);
+        } catch (ClassNotFoundException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void letsLogIn()
+    {
+        if (isGreen()) {
+            String result = database.runQuery(email, password);
+            if (result == Values.WRONG_EMAIL)
+            {
+                //TODO show wrong email and password
+            }
+            else if (result == Values.WRONG_PASSWORD)
+            {
+                //TODO show wrong password
+            }
+            else if (result == Values.PASSED)
+            {
+                nextPage("mainPage");
+            }
+        }
+    }
+
+    private void logInWithoutTry()
+    {
+        nextPage("mainPage");
+    }
+
+    private void typing(TextField field)
+    {
+        field.border = Colors.ACCENT;
+        repaint();
+    }
+    
 }

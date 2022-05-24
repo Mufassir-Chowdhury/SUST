@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 // import Constants.Fields;
 
 import Constants.Fonts;
+import Constants.Padding;
 import Constants.Colors;
 
 public class RegiPage extends JScrollPane {
@@ -96,6 +97,7 @@ public class RegiPage extends JScrollPane {
 	public RegiPage(Main main) {
 			setSize(Sizes.DEFAULT_WINDOW_SIZE);
 			setOpaque(false);
+			setBorder(Padding.MAIN_VIEW_PORT);
 
 			titlePanel = new JPanel();
 			titlePanel.setOpaque(false);
