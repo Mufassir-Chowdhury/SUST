@@ -1,4 +1,4 @@
-package pages.pageView.updates.routine;
+package pages.pageView.misc.bus;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -9,10 +9,9 @@ import Components.Buttons.AccentButton;
 import Constants.Colors;
 import Constants.Fonts;
 import Server.Datapoints;
-
 import java.awt.Component;
 
-public class informationPanel extends JPanel {
+public class informationPanel extends JPanel{
     public informationPanel(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -26,9 +25,8 @@ public class informationPanel extends JPanel {
 
         Box line = Box.createHorizontalBox();
         line.setAlignmentX(Component.LEFT_ALIGNMENT);
-        line.add(new Label("Your courses", Fonts.Body, Component.LEFT_ALIGNMENT));
+        line.add(new Label("Buses", Fonts.Body, Component.LEFT_ALIGNMENT));
         line.add(Box.createHorizontalGlue());
-        line.add(new AccentButton("Manage Courses"));
         add(line);
         add(Box.createVerticalStrut(5));
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){

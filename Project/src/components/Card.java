@@ -26,6 +26,14 @@ public class Card extends JPanel {
         add(new Label(text, Fonts.BODY_LARGE, Component.CENTER_ALIGNMENT));
         add(Box.createVerticalGlue());
     }
+    public Card(String text, Font font) {
+        setOpaque(false);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setMaximumSize(Sizes.CARD_SIZE);
+        add(Box.createVerticalGlue());
+        add(new Label(text, font, Component.CENTER_ALIGNMENT));
+        add(Box.createVerticalGlue());
+    }
     @Override
     protected void paintComponent(Graphics g) {
         g.setColor(Colors.CARD);

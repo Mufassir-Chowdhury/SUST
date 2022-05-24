@@ -44,40 +44,28 @@ public class routine extends JPanel{
         gbc.weighty = 1;
         gbc.weightx = .5;
         gbc.gridwidth = 1;
-        JPanel panel2 = new JPanel();
-        panel2.add(new Label("text", Fonts.DISPLAY));
-        panel2.setBackground(Color.GRAY);
-        list.add(panel2, gbc);
+        list.add(new timeline(), gbc);
 
         gbc.gridx = 3;
         gbc.gridy = 0;
         gbc.weighty = 1;
         gbc.weightx = 1;
         gbc.gridwidth = 2;
-        JPanel panel3 = new JPanel();
-        panel3.add(new Label("text", Fonts.DISPLAY));
-        panel3.setBackground(Color.GREEN);
-        list.add(panel3, gbc);
+        list.add(new routineItem("2"), gbc);
 
         gbc.gridx = 5;
         gbc.gridy = 0;
         gbc.weighty = 1;
         gbc.weightx = 1;
         gbc.gridwidth = 2;
-        JPanel panel4 = new JPanel();
-        panel4.add(new Label("text", Fonts.DISPLAY));
-        panel4.setBackground(Color.ORANGE);
-        list.add(panel4, gbc);
+        list.add(new routineItem("1"), gbc);
 
         gbc.gridx = 7;
         gbc.gridy = 0;
         gbc.weighty = 1;
         gbc.weightx = 1;
         gbc.gridwidth = 2;
-        JPanel panel5 = new JPanel();
-        panel5.add(new Label("text", Fonts.DISPLAY));
-        panel5.setBackground(Color.PINK);
-        list.add(panel5, gbc);
+        list.add(new routineItem("1"), gbc);
         add(list);
     }
 }
