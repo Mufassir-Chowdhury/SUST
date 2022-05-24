@@ -1,7 +1,9 @@
 package Components;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import Constants.Sizes;
 
@@ -28,37 +30,41 @@ public class Background extends JFrame {
     }
 
     public Background() {
-        setUndecorated(true);
-        setBackground(new Color(32, 32, 32, 240));
-        setMinimumSize(Sizes.DEFAULT_WINDOW_SIZE);
-        setLayout(new BorderLayout());
-        logInTitleBar = new TitleBar(this, getWidth());
-
-        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getSize()));
-        setContentPane(backgroundImage);
-        add(logInTitleBar);
-
-        logInTitleBar.addComponentListener(new java.awt.event.ComponentAdapter() {
-            @Override
-            public void componentMoved(java.awt.event.ComponentEvent evt) {
-                setLocation(logInTitleBar.point);
-            }
-        });
-        logInTitleBar.addMouseListener(logInTitleBar);
-        logInTitleBar.addMouseMotionListener(logInTitleBar);
-
+        this.size = Sizes.DEFAULT_WINDOW_SIZE;
+        decorateFrame();
+        logInTitleBar = new TitleBar(this, (int) size.getWidth());
+        addTitleBar();
     }
     
     public Background(Dimension size) {
         this.size = size;
-        setUndecorated(true);
+        decorateFrame();
+        logInTitleBar = new TitleBar(this, (int) size.getWidth());
+        addTitleBar();
+    }
+    
+    public Background(String s)
+    {
+        this.size = Sizes.DEFAULT_WINDOW_SIZE;
+        decorateFrame();
+        logInTitleBar = new TitleBar(this, (int) size.getWidth(), s);
+        addTitleBar();
+    }
+    
+    private void decorateFrame()
+    {
         setSize(size);
+        setUndecorated(true);
         setLayout(new BorderLayout());
-        logInTitleBar = new TitleBar(this, (int)size.getWidth());
 
-        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, size));
+        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getSize()));
         setContentPane(backgroundImage);
+    }
+
+    private void addTitleBar()
+    {
         add(logInTitleBar);
+
 
         logInTitleBar.addComponentListener(new java.awt.event.ComponentAdapter() {
             @Override
@@ -68,6 +74,5 @@ public class Background extends JFrame {
         });
         logInTitleBar.addMouseListener(logInTitleBar);
         logInTitleBar.addMouseMotionListener(logInTitleBar);
-
     }
 }

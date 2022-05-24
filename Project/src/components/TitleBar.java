@@ -24,7 +24,8 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	public  Point point;
 	public Dimension size;
 	private static final long serialVersionUID = 1L;
-	private JLabel minimizeIcon, closeIcon, fullScreenIcon, backIcon;
+	private JLabel minimizeIcon, closeIcon, fullScreenIcon;
+	public static JLabel backIcon = new JLabel();
 	private Background frame;
 	public int width, height;
 	public Component source;
@@ -32,8 +33,20 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 
 	public TitleBar(Background frame, int width) {
 		this.frame = frame;
-		setOpaque(false);
 		setSize(width, Sizes.TITLE_BAR_HEIGHT);
+		decorateTitleBar();
+	}
+	
+	public TitleBar(Background frame, int width, String s) {
+		this.frame = frame;
+		setSize(width, Sizes.TITLE_BAR_HEIGHT);
+		decorateTitleBar();
+		add(backIcon);
+	}
+
+	private void decorateTitleBar()
+	{
+		setOpaque(false);
 		setLayout(springLayout);
 
 		closeIcon = new JLabel(Icons.CLOSE);
@@ -57,13 +70,13 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		minimizeIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		add(minimizeIcon);
 
+		// backIcon = new JLabel();
 		backIcon = new JLabel(Icons.BACK_COLORED);
-		// backIcon = new JLabel(Icons.BACK);
 		springLayout.putConstraint(SpringLayout.NORTH, backIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, backIcon, 0, SpringLayout.WEST, this);
 		backIcon.setSize(Sizes.ICON_SIZE);
 		backIcon.setBorder(Padding.TITLE_BAR_ITEM);
-		add(backIcon);
+		// add(backIcon);
 
 		addListeners();
 	}
@@ -158,21 +171,23 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	@Override
 	public void mouseExited(MouseEvent e) {
 		source = e.getComponent();
-		if(source == closeIcon) {
+		if (source == closeIcon) {
 			closeIcon.setOpaque(false);
 			closeIcon.setBackground(null);
-		}
-		else if(source == fullScreenIcon) {
+		} else if (source == fullScreenIcon) {
 			fullScreenIcon.setOpaque(false);
 			fullScreenIcon.setBackground(null);
-		}
-		else if (source == minimizeIcon) {
+		} else if (source == minimizeIcon) {
 			minimizeIcon.setOpaque(false);
 			minimizeIcon.setBackground(null);
-		}
-		else if(source == backIcon) {
+		} else if (source == backIcon) {
 			backIcon.setOpaque(false);
 			backIcon.setBackground(null);
 		}
+	}
+	
+	public static final void setBackIcon()
+	{
+		backIcon = new JLabel(Icons.BACK_COLORED);
 	}
 }

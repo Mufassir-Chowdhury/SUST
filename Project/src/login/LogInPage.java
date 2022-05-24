@@ -9,18 +9,20 @@ import javax.swing.JPanel;
 import Constants.Margins;
 import Constants.Sizes;
 import Main.Main;
+import Components.Background;
+import Components.TitleBar;
 
 public class LogInPage extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private Main frame;
+    private Main frame;
+    private Background background;
 	public void LogIn(String page) throws ClassNotFoundException, IOException{
 		frame.changeFrame(page);
 	}
 
 	public LogInPage(Main frame) {
-		this.frame = frame;
-
+        this.frame = frame;
 		setSize(Sizes.DEFAULT_WINDOW_SIZE);
 		setLayout(new GridBagLayout());
 

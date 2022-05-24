@@ -3,7 +3,7 @@ package Components.Buttons;
 import Constants.Colors;
 import Constants.Margins;
 
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 
 import javax.swing.border.EmptyBorder;
 
@@ -42,10 +42,22 @@ public class HyperLinkButton extends Button implements MouseListener  {
     }
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(isFocusOwner()) return;
+        if (isFocusOwner())
+            return;
         setBackground(null);
         setOpaque(false);
     }
 
+    @Override
+    public void focusGained(FocusEvent e) {
+        setBackground(new Color(55, 40, 44));
+        setOpaque(true);
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+        setBackground(null);
+        setOpaque(false);
+    }
     
 }

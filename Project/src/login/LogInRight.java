@@ -60,8 +60,10 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
         line = Box.createHorizontalBox();
         line.add(Box.createHorizontalGlue());
+        forgetPasswordText.setFocusable(false);
         line.add(forgetPasswordText);
         line.add(Box.createHorizontalGlue());
+        registerText.setFocusable(false);
         line.add(registerText);
         line.add(Box.createHorizontalGlue());
         add(line);
@@ -100,6 +102,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
         logInButton.addMouseListener(logInButton);
         logInButton.addFocusListener(logInButton);
+        logInButton.addKeyListener(this);
 
         forgetPasswordText.addMouseListener(forgetPasswordText);
         forgetPasswordText.addFocusListener(forgetPasswordText);
@@ -136,8 +139,8 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
             logInButton.requestFocus();
 
             updateEmailStatus(key.getClass());
-            letsLogIn();
             logInWithoutTry();
+            letsLogIn();
             return;
         }
     }
@@ -242,6 +245,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     {
         try {
             page.LogIn(panel);
+            // page.logIn()
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
