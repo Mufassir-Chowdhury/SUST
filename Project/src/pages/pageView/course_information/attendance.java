@@ -1,4 +1,4 @@
-package pages.pageView;
+package pages.pageView.course_information;
 
 import java.awt.Component;
 import java.awt.Dimension;
