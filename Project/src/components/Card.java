@@ -17,6 +17,7 @@ public class Card extends JPanel {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setMaximumSize(Sizes.CARD_SIZE);
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         JLabel logo = new JLabel(icon);
         logo.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -32,4 +33,5 @@ public class Card extends JPanel {
         g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
         super.paintComponent(g);
     }
+
 }
