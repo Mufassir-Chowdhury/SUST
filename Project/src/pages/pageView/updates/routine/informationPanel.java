@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 
 import Components.Label;
 import Components.Buttons.AccentButton;
-import Constants.Colors;
 import Constants.Fonts;
 import Server.Datapoints;
 

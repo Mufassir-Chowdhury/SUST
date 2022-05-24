@@ -7,6 +7,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
+import java.awt.Graphics;
 import javax.swing.border.EmptyBorder;
 
 import Components.Label;
@@ -64,6 +65,7 @@ public class sideNav extends JPanel {
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setFixedCellWidth(300);
         list.setCellRenderer(new DefaultListCellRenderer() {
+            Color border = null;
             @Override
             public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
                 Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
@@ -75,13 +77,26 @@ public class sideNav extends JPanel {
                     ((JLabel) renderer).setForeground(Colors.PLAIN_TEXT);
                     ((JLabel) renderer).setAlignmentX(Component.LEFT_ALIGNMENT);
                     ((JLabel) renderer).setIconTextGap(20);
-                    ((JLabel) renderer).setBorder(new EmptyBorder(new Insets(5, 0, 5,0)));
+                    ((JLabel) renderer).setBorder(new EmptyBorder(new Insets(5, 15, 5,0)));
                     if(isSelected){
+                        border = Colors.ACCENT;
                         ((JLabel) renderer).setOpaque(true);
                         ((JLabel) renderer).setBackground(new Color(45, 45, 45));
                     }
+                    if(!isSelected){
+                        border = null;
+                        repaint();
+                    }
+                    
                 }
                 return renderer;
+            }
+            @Override
+            protected void paintBorder(Graphics g) {
+                if(border != null){
+                    g.setColor(border);
+                    g.fillRoundRect(0, 10, 4, getHeight() - 20, 2, 3);
+                }
             }
         });
         list.addListSelectionListener(listener -> {
@@ -93,7 +108,7 @@ public class sideNav extends JPanel {
         add(Box.createVerticalGlue());
         add(new JSeparator());
         Label settings = new Label("Settings", Fonts.Body, Component.LEFT_ALIGNMENT);
-        settings.setIcon(Icons.PAYMENT);
+        settings.setIcon(Icons.SETTINGS);
         settings.setOpaque(false);
         settings.setIconTextGap(20);
         settings.setBorder(new EmptyBorder(new Insets(5, 0, 5,0)));

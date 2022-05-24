@@ -8,16 +8,12 @@ import java.util.Arrays;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Components.Label;
 import Components.Buttons.AccentButton;
 import Components.Buttons.HyperLinkButton;
 import Components.InputFields.TextField;
 import Constants.Colors;
-import Constants.Fonts;
 import Constants.Sizes;
 import Constants.Values;
 import login.Utilities.showPassword;

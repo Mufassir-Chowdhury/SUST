@@ -36,6 +36,8 @@ public class Icons {
     public static final ImageIcon EVENTS = Tools.imageScale("static/pages/event.png", Sizes.GUI_SMALL_SIZE);
     public static final ImageIcon MAP = Tools.imageScale("static/pages/map.png", Sizes.GUI_SMALL_SIZE);
 
+    public static final ImageIcon SETTINGS = Tools.imageScale("static/pages/settings.png", Sizes.GUI_SMALL_SIZE);
+
     // Registration Icons
 
     public static final ImageIcon STUDENT = Tools.imageScale("static/images/student.png", Sizes.GUI_BIG_SIZE);
