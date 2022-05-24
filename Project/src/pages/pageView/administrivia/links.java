@@ -16,24 +16,15 @@ import Components.Label;
 
 import java.awt.Color;
 import java.net.URISyntaxException;
-import java.sql.Array;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Vector;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import Constants.Fonts;
 import Constants.Connect;
-import Constants.Connect;
 import Server.Datapoints;
 import Server.Server;
-import Server.Datapoints.Link;
 
 public class links extends JPanel {
 
-    private Vector<String> linkTitle = new Vector<>();
-    private Vector<Vector<Link>> links = new Vector<>();
     Connect c = new Connect();
 
     public links() throws ClassNotFoundException, IOException {

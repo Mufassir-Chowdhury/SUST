@@ -78,10 +78,6 @@ public class FieldValidity {
                 String namePart = username.substring(0, namePartLength);
                 condition = namePart.matches(Values.ONLY_LOWERCASE_LETTERS);
             }
-            else
-            {
-                System.err.println("bye bye");
-            }
         }
         return condition;
     }
