@@ -2,47 +2,58 @@ package login;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
 import Constants.Connect;
+import Constants.Values;
 
 public class Query {
 
     Connect c1 = new Connect();
-    private LogInPage page;
+    private ResultSet exist;
 
     Query() {
 
     }
 
-    public boolean runQuery(String email, String password)
+    public String runQuery(String email, String password)
     {
         try {
-            return extractData(email, password);
-        } catch (ClassNotFoundException | IOException e) {
+            if (extractData(email))
+            {
+                if(exist.getString("password") == password)
+                {
+                    return Values.PASSED;
+                }
+                else
+                    return Values.WRONG_PASSWORD;
+            }
+            else
+                return Values.WRONG_EMAIL;
+
+        } catch (ClassNotFoundException | IOException | SQLException e) {
             
             e.printStackTrace();
-            return false;
+            return "";
         }
     }
     
-    private boolean extractData(String email, String password) throws ClassNotFoundException, IOException
+    private boolean extractData(String email) throws ClassNotFoundException, IOException
     {
         try{
-            String query = "select * from login where email = '" + email + "' and password = '" + password + "'";
+            String query = "select * from login where email = '" + email + "';";
 
-            ResultSet exist = c1.s.executeQuery(query);
+            exist = c1.s.executeQuery(query);
             if (exist.next()) {
                 return true;
-                // page.LogIn("mainPage");
+                
             }
             else {
                 JOptionPane.showMessageDialog(null, "Invalid LogIn");
                 return false;
             }
-
-            // System.out.println(query);
         }catch(Exception e)
         {
             e.printStackTrace();

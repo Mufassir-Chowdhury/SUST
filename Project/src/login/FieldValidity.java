@@ -2,7 +2,7 @@ package login;
 
 import java.util.Arrays;
 
-import javax.swing.JOptionPane;
+import javax.print.FlavorException;
 
 import Constants.Values;
 
@@ -18,22 +18,15 @@ public class FieldValidity {
 
     public boolean isEmailFieldFilled(String email)
     {
-        condition = email.equals(" Email Address");
-        System.out.println(condition);
-        if (condition)
-            // code what should show
-            JOptionPane.showMessageDialog(null, "fill the email Field");
+        condition = email.equals(Values.EMAIL_PLACEHOLDER);
         return !condition;
     }
 
     public boolean isPasswordFieldFilled(char[] password)
     {
         condition = Arrays.equals(password, Values.DEFAULT_PASSWORD);
-        if (condition)
-            // code what to show
-            JOptionPane.showMessageDialog(null, "fill the password Field");
         return !condition;
-        
+
     }
 
     public boolean checkThisEmail(String email)
@@ -62,12 +55,11 @@ public class FieldValidity {
 
     private boolean checkDomain(String domain)
     {
-        String format[] = { "student.sust.edu", "sust.edu" };
-        condition = domain.endsWith(format[0]);
+        condition = domain.endsWith(Values.STUDENT_EMAIL_DOMAIN);
         if (condition)
             identity = STUDENT;
         else {
-            condition = domain.endsWith(format[1]);
+            condition = domain.endsWith(Values.OFFICIALS_EMAIL_DOMAIN);
             if (condition)
                 identity = OFFICIAL;
         }
@@ -80,11 +72,15 @@ public class FieldValidity {
         if (condition) {
             int namePartLength = username.length() - 2;
             String regPart = username.substring(namePartLength);
-            condition = regPart.matches("[0-9]+");
+            condition = regPart.matches(Values.ONLY_NUMBERS);
 
             if (condition) {
                 String namePart = username.substring(0, namePartLength);
-                condition = namePart.matches("[a-z]+");
+                condition = namePart.matches(Values.ONLY_LOWERCASE_LETTERS);
+            }
+            else
+            {
+                System.err.println("bye bye");
             }
         }
         return condition;
@@ -93,16 +89,14 @@ public class FieldValidity {
     private boolean checkUsernameForOfficial(String username)
     {
         condition = username.length() > 2;
-        if (condition)
-        {
+        if (condition) {
             String[] parts = username.split("-");
             int partsLength = parts.length;
             condition = (partsLength == 0 | partsLength == 2);
 
-            if(condition)
-            {
-                condition = (parts[0].matches("[a-z]+")
-                            & parts[1].matches("[a-z]+"));
+            if (condition) {
+                condition = (parts[0].matches(Values.ONLY_LOWERCASE_LETTERS)
+                        & parts[1].matches(Values.ONLY_LOWERCASE_LETTERS));
             }
         }
         return condition;
