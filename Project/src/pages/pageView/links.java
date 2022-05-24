@@ -44,14 +44,12 @@ public class links extends JPanel {
         title.add(new Label("Links", Fonts.DISPLAY));
         add(title);
         add(Box.createVerticalStrut(20));
-        
 
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
             add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
             for(Datapoints.Link link: Datapoints.getInstance().LINKS[i]){
                 JPanel info = new JPanel();
                 info.setAlignmentX(Component.LEFT_ALIGNMENT);
-                ;
                 info.setBackground(new Color(52, 50, 52));
                 info.setLayout(new BoxLayout(info, BoxLayout.X_AXIS));
                 info.setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
