@@ -9,7 +9,6 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.Graphics;
 
-import Components.Card;
 import Components.Label;
 import Constants.Colors;
 import Constants.Fonts;

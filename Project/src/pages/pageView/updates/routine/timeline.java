@@ -3,7 +3,6 @@ package pages.pageView.updates.routine;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 
 import Components.Label;
 import Constants.Fonts;

@@ -4,13 +4,10 @@ package pages.pageView.misc.bus;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import java.awt.GridLayout;
-import java.awt.Insets;
 import java.awt.Graphics;
 
-import Components.Card;
 import Components.Label;
 import Constants.Colors;
 import Constants.Fonts;

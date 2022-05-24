@@ -4,7 +4,6 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -34,7 +33,7 @@ public class bus extends JPanel {
         gbc.weighty = 1;
         gbc.weightx = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.insets = new Insets(5, 0, 5, 5);
 
         
         list.add(new informationPanel(), gbc);
@@ -45,37 +44,10 @@ public class bus extends JPanel {
             gbc.weighty = 1;
             gbc.weightx = 1;
             gbc.gridwidth = 1;
+            gbc.insets = new Insets(5, 5, 5, 5);
             list.add(new busItem("2"), gbc);
         }
 
         add(list);
-        // gbc.gridx = 2;
-        // gbc.gridy = 0;
-        // gbc.weighty = 1;
-        // gbc.weightx = 1;
-        // gbc.gridwidth = 1;
-        // list.add(new busItem("1"), gbc);
-
-        // gbc.gridx = 3;
-        // gbc.gridy = 0;
-        // gbc.weighty = 1;
-        // gbc.weightx = 1;
-        // gbc.gridwidth = 1;
-        // list.add(new busItem("1"), gbc);
-
-        // gbc.gridx = 4;
-        // gbc.gridy = 0;
-        // gbc.weighty = 1;
-        // gbc.weightx = 1;
-        // gbc.gridwidth = 1;
-        // list.add(new busItem("1"), gbc);
-
-        // gbc.gridx = 5;
-        // gbc.gridy = 0;
-        // gbc.weighty = 1;
-        // gbc.weightx = 1;
-        // gbc.gridwidth = 1;
-        // list.add(new busItem("1"), gbc);
-        // add(list);
     }
 }

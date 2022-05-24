@@ -10,6 +10,7 @@ import Constants.Colors;
 import Constants.Fonts;
 import Server.Datapoints;
 
+import java.awt.Color;
 import java.awt.Component;
 
 public class informationPanel extends JPanel {
@@ -33,9 +34,14 @@ public class informationPanel extends JPanel {
         add(Box.createVerticalStrut(5));
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(true)){
-                add(new Label("     " + course.name, Fonts.CAPTION, Colors.PLAIN_TEXT));
+                add(new Label("     " + course.name, Fonts.CAPTION, new Color(0,120,212)));
             } else{
-                add(new Label("     " + course.name, Fonts.CAPTION, Colors.ACCENT));
+                Box horizontal = Box.createHorizontalBox();
+                horizontal.setAlignmentX(Component.LEFT_ALIGNMENT);
+                horizontal.add(new Label("     " + course.name, Fonts.CAPTION, new Color(120,121,241)));
+                horizontal.add(Box.createHorizontalGlue());
+                horizontal.add(new Label("(Drop)", Fonts.CAPTION, new Color(120,121,241)));
+                add(horizontal);
             }
         }
     }
