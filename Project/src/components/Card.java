@@ -15,6 +15,7 @@ import Constants.Fonts;
 import Constants.Sizes;
 
 public class Card extends JPanel {
+    Color background = Colors.CARD;
     public Card(String text, Icon icon) {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -34,13 +35,13 @@ public class Card extends JPanel {
 
         addMouseListener(new MouseAdapter(){
             public void mouseEntered(MouseEvent e) {
-                setBackground(new Color(45, 45, 45));
-                setOpaque(true);
+                background = new Color(255, 255, 255, 25);
+                repaint();
             }
 
             public void mouseExited(MouseEvent e) {
-                setBackground(new Color(0));
-                setOpaque(false);
+                background = Colors.CARD;
+                repaint();
             }
         });
     }
@@ -51,10 +52,23 @@ public class Card extends JPanel {
         add(Box.createVerticalGlue());
         add(new Label(text, font, Component.CENTER_ALIGNMENT));
         add(Box.createVerticalGlue());
+        addMouseListener(new MouseAdapter(){
+            public void mouseEntered(MouseEvent e) {
+                background = new Color(255, 255, 255, 25);
+                repaint();
+            }
+
+            public void mouseExited(MouseEvent e) {
+                background = Colors.CARD;
+                repaint();
+            }
+        });
     }
+
+    
     @Override
     protected void paintComponent(Graphics g) {
-        g.setColor(Colors.CARD);
+        g.setColor(background);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
         super.paintComponent(g);
     }

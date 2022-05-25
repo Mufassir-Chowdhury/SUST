@@ -8,10 +8,14 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import Components.Card;
 import Components.Label;
 import Components.ListItem;
 import Constants.Fonts;
 import Server.Datapoints;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 
 public class attendance extends JPanel {
     public attendance(){
@@ -30,15 +34,37 @@ public class attendance extends JPanel {
         list.add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(true)){
-                Box line = Box.createHorizontalBox();
-                line.setMaximumSize(new Dimension(1000, 60));
-                line.setAlignmentX(Component.LEFT_ALIGNMENT);
-                line.add(new ListItem(
+                JPanel line = new JPanel();
+                line.setLayout(new BoxLayout(line, BoxLayout.Y_AXIS));
+
+                line.setOpaque(false);
+                Box horizontalLine = Box.createHorizontalBox();
+                horizontalLine.setMaximumSize(new Dimension(1000, 60));
+                horizontalLine.setAlignmentX(Component.LEFT_ALIGNMENT);
+                horizontalLine.add(new ListItem(
                     course.name, 
                     course.code, 
                     String.valueOf(course.attendance), 
-                        String.format("%03d", course.absent) + "   " + String.format("%03d", course.leave)));
+                    String.format("%03d", course.absent) + "   " + String.format("%03d", course.leave)));
+                line.add(horizontalLine);
                 list.add(line);
+                line.addMouseListener(new MouseAdapter(){
+                    Label attendance = new Label("Attendance", Fonts.Body);
+                    Boolean open = false;
+                    @Override
+                    public void mouseClicked(MouseEvent e){
+                        if(open == false){
+                            line.add(attendance);
+                            open = true;
+                        } else{
+                            line.remove(attendance);
+                            open = false;
+                        }
+                        repaint();
+                        revalidate();
+                    }
+                    
+                });
                 list.add(Box.createVerticalStrut(10));
             }
         }
