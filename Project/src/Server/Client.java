@@ -6,6 +6,7 @@ import java.net.*;
 import Server.Datapoints.Courses;
 import Server.Datapoints.Event;
 import Server.Datapoints.Link;
+import Server.Datapoints.Notice;
 import Server.Datapoints.Notification;
 import Server.Datapoints.Student;
 
@@ -42,6 +43,7 @@ public class Client {
         Notification[] registration = (Notification[]) ois.readObject();
         Notification[] notification = (Notification[]) ois.readObject();
         Student[] students = (Student[]) ois.readObject();
+        Notice[] notices = (Notice[]) ois.readObject();
         Datapoints.getInstance().LINKS = links;
         Datapoints.getInstance().EVENTS = events;
         Datapoints.getInstance().LINK_TITLES = linkTitles;
@@ -52,6 +54,7 @@ public class Client {
         Datapoints.getInstance().REGISTRATION = registration;
         Datapoints.getInstance().NOTIFICATION = notification;
         Datapoints.getInstance().STUDENTS = students;
+        Datapoints.getInstance().NOTICES = notices;
     }           
 }
 

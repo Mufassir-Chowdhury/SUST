@@ -222,6 +222,19 @@ public class Datapoints{
             this.interested = interested;
         }
     }
+    public static class Notice implements Serializable{
+        public String title;
+        public String date;
+        public String description;
+        public String file;
+        public Notice(String title, String date, String description, String file){
+            this.title = title;
+            this.date = date;
+            this.description = description;
+            this.file = file;
+        }
+    }
+
     public String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
     public Event[] EVENTS = null;
     public String[] LINK_TITLES = null;
@@ -233,6 +246,8 @@ public class Datapoints{
     public Notification[] REGISTRATION = null;
     public Notification[] NOTIFICATION = null;
     public Student[] STUDENTS = null;
+    public Notice[] NOTICES =  null;
+
     private static Datapoints single_instance = null;
   
     public String s;

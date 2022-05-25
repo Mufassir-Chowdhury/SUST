@@ -10,6 +10,7 @@ import Constants.Connect;
 import Server.Datapoints.Courses;
 import Server.Datapoints.Event;
 import Server.Datapoints.Link;
+import Server.Datapoints.Notice;
 import Server.Datapoints.Notification;
 import Server.Datapoints.Student;
 
@@ -94,6 +95,12 @@ public class Server {
         new Student("2019331068", "Abdullah All Ferdouse", "siababdullah3946@gmail.com", "1575087097", "A+", "13 November", "Dhaka"),
         new Student("2019331070", "Mostahid Hasan Fahim", "mostahidhasanFahim@gmail.com", "1759300449", "O+", "8 November", "Gaibandha"),
         new Student("2019331071", "Md Mostakim Billah", "mostakimbillah512@gmail.com", "1814560020", "B+", "15 July", "Lalmonirhat"),
+    };
+    public static Notice[] NOTICES = {
+        new Notice("ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা", "14 March, 2022", "ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
+        new Notice("ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা", "14 March, 2022", "ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
+        new Notice("ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা", "14 March, 2022", "ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
+        new Notice("ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা", "14 March, 2022", "ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf")
     };
     public static void main(String args[]) {
         int port = 6789;
@@ -198,6 +205,7 @@ class ServerConnection {
             oos.writeObject(Server.REGISTRATION);
             oos.writeObject(Server.NOTIFICATIONS);
             oos.writeObject(Server.STUDENTS);
+            oos.writeObject(Server.NOTICES);
 
         } catch (IOException e) {
             System.out.println(e);
