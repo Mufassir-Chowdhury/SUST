@@ -10,12 +10,15 @@ import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseAdapter;
 import javax.swing.SpringLayout;
 
 import Constants.Colors;
 import Constants.Icons;
 import Constants.Padding;
 import Constants.Sizes;
+import Main.Main;
+
 import java.awt.Component;
 
 
@@ -76,7 +79,20 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		springLayout.putConstraint(SpringLayout.WEST, backIcon, 0, SpringLayout.WEST, this);
 		backIcon.setSize(Sizes.ICON_SIZE);
 		backIcon.setBorder(Padding.TITLE_BAR_ITEM);
-		// add(backIcon);
+		
+		backIcon.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e){
+				Main.getInstance().changeFrame("mainPage");
+			}
+		});
+		// if(Main.currentPage == "sideNav"){
+		// 	backIcon.setVisible(true);
+		// 	repaint();
+		// } else{
+		// 	backIcon.setVisible(false);
+		// 	repaint();
+		// }
+		add(backIcon);
 
 		addListeners();
 	}

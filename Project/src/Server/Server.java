@@ -97,10 +97,10 @@ public class Server {
         new Student("2019331071", "Md Mostakim Billah", "mostakimbillah512@gmail.com", "1814560020", "B+", "15 July", "Lalmonirhat"),
     };
     public static Notice[] NOTICES = {
-        new Notice("ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা", "14 March, 2022", "ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
-        new Notice("ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা", "14 March, 2022", "ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
-        new Notice("ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা", "14 March, 2022", "ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
-        new Notice("ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা", "14 March, 2022", "ঢাকাস্থ অতিথি ভবন ব্যবহারের নীতিমালা\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf")
+        new Notice("Example Notice 1", "14 March, 2022", "Example Notice 1\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
+        new Notice("Example Notice 2", "14 March, 2022", "Example Notice 2\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
+        new Notice("Example Notice 3", "14 March, 2022", "Example Notice 3\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
+        new Notice("Example Notice 4", "14 March, 2022", "Example Notice 4\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf")
     };
     public static void main(String args[]) {
         int port = 6789;
