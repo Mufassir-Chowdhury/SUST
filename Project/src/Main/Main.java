@@ -22,8 +22,15 @@ import java.awt.Dimension;
 public class Main extends JFrame {
 	public JFrame currentFrame;
 	JPanel panel = new JPanel();
+	private static Main single_instance = null;
+	public static String currentPage = null;
+
+	public static Main getInstance() {
+		return single_instance;
+	}
 
 	public Main() throws ClassNotFoundException, IOException {
+
 		currentFrame = new Background();
 		panel.setSize(Sizes.DEFAULT_WINDOW_SIZE);
 		panel.setLayout(new CardLayout());
@@ -37,6 +44,7 @@ public class Main extends JFrame {
 		currentFrame.add(panel);
 		CardLayout cl = (CardLayout) (panel.getLayout());
 		cl.show(panel, "logInPage");
+		currentPage = "logInPage";
 		currentFrame.pack();
 		currentFrame.setVisible(true);
 	}
@@ -47,6 +55,9 @@ public class Main extends JFrame {
 		currentFrame.pack();
 		CardLayout cl = (CardLayout)(panel.getLayout());
 		cl.show(panel, cardName);
+		currentPage = cardName;
+		repaint();
+		revalidate();
 		// currentFrame.
 	}
 	public void changeFrame(String cardName, String nameOfPage){
@@ -61,7 +72,7 @@ public class Main extends JFrame {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new Main();
+					single_instance = new Main();
 				} catch (ClassNotFoundException | IOException e) {
 					e.printStackTrace();
 				}
