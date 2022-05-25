@@ -34,10 +34,12 @@ public class links extends JPanel {
         title.setAlignmentX(Component.LEFT_ALIGNMENT);
         title.add(new Label("Links", Fonts.DISPLAY));
         add(title);
-        add(Box.createVerticalStrut(20));
+        // add(Box.createVerticalStrut(20));
 
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
+            add(Box.createVerticalStrut(25));
             add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
+            // add(Box.createVerticalStrut(20));
             for(Datapoints.Link link: Datapoints.getInstance().LINKS[i]){
                 JPanel info = new JPanel();
                 info.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -47,9 +49,11 @@ public class links extends JPanel {
                 info.add(new Label(link.title, Fonts.Body));
                 info.add(Box.createHorizontalGlue());
                 info.add(new Label(link.title, Fonts.PLAIN_TEXT));
+                add(Box.createVerticalStrut(10));
+
                 add(info);
 
-                add(Box.createVerticalStrut(10));
+                // add(Box.createVerticalStrut(10));
                 info.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(java.awt.event.MouseEvent e) {
