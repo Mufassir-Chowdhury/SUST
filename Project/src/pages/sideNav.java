@@ -9,7 +9,8 @@ import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
 import java.awt.Graphics;
 import javax.swing.border.EmptyBorder;
-
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import Components.Label;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
@@ -77,7 +78,18 @@ public class sideNav extends JPanel {
                     ((JLabel) renderer).setForeground(Colors.PLAIN_TEXT);
                     ((JLabel) renderer).setAlignmentX(Component.LEFT_ALIGNMENT);
                     ((JLabel) renderer).setIconTextGap(20);
-                    ((JLabel) renderer).setBorder(new EmptyBorder(new Insets(5, 15, 5,0)));
+                    ((JLabel) renderer).setBorder(new EmptyBorder(new Insets(5, 15, 5, 0)));
+                    // ((JLabel) renderer).addMouseListener(new MouseAdapter(){
+                    //     public void mouseEntered(MouseEvent e) {
+                            
+                    //         ((JLabel) renderer).setOpaque(true);
+                    //         ((JLabel) renderer).setBackground(new Color(45, 45, 50));
+                    //     }
+            
+                    //     public void mouseExited(MouseEvent e) {
+                    //         ((JLabel) renderer).setOpaque(false);
+                    //     }
+                    // });
                     if(isSelected){
                         border = Colors.ACCENT;
                         ((JLabel) renderer).setOpaque(true);
@@ -104,6 +116,7 @@ public class sideNav extends JPanel {
                 view.changeCard(list.getSelectedValue().name);
             }
         });
+        
         add(list);
         add(Box.createVerticalGlue());
         add(new JSeparator());

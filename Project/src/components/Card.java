@@ -8,6 +8,8 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Sizes;
@@ -18,14 +20,29 @@ public class Card extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setMaximumSize(Sizes.CARD_SIZE);
         setCursor(new Cursor(Cursor.HAND_CURSOR));
+
         
         JLabel logo = new JLabel(icon);
         logo.setAlignmentX(Component.CENTER_ALIGNMENT);
 
         add(Box.createVerticalGlue());
         add(logo);
-        add(new Label(text, Fonts.BODY_LARGE, Component.CENTER_ALIGNMENT));
+        add(Box.createVerticalStrut(5));
+        Label label = new Label(text, Fonts.BODY_LARGE, Component.CENTER_ALIGNMENT);
+        add(label);
         add(Box.createVerticalGlue());
+
+        addMouseListener(new MouseAdapter(){
+            public void mouseEntered(MouseEvent e) {
+                setBackground(new Color(45, 45, 45));
+                setOpaque(true);
+            }
+
+            public void mouseExited(MouseEvent e) {
+                setBackground(new Color(0));
+                setOpaque(false);
+            }
+        });
     }
     public Card(String text, Font font) {
         setOpaque(false);
