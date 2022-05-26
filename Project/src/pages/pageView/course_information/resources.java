@@ -4,13 +4,11 @@ import javax.swing.Box;
 import java.awt.CardLayout;
 
 import javax.swing.JPanel;
-import java.awt.Insets;
-import java.awt.GridLayout;
-import javax.swing.border.EmptyBorder;
 
 import Components.Card;
 import Components.Buttons.AccentButton;
 import Components.pageView.Options;
+import Components.pageView.TilesPanel;
 import Components.pageView.ViewPort;
 
 import java.awt.Component;
@@ -31,10 +29,7 @@ public class resources extends ViewPort {
         resources.setOpaque(false);
         resources.setLayout(new CardLayout());
 
-        JPanel list = new JPanel();
-        list.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
-        list.setOpaque(false);
-        list.setLayout(new GridLayout(2, 3, 50, 50));
+        TilesPanel list = new TilesPanel();
         
         for(String resource: Datapoints.getInstance().RESOURCES)
             list.add(new Card(resource, Icons.RESOURCES));
