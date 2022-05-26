@@ -1,6 +1,7 @@
 package Components;
 
 import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -15,6 +16,7 @@ import Constants.Fonts;
 public class ListItem extends JPanel {
     public ListItem(String title, String caption, String center, String trailing) {
         setBackground(new Color(255, 255, 255, 13));
+        setAlignmentX(Component.LEFT_ALIGNMENT);
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBorder(new EmptyBorder(new Insets(10, 5, 10, 5)));
         Box congestedInfo = Box.createVerticalBox();

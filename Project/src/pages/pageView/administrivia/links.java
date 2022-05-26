@@ -1,23 +1,19 @@
 package pages.pageView.administrivia;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import java.awt.Desktop;
-import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.io.IOException;
 import java.net.URI;
-import java.awt.Insets;
-import javax.swing.border.EmptyBorder;
 
 import Components.Label;
+import Components.ListItem;
 import Components.pageView.ListPanel;
 import Components.pageView.ScrollPane;
 import Components.pageView.ViewPort;
 
-import java.awt.Color;
 import java.net.URISyntaxException;
 import java.sql.ResultSet;
 
@@ -36,23 +32,9 @@ public class links extends ViewPort {
         ListPanel list = new ListPanel();
 
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
-            list.add(Box.createVerticalStrut(25));
             list.add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
-            // add(Box.createVerticalStrut(20));
             for(Datapoints.Link link: Datapoints.getInstance().LINKS[i]){
-                JPanel info = new JPanel();
-                info.setAlignmentX(Component.LEFT_ALIGNMENT);
-                info.setBackground(new Color(52, 50, 52));
-                info.setLayout(new BoxLayout(info, BoxLayout.X_AXIS));
-                info.setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
-                info.add(new Label(link.title, Fonts.Body));
-                info.add(Box.createHorizontalGlue());
-                info.add(new Label(link.title, Fonts.PLAIN_TEXT));
-                list.add(Box.createVerticalStrut(10));
-
-                list.add(info);
-
-                // add(Box.createVerticalStrut(10));
+                JPanel info = new ListItem(link.title, "", "", link.title);
                 info.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -65,8 +47,10 @@ public class links extends ViewPort {
                         }
                     }
                 });
-            }
 
+                list.add(info);
+                list.add(Box.createVerticalStrut(10));
+            }
         }
         add(new ScrollPane(list));
     }
