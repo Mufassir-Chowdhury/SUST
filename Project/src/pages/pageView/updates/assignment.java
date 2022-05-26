@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 
 import Components.Label;
 import Components.pageView.EvaluationItem;
+import Components.pageView.ListPanel;
 import Components.pageView.ScrollPane;
 import Components.pageView.Title;
 import Constants.Fonts;
@@ -39,10 +40,7 @@ public class assignment extends JPanel {
         add(Box.createVerticalStrut(20));
 
         
-        JPanel list = new JPanel();
-        list.setOpaque(false);
-        list.setAlignmentX(Component.LEFT_ALIGNMENT);
-        list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
+        ListPanel list = new ListPanel();
         Boolean values[] = {true, false};
         for(Boolean value: values){
             list.add(new Label(value ? "Regular Courses" : "Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));     

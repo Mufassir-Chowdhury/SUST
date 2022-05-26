@@ -1,11 +1,10 @@
 package pages.pageView.misc;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
 
 import Components.ListItem;
 import Components.pageView.Line;
+import Components.pageView.ListPanel;
 import Components.pageView.ScrollPane;
 import Components.pageView.ViewPort;
 import Server.Datapoints;
@@ -14,9 +13,7 @@ public class students extends ViewPort {
     public students(){
         super("Student Information", null);
 
-        JPanel list = new JPanel();
-        list.setOpaque(false);
-        list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
+        ListPanel list = new ListPanel();
         for(Datapoints.Student student: Datapoints.getInstance().STUDENTS){
             list.add(new Line(new ListItem(
                 student.name, 

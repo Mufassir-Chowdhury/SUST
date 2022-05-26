@@ -5,9 +5,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import Components.Label;
-import Constants.Colors;
 import Constants.Fonts;
-import Server.Datapoints;
 import java.awt.Component;
 
 public class informationPanel extends JPanel{

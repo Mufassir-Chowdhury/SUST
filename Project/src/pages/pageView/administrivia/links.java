@@ -13,6 +13,7 @@ import java.awt.Insets;
 import javax.swing.border.EmptyBorder;
 
 import Components.Label;
+import Components.pageView.ListPanel;
 import Components.pageView.ScrollPane;
 import Components.pageView.ViewPort;
 
@@ -32,10 +33,7 @@ public class links extends ViewPort {
     public links() throws ClassNotFoundException, IOException {
         super("Links", null);
 
-        JPanel list = new JPanel();
-        list.setOpaque(false);
-        list.setAlignmentX(Component.LEFT_ALIGNMENT);
-        list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
+        ListPanel list = new ListPanel();
 
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
             list.add(Box.createVerticalStrut(25));

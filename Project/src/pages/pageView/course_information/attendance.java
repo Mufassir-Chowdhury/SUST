@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import Components.Label;
 import Components.ListItem;
 import Components.pageView.Line;
+import Components.pageView.ListPanel;
 import Components.pageView.ScrollPane;
 import Components.pageView.ViewPort;
 import Constants.Fonts;
@@ -21,10 +22,7 @@ public class attendance extends ViewPort {
     public attendance(){
         super("Attendance", null);
 
-        JPanel list = new JPanel();
-        list.setOpaque(false);
-        list.setAlignmentX(Component.LEFT_ALIGNMENT);
-        list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
+        ListPanel list = new ListPanel();
         list.add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(true)){

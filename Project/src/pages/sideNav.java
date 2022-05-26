@@ -9,8 +9,6 @@ import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
 import java.awt.Graphics;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import Components.Label;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
