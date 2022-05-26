@@ -7,9 +7,7 @@ import javax.swing.JPanel;
 import java.awt.event.MouseEvent;
 
 import Components.Label;
-import Components.ListItem;
-import Components.pageView.Line;
-import Components.pageView.Post;
+import Components.pageView.EvaluationItem;
 import Components.pageView.ScrollPane;
 import Components.pageView.Title;
 import Constants.Fonts;
@@ -22,33 +20,6 @@ public class assignment extends JPanel {
     JPanel assignmentPanel = new JPanel(new CardLayout());
     Title title = new Title("Exam", null);
 
-    public class line extends Box{
-        public line(Datapoints.Courses course, Datapoints.Courses.Assignment assignment){
-            super(BoxLayout.X_AXIS);
-            setAlignmentX(Component.LEFT_ALIGNMENT);
-            Box line = new Line(new ListItem(
-                assignment.title, 
-                course.name, 
-                assignment.date, 
-                String.format("%03d", assignment.totalMarks) + "   " + String.format("%03d", assignment.marksObtained)));
-            line.addMouseListener(new MouseAdapter(){
-                @Override
-                public void mouseClicked(MouseEvent e){
-                    title.setText("Assignment > " + assignment.title);
-                    JPanel individualExam = new Post(
-                        assignment.title,
-                        "Due Date: " + assignment.date, 
-                        "Total Marks: " + assignment.totalMarks, 
-                        assignment.description);
-                    assignmentPanel.add(individualExam, assignment.title);
-                    CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
-                    cl.show(assignmentPanel, assignment.title);
-                }
-                
-            });
-            add(line);
-        }
-    }
     public assignment(){
         assignmentPanel.setOpaque(false);
         assignmentPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -78,8 +49,7 @@ public class assignment extends JPanel {
             for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
                 if(course.regular.equals(value)){
                     for(Datapoints.Courses.Assignment assignment: course.assignments){
-                        Box line = new line(course, assignment);
-                        list.add(line);
+                        list.add(new EvaluationItem(course, assignment, title, assignmentPanel));
                         list.add(Box.createVerticalStrut(10));
                     }
                 }
