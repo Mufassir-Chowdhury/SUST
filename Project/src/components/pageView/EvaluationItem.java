@@ -13,7 +13,10 @@ import java.awt.CardLayout;
 import java.awt.Component;
 
 public class EvaluationItem extends Box {
-    public EvaluationItem(Datapoints.Courses course, Datapoints.Courses.EvaluationItem evaluationMethod, Title title, JPanel assignmentPanel) {
+    public enum Type {
+        EXAM, ASSIGNMENT
+    }
+    public EvaluationItem(Datapoints.Courses course, Datapoints.Courses.EvaluationItem evaluationMethod, Title title, JPanel panel, Type type) {
         super(BoxLayout.X_AXIS);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         Box line = new Line(new ListItem(
@@ -24,15 +27,15 @@ public class EvaluationItem extends Box {
         line.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
-                title.setText("Exam > " + evaluationMethod.title);
+                title.setText(((type == Type.EXAM) ? "Exam > " : "Assignment > ") + evaluationMethod.title);
                 Post individualExam = new Post(
                     evaluationMethod.title,
                     "Due Date: " + evaluationMethod.date, 
                     "Total Marks: " + evaluationMethod.totalMarks, 
                     evaluationMethod.description);
-                assignmentPanel.add(individualExam, evaluationMethod.title);
-                CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
-                cl.show(assignmentPanel, evaluationMethod.title);
+                panel.add(individualExam, evaluationMethod.title);
+                CardLayout cl = (CardLayout)(panel.getLayout());
+                cl.show(panel, evaluationMethod.title);
             }
         });
         add(line);

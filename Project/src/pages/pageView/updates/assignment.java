@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 
 import Components.pageView.EvaluationItemList;
 import Components.pageView.Title;
-import Components.pageView.EvaluationItemList.Type;
+import Components.pageView.EvaluationItem.Type;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.CardLayout;
