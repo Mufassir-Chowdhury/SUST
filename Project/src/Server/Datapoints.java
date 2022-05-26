@@ -231,6 +231,20 @@ public class Datapoints{
         }
     }
 
+    public String[] RESOURCES = {"Syllabus",
+                                "Class Videos",
+                                "CT Questions",
+                                "Term Final Questions",
+                                "Lecture Notes",
+                                "Books",};
+    public String[] PAYMENT = {
+        "Registration Fee",
+        "Library Fine",
+        "Migration Fee",
+        "Credit Fee",
+        "Documents Fee",
+        "Apply for Transcript",
+    };
     public String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
     public Event[] EVENTS = null;
     public String[] LINK_TITLES = null;

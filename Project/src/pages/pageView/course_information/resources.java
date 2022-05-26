@@ -10,43 +10,35 @@ import javax.swing.border.EmptyBorder;
 
 import Components.Card;
 import Components.Buttons.AccentButton;
-import Components.InputFields.ComboBox;
+import Components.pageView.Options;
 import Components.pageView.ViewPort;
 
 import java.awt.Component;
 import Constants.Icons;
+import Server.Datapoints;
 
 public class resources extends ViewPort {
     public resources(){
         super("Resources", new AccentButton("Post New Material"));
 
-        Box options = Box.createHorizontalBox();
-        options.setAlignmentX(Component.LEFT_ALIGNMENT);
-        ComboBox<String> filter = new ComboBox<>();
-        filter.addItem("Semester");
-        ComboBox<String> filter2 = new ComboBox<>();
-        filter2.addItem("Course");
-
-        options.add(filter);
-        options.add(Box.createHorizontalGlue());
-        options.add(filter2);
-        add(options);
+        String[] firstOptions = {"Semester", "Semester 2"};
+        String[] secondOptions = {"Course", "Course 2"};
+        add(new Options(firstOptions, secondOptions));
         add(Box.createVerticalStrut(20));
 
         JPanel resources = new JPanel();
         resources.setAlignmentX(Component.LEFT_ALIGNMENT);
         resources.setOpaque(false);
         resources.setLayout(new CardLayout());
+
         JPanel list = new JPanel();
         list.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
         list.setOpaque(false);
         list.setLayout(new GridLayout(2, 3, 50, 50));
-        list.add(new Card("Syllabus", Icons.RESOURCES));
-        list.add(new Card("Class Videos", Icons.RESOURCES));
-        list.add(new Card("CT Questions", Icons.RESOURCES));
-        list.add(new Card("Term Final Questions", Icons.RESOURCES));
-        list.add(new Card("Lecture Notes", Icons.RESOURCES));
-        list.add(new Card("Books", Icons.RESOURCES));
+        
+        for(String resource: Datapoints.getInstance().RESOURCES)
+            list.add(new Card(resource, Icons.RESOURCES));
+
         resources.add(list);
         add(resources);
     }
