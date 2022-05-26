@@ -6,13 +6,9 @@ import javax.swing.JPanel;
 
 import java.awt.event.MouseEvent;
 
-import Components.Label;
-import Components.pageView.EvaluationItem;
-import Components.pageView.ListPanel;
-import Components.pageView.ScrollPane;
+import Components.pageView.EvaluationItemList;
 import Components.pageView.Title;
-import Constants.Fonts;
-import Server.Datapoints;
+import Components.pageView.EvaluationItemList.Type;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.CardLayout;
@@ -39,21 +35,7 @@ public class assignment extends JPanel {
         add(title);
         add(Box.createVerticalStrut(20));
 
-        
-        ListPanel list = new ListPanel();
-        Boolean values[] = {true, false};
-        for(Boolean value: values){
-            list.add(new Label(value ? "Regular Courses" : "Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));     
-            for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
-                if(course.regular.equals(value)){
-                    for(Datapoints.Courses.Assignment assignment: course.assignments){
-                        list.add(new EvaluationItem(course, assignment, title, assignmentPanel));
-                        list.add(Box.createVerticalStrut(10));
-                    }
-                }
-            }
-        }
-        assignmentPanel.add(new ScrollPane(list), "assignment");
+        assignmentPanel.add(new EvaluationItemList(title, assignmentPanel, Type.ASSIGNMENT), "assignment");
         add(assignmentPanel);
     }
 }
