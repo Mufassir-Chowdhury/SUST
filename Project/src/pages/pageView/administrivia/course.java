@@ -2,40 +2,28 @@ package pages.pageView.administrivia;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.Icon;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JList;
 
-import java.awt.CardLayout;
 import java.awt.Color;
 
 import javax.swing.JPanel;
-import java.awt.Insets;
+
+import Components.pageView.Title;
+
 import java.util.Vector;
 import java.awt.GridLayout;
-import javax.swing.border.EmptyBorder;
-
-import Components.Card;
-import Components.Label;
-import Components.Tools;
-
 import java.awt.Component;
 import java.awt.Dimension;
 
 import Constants.Colors;
-import Constants.Fonts;
-import Constants.Icons;
 import Server.Datapoints;
 
 public class course extends JPanel {
     public course(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        title.add(new Label("Payment", Fonts.DISPLAY));
-        add(title);
+        add(new Title("Course", null));
         add(Box.createVerticalStrut(20));
 
         Box options = Box.createHorizontalBox();

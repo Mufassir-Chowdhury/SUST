@@ -13,6 +13,8 @@ import java.awt.Insets;
 import javax.swing.border.EmptyBorder;
 
 import Components.Label;
+import Components.pageView.ScrollPane;
+import Components.pageView.Title;
 
 import java.awt.Color;
 import java.net.URISyntaxException;
@@ -30,15 +32,17 @@ public class links extends JPanel {
     public links() throws ClassNotFoundException, IOException {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        title.add(new Label("Links", Fonts.DISPLAY));
-        add(title);
-        // add(Box.createVerticalStrut(20));
+        add(new Title("Links", null));
+        add(Box.createVerticalStrut(20));
+
+        JPanel list = new JPanel();
+        list.setOpaque(false);
+        list.setAlignmentX(Component.LEFT_ALIGNMENT);
+        list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
 
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
-            add(Box.createVerticalStrut(25));
-            add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
+            list.add(Box.createVerticalStrut(25));
+            list.add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
             // add(Box.createVerticalStrut(20));
             for(Datapoints.Link link: Datapoints.getInstance().LINKS[i]){
                 JPanel info = new JPanel();
@@ -49,9 +53,9 @@ public class links extends JPanel {
                 info.add(new Label(link.title, Fonts.Body));
                 info.add(Box.createHorizontalGlue());
                 info.add(new Label(link.title, Fonts.PLAIN_TEXT));
-                add(Box.createVerticalStrut(10));
+                list.add(Box.createVerticalStrut(10));
 
-                add(info);
+                list.add(info);
 
                 // add(Box.createVerticalStrut(10));
                 info.addMouseListener(new MouseAdapter() {
@@ -69,6 +73,7 @@ public class links extends JPanel {
             }
 
         }
+        add(new ScrollPane(list));
     }
 
     //don't call this function

@@ -4,22 +4,18 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import Components.pageView.Title;
+
 import java.awt.Component;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
-import Components.Label;
-import Constants.Fonts;
-
 public class routine extends JPanel{
     public routine(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        title.add(new Label("Class Routine", Fonts.DISPLAY));
-        add(title);
+        add(new Title("Class Routine", null));
         add(Box.createVerticalStrut(20));
 
         JPanel list = new JPanel();

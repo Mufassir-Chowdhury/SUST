@@ -9,17 +9,13 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
-import Components.Label;
-import Constants.Fonts;
+import Components.pageView.Title;
 
 public class bus extends JPanel {
     public bus(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        title.add(new Label("Bus Schedule", Fonts.DISPLAY));
-        add(title);
+        add(new Title("Bus Schedule", null));
         add(Box.createVerticalStrut(20));
 
         JPanel list = new JPanel();

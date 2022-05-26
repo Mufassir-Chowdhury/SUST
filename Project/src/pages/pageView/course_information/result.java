@@ -3,13 +3,14 @@ package pages.pageView.course_information;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import java.awt.Insets;
 import javax.swing.border.EmptyBorder;
 
 import Components.Label;
 import Components.ListItem;
+import Components.pageView.ScrollPane;
+import Components.pageView.Title;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -25,12 +26,6 @@ public class result extends JPanel {
     public result(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        Label titleLabel = new  Label("Results", Fonts.DISPLAY);
-        titleLabel.setAlignmentY(Component.TOP_ALIGNMENT);
-        title.add(titleLabel);
-        title.add(Box.createHorizontalGlue());
 
         Box resultSummary = Box.createHorizontalBox();
         resultSummary.setAlignmentY(Component.TOP_ALIGNMENT);
@@ -41,8 +36,7 @@ public class result extends JPanel {
         resultSummarySmall.add(new Label("4.00", Fonts.Body));
         resultSummarySmall.add(new Label("1st", Fonts.Body));
         resultSummary.add(resultSummarySmall);
-        title.add(resultSummary);
-        add(title);
+        add(new Title("Results", resultSummary));
         add(Box.createVerticalStrut(20));
 
         JPanel list = new JPanel();
@@ -112,11 +106,6 @@ public class result extends JPanel {
                 list.add(Box.createVerticalStrut(10));
             }
         }
-        JScrollPane scroll = new JScrollPane(list);
-        scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
-        scroll.setOpaque(false);
-        scroll.getViewport().setOpaque(false);
-        scroll.setBorder(null);
-        add(scroll);
+        add(new ScrollPane(list));
     }
 }

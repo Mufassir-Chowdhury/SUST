@@ -51,14 +51,11 @@ public class Main extends JFrame {
 	
 
 	public void changeFrame(String cardName) {
-		currentFrame = new Background("");
-		currentFrame.pack();
 		CardLayout cl = (CardLayout)(panel.getLayout());
 		cl.show(panel, cardName);
 		currentPage = cardName;
 		repaint();
 		revalidate();
-		// currentFrame.
 	}
 	public void changeFrame(String cardName, String nameOfPage){
 		CardLayout cl = (CardLayout)(panel.getLayout());

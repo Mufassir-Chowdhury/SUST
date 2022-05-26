@@ -11,20 +11,16 @@ import java.awt.GridLayout;
 import javax.swing.border.EmptyBorder;
 
 import Components.Card;
-import Components.Label;
+import Components.pageView.Title;
 
 import java.awt.Component;
-import Constants.Fonts;
 import Constants.Icons;
 
 public class payment extends JPanel {
     public payment(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        title.add(new Label("Payment", Fonts.DISPLAY));
-        add(title);
+        add(new Title("Payment", null));
         add(Box.createVerticalStrut(20));
 
         

@@ -9,6 +9,8 @@ import java.awt.Dimension;
 
 import Components.Label;
 import Components.ListItem;
+import Components.pageView.ScrollPane;
+import Components.pageView.Title;
 import Constants.Fonts;
 import Server.Datapoints;
 
@@ -16,10 +18,7 @@ public class notice extends JPanel {
     public notice(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        title.add(new Label("Notices", Fonts.DISPLAY));
-        add(title);
+        add(new Title("Notices", null));
         add(Box.createVerticalStrut(20));
 
         JPanel list = new JPanel();
@@ -38,11 +37,6 @@ public class notice extends JPanel {
                 list.add(line);
             list.add(Box.createVerticalStrut(10));
         }
-        JScrollPane scroll = new JScrollPane(list);
-        scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
-        scroll.setOpaque(false);
-        scroll.getViewport().setOpaque(false);
-        scroll.setBorder(null);
-        add(scroll);
+        add(new ScrollPane(list));
     }
 }

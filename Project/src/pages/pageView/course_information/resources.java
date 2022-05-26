@@ -13,25 +13,18 @@ import java.awt.GridLayout;
 import javax.swing.border.EmptyBorder;
 
 import Components.Card;
-import Components.Label;
 import Components.Buttons.AccentButton;
+import Components.pageView.Title;
 
 import java.awt.Component;
 import Constants.Colors;
-import Constants.Fonts;
 import Constants.Icons;
 
 public class resources extends JPanel {
     public resources(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        title.add(new Label("Resources", Fonts.DISPLAY));
-        title.add(Box.createHorizontalGlue());
-        AccentButton addStudent = new AccentButton("Post New Material");
-        title.add(addStudent);
-        add(title);
+        add(new Title("Resources", new AccentButton("Post New Material")));
         add(Box.createVerticalStrut(20));
 
         Box options = Box.createHorizontalBox();

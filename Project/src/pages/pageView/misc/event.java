@@ -7,19 +7,16 @@ import javax.swing.JScrollPane;
 import java.awt.Component;
 import java.awt.Dimension;
 
-import Components.Label;
 import Components.ListItem;
-import Constants.Fonts;
+import Components.pageView.ScrollPane;
+import Components.pageView.Title;
 import Server.Datapoints;
 
 public class event extends JPanel {
     public event(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        title.add(new Label("Events", Fonts.DISPLAY));
-        add(title);
+        add(new Title("Events", null));
         add(Box.createVerticalStrut(20));
 
         JPanel list = new JPanel();
@@ -38,11 +35,6 @@ public class event extends JPanel {
                 list.add(line);
             list.add(Box.createVerticalStrut(10));
         }
-        JScrollPane scroll = new JScrollPane(list);
-        scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
-        scroll.setOpaque(false);
-        scroll.getViewport().setOpaque(false);
-        scroll.setBorder(null);
-        add(scroll);
+        add(new ScrollPane(list));
     }
 }

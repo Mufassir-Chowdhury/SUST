@@ -3,13 +3,14 @@ package pages.pageView.updates;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 
 import java.awt.event.MouseEvent;
 
 import Components.Label;
 import Components.ListItem;
+import Components.pageView.ScrollPane;
+import Components.pageView.Title;
 import Constants.Fonts;
 import Server.Datapoints;
 import java.awt.Component;
@@ -25,18 +26,16 @@ public class assignment extends JPanel {
 
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        Label name = new Label("Assignment", Fonts.DISPLAY);
-        name.addMouseListener(new MouseAdapter(){
+        Title title = new Title("Assignments", null);
+        add(title);
+        title.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
                 CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
                 cl.show(assignmentPanel, "assignment");
-                name.setText("Assignment");
+                title.setText("Assignment");
             }
         });
-        title.add(name);
         add(title);
         add(Box.createVerticalStrut(20));
 
@@ -60,7 +59,7 @@ public class assignment extends JPanel {
                     line.addMouseListener(new MouseAdapter(){
                         @Override
                         public void mouseClicked(MouseEvent e){
-                            name.setText("Assignment > " + assignment.title);
+                            title.setText("Assignment > " + assignment.title);
                             JPanel individualAssignment = new JPanel();
                             individualAssignment.setLayout(new BoxLayout(individualAssignment, BoxLayout.Y_AXIS));
                             individualAssignment.setOpaque(false);
@@ -99,7 +98,7 @@ public class assignment extends JPanel {
                     item.addMouseListener(new MouseAdapter(){
                         @Override
                         public void mouseClicked(MouseEvent e){
-                            name.setText("Assignment > " + assignment.title);
+                            title.setText("Assignment > " + assignment.title);
                             JPanel individualAssignment = new JPanel();
                             individualAssignment.setLayout(new BoxLayout(individualAssignment, BoxLayout.Y_AXIS));
                             individualAssignment.setOpaque(false);
@@ -122,14 +121,8 @@ public class assignment extends JPanel {
                 }
             }
         }
-        JScrollPane scroll = new JScrollPane(list);
-        scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
-        scroll.setOpaque(false);
-        scroll.getViewport().setOpaque(false);
-        scroll.setBorder(null);
+        ScrollPane scroll = new ScrollPane(list);
         add(scroll);
-
-
         
         assignmentPanel.add(scroll, "assignment");
         add(assignmentPanel);

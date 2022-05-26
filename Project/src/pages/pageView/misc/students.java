@@ -7,6 +7,8 @@ import javax.swing.JScrollPane;
 
 import Components.Label;
 import Components.ListItem;
+import Components.pageView.ScrollPane;
+import Components.pageView.Title;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -18,10 +20,7 @@ public class students extends JPanel {
     public students(){
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Box title = Box.createHorizontalBox();
-        title.setAlignmentX(Component.LEFT_ALIGNMENT);
-        title.add(new Label("Students", Fonts.DISPLAY));
-        add(title);
+        add(new Title("Student Information", null));
         add(Box.createVerticalStrut(20));
         JPanel list = new JPanel();
         list.setOpaque(false);
@@ -39,12 +38,7 @@ public class students extends JPanel {
             list.add(line);
             list.add(Box.createVerticalStrut(10));
         }
-        JScrollPane scroll = new JScrollPane(list);
-        scroll.setAlignmentX(Component.LEFT_ALIGNMENT);
-        scroll.setOpaque(false);
-        scroll.getViewport().setOpaque(false);
-        scroll.setBorder(null);
-        add(scroll);
+        add(new ScrollPane(list));
 
     }
 }
