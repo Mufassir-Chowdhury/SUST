@@ -9,12 +9,12 @@ import javax.swing.border.EmptyBorder;
 
 import Components.Label;
 import Components.ListItem;
+import Components.pageView.Line;
 import Components.pageView.ScrollPane;
 import Components.pageView.Title;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 
 import Constants.Fonts;
 import Server.Datapoints;
@@ -50,15 +50,11 @@ public class result extends JPanel {
                 line.setLayout(new BoxLayout(line, BoxLayout.Y_AXIS));
                 line.setAlignmentX(Component.LEFT_ALIGNMENT);
                 line.setOpaque(false);
-                Box horizontalLine = Box.createHorizontalBox();
-                horizontalLine.setMaximumSize(new Dimension(1000, 60));
-                horizontalLine.setAlignmentX(Component.LEFT_ALIGNMENT);
-                horizontalLine.add(new ListItem(
+                line.add(new Line(new ListItem(
                     course.name, 
                     course.code, 
-                    course.grade, 
-                    String.format("%.2f",course.gpa)));
-                line.add(horizontalLine);
+                    String.valueOf(course.attendance), 
+                    String.format("%03d", course.absent) + "   " + String.format("%03d", course.leave))));
                 list.add(line);
                 line.addMouseListener(new MouseAdapter(){
                     // Label attendance = new Label("Attendance", Fonts.Body);
@@ -94,15 +90,7 @@ public class result extends JPanel {
         list.add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(false)){
-                Box line = Box.createHorizontalBox();
-                line.setMaximumSize(new Dimension(1000, 60));
-                line.setAlignmentX(Component.LEFT_ALIGNMENT);
-                line.add(new ListItem(
-                    course.name, 
-                    course.code, 
-                    course.grade, 
-                    String.format("%.2f",course.gpa)));
-                list.add(line);
+                list.add(new Line(new ListItem(course.name, course.code, course.grade, String.format("%.2f", course.gpa))));
                 list.add(Box.createVerticalStrut(10));
             }
         }

@@ -1,7 +1,6 @@
 package pages.pageView.course_information;
 
 import java.awt.Component;
-import java.awt.Dimension;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -9,6 +8,7 @@ import javax.swing.JPanel;
 
 import Components.Label;
 import Components.ListItem;
+import Components.pageView.Line;
 import Components.pageView.ScrollPane;
 import Components.pageView.Title;
 import Constants.Fonts;
@@ -33,17 +33,12 @@ public class attendance extends JPanel {
             if(course.regular.equals(true)){
                 JPanel line = new JPanel();
                 line.setLayout(new BoxLayout(line, BoxLayout.Y_AXIS));
-
                 line.setOpaque(false);
-                Box horizontalLine = Box.createHorizontalBox();
-                horizontalLine.setMaximumSize(new Dimension(1000, 60));
-                horizontalLine.setAlignmentX(Component.LEFT_ALIGNMENT);
-                horizontalLine.add(new ListItem(
+                line.add(new Line(new ListItem(
                     course.name, 
                     course.code, 
                     String.valueOf(course.attendance), 
-                    String.format("%03d", course.absent) + "   " + String.format("%03d", course.leave)));
-                line.add(horizontalLine);
+                    String.format("%03d", course.absent) + "   " + String.format("%03d", course.leave))));
                 list.add(line);
                 line.addMouseListener(new MouseAdapter(){
                     Label attendance = new Label("Attendance", Fonts.Body);
@@ -68,15 +63,11 @@ public class attendance extends JPanel {
         list.add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(false)){
-                Box line = Box.createHorizontalBox();
-                line.setMaximumSize(new Dimension(1000, 60));
-                line.setAlignmentX(Component.LEFT_ALIGNMENT);
-                line.add(new ListItem(
+                list.add(new Line(new ListItem(
                     course.name, 
                     course.code, 
                     String.valueOf(course.attendance), 
-                        String.format("%03d", course.absent) + "   " + String.format("%03d", course.leave)));
-                list.add(line);
+                    String.format("%03d", course.absent) + "   " + String.format("%03d", course.leave))));
                 list.add(Box.createVerticalStrut(10));
             }
         }

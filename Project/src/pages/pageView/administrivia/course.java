@@ -2,13 +2,11 @@ package pages.pageView.administrivia;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JComboBox;
 import javax.swing.JList;
-
-import java.awt.Color;
 
 import javax.swing.JPanel;
 
+import Components.InputFields.ComboBox;
 import Components.pageView.Title;
 
 import java.util.Vector;
@@ -16,7 +14,6 @@ import java.awt.GridLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 
-import Constants.Colors;
 import Server.Datapoints;
 
 public class course extends JPanel {
@@ -29,16 +26,10 @@ public class course extends JPanel {
         Box options = Box.createHorizontalBox();
         options.setMaximumSize(new Dimension(1000, 40));
         options.setAlignmentX(Component.LEFT_ALIGNMENT);
-        JComboBox<String> filter = new JComboBox<>();
+        ComboBox<String> filter = new ComboBox<>();
         filter.addItem("USN");
-        filter.setBackground(new Color(50, 50, 50));
-        filter.setForeground(Colors.PLAIN_TEXT);
-        filter.setBorder(null);
-        JComboBox<String> filter2 = new JComboBox<>();
+        ComboBox<String> filter2 = new ComboBox<>();
         filter2.addItem("Semester");
-        filter2.setBackground(new Color(50, 50, 50));
-        filter2.setForeground(Colors.PLAIN_TEXT);
-        filter2.setBorder(null);
 
         options.add(filter);
         options.add(Box.createHorizontalGlue());

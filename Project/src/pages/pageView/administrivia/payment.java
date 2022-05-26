@@ -23,8 +23,6 @@ public class payment extends JPanel {
         add(new Title("Payment", null));
         add(Box.createVerticalStrut(20));
 
-        
-
         JPanel resources = new JPanel();
         resources.setAlignmentX(Component.LEFT_ALIGNMENT);
         resources.setOpaque(false);

@@ -3,18 +3,18 @@ package pages.pageView.updates;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 
 import java.awt.event.MouseEvent;
 
 import Components.Label;
 import Components.ListItem;
+import Components.pageView.Line;
+import Components.pageView.Post;
 import Components.pageView.ScrollPane;
 import Components.pageView.Title;
 import Constants.Fonts;
 import Server.Datapoints;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.CardLayout;
 
@@ -48,10 +48,7 @@ public class assignment extends JPanel {
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(true)){
                 for(Datapoints.Courses.Assignment assignment: course.assignments){
-                    Box line = Box.createHorizontalBox();
-                    line.setMaximumSize(new Dimension(1000, 60));
-                    line.setAlignmentX(Component.LEFT_ALIGNMENT);                    
-                    line.add(new ListItem(
+                    Box line = new Line(new ListItem(
                         assignment.title, 
                         course.name, 
                         assignment.date, 
@@ -60,16 +57,11 @@ public class assignment extends JPanel {
                         @Override
                         public void mouseClicked(MouseEvent e){
                             title.setText("Assignment > " + assignment.title);
-                            JPanel individualAssignment = new JPanel();
-                            individualAssignment.setLayout(new BoxLayout(individualAssignment, BoxLayout.Y_AXIS));
-                            individualAssignment.setOpaque(false);
-                            individualAssignment.setAlignmentX(Component.LEFT_ALIGNMENT);
-                            individualAssignment.add(new Label(assignment.title, Fonts.TITLE, Component.LEFT_ALIGNMENT));
-                            individualAssignment.add(new Label("Due Date: " + assignment.date, Fonts.Body, Component.LEFT_ALIGNMENT));
-                            individualAssignment.add(new Label("Total Marks: " + String.valueOf(assignment.totalMarks), Fonts.Body, Component.LEFT_ALIGNMENT));
-                            individualAssignment.add(new JSeparator());
-                            individualAssignment.add(new Label(assignment.description, Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-                            individualAssignment.add(Box.createVerticalGlue());
+                            JPanel individualAssignment = new Post(
+                                assignment.title,
+                                "Due Date: " + assignment.date, 
+                                "Total Marks: " + assignment.totalMarks, 
+                                assignment.description);
                             assignmentPanel.add(individualAssignment, assignment.title);
                             CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
                             cl.show(assignmentPanel, assignment.title);
@@ -85,37 +77,26 @@ public class assignment extends JPanel {
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(false)){
                 for(Datapoints.Courses.Assignment assignment: course.assignments){
-                    Box line = Box.createHorizontalBox();
-                    line.setMaximumSize(new Dimension(1000, 60));
-                    line.setAlignmentX(Component.LEFT_ALIGNMENT);
-                    ListItem item = new ListItem(
+                    Box line = new Line(new ListItem(
                         assignment.title, 
                         course.name, 
                         assignment.date, 
-                        String.format("%03d", assignment.totalMarks) + "   " + String.format("%03d", assignment.marksObtained)
-                    );
-                    
-                    item.addMouseListener(new MouseAdapter(){
+                        String.format("%03d", assignment.totalMarks) + "   " + String.format("%03d", assignment.marksObtained)));
+                    line.addMouseListener(new MouseAdapter(){
                         @Override
                         public void mouseClicked(MouseEvent e){
                             title.setText("Assignment > " + assignment.title);
-                            JPanel individualAssignment = new JPanel();
-                            individualAssignment.setLayout(new BoxLayout(individualAssignment, BoxLayout.Y_AXIS));
-                            individualAssignment.setOpaque(false);
-                            individualAssignment.setAlignmentX(Component.LEFT_ALIGNMENT);
-                            individualAssignment.add(new Label(assignment.title, Fonts.TITLE, Component.LEFT_ALIGNMENT));
-                            individualAssignment.add(new Label("Due Date: " + assignment.date, Fonts.Body, Component.LEFT_ALIGNMENT));
-                            individualAssignment.add(new Label("Total Marks: " + String.valueOf(assignment.totalMarks), Fonts.Body, Component.LEFT_ALIGNMENT));
-                            individualAssignment.add(new JSeparator());
-                            individualAssignment.add(new Label(assignment.description, Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-                            individualAssignment.add(Box.createVerticalGlue());
+                            JPanel individualAssignment = new Post(
+                                assignment.title,
+                                "Due Date: " + assignment.date, 
+                                "Total Marks: " + assignment.totalMarks, 
+                                assignment.description);
                             assignmentPanel.add(individualAssignment, assignment.title);
                             CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
                             cl.show(assignmentPanel, assignment.title);
                         }
                         
                     });
-                    line.add(item);
                     list.add(line);
                     list.add(Box.createVerticalStrut(10));
                 }

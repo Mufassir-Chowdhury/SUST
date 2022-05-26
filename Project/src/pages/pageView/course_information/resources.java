@@ -2,10 +2,8 @@ package pages.pageView.course_information;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JComboBox;
 
 import java.awt.CardLayout;
-import java.awt.Color;
 
 import javax.swing.JPanel;
 import java.awt.Insets;
@@ -14,10 +12,10 @@ import javax.swing.border.EmptyBorder;
 
 import Components.Card;
 import Components.Buttons.AccentButton;
+import Components.InputFields.ComboBox;
 import Components.pageView.Title;
 
 import java.awt.Component;
-import Constants.Colors;
 import Constants.Icons;
 
 public class resources extends JPanel {
@@ -29,16 +27,10 @@ public class resources extends JPanel {
 
         Box options = Box.createHorizontalBox();
         options.setAlignmentX(Component.LEFT_ALIGNMENT);
-        JComboBox<String> filter = new JComboBox<>();
+        ComboBox<String> filter = new ComboBox<>();
         filter.addItem("Semester");
-        filter.setBackground(new Color(50, 50, 50));
-        filter.setForeground(Colors.PLAIN_TEXT);
-        filter.setBorder(null);
-        JComboBox<String> filter2 = new JComboBox<>();
+        ComboBox<String> filter2 = new ComboBox<>();
         filter2.addItem("Course");
-        filter2.setBackground(new Color(50, 50, 50));
-        filter2.setForeground(Colors.PLAIN_TEXT);
-        filter2.setBorder(null);
 
         options.add(filter);
         options.add(Box.createHorizontalGlue());

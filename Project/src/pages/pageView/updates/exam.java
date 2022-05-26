@@ -3,22 +3,47 @@ package pages.pageView.updates;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JSeparator;
 
 import java.awt.event.MouseEvent;
 
 import Components.Label;
 import Components.ListItem;
+import Components.pageView.Line;
 import Components.pageView.ScrollPane;
 import Components.pageView.Title;
+import Components.pageView.Post;
 import Constants.Fonts;
 import Server.Datapoints;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.CardLayout;
 
 public class exam extends JPanel {
+    public class line extends Box{
+        public line(){
+            super(BoxLayout.X_AXIS);
+            Box line = new Line(new ListItem(
+                        exam.title, 
+                        course.name, 
+                        exam.date, 
+                        String.format("%03d", exam.totalMarks) + "   " + String.format("%03d", exam.marksObtained)));
+                    line.addMouseListener(new MouseAdapter(){
+                        @Override
+                        public void mouseClicked(MouseEvent e){
+                            title.setText("Exam > " + exam.title);
+                            JPanel individualExam = new Post(
+                                exam.title,
+                                "Due Date: " + exam.date, 
+                                "Total Marks: " + exam.totalMarks, 
+                                exam.description);
+                            assignmentPanel.add(individualExam, exam.title);
+                            CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
+                            cl.show(assignmentPanel, exam.title);
+                        }
+                        
+                    });
+        }
+    }
     public exam(){
         JPanel assignmentPanel = new JPanel(new CardLayout());
         assignmentPanel.setOpaque(false);
@@ -48,34 +73,26 @@ public class exam extends JPanel {
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(true)){
                 for(Datapoints.Courses.Exam exam: course.exams){
-                    Box line = Box.createHorizontalBox();
-                    line.setMaximumSize(new Dimension(1000, 60));
-                    line.setAlignmentX(Component.LEFT_ALIGNMENT);
-                    line.add(new ListItem(
+                    Box line = new Line(new ListItem(
                         exam.title, 
                         course.name, 
                         exam.date, 
                         String.format("%03d", exam.totalMarks) + "   " + String.format("%03d", exam.marksObtained)));
-                        line.addMouseListener(new MouseAdapter(){
-                            @Override
-                            public void mouseClicked(MouseEvent e){
-                                title.setText("Exam > " + exam.title);
-                                JPanel individualAssignment = new JPanel();
-                                individualAssignment.setLayout(new BoxLayout(individualAssignment, BoxLayout.Y_AXIS));
-                                individualAssignment.setOpaque(false);
-                                individualAssignment.setAlignmentX(Component.LEFT_ALIGNMENT);
-                                individualAssignment.add(new Label(exam.title, Fonts.TITLE, Component.LEFT_ALIGNMENT));
-                                individualAssignment.add(new Label("Due Date: " + exam.date, Fonts.Body, Component.LEFT_ALIGNMENT));
-                                individualAssignment.add(new Label("Total Marks: " + String.valueOf(exam.totalMarks), Fonts.Body, Component.LEFT_ALIGNMENT));
-                                individualAssignment.add(new JSeparator());
-                                individualAssignment.add(new Label(exam.description, Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-                                individualAssignment.add(Box.createVerticalGlue());
-                                assignmentPanel.add(individualAssignment, exam.title);
-                                CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
-                                cl.show(assignmentPanel, exam.title);
-                            }
-                            
-                        });
+                    line.addMouseListener(new MouseAdapter(){
+                        @Override
+                        public void mouseClicked(MouseEvent e){
+                            title.setText("Exam > " + exam.title);
+                            JPanel individualExam = new Post(
+                                exam.title,
+                                "Due Date: " + exam.date, 
+                                "Total Marks: " + exam.totalMarks, 
+                                exam.description);
+                            assignmentPanel.add(individualExam, exam.title);
+                            CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
+                            cl.show(assignmentPanel, exam.title);
+                        }
+                        
+                    });
                     list.add(line);
                     list.add(Box.createVerticalStrut(10));
                 }
@@ -85,34 +102,26 @@ public class exam extends JPanel {
         for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
             if(course.regular.equals(false)){
                 for(Datapoints.Courses.Exam exam: course.exams){
-                    Box line = Box.createHorizontalBox();
-                    line.setMaximumSize(new Dimension(1000, 60));
-                    line.setAlignmentX(Component.LEFT_ALIGNMENT);
-                    line.add(new ListItem(
+                    Box line = new Line(new ListItem(
                         exam.title, 
                         course.name, 
                         exam.date, 
                         String.format("%03d", exam.totalMarks) + "   " + String.format("%03d", exam.marksObtained)));
-                        line.addMouseListener(new MouseAdapter(){
-                            @Override
-                            public void mouseClicked(MouseEvent e){
-                                title.setText("Exam > " + exam.title);
-                                JPanel individualAssignment = new JPanel();
-                                individualAssignment.setLayout(new BoxLayout(individualAssignment, BoxLayout.Y_AXIS));
-                                individualAssignment.setOpaque(false);
-                                individualAssignment.setAlignmentX(Component.LEFT_ALIGNMENT);
-                                individualAssignment.add(new Label(exam.title, Fonts.TITLE, Component.LEFT_ALIGNMENT));
-                                individualAssignment.add(new Label("Due Date: " + exam.date, Fonts.Body, Component.LEFT_ALIGNMENT));
-                                individualAssignment.add(new Label("Total Marks: " + String.valueOf(exam.totalMarks), Fonts.Body, Component.LEFT_ALIGNMENT));
-                                individualAssignment.add(new JSeparator());
-                                individualAssignment.add(new Label(exam.description, Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-                                individualAssignment.add(Box.createVerticalGlue());
-                                assignmentPanel.add(individualAssignment, exam.title);
-                                CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
-                                cl.show(assignmentPanel, exam.title);
-                            }
-                            
-                        });
+                    line.addMouseListener(new MouseAdapter(){
+                        @Override
+                        public void mouseClicked(MouseEvent e){
+                            title.setText("Exam > " + exam.title);
+                            JPanel individualExam = new Post(
+                                exam.title,
+                                "Due Date: " + exam.date, 
+                                "Total Marks: " + exam.totalMarks, 
+                                exam.description);
+                            assignmentPanel.add(individualExam, exam.title);
+                            CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
+                            cl.show(assignmentPanel, exam.title);
+                        }
+                        
+                    });
                     list.add(line);
                     list.add(Box.createVerticalStrut(10));
                 }
