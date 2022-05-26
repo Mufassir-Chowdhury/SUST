@@ -84,13 +84,13 @@ public class Datapoints{
     }
 
     public static class Courses  implements Serializable{
-        public static class Assignment implements Serializable{
+        public static class EvaluationItem implements Serializable{
             public String title;
             public String date;
             public String description;
             public int totalMarks;
             public int marksObtained;
-            public Assignment(String title, String date, String description, int totalMarks, int marksObtained){
+            public EvaluationItem(String title, String date, String description, int totalMarks, int marksObtained){
                 this.title = title;
                 this.date = date;
                 this.description = description;
@@ -98,18 +98,14 @@ public class Datapoints{
                 this.marksObtained = marksObtained;
             }
         }
-        public static class Exam implements Serializable{
-            public String title;
-            public String date;
-            public String description;
-            public int totalMarks;
-            public int marksObtained;
+        public static class Assignment extends EvaluationItem{
+            public Assignment(String title, String date, String description, int totalMarks, int marksObtained){
+                super(title, date, description, totalMarks, marksObtained);
+            }
+        }
+        public static class Exam extends EvaluationItem{
             public Exam(String title, String date, String description, int totalMarks, int marksObtained){
-                this.title = title;
-                this.date = date;
-                this.description = description;
-                this.totalMarks = totalMarks;
-                this.marksObtained = marksObtained;
+                super(title, date, description, totalMarks, marksObtained);
             }
         }
         public static class Resource implements Serializable{
@@ -249,12 +245,6 @@ public class Datapoints{
     public Notice[] NOTICES =  null;
 
     private static Datapoints single_instance = null;
-  
-    public String s;
-  
-    private Datapoints(){
-        s = "Hello I am a string part of Singleton class";
-    }
   
     public static Datapoints getInstance(){
         if (single_instance == null)
