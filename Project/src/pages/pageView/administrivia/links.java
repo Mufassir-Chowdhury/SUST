@@ -14,7 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import Components.Label;
 import Components.pageView.ScrollPane;
-import Components.pageView.Title;
+import Components.pageView.ViewPort;
 
 import java.awt.Color;
 import java.net.URISyntaxException;
@@ -25,15 +25,12 @@ import Constants.Connect;
 import Server.Datapoints;
 import Server.Server;
 
-public class links extends JPanel {
+public class links extends ViewPort {
 
     Connect c = new Connect();
 
     public links() throws ClassNotFoundException, IOException {
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Title("Links", null));
-        add(Box.createVerticalStrut(20));
+        super("Links", null);
 
         JPanel list = new JPanel();
         list.setOpaque(false);

@@ -56,9 +56,7 @@ public class exam extends JPanel {
                 }
             }
         }
-        ScrollPane scroll = new ScrollPane(list);
-
-        assignmentPanel.add(scroll, "assignment");
+        assignmentPanel.add(new ScrollPane(list), "assignment");
         add(assignmentPanel);
     }
 }

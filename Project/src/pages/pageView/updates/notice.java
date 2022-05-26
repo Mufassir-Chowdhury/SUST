@@ -8,15 +8,12 @@ import java.awt.Component;
 import Components.ListItem;
 import Components.pageView.Line;
 import Components.pageView.ScrollPane;
-import Components.pageView.Title;
+import Components.pageView.ViewPort;
 import Server.Datapoints;
 
-public class notice extends JPanel {
+public class notice extends ViewPort {
     public notice(){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Title("Notices", null));
-        add(Box.createVerticalStrut(20));
+        super("Notices", null);
 
         JPanel list = new JPanel();
         list.setOpaque(false);

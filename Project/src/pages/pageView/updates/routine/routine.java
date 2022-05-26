@@ -1,22 +1,17 @@
 package pages.pageView.updates.routine;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import Components.pageView.Title;
+import Components.pageView.ViewPort;
 
 import java.awt.Component;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
-public class routine extends JPanel{
+public class routine extends ViewPort{
     public routine(){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Title("Class Routine", null));
-        add(Box.createVerticalStrut(20));
+        super("Class Routine", null);
 
         JPanel list = new JPanel();
         list.setOpaque(false);

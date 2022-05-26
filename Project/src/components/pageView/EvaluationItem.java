@@ -49,7 +49,7 @@ public class EvaluationItem extends Box {
         line.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
-                title.setText("Assignment > " + evaluationMethod.title);
+                title.setText("Exam > " + evaluationMethod.title);
                 Post individualExam = new Post(
                     evaluationMethod.title,
                     "Due Date: " + evaluationMethod.date, 

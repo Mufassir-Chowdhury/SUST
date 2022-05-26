@@ -1,8 +1,5 @@
 package pages.pageView.administrivia;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-
 import java.awt.CardLayout;
 
 import javax.swing.JPanel;
@@ -11,17 +8,14 @@ import java.awt.GridLayout;
 import javax.swing.border.EmptyBorder;
 
 import Components.Card;
-import Components.pageView.Title;
+import Components.pageView.ViewPort;
 
 import java.awt.Component;
 import Constants.Icons;
 
-public class payment extends JPanel {
+public class payment extends ViewPort {
     public payment(){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Title("Payment", null));
-        add(Box.createVerticalStrut(20));
+        super("Payment", null);
 
         JPanel resources = new JPanel();
         resources.setAlignmentX(Component.LEFT_ALIGNMENT);

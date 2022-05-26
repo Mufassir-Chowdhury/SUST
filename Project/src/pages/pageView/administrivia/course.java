@@ -1,13 +1,12 @@
 package pages.pageView.administrivia;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JList;
 
 import javax.swing.JPanel;
 
 import Components.InputFields.ComboBox;
-import Components.pageView.Title;
+import Components.pageView.ViewPort;
 
 import java.util.Vector;
 import java.awt.GridLayout;
@@ -16,12 +15,9 @@ import java.awt.Dimension;
 
 import Server.Datapoints;
 
-public class course extends JPanel {
+public class course extends ViewPort {
     public course(){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Title("Course", null));
-        add(Box.createVerticalStrut(20));
+        super("Course", null);
 
         Box options = Box.createHorizontalBox();
         options.setMaximumSize(new Dimension(1000, 40));

@@ -18,7 +18,7 @@ import java.awt.CardLayout;
 
 public class assignment extends JPanel {
     JPanel assignmentPanel = new JPanel(new CardLayout());
-    Title title = new Title("Exam", null);
+    Title title = new Title("Assignment", null);
 
     public assignment(){
         assignmentPanel.setOpaque(false);
@@ -55,10 +55,7 @@ public class assignment extends JPanel {
                 }
             }
         }
-        ScrollPane scroll = new ScrollPane(list);
-        add(scroll);
-        
-        assignmentPanel.add(scroll, "assignment");
+        assignmentPanel.add(new ScrollPane(list), "assignment");
         add(assignmentPanel);
     }
 }

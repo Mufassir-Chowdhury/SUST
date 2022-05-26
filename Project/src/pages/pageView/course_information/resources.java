@@ -1,8 +1,6 @@
 package pages.pageView.course_information;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
-
 import java.awt.CardLayout;
 
 import javax.swing.JPanel;
@@ -13,17 +11,14 @@ import javax.swing.border.EmptyBorder;
 import Components.Card;
 import Components.Buttons.AccentButton;
 import Components.InputFields.ComboBox;
-import Components.pageView.Title;
+import Components.pageView.ViewPort;
 
 import java.awt.Component;
 import Constants.Icons;
 
-public class resources extends JPanel {
+public class resources extends ViewPort {
     public resources(){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Title("Resources", new AccentButton("Post New Material")));
-        add(Box.createVerticalStrut(20));
+        super("Resources", new AccentButton("Post New Material"));
 
         Box options = Box.createHorizontalBox();
         options.setAlignmentX(Component.LEFT_ALIGNMENT);

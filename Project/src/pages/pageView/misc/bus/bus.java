@@ -1,7 +1,5 @@
 package pages.pageView.misc.bus;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import java.awt.Component;
@@ -9,14 +7,11 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
-import Components.pageView.Title;
+import Components.pageView.ViewPort;
 
-public class bus extends JPanel {
+public class bus extends ViewPort {
     public bus(){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Title("Bus Schedule", null));
-        add(Box.createVerticalStrut(20));
+        super("Bus Schedule", null);
 
         JPanel list = new JPanel();
         list.setOpaque(false);

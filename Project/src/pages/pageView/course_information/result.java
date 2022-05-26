@@ -4,16 +4,12 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import java.awt.Insets;
-import javax.swing.border.EmptyBorder;
-
 import Components.Label;
 import Components.ListItem;
 import Components.pageView.Line;
 import Components.pageView.ScrollPane;
-import Components.pageView.Title;
+import Components.pageView.ViewPort;
 
-import java.awt.Color;
 import java.awt.Component;
 
 import Constants.Fonts;
@@ -22,22 +18,9 @@ import Server.Datapoints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class result extends JPanel {
+public class result extends ViewPort {
     public result(){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-        Box resultSummary = Box.createHorizontalBox();
-        resultSummary.setAlignmentY(Component.TOP_ALIGNMENT);
-        Label grade = new Label("A+", Fonts.BIG_DISPLAY, Color.GREEN);
-        grade.setBorder(new EmptyBorder(new Insets(0, 0, 0, 5)));
-        resultSummary.add(grade);
-        Box resultSummarySmall = Box.createVerticalBox();
-        resultSummarySmall.add(new Label("4.00", Fonts.Body));
-        resultSummarySmall.add(new Label("1st", Fonts.Body));
-        resultSummary.add(resultSummarySmall);
-        add(new Title("Results", resultSummary));
-        add(Box.createVerticalStrut(20));
+        super("Results", new ResultSummary());
 
         JPanel list = new JPanel();
         list.setOpaque(false);

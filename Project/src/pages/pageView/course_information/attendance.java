@@ -10,19 +10,16 @@ import Components.Label;
 import Components.ListItem;
 import Components.pageView.Line;
 import Components.pageView.ScrollPane;
-import Components.pageView.Title;
+import Components.pageView.ViewPort;
 import Constants.Fonts;
 import Server.Datapoints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 
-public class attendance extends JPanel {
+public class attendance extends ViewPort {
     public attendance(){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Title("Attendance", null));
-        add(Box.createVerticalStrut(20));
+        super("Attendance", null);
 
         JPanel list = new JPanel();
         list.setOpaque(false);

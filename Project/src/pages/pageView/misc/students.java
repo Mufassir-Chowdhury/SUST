@@ -7,16 +7,13 @@ import javax.swing.JPanel;
 import Components.ListItem;
 import Components.pageView.Line;
 import Components.pageView.ScrollPane;
-import Components.pageView.Title;
-
+import Components.pageView.ViewPort;
 import Server.Datapoints;
 
-public class students extends JPanel {
+public class students extends ViewPort {
     public students(){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        add(new Title("Student Information", null));
-        add(Box.createVerticalStrut(20));
+        super("Student Information", null);
+
         JPanel list = new JPanel();
         list.setOpaque(false);
         list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
