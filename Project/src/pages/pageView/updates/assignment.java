@@ -19,14 +19,42 @@ import java.awt.event.MouseAdapter;
 import java.awt.CardLayout;
 
 public class assignment extends JPanel {
+    JPanel assignmentPanel = new JPanel(new CardLayout());
+    Title title = new Title("Exam", null);
+
+    public class line extends Box{
+        public line(Datapoints.Courses course, Datapoints.Courses.Assignment assignment){
+            super(BoxLayout.X_AXIS);
+            setAlignmentX(Component.LEFT_ALIGNMENT);
+            Box line = new Line(new ListItem(
+                assignment.title, 
+                course.name, 
+                assignment.date, 
+                String.format("%03d", assignment.totalMarks) + "   " + String.format("%03d", assignment.marksObtained)));
+            line.addMouseListener(new MouseAdapter(){
+                @Override
+                public void mouseClicked(MouseEvent e){
+                    title.setText("Assignment > " + assignment.title);
+                    JPanel individualExam = new Post(
+                        assignment.title,
+                        "Due Date: " + assignment.date, 
+                        "Total Marks: " + assignment.totalMarks, 
+                        assignment.description);
+                    assignmentPanel.add(individualExam, assignment.title);
+                    CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
+                    cl.show(assignmentPanel, assignment.title);
+                }
+                
+            });
+            add(line);
+        }
+    }
     public assignment(){
-        JPanel assignmentPanel = new JPanel(new CardLayout());
         assignmentPanel.setOpaque(false);
         assignmentPanel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        Title title = new Title("Assignments", null);
         add(title);
         title.addMouseListener(new MouseAdapter(){
             @Override
@@ -44,61 +72,16 @@ public class assignment extends JPanel {
         list.setOpaque(false);
         list.setAlignmentX(Component.LEFT_ALIGNMENT);
         list.setLayout(new BoxLayout(list, BoxLayout.Y_AXIS));
-        list.add(new Label("Regular Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
-        for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
-            if(course.regular.equals(true)){
-                for(Datapoints.Courses.Assignment assignment: course.assignments){
-                    Box line = new Line(new ListItem(
-                        assignment.title, 
-                        course.name, 
-                        assignment.date, 
-                        String.format("%03d", assignment.totalMarks) + "   " + String.format("%03d", assignment.marksObtained)));
-                    line.addMouseListener(new MouseAdapter(){
-                        @Override
-                        public void mouseClicked(MouseEvent e){
-                            title.setText("Assignment > " + assignment.title);
-                            JPanel individualAssignment = new Post(
-                                assignment.title,
-                                "Due Date: " + assignment.date, 
-                                "Total Marks: " + assignment.totalMarks, 
-                                assignment.description);
-                            assignmentPanel.add(individualAssignment, assignment.title);
-                            CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
-                            cl.show(assignmentPanel, assignment.title);
-                        }
-                        
-                    });
-                    list.add(line);
-                    list.add(Box.createVerticalStrut(10));
-                }
-            }
-        }
-        list.add(new Label("Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));
-        for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
-            if(course.regular.equals(false)){
-                for(Datapoints.Courses.Assignment assignment: course.assignments){
-                    Box line = new Line(new ListItem(
-                        assignment.title, 
-                        course.name, 
-                        assignment.date, 
-                        String.format("%03d", assignment.totalMarks) + "   " + String.format("%03d", assignment.marksObtained)));
-                    line.addMouseListener(new MouseAdapter(){
-                        @Override
-                        public void mouseClicked(MouseEvent e){
-                            title.setText("Assignment > " + assignment.title);
-                            JPanel individualAssignment = new Post(
-                                assignment.title,
-                                "Due Date: " + assignment.date, 
-                                "Total Marks: " + assignment.totalMarks, 
-                                assignment.description);
-                            assignmentPanel.add(individualAssignment, assignment.title);
-                            CardLayout cl = (CardLayout)(assignmentPanel.getLayout());
-                            cl.show(assignmentPanel, assignment.title);
-                        }
-                        
-                    });
-                    list.add(line);
-                    list.add(Box.createVerticalStrut(10));
+        Boolean values[] = {true, false};
+        for(Boolean value: values){
+            list.add(new Label(value ? "Regular Courses" : "Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));     
+            for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
+                if(course.regular.equals(value)){
+                    for(Datapoints.Courses.Assignment assignment: course.assignments){
+                        Box line = new line(course, assignment);
+                        list.add(line);
+                        list.add(Box.createVerticalStrut(10));
+                    }
                 }
             }
         }
