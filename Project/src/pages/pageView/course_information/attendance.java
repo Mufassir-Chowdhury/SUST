@@ -17,7 +17,6 @@ import Server.Datapoints;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
 public class attendance extends ViewPort {
     public attendance(){
         super("Attendance", null);

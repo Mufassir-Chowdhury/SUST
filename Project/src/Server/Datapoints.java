@@ -7,6 +7,9 @@ import java.util.Vector;
 import javax.swing.Icon;
 import javax.swing.JPanel;
 
+import Components.ListItem;
+import Components.pageView.Line;
+import Components.pageView.Post;
 import Constants.Icons;
 import pages.pageView.course_information.*;
 import pages.pageView.administrivia.*;
@@ -16,6 +19,14 @@ import pages.pageView.updates.*;
 import pages.pageView.updates.routine.routine;
 
 public class Datapoints{
+    public static interface Tilable{
+        public Line getListItem();
+        public String getTitle();
+        public Post getPost();
+    }
+
+
+
     public static class Page{
         public String name;
         public Icon icon;
@@ -64,7 +75,7 @@ public class Datapoints{
             this.dismissable = dismissable;
         }
     }
-    public static class Student  implements Serializable{
+    public static class Student implements Serializable, Tilable{
         public String registration;
         public String name;
         public String email;
@@ -80,6 +91,26 @@ public class Datapoints{
             this.blood = blood;
             this.birthDay = birthDay;
             this.hometown = hometown;
+        }
+        @Override
+        public Line getListItem() {
+            return new Line(new ListItem(
+                name, 
+                blood + " | " + birthDay + " | " + hometown, 
+                email, 
+                "+880" + number));
+        }
+        @Override
+        public String getTitle() {
+            return name;
+        }
+        @Override
+        public Post getPost() {
+            return new Post(
+                name, 
+                blood + " | " + birthDay + " | " + hometown, 
+                email, 
+                "+880" + number);
         }
     }
 
@@ -195,7 +226,7 @@ public class Datapoints{
         }
     }
 
-    public static class Event implements Serializable{
+    public static class Event implements Serializable, Tilable{
         public String title;
         public String date;
         public String description;
@@ -211,8 +242,28 @@ public class Datapoints{
             this.duration = duration;
             this.interested = interested;
         }
+        @Override
+        public Line getListItem() {
+            return new Line(new ListItem(
+                title, 
+                location, 
+                duration + " at  " + date, 
+                String.format("%03d", interested) + "   " + String.format("%03d", going)));
+        }
+        @Override
+        public String getTitle() {
+            return title;
+        }
+        @Override
+        public Post getPost() {
+            return new Post(
+                title,
+                "Date: " + date, 
+                "Location: " + location, 
+                description);
+        }
     }
-    public static class Notice implements Serializable{
+    public static class Notice implements Serializable, Tilable{
         public String title;
         public String date;
         public String description;
@@ -222,6 +273,26 @@ public class Datapoints{
             this.date = date;
             this.description = description;
             this.file = file;
+        }
+        @Override
+        public Line getListItem() {
+            return new Line(new ListItem(
+                title, 
+                "", 
+                "", 
+                date));
+        }
+        @Override
+        public String getTitle() {
+            return title;
+        }
+        @Override
+        public Post getPost() {
+            return new Post(
+                title,
+                date, 
+                "", 
+                description);
         }
     }
 
