@@ -1,4 +1,4 @@
-package pages.pageView.course_information;
+package Components.pageView;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;

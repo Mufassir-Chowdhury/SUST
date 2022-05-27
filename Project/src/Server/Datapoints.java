@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import Components.ListItem;
 import Components.pageView.Line;
 import Components.pageView.Post;
+import Components.pageView.ResultSummary;
 import Components.pageView.ViewPortBasicPanel;
 import Constants.Icons;
 import pages.pageView.course_information.*;
