@@ -19,9 +19,8 @@ public class resources extends ViewPort {
     public resources(){
         super("Resources", new AccentButton("Post New Material"));
 
-        String[] firstOptions = {"Semester", "Semester 2"};
         String[] secondOptions = {"Course", "Course 2"};
-        add(new Options(firstOptions, secondOptions));
+        add(new Options(Datapoints.getInstance().SEMESTER, secondOptions));
         add(Box.createVerticalStrut(20));
 
         JPanel resources = new JPanel();

@@ -1,9 +1,10 @@
 package pages.pageView.updates;
 
-import Components.pageView.EvaluationItemList;
+import Components.pageView.MainCardList;
 import Components.pageView.ScrollPane;
 import Components.pageView.ViewPortPanel;
-import Components.pageView.EvaluationItem.Type;
+import Components.pageView.MainCardListItem.Type;
+
 
 public class exam extends ViewPortPanel {
     public exam(){
@@ -11,7 +12,7 @@ public class exam extends ViewPortPanel {
 
         getPanel().add(
             new ScrollPane(
-                new EvaluationItemList(getTitle(), getPanel(), Type.EXAM)),
+                new MainCardList("Exam", getTitle(), getPanel(), Type.EXAM)),
             "Exam");
     }
 }

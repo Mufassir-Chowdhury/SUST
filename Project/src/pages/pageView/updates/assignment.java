@@ -1,9 +1,9 @@
 package pages.pageView.updates;
 
-import Components.pageView.EvaluationItemList;
+import Components.pageView.MainCardList;
 import Components.pageView.ScrollPane;
 import Components.pageView.ViewPortPanel;
-import Components.pageView.EvaluationItem.Type;
+import Components.pageView.MainCardListItem.Type;
 
 public class assignment extends ViewPortPanel {    
     public assignment(){
@@ -11,7 +11,7 @@ public class assignment extends ViewPortPanel {
 
         getPanel().add(
             new ScrollPane(
-                new EvaluationItemList(getTitle(), getPanel(), Type.ASSIGNMENT)),
+                new MainCardList("Assignment", getTitle(), getPanel(), Type.ASSIGNMENT)),
                 "Assignment");
     }
 }

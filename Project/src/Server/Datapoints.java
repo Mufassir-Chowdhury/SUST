@@ -116,28 +116,60 @@ public class Datapoints{
     }
 
     public static class Courses  implements Serializable{
-        public static class EvaluationItem implements Serializable{
+        public String code;
+        public String name;
+        public String credit;
+        public String grade;
+        public float gpa;
+        public int attendance;
+        public int absent;
+        public Boolean regular;
+        public int leave;
+
+        public static class EvaluationItem implements Serializable, Tilable{
+            public String courseName;
             public String title;
             public String date;
             public String description;
             public int totalMarks;
             public int marksObtained;
-            public EvaluationItem(String title, String date, String description, int totalMarks, int marksObtained){
+            public EvaluationItem(String courseName, String title, String date, String description, int totalMarks, int marksObtained){
+                this.courseName = courseName;
                 this.title = title;
                 this.date = date;
                 this.description = description;
                 this.totalMarks = totalMarks;
                 this.marksObtained = marksObtained;
             }
+            @Override
+            public Line getListItem() {
+                return new Line(new ListItem(
+                    title, 
+                    courseName,
+                    date, 
+                    String.format("%03d", totalMarks) + "   " + String.format("%03d", marksObtained)));
+            }
+            @Override
+            public String getTitle() {
+                return title;
+            }
+            @Override
+            public Post getPost() {
+                return new Post(
+                    title,
+                    "Due Date: " + date, 
+                    "Total Marks: " + totalMarks, 
+                    description);
+            }
         }
         public static class Assignment extends EvaluationItem{
-            public Assignment(String title, String date, String description, int totalMarks, int marksObtained){
-                super(title, date, description, totalMarks, marksObtained);
+            public Assignment(String courseName, String title, String date, String description, int totalMarks, int marksObtained){
+                super(courseName, title, date, description, totalMarks, marksObtained);
             }
         }
         public static class Exam extends EvaluationItem{
-            public Exam(String title, String date, String description, int totalMarks, int marksObtained){
-                super(title, date, description, totalMarks, marksObtained);
+            public Exam(String courseName, String title, String date, String description, int totalMarks, int marksObtained){
+                super(courseName, title, date, description, totalMarks, marksObtained);
             }
         }
         public static class Resource implements Serializable{
@@ -187,15 +219,6 @@ public class Datapoints{
             }
         }
 
-        public String code;
-        public String name;
-        public String credit;
-        public String grade;
-        public float gpa;
-        public int attendance;
-        public int absent;
-        public Boolean regular;
-        public int leave;
         public Vector<Assignment> assignments = new Vector<>();
         public Vector<Exam> exams = new Vector<>();
         public Resource resources;
@@ -209,12 +232,12 @@ public class Datapoints{
             this.absent = absent;
             this.regular = regular;
             this.leave = leave;
-            assignments.add(new Assignment("Assignment 1" + this.name, this.attendance + "th April", "This is assignment 1", 100, 80));
-            exams.add(new Exam("Exam 1" + this.name, this.attendance + "th April", "This is exam 1", 100, 80));
-            exams.add(new Exam("Exam 2" + this.name, this.attendance + "th April", "This is exam 2", 100, 80));
+            assignments.add(new Assignment(name, "Assignment 1" + this.name, this.attendance + "th April", "This is assignment 1", 100, 80));
+            exams.add(new Exam(name, "Exam 1" + this.name, this.attendance + "th April", "This is exam 1", 100, 80));
+            exams.add(new Exam(name, "Exam 2" + this.name, this.attendance + "th April", "This is exam 2", 100, 80));
         }
         public void addAssignment(String title, String date, String description, int totalMarks, int marksObtained){
-            assignments.add(new Assignment(title, date, description, totalMarks, marksObtained));
+            assignments.add(new Assignment(name, title, date, description, totalMarks, marksObtained));
         }
     }
 
@@ -297,6 +320,12 @@ public class Datapoints{
         }
     }
 
+    public String[] USN = {
+        "USN", "USN 2"
+    };
+    public String[] SEMESTER = {
+        "Semester", "Semester 2"
+    };
     public String[] RESOURCES = {"Syllabus",
                                 "Class Videos",
                                 "CT Questions",

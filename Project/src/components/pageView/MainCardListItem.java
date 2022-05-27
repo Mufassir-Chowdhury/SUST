@@ -12,6 +12,9 @@ import java.awt.event.MouseEvent;
 import java.awt.CardLayout;
 
 public class MainCardListItem extends Box {
+    public enum Type{
+        ASSIGNMENT, EXAM
+    }
     public MainCardListItem(String pageName, Tilable event, Title title, JPanel panel){
         super(BoxLayout.X_AXIS);
         setAlignmentX(Component.LEFT_ALIGNMENT);

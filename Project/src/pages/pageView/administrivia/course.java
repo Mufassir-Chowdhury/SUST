@@ -18,9 +18,7 @@ public class course extends ViewPort {
     public course(){
         super("Course", null);
 
-        String[] firstOptions = {"USN", "USN 2"};
-        String[] secondOptions = {"Semester", "Semester 2"};
-        add(new Options(firstOptions, secondOptions));
+        add(new Options(Datapoints.getInstance().USN, Datapoints.getInstance().SEMESTER));
         add(Box.createVerticalStrut(50));
 
         JPanel resources = new JPanel();
