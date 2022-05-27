@@ -3,21 +3,14 @@ package Components.pageView;
 import javax.swing.Box;
 import javax.swing.JPanel;
 
-import Components.pageView.MainCardListItem.Type;
 import Server.Datapoints;
+import Server.Datapoints.Tilable;
 
 public class MainCardList extends ListPanel {
-    public MainCardList(Title title, JPanel panel, Type type) {
-        if(type == Type.EVENT){
-            for(Datapoints.Tilable eventItem: Datapoints.getInstance().EVENTS){
-                add(new MainCardListItem(eventItem, title, panel));
-                add(Box.createVerticalStrut(10));
-            }
-        } else if(type == Type.NOTICE){
-            for(Datapoints.Tilable noticeItem: Datapoints.getInstance().NOTICES){
-                add(new MainCardListItem(noticeItem, title, panel));
-                add(Box.createVerticalStrut(10));
-            }
+    public MainCardList(String pageName, Title title, JPanel panel, Tilable[] tiles) {
+        for(Datapoints.Tilable eventItem: tiles){
+            add(new MainCardListItem(pageName, eventItem, title, panel));
+            add(Box.createVerticalStrut(10));
         }
     }
 }

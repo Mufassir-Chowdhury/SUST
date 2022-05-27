@@ -12,17 +12,14 @@ import java.awt.event.MouseEvent;
 import java.awt.CardLayout;
 
 public class MainCardListItem extends Box {
-    public enum Type {
-        NOTICE, EVENT
-    }
-    public MainCardListItem(Tilable event, Title title, JPanel panel){
+    public MainCardListItem(String pageName, Tilable event, Title title, JPanel panel){
         super(BoxLayout.X_AXIS);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         Box line = event.getListItem();
         line.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){
-                title.setText("Event > " + event.getTitle());
+                title.setText(pageName + " > " + event.getTitle());
                 Post individualExam = event.getPost();
                 panel.add(individualExam, event.getTitle());
                 CardLayout cl = (CardLayout)(panel.getLayout());

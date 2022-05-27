@@ -12,6 +12,7 @@ import Components.pageView.Line;
 import Components.pageView.Post;
 import Constants.Icons;
 import pages.pageView.course_information.*;
+import pages.pageView.basicTileToCardPage;
 import pages.pageView.administrivia.*;
 import pages.pageView.misc.*;
 import pages.pageView.misc.bus.bus;
@@ -42,7 +43,7 @@ public class Datapoints{
             {new Page("Class Routines", Icons.SCHEDULE, new routine()), 
                 new Page("Due Assignments", Icons.ASSIGNMENT, new assignment()),
                 new Page("Upcoming Exams", Icons.EXAM, new exam()),
-                new Page("Notice Board", Icons.NOTICE, new notice())},
+                new Page("Notice Board", Icons.NOTICE, new basicTileToCardPage("Notices", NOTICES))},
             { new Page("Resources", Icons.RESOURCES, new resources()),
                 new Page("Results", Icons.RESULT, new result()),
                 new Page("Attendance", Icons.ATTENDANCE, new attendance())},
@@ -50,8 +51,8 @@ public class Datapoints{
                 new Page("Course Registration", Icons.COURSE_REGISTRATION, new course()),
                 new Page("Important Links", Icons.IMPORTANT_LINKS, new links())},
             { new Page("Bus Schedule", Icons.BUS_SCHEDULE, new bus()),
-                new Page("Student Information", Icons.STUDENT_INFO, new students()),
-                new Page("Events", Icons.EVENTS, new event()),
+                new Page("Student Information", Icons.STUDENT_INFO, new basicTileToCardPage("Students", STUDENTS)),
+                new Page("Events", Icons.EVENTS, new basicTileToCardPage("Events", EVENTS)),
                 new Page("Map", Icons.MAP, new map())},
         };
     }
