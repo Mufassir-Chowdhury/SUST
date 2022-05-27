@@ -239,6 +239,16 @@ public class Datapoints{
         public void addAssignment(String title, String date, String description, int totalMarks, int marksObtained){
             assignments.add(new Assignment(name, title, date, description, totalMarks, marksObtained));
         }
+        public Line getAttendance(){
+            return new Line(new ListItem(
+                name, 
+                code, 
+                String.valueOf(attendance), 
+                String.format("%03d", absent) + "   " + String.format("%03d", leave)));
+        }
+        public Line getResult(){
+            return new Line(new ListItem(name, code, grade, String.format("%.2f", gpa)));
+        }
     }
 
     public static class Link implements Serializable{
