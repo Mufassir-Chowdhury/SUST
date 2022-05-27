@@ -13,12 +13,14 @@ import Components.pageView.MainCardListItem.Type;
 
 public class MainCardList extends ListPanel {
     public MainCardList(String pageName, Title title, JPanel panel, Tilable[] tiles) {
+        super(null);
         for(Datapoints.Tilable eventItem: tiles){
             add(new MainCardListItem(pageName, eventItem, title, panel));
             add(Box.createVerticalStrut(10));
         }
     }
     public MainCardList(String pageName, Title title, JPanel panel, Type type) {
+        super(null);
         Boolean values[] = {true, false};
         for(Boolean value: values){
             add(new Label(value ? "Regular Courses" : "Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));     

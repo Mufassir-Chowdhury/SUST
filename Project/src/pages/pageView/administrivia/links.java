@@ -29,7 +29,7 @@ public class links extends ViewPort {
     public links() throws ClassNotFoundException, IOException {
         super("Links", null);
 
-        ListPanel list = new ListPanel();
+        ListPanel list = new ListPanel(null);
 
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
             list.add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));

@@ -18,38 +18,25 @@ import java.awt.event.MouseEvent;
 import Constants.Fonts;
 import Server.Datapoints;
 
-import javax.swing.BoxLayout;
-import javax.swing.JPanel;
-
-import Components.pageView.Line;
-
 public class expandableList extends ViewPort {
     public enum Type{
         ATTENDANCE,
         RESULT
     }
-    public class ExpandableItem extends JPanel {
-        public ExpandableItem(Line listItem){
-            setAlignmentX(Component.LEFT_ALIGNMENT);
-            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-            setOpaque(false);
-            add(listItem);
-        }
-    }
     public expandableList(String title, JComponent component, Type type){
         super(title, component);
-        ListPanel list = new ListPanel();
+        ListPanel list = new ListPanel(null);
         Boolean values[] = {true, false};
         for(Boolean value: values){
             list.add(new Label(value ? "Regular Courses" : "Drop Courses", Fonts.TITLE, Component.LEFT_ALIGNMENT));     
             for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
                 if(course.regular.equals(value)){
-                    ExpandableItem line;
+                    ListPanel line;
                     if(type == Type.ATTENDANCE){
-                        line = new ExpandableItem(course.getAttendance());
+                        line = new ListPanel(course.getAttendance());
                     }
                     else{
-                        line = new ExpandableItem(course.getResult());
+                        line = new ListPanel(course.getResult());
                     }
                     line.addMouseListener(new MouseAdapter(){
                         expanded marks = null;
