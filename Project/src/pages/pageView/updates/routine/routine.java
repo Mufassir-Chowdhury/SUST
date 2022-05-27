@@ -2,6 +2,7 @@ package pages.pageView.updates.routine;
 
 import javax.swing.JPanel;
 
+import Components.pageView.ScrollPane;
 import Components.pageView.ViewPort;
 
 import java.awt.Component;
@@ -56,6 +57,6 @@ public class routine extends ViewPort{
         gbc.weightx = 1;
         gbc.gridwidth = 2;
         list.add(new routineItem("1"), gbc);
-        add(list);
+        add(new ScrollPane(list));
     }
 }
