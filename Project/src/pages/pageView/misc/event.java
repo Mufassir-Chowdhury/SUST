@@ -1,27 +1,17 @@
 package pages.pageView.misc;
 
-import javax.swing.Box;
-
-import Components.ListItem;
-import Components.pageView.Line;
-import Components.pageView.ListPanel;
+import Components.pageView.MainCardList;
 import Components.pageView.ScrollPane;
-import Components.pageView.ViewPort;
-import Server.Datapoints;
+import Components.pageView.ViewPortPanel;
+import Components.pageView.MainCardListItem.Type;
 
-public class event extends ViewPort {
+public class event extends ViewPortPanel {
     public event(){
         super("Events", null);
 
-        ListPanel list = new ListPanel();
-        for(Datapoints.Event event: Datapoints.getInstance().EVENTS){
-            list.add(new Line(new ListItem(
-                event.title, 
-                event.location, 
-                event.duration + " at  " + event.date, 
-                String.format("%03d", event.interested) + "   " + String.format("%03d", event.going))));
-            list.add(Box.createVerticalStrut(10));
-        }
-        add(new ScrollPane(list));
+        getPanel().add(
+            new ScrollPane(
+                new MainCardList(getTitle(), getPanel(), Type.EVENT)),
+            "Events");
     }
 }

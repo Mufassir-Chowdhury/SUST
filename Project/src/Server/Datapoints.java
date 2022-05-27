@@ -119,24 +119,18 @@ public class Datapoints{
                     this.comment = comment;
                 }
             }
-            public static class Videos implements Serializable{
+            public static class ResourceItem implements Serializable{
+                public String session = null;
                 public String title;
-                public String url;
                 public String uploader;
                 public String date;
-                public Videos(String title, String url, String uploader, String date){
+                public String url;
+                public ResourceItem(String title, String uploader, String date, String url){
                     this.title = title;
-                    this.url = url;
                     this.uploader = uploader;
                     this.date = date;
+                    this.url = url;
                 }
-            }
-            public static class ResourceItem implements Serializable{
-                public String session;
-                public String title;
-                public String uploader;
-                public String date;
-                public String url;
                 public ResourceItem(String session, String title, String uploader, String date, String url){
                     this.session = session;
                     this.title = title;
@@ -146,12 +140,12 @@ public class Datapoints{
                 }
             }
             public Syllabus syllabus;
-            public Vector<Videos> videos;
+            public Vector<ResourceItem> videos;
             public Vector<ResourceItem> ctQuestions;
             public Vector<ResourceItem> termFinalQuestions;
             public Vector<ResourceItem> lectureNotes;
             public Vector<ResourceItem> books;
-            public Resource(Syllabus syllabus, Vector<Videos> videos, Vector<ResourceItem> ctQuestions, Vector<ResourceItem> termFinalQuestions, Vector<ResourceItem> lectureNotes, Vector<ResourceItem> books){
+            public Resource(Syllabus syllabus, Vector<ResourceItem> videos, Vector<ResourceItem> ctQuestions, Vector<ResourceItem> termFinalQuestions, Vector<ResourceItem> lectureNotes, Vector<ResourceItem> books){
                 this.syllabus = syllabus;
                 this.videos = videos;
                 this.ctQuestions = ctQuestions;

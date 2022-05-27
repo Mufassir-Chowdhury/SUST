@@ -24,6 +24,7 @@ public class EvaluationItem extends Box {
             course.name, 
             evaluationMethod.date, 
             String.format("%03d", evaluationMethod.totalMarks) + "   " + String.format("%03d", evaluationMethod.marksObtained)));
+        
         line.addMouseListener(new MouseAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){

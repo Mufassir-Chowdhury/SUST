@@ -5,9 +5,7 @@ import Components.pageView.ScrollPane;
 import Components.pageView.ViewPortPanel;
 import Components.pageView.EvaluationItem.Type;
 
-
 public class exam extends ViewPortPanel {
-    
     public exam(){
         super("Exam", null);
 
