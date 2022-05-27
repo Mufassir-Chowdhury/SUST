@@ -8,7 +8,7 @@ import Constants.Fonts;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class AttendanceList extends ExpandableItemList{
+public class AttendanceList extends ExpandableItem{
     public AttendanceList(Line listItem){
         super(listItem);
         this.addMouseListener(new MouseAdapter(){

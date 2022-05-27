@@ -11,7 +11,6 @@ import Components.ListItem;
 import Components.pageView.Line;
 import Components.pageView.Post;
 import Components.pageView.ViewPortBasicPanel;
-import Components.pageView.MainCardListItem.Type;
 import Constants.Icons;
 import pages.pageView.course_information.*;
 import pages.pageView.administrivia.*;
@@ -41,12 +40,12 @@ public class Datapoints{
     public Page[][] getPages() throws ClassNotFoundException, IOException{
         return new Page[][]{
             {new Page("Class Routines", Icons.SCHEDULE, new routine()), 
-                new Page("Due Assignments", Icons.ASSIGNMENT, new ViewPortBasicPanel("Assignment", Type.ASSIGNMENT)),
-                new Page("Upcoming Exams", Icons.EXAM, new ViewPortBasicPanel("Exam", Type.EXAM)),
+                new Page("Due Assignments", Icons.ASSIGNMENT, new ViewPortBasicPanel("Assignment", Components.pageView.MainCardListItem.Type.ASSIGNMENT)),
+                new Page("Upcoming Exams", Icons.EXAM, new ViewPortBasicPanel("Exam", Components.pageView.MainCardListItem.Type.EXAM)),
                 new Page("Notice Board", Icons.NOTICE, new ViewPortBasicPanel("Notices", NOTICES))},
             { new Page("Resources", Icons.RESOURCES, new resources()),
-                new Page("Results", Icons.RESULT, new result()),
-                new Page("Attendance", Icons.ATTENDANCE, new attendance())},
+                new Page("Results", Icons.RESULT, new expandableList("Results", new ResultSummary(), pages.pageView.course_information.expandableList.Type.RESULT)),
+                new Page("Attendance", Icons.ATTENDANCE, new expandableList("Attendance", null, pages.pageView.course_information.expandableList.Type.ATTENDANCE))},
             { new Page("Payment", Icons.PAYMENT, new payment()),
                 new Page("Course Registration", Icons.COURSE_REGISTRATION, new course()),
                 new Page("Important Links", Icons.IMPORTANT_LINKS, new links())},

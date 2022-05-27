@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 import java.awt.Component;
 import Components.pageView.Line;
 
-public class ExpandableItemList extends JPanel {
-    public ExpandableItemList(Line listItem){
+public class ExpandableItem extends JPanel {
+    public ExpandableItem(Line listItem){
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setOpaque(false);

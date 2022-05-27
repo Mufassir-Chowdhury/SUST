@@ -12,7 +12,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.Box;
 
-public class ResultList extends ExpandableItemList {
+public class ResultList extends ExpandableItem {
     public ResultList(Line listItem){
         super(listItem);
         this.addMouseListener(new MouseAdapter(){
