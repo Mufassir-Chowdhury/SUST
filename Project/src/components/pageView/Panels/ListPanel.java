@@ -8,6 +8,14 @@ import java.awt.Insets;
 import javax.swing.border.EmptyBorder;
 
 public class ListPanel extends JPanel {
+
+    public ListPanel()
+    {
+        setOpaque(false);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    }
+
     public ListPanel(JComponent component, JComponent component2){
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
