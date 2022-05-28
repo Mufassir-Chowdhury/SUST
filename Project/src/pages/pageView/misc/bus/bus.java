@@ -3,7 +3,7 @@ package pages.pageView.misc.bus;
 import Components.pageView.Panels.GridBagPanel;
 import Components.pageView.Panels.InformationPanel;
 import Components.pageView.Panels.ViewPort;
-import Components.pageView.Panels.InformationPanel.Type;
+import Server.Datapoints;
 
 import java.awt.Insets;
 import java.awt.GridBagConstraints;
@@ -23,7 +23,7 @@ public class bus extends ViewPort {
         gbc.insets = new Insets(5, 0, 5, 5);
 
         
-        list.add(new InformationPanel("Buses", null, Type.BUS), gbc);
+        list.add(new InformationPanel("Buses", null, Datapoints.getInstance().BUSES), gbc);
 
         for(int i=1; i<=5; i++){
             gbc.gridx = i;

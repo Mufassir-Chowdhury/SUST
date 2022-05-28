@@ -7,15 +7,13 @@ import Components.pageView.CurrentTime;
 import Components.pageView.Box.Title;
 import Constants.Fonts;
 import Server.Datapoints;
+import Server.Datapoints.Information;
 
 public class InformationPanel extends ListPanel {
-    public enum Type{
-        BUS, ROUTINE
-    }
-    public InformationPanel(String title, JComponent component, Type type){
+    public InformationPanel(String title, JComponent component, Information[] informations){
         super(new CurrentTime(), new Title(title, Fonts.BODY_LARGE, component));        
         add(Box.createVerticalStrut(5));
-        for(Datapoints.Information info: type == Type.BUS ? Datapoints.getInstance().BUSES : Datapoints.getInstance().COURSES){
+        for(Datapoints.Information info: informations){
             add(info.getInformation());
             add(Box.createVerticalStrut(10));
         }
