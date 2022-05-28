@@ -1,5 +1,6 @@
 package pages.pageView.misc.bus;
 
+import Components.pageView.Panels.Column;
 import Components.pageView.Panels.GridBagPanel;
 import Components.pageView.Panels.InformationPanel;
 import Components.pageView.Panels.ViewPort;
@@ -32,7 +33,7 @@ public class bus extends ViewPort {
             gbc.weightx = 1;
             gbc.gridwidth = 1;
             gbc.insets = new Insets(5, 5, 5, 5);
-            list.add(new busItem("2"), gbc);
+            list.add(new Column(), gbc);
         }
 
         add(list);

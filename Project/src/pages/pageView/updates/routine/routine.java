@@ -1,6 +1,7 @@
 package pages.pageView.updates.routine;
 
 import Components.Buttons.AccentButton;
+import Components.pageView.Panels.Column;
 import Components.pageView.Panels.GridBagPanel;
 import Components.pageView.Panels.InformationPanel;
 import Components.pageView.Panels.ScrollPane;
@@ -40,7 +41,7 @@ public class routine extends ViewPort{
             gbc.weighty = 1;
             gbc.weightx = 1;
             gbc.gridwidth = 2;
-            list.add(new routineItem("2"), gbc);
+            list.add(new Column("2"), gbc);
         }
         add(new ScrollPane(list));
     }

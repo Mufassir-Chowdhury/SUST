@@ -28,7 +28,7 @@ public class resources extends ViewPort {
         resources.setOpaque(false);
         resources.setLayout(new CardLayout());
 
-        TilesPanel list = new TilesPanel();
+        TilesPanel list = new TilesPanel(2, 3, 50);
         
         for(String resource: Datapoints.getInstance().RESOURCES)
             list.add(new Card(resource, Icons.RESOURCES));

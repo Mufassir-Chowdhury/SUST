@@ -360,7 +360,7 @@ public class Datapoints{
         @Override
         public JComponent getInformation() {
             return new ListPanel(
-                new Label("Bus " + busNo + " - " + busName, Fonts.Body),
+                new Label("Bus " + busNo + " - " + busName),
                 new Label(Liscense + " - " + driverName, Fonts.CAPTION));
         }
     }
