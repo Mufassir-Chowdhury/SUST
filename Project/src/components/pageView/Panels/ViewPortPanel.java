@@ -20,7 +20,7 @@ public class ViewPortPanel extends ViewPort {
     public Title getTitle() {
         return title;
     }
-
+    
     public ViewPortPanel(String pageName, JComponent component){
         super(pageName, component);
         

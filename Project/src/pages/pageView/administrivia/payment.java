@@ -1,32 +1,37 @@
 package pages.pageView.administrivia;
 
-import java.awt.CardLayout;
-
-import javax.swing.JPanel;
-
 import Components.Card;
+import Components.pageView.Panels.Post;
 import Components.pageView.Panels.TilesPanel;
-import Components.pageView.Panels.ViewPort;
+import Components.pageView.Panels.ViewPortPanel;
 
-import java.awt.Component;
 import Constants.Icons;
 import Server.Datapoints;
 
-public class payment extends ViewPort {
+import java.awt.CardLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
+
+public class payment extends ViewPortPanel {
     public payment(){
         super("Payment", null);
-
-        JPanel resources = new JPanel();
-        resources.setAlignmentX(Component.LEFT_ALIGNMENT);
-        resources.setOpaque(false);
-        resources.setLayout(new CardLayout());
-
         TilesPanel list = new TilesPanel(2, 3, 50);
         
-        for(String payment: Datapoints.getInstance().PAYMENT)
-            list.add(new Card(payment, Icons.PAYMENT));
+        for(String payment: Datapoints.getInstance().PAYMENT){
+            Card card = new Card(payment, Icons.PAYMENT);
+            list.add(card);
+            card.addMouseListener(new MouseAdapter(){
+                @Override
+                public void mouseClicked(MouseEvent e){
+                    getTitle().setText("Payment > " + payment);
+                    Post individualExam = new Post("title", "date", "totalMarks", "description");
+                    panel.add(individualExam, payment);
+                    CardLayout cl = (CardLayout)(panel.getLayout());
+                    cl.show(panel, payment);
+                }
+            });
+        }
 
-        resources.add(list);
-        add(resources);
+        getPanel().add(list, "Payment");
     }
 }
