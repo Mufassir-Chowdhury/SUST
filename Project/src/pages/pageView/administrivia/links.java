@@ -10,9 +10,9 @@ import java.net.URI;
 
 import Components.Label;
 import Components.ListItem;
-import Components.pageView.ListPanel;
-import Components.pageView.ScrollPane;
-import Components.pageView.ViewPort;
+import Components.pageView.Panels.ListPanel;
+import Components.pageView.Panels.ScrollPane;
+import Components.pageView.Panels.ViewPort;
 
 import java.net.URISyntaxException;
 import java.sql.ResultSet;

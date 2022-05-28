@@ -1,9 +1,11 @@
-package Components.pageView;
+package Components.pageView.Panels;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+
+import Components.pageView.Box.Title;
 
 public class ViewPort extends JPanel {
     Title title;

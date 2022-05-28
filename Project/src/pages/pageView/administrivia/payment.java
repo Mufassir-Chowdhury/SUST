@@ -5,8 +5,8 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 import Components.Card;
-import Components.pageView.TilesPanel;
-import Components.pageView.ViewPort;
+import Components.pageView.Panels.TilesPanel;
+import Components.pageView.Panels.ViewPort;
 
 import java.awt.Component;
 import Constants.Icons;

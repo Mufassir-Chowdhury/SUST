@@ -1,9 +1,11 @@
-package Components.pageView;
+package Components.pageView.Box;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import Components.pageView.Panels.ListPanel;
+import Components.pageView.Panels.Post;
 import Server.Datapoints.Courses;
 import Server.Datapoints.Tilable;
 import pages.pageView.course_information.expanded;

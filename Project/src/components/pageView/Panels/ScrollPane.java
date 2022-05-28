@@ -1,4 +1,4 @@
-package Components.pageView;
+package Components.pageView.Panels;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;

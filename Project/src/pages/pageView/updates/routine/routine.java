@@ -2,8 +2,8 @@ package pages.pageView.updates.routine;
 
 import javax.swing.JPanel;
 
-import Components.pageView.ScrollPane;
-import Components.pageView.ViewPort;
+import Components.pageView.Panels.ScrollPane;
+import Components.pageView.Panels.ViewPort;
 
 import java.awt.Component;
 import java.awt.GridBagLayout;

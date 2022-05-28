@@ -8,10 +8,10 @@ import javax.swing.Icon;
 import javax.swing.JPanel;
 
 import Components.ListItem;
-import Components.pageView.Line;
-import Components.pageView.Post;
-import Components.pageView.ResultSummary;
-import Components.pageView.ViewPortBasicPanel;
+import Components.pageView.Box.Line;
+import Components.pageView.Box.ResultSummary;
+import Components.pageView.Panels.Post;
+import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Icons;
 import pages.pageView.course_information.*;
 import pages.pageView.administrivia.*;
@@ -41,12 +41,12 @@ public class Datapoints{
     public Page[][] getPages() throws ClassNotFoundException, IOException{
         return new Page[][]{
             {new Page("Class Routines", Icons.SCHEDULE, new routine()), 
-                new Page("Due Assignments", Icons.ASSIGNMENT, new ViewPortBasicPanel("Assignment", Components.pageView.MainCardListItem.Type.ASSIGNMENT)),
-                new Page("Upcoming Exams", Icons.EXAM, new ViewPortBasicPanel("Exam", Components.pageView.MainCardListItem.Type.EXAM)),
+                new Page("Due Assignments", Icons.ASSIGNMENT, new ViewPortBasicPanel("Assignment", Components.pageView.Box.MainCardListItem.Type.ASSIGNMENT)),
+                new Page("Upcoming Exams", Icons.EXAM, new ViewPortBasicPanel("Exam", Components.pageView.Box.MainCardListItem.Type.EXAM)),
                 new Page("Notice Board", Icons.NOTICE, new ViewPortBasicPanel("Notices", NOTICES))},
             { new Page("Resources", Icons.RESOURCES, new resources()),
-                new Page("Results", Icons.RESULT, new ViewPortBasicPanel("Results", new ResultSummary(), Components.pageView.MainCardListItem.Type.RESULT)),
-                new Page("Attendance", Icons.ATTENDANCE, new ViewPortBasicPanel("Attendance", null, Components.pageView.MainCardListItem.Type.ATTENDANCE))},
+                new Page("Results", Icons.RESULT, new ViewPortBasicPanel("Results", new ResultSummary(), Components.pageView.Box.MainCardListItem.Type.RESULT)),
+                new Page("Attendance", Icons.ATTENDANCE, new ViewPortBasicPanel("Attendance", null, Components.pageView.Box.MainCardListItem.Type.ATTENDANCE))},
             { new Page("Payment", Icons.PAYMENT, new payment()),
                 new Page("Course Registration", Icons.COURSE_REGISTRATION, new course()),
                 new Page("Important Links", Icons.IMPORTANT_LINKS, new links())},

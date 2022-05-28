@@ -5,7 +5,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 
 import Components.Label;
-import Components.pageView.MainCardListItem.Type;
+import Components.pageView.Box.MainCardListItem.Type;
 import Constants.Fonts;
 
 public class expanded extends Box {

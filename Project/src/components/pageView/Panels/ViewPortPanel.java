@@ -1,7 +1,10 @@
-package Components.pageView;
+package Components.pageView.Panels;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+
+import Components.pageView.Box.Title;
+
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.event.MouseEvent;

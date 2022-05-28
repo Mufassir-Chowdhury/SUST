@@ -2,12 +2,12 @@ package pages.pageView.misc.bus;
 
 import javax.swing.JPanel;
 
+import Components.pageView.Panels.ViewPort;
+
 import java.awt.Component;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.GridBagConstraints;
-
-import Components.pageView.ViewPort;
 
 public class bus extends ViewPort {
     public bus(){

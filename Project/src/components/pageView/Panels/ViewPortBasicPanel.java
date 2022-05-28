@@ -1,4 +1,4 @@
-package Components.pageView;
+package Components.pageView.Panels;
 
 import javax.swing.JComponent;
 
@@ -12,7 +12,7 @@ public class ViewPortBasicPanel extends ViewPortPanel {
             title);
     }
 
-    public ViewPortBasicPanel(String title, Components.pageView.MainCardListItem.Type type){
+    public ViewPortBasicPanel(String title, Components.pageView.Box.MainCardListItem.Type type){
         super(title, null);
 
         getPanel().add(
@@ -20,7 +20,7 @@ public class ViewPortBasicPanel extends ViewPortPanel {
                 new MainCardList(title, getTitle(), getPanel(), type)),
             title);
     }
-    public ViewPortBasicPanel(String title, JComponent component, Components.pageView.MainCardListItem.Type type){
+    public ViewPortBasicPanel(String title, JComponent component, Components.pageView.Box.MainCardListItem.Type type){
         super(title, component);
 
         getPanel().add(

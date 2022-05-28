@@ -1,4 +1,4 @@
-package Components.pageView;
+package Components.pageView.Panels;
 
 import javax.swing.Box;
 import javax.swing.JPanel;
@@ -9,7 +9,10 @@ import Server.Datapoints;
 import Server.Datapoints.Tilable;
 import java.awt.Component;
 import java.util.Vector;
-import Components.pageView.MainCardListItem.Type;
+
+import Components.pageView.Box.MainCardListItem;
+import Components.pageView.Box.Title;
+import Components.pageView.Box.MainCardListItem.Type;
 
 public class MainCardList extends ListPanel {
     public MainCardList(String pageName, Title title, JPanel panel, Tilable[] tiles) {
