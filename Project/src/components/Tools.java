@@ -80,5 +80,10 @@ public class Tools{
         return box;
     }
     
-    
+    public static Dimension locate(Dimension parent, Dimension child)
+    {
+        int x = (int) (parent.getWidth() - child.getWidth()) / 2;
+        int y = (int) (parent.getHeight() - child.getHeight()) / 2;
+        return new Dimension(x, y);
+    }
 }

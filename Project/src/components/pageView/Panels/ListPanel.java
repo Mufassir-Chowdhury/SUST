@@ -7,15 +7,19 @@ import java.awt.Component;
 
 public class ListPanel extends JPanel {
     public ListPanel(){
-        setOpaque(false);
-        setAlignmentX(Component.LEFT_ALIGNMENT);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        decorate();
     }
-    public ListPanel(JComponent component){
+
+    public ListPanel(JComponent component) {
+        decorate();
+        if (component != null)
+            add(component);
+    }
+    
+    private void decorate()
+    {
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        if(component != null)
-            add(component);
     }
 }

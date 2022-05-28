@@ -59,7 +59,7 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		closeIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		add(closeIcon);
 
-		fullScreenIcon = new JLabel(Icons.FULL_SCREEN);
+		fullScreenIcon = new JLabel(Icons.RESTORE);
 		fullScreenIcon.setSize(Sizes.ICON_SIZE);
 		springLayout.putConstraint(SpringLayout.NORTH, fullScreenIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, fullScreenIcon, -5, SpringLayout.WEST, closeIcon);

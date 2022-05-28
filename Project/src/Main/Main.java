@@ -21,7 +21,7 @@ import java.awt.Dimension;
 
 public class Main extends JFrame {
 	public JFrame currentFrame;
-	JPanel panel = new JPanel();
+	public JPanel panel = new JPanel();
 	private static Main single_instance = null;
 	public static String currentPage = null;
 

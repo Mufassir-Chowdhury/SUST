@@ -4,9 +4,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import java.awt.Window;
 import Constants.Sizes;
-
+import Main.Main;
 import java.awt.*;
 
 public class Background extends JFrame {
@@ -19,14 +19,22 @@ public class Background extends JFrame {
         setExtendedState(Frame.MAXIMIZED_BOTH);
         backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getSize()));
 		setContentPane(backgroundImage);
+        Main.getInstance().panel.setSize(getSize());
         logInTitleBar.setSize(getWidth(), Sizes.TITLE_BAR_HEIGHT);
+        repaint();
+		revalidate();
     }
 
     public void Normal(){
-        setExtendedState(Frame.NORMAL);
-        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getSize()));
+        this.size = Sizes.NORMAL_WINDOW_SIZE;
+        // setBounds(Tools.locate(Sizes.DEFAULT_WINDOW_SIZE, Sizes.NORMAL_WINDOW_SIZE));
+        Main.getInstance().panel.setSize(size);
+        setSize(size);
+        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, size));
         setContentPane(backgroundImage);
-        logInTitleBar.setSize(getWidth(), Sizes.TITLE_BAR_HEIGHT);
+        logInTitleBar.setSize((int) size.getWidth(), Sizes.TITLE_BAR_HEIGHT);
+        repaint();
+		revalidate();
     }
 
     public Background() {
@@ -55,9 +63,10 @@ public class Background extends JFrame {
     {
         setSize(size);
         setUndecorated(true);
+        setResizable(true);
         setLayout(new BorderLayout());
 
-        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getSize()));
+        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, size));
         setContentPane(backgroundImage);
     }
 
