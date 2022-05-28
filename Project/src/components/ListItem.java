@@ -20,7 +20,7 @@ public class ListItem extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBorder(new EmptyBorder(new Insets(10, 5, 10, 5)));
         Box congestedInfo = Box.createVerticalBox();
-        congestedInfo.add(new Label(title, Fonts.Body));
+        congestedInfo.add(new Label(title));
         congestedInfo.add(new Label(caption, Fonts.CAPTION));
         add(congestedInfo);
         add(Box.createHorizontalGlue());

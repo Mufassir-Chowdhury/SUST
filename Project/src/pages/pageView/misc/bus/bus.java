@@ -1,11 +1,13 @@
 package pages.pageView.misc.bus;
 
-import javax.swing.JPanel;
-
+import Components.pageView.Box.Title;
+import Components.pageView.Panels.Column;
+import Components.pageView.Panels.GridBagPanel;
+import Components.pageView.Panels.InformationPanel;
 import Components.pageView.Panels.ViewPort;
+import Constants.Fonts;
+import Server.Datapoints;
 
-import java.awt.Component;
-import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
@@ -13,10 +15,7 @@ public class bus extends ViewPort {
     public bus(){
         super("Bus Schedule", null);
 
-        JPanel list = new JPanel();
-        list.setOpaque(false);
-        list.setAlignmentX(Component.LEFT_ALIGNMENT);
-        list.setLayout(new GridBagLayout());
+        GridBagPanel list = new GridBagPanel();
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 0;
@@ -24,10 +23,10 @@ public class bus extends ViewPort {
         gbc.weighty = 1;
         gbc.weightx = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(5, 0, 5, 5);
+        gbc.insets = new Insets(0, 0, 0, 5);
 
         
-        list.add(new informationPanel(), gbc);
+        list.add(new InformationPanel("Buses", null, Datapoints.getInstance().BUSES), gbc);
 
         for(int i=1; i<=5; i++){
             gbc.gridx = i;
@@ -35,8 +34,8 @@ public class bus extends ViewPort {
             gbc.weighty = 1;
             gbc.weightx = 1;
             gbc.gridwidth = 1;
-            gbc.insets = new Insets(5, 5, 5, 5);
-            list.add(new busItem("2"), gbc);
+            gbc.insets = new Insets(0, 5, 0, 5);
+            list.add(new Column(new Title("Bus 1", Fonts.SUBTITLE, null), new Day()), gbc);
         }
 
         add(list);

@@ -109,7 +109,7 @@ class DashBoard extends JPanel {
                     setMaximumSize(new Dimension(1000, 40));
                     setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
                     add(new JLabel(Icons.INFO), BorderLayout.WEST);
-                    Label title = new Label(notification.title, Fonts.Body);
+                    Label title = new Label(notification.title);
                     title.setBorder(new EmptyBorder(5, 10, 5, 10));
                     add(title, BorderLayout.CENTER);
                     Label date = new Label(notification.date, Fonts.CAPTION, SwingConstants.LEADING);

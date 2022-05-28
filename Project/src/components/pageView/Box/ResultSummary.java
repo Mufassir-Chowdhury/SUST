@@ -19,8 +19,8 @@ public class ResultSummary extends Box {
         grade.setBorder(new EmptyBorder(new Insets(0, 0, 0, 5)));
         add(grade);
         Box resultSummarySmall = Box.createVerticalBox();
-        resultSummarySmall.add(new Label("4.00", Fonts.Body));
-        resultSummarySmall.add(new Label("1st", Fonts.Body));
+        resultSummarySmall.add(new Label("4.00"));
+        resultSummarySmall.add(new Label("1st"));
         add(resultSummarySmall);
     }
 }

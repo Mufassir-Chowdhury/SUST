@@ -21,7 +21,7 @@ public class payment extends ViewPort {
         resources.setOpaque(false);
         resources.setLayout(new CardLayout());
 
-        TilesPanel list = new TilesPanel();
+        TilesPanel list = new TilesPanel(2, 3, 50);
         
         for(String payment: Datapoints.getInstance().PAYMENT)
             list.add(new Card(payment, Icons.PAYMENT));

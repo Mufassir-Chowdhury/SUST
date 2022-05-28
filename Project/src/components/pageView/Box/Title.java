@@ -5,8 +5,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 
 import Components.Label;
-import Constants.Fonts;
-
+import java.awt.Font;
 import java.awt.Component;
 
 public class Title extends Box {
@@ -16,10 +15,10 @@ public class Title extends Box {
         titleLabel.setText(title);
     }
 
-    public Title(String name, JComponent component){
+    public Title(String name, Font font, JComponent component){
         super(BoxLayout.X_AXIS);
         setAlignmentX(Component.LEFT_ALIGNMENT);
-        titleLabel = new Label(name, Fonts.DISPLAY);
+        titleLabel = new Label(name, font);
         titleLabel.setAlignmentY(Component.TOP_ALIGNMENT);
         add(titleLabel);
 

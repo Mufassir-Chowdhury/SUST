@@ -3,12 +3,15 @@ package Components.pageView.Panels;
 import javax.swing.JPanel;
 import java.awt.Insets;
 import javax.swing.border.EmptyBorder;
+
+import java.awt.Component;
 import java.awt.GridLayout;
 
 public class TilesPanel extends JPanel {
-    public TilesPanel(){
-        setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
+    public TilesPanel(int row, int column, int gap){
+        setBorder(new EmptyBorder(new Insets(gap, gap, gap, gap)));
         setOpaque(false);
-        setLayout(new GridLayout(2, 3, 50, 50));
+        setAlignmentX(Component.LEFT_ALIGNMENT);
+        setLayout(new GridLayout(row, column, gap, gap));
     }
 }
