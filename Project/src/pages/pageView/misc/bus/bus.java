@@ -23,7 +23,7 @@ public class bus extends ViewPort {
         gbc.weighty = 1;
         gbc.weightx = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(5, 0, 5, 5);
+        gbc.insets = new Insets(0, 0, 0, 5);
 
         
         list.add(new InformationPanel("Buses", null, Datapoints.getInstance().BUSES), gbc);
@@ -34,7 +34,7 @@ public class bus extends ViewPort {
             gbc.weighty = 1;
             gbc.weightx = 1;
             gbc.gridwidth = 1;
-            gbc.insets = new Insets(5, 5, 5, 5);
+            gbc.insets = new Insets(0, 5, 0, 5);
             list.add(new Column(new Title("Bus 1", Fonts.SUBTITLE, null), new Day()), gbc);
         }
 
