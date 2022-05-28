@@ -15,7 +15,7 @@ public class InformationPanel extends ListPanel {
         add(Box.createVerticalStrut(5));
         for(Datapoints.Information info: informations){
             add(info.getInformation());
-            add(Box.createVerticalStrut(10));
+            add(Box.createVerticalStrut(5));
         }
     }
 }

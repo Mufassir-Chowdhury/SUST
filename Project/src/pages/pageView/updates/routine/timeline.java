@@ -11,7 +11,7 @@ import java.awt.GridLayout;
 import java.awt.BorderLayout;
 
 public class timeline extends JPanel {
-    class defaultTimes extends JPanel{
+    public class defaultTimes extends JPanel{
         public defaultTimes(){
             setOpaque(false);
             setLayout(new GridLayout(9, 1));

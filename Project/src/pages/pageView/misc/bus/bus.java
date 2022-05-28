@@ -1,9 +1,11 @@
 package pages.pageView.misc.bus;
 
+import Components.pageView.Box.Title;
 import Components.pageView.Panels.Column;
 import Components.pageView.Panels.GridBagPanel;
 import Components.pageView.Panels.InformationPanel;
 import Components.pageView.Panels.ViewPort;
+import Constants.Fonts;
 import Server.Datapoints;
 
 import java.awt.Insets;
@@ -33,7 +35,7 @@ public class bus extends ViewPort {
             gbc.weightx = 1;
             gbc.gridwidth = 1;
             gbc.insets = new Insets(5, 5, 5, 5);
-            list.add(new Column(), gbc);
+            list.add(new Column(new Title("Bus 1", Fonts.SUBTITLE, null), new Day()), gbc);
         }
 
         add(list);
