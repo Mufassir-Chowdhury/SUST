@@ -8,6 +8,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Components.Label;
+import Components.pageView.Panels.ListPanel;
 
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
@@ -98,7 +99,7 @@ class DashBoard extends JPanel {
                 super.paintComponent(g);
             }
         }
-        class DashBoardInfo extends JPanel {
+        class DashBoardInfo extends ListPanel {
             class DashBoardInfoCard extends JPanel {
                 Datapoints.Notification.Severity severity;
                 public DashBoardInfoCard(Datapoints.Notification notification){
@@ -131,8 +132,6 @@ class DashBoard extends JPanel {
                 }
             }
             public DashBoardInfo(Datapoints.Notification[] notifications){
-                setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-                setOpaque(false);
                 setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
                 for(int i=0; i<notifications.length; i++){
                     add(new DashBoardInfoCard(notifications[i]));

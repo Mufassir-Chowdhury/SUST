@@ -1,27 +1,24 @@
 package mainView;
 
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 
 import java.awt.Component;
 import java.io.IOException;
 
-import javax.swing.JPanel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import Components.Card;
 import Components.Label;
+import Components.pageView.Panels.ListPanel;
 import Constants.Fonts;
 import Constants.Padding;
 import Constants.Sizes;
 import Main.Main;
 import Server.Datapoints;
 
-class AllPages extends JPanel { 
+class AllPages extends ListPanel { 
     public AllPages(Main main) throws ClassNotFoundException, IOException{
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         for(int i=0; i<Datapoints.getInstance().TITLES.length; i++){
             Label title = new Label(Datapoints.getInstance().TITLES[i], Fonts.TITLE, Component.LEFT_ALIGNMENT);
             title.setBorder(Padding.TITLE_LINE_HEIGHT);

@@ -9,7 +9,6 @@ import java.awt.Component;
 
 public class CurrentTime extends ListPanel {
     public CurrentTime(){
-        super(null);
         add(new Label("Current Time", Fonts.SUBTITLE, Component.LEFT_ALIGNMENT));
         add(Box.createVerticalStrut(1));
         add(new Label("12:59 PM", Fonts.DISPLAY, Component.LEFT_ALIGNMENT));

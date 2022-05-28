@@ -5,8 +5,8 @@ import javax.swing.JList;
 
 import javax.swing.JPanel;
 
-import Components.pageView.ViewPort;
 import Components.pageView.Box.Options;
+import Components.pageView.Panels.ViewPort;
 
 import java.util.Vector;
 import java.awt.GridLayout;
