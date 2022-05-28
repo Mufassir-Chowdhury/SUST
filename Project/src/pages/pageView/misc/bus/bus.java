@@ -1,11 +1,10 @@
 package pages.pageView.misc.bus;
 
-import javax.swing.JPanel;
-
+import Components.pageView.Panels.GridBagPanel;
+import Components.pageView.Panels.InformationPanel;
 import Components.pageView.Panels.ViewPort;
+import Components.pageView.Panels.InformationPanel.Type;
 
-import java.awt.Component;
-import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
@@ -13,10 +12,7 @@ public class bus extends ViewPort {
     public bus(){
         super("Bus Schedule", null);
 
-        JPanel list = new JPanel();
-        list.setOpaque(false);
-        list.setAlignmentX(Component.LEFT_ALIGNMENT);
-        list.setLayout(new GridBagLayout());
+        GridBagPanel list = new GridBagPanel();
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
         gbc.gridx = 0;
@@ -27,7 +23,7 @@ public class bus extends ViewPort {
         gbc.insets = new Insets(5, 0, 5, 5);
 
         
-        list.add(new informationPanel(), gbc);
+        list.add(new InformationPanel("Buses", null, Type.BUS), gbc);
 
         for(int i=1; i<=5; i++){
             gbc.gridx = i;

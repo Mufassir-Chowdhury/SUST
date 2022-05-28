@@ -11,11 +11,14 @@ public class ListPanel extends JPanel {
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
-    public ListPanel(JComponent component){
+    public ListPanel(JComponent component, JComponent component2){
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        if(component != null)
-            add(component);
+        add(component);
+        if(component2 != null){
+            add(component2);
+        }
+
     }
 }

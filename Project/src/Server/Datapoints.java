@@ -1,17 +1,23 @@
 package Server;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Vector;
 
 import javax.swing.Icon;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import Components.Label;
 import Components.ListItem;
 import Components.pageView.Box.Line;
 import Components.pageView.Box.ResultSummary;
+import Components.pageView.Box.Title;
+import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.Post;
 import Components.pageView.Panels.ViewPortBasicPanel;
+import Constants.Fonts;
 import Constants.Icons;
 import pages.pageView.course_information.*;
 import pages.pageView.administrivia.*;
@@ -25,7 +31,9 @@ public class Datapoints{
         public String getTitle();
         public Post getPost();
     }
-
+    public static interface Information{
+        public JComponent getInformation();
+    }
 
 
     public static class Page{
@@ -115,7 +123,7 @@ public class Datapoints{
         }
     }
 
-    public static class Courses  implements Serializable{
+    public static class Courses  implements Serializable, Information{
         public String code;
         public String name;
         public String credit;
@@ -249,6 +257,10 @@ public class Datapoints{
         public Line getResult(){
             return new Line(new ListItem(name, code, grade, String.format("%.2f", gpa)));
         }
+        @Override
+        public JComponent getInformation() {
+            return new Title("     " + name, Fonts.CAPTION, new Label(regular.equals(false) ? "(Drop)" : "", Fonts.CAPTION, new Color(120,121,241)));
+        }
     }
 
     public static class Link implements Serializable{
@@ -330,6 +342,40 @@ public class Datapoints{
         }
     }
 
+    public static class Bus implements Serializable, Information{
+        public int busNo;
+        public String busName;
+        public String Liscense;
+        public String driverName;
+        public String[] route;
+        public String time;
+        public Bus(int busNo, String busName, String liscence, String driverName, String[] route, String time){
+            this.busNo = busNo;
+            this.busName = busName;
+            this.route = route;
+            this.time = time;
+            this.Liscense = liscence;
+            this.driverName = driverName;
+        }
+        @Override
+        public JComponent getInformation() {
+            return new ListPanel(
+                new Label("Bus " + busNo + " - " + busName, Fonts.Body),
+                new Label(Liscense + " - " + driverName, Fonts.CAPTION));
+        }
+    }
+    public String[] route = {
+        "Place", "Place", "Place","Place", "Place", "Place","Place"
+    };
+    public Bus[] BUSES = {
+        new Bus(1, "busName", "liscence", "driverName", route, "time"),
+        new Bus(2, "busName", "liscence", "driverName", route, "time"),
+        new Bus(3, "busName", "liscence", "driverName", route, "time"),
+        new Bus(4, "busName", "liscence", "driverName", route, "time"),
+        new Bus(5, "busName", "liscence", "driverName", route, "time"),
+        new Bus(6, "busName", "liscence", "driverName", route, "time"),
+        new Bus(7, "busName", "liscence", "driverName", route, "time"),
+    };
     public String[] USN = {
         "USN", "USN 2"
     };
