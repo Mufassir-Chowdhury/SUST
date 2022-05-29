@@ -13,25 +13,29 @@ public class AccentButton extends Button implements MouseListener{
     private Color background = Colors.ACCENT;
     public AccentButton(String text) {
         super(text);
+        setOpaque(false);
         setForeground(Colors.PLAIN_TEXT_BLACK);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setFocusPainted(false);
+        addMouseListener(this);
+        addFocusListener(this);
     }
 
     protected void paintComponent(Graphics g) {
         g.setColor(background);
-        g.fillRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
+        // TODO arch measures to Size class
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
         super.paintComponent(g);
     }
 
     protected void paintBorder(Graphics g) {
         g.setColor(background);
-        g.drawRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
+        g.drawRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        background = new Color(85, 175, 215);
+        background = Colors.ACCENT_BUTTON_HOVER;
         repaint();
     }
 
@@ -47,7 +51,7 @@ public class AccentButton extends Button implements MouseListener{
     }
     @Override
     public void mousePressed(MouseEvent e) {
-        background = new Color(85, 165, 205);
+        background = Colors.ACCENT_BUTTON_PRESSED;
         repaint();
     }
     @Override
@@ -58,7 +62,7 @@ public class AccentButton extends Button implements MouseListener{
 
     @Override
     public void focusGained(FocusEvent e) {
-        background = new Color(85, 175, 215);
+        background = Colors.ACCENT_BUTTON_HOVER;
         repaint();
     }
 

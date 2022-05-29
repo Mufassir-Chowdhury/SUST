@@ -88,6 +88,8 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     }
 
     private void addListeners() {
+        // TODO localize listeners
+        
         emailField.addFocusListener(emailField);
         emailField.addMouseListener(emailField);
         emailField.addKeyListener(emailField);
@@ -100,8 +102,6 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         passwordField.addKeyListener(this);
         passwordField.addFocusListener(this);
 
-        logInButton.addMouseListener(logInButton);
-        logInButton.addFocusListener(logInButton);
         logInButton.addKeyListener(this);
 
         forgetPasswordText.addMouseListener(forgetPasswordText);

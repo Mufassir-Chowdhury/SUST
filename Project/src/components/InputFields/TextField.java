@@ -58,6 +58,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
         setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setCaretColor(Colors.PLAIN_TEXT);
+        addMouseListener(this);
     }
     
     protected void paintComponent(Graphics g) {

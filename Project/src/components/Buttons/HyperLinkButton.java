@@ -7,8 +7,6 @@ import java.awt.event.*;
 
 import javax.swing.border.EmptyBorder;
 
-import java.awt.Color;
-
 import java.awt.event.MouseEvent;
 
 public class HyperLinkButton extends Button implements MouseListener  {
@@ -21,7 +19,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        setBackground(new Color(55, 40, 44));
+        setBackground(Colors.HYPER_LINK_BUTTON_HOVER);
         setOpaque(true);
     }
 
@@ -37,7 +35,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
     }
     @Override
     public void mousePressed(MouseEvent e) {
-        setBackground(new Color(52, 35, 40));
+        setBackground(Colors.HYPER_LINK_BUTTON_PRESSED);
         setOpaque(true);
     }
     @Override
@@ -50,7 +48,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
 
     @Override
     public void focusGained(FocusEvent e) {
-        setBackground(new Color(55, 40, 44));
+        setBackground(Colors.HYPER_LINK_BUTTON_HOVER);
         setOpaque(true);
     }
 

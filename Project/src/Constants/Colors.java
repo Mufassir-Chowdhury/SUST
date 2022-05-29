@@ -9,7 +9,10 @@ public class Colors {
     public static final Color CLOSE_BUTTON_HOVER = new Color(196, 43, 28);
     public static final Color CLOSE_BUTTON_PRESSED = new Color(179, 42, 28);
     public static final Color STANDARD_BUTTON_HOVER = new Color(45, 45, 45);
-    public static final Color ACCENT_BUTTON_HOVER = new Color(30, 144, 255);
+    public static final Color ACCENT_BUTTON_HOVER = new Color(85, 175, 215);
+    public static final Color ACCENT_BUTTON_PRESSED = new Color(85, 165, 205);
+    public static final Color HYPER_LINK_BUTTON_HOVER = new Color(55, 40, 44);
+    public static final Color HYPER_LINK_BUTTON_PRESSED = new Color(52, 35, 40);
 
     public static final Color CARD = new Color(255, 255, 255, 13);
 
