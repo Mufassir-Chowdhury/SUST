@@ -2,24 +2,18 @@ package pages;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
-import java.awt.Graphics;
 import javax.swing.border.EmptyBorder;
 import Components.Label;
+import Components.List;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
-import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
 import Server.Datapoints;
 
-import javax.swing.DefaultListCellRenderer;
-
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Insets;
@@ -27,7 +21,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 public class sideNav extends JPanel {
-    JList<Datapoints.Page> list;
+    List<Datapoints.Page> list;
     Vector<String> pageNames;
 
     public void setSelected(String nameOfPage){
@@ -58,57 +52,8 @@ public class sideNav extends JPanel {
                 pageNames.add(pair.name);
             }
         }
-        list = new JList<>(pageList);
-        list.setAlignmentX(Component.LEFT_ALIGNMENT);
-        list.setOpaque(false);
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        list.setFixedCellWidth(300);
-        list.setCellRenderer(new DefaultListCellRenderer() {
-            Color border = null;
-            @Override
-            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-                Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                if (renderer instanceof JLabel && value instanceof Datapoints.Page) {
-                    ((JLabel) renderer).setText(((Datapoints.Page) value).name);
-                    ((JLabel) renderer).setFont(Fonts.Body);
-                    ((JLabel) renderer).setIcon(((Datapoints.Page) value).icon);
-                    ((JLabel) renderer).setOpaque(false);
-                    ((JLabel) renderer).setForeground(Colors.PLAIN_TEXT);
-                    ((JLabel) renderer).setAlignmentX(Component.LEFT_ALIGNMENT);
-                    ((JLabel) renderer).setIconTextGap(20);
-                    ((JLabel) renderer).setBorder(new EmptyBorder(new Insets(5, 15, 5, 0)));
-                    // ((JLabel) renderer).addMouseListener(new MouseAdapter(){
-                    //     public void mouseEntered(MouseEvent e) {
-                            
-                    //         ((JLabel) renderer).setOpaque(true);
-                    //         ((JLabel) renderer).setBackground(new Color(45, 45, 50));
-                    //     }
-            
-                    //     public void mouseExited(MouseEvent e) {
-                    //         ((JLabel) renderer).setOpaque(false);
-                    //     }
-                    // });
-                    if(isSelected){
-                        border = Colors.ACCENT;
-                        ((JLabel) renderer).setOpaque(true);
-                        ((JLabel) renderer).setBackground(new Color(45, 45, 45));
-                    }
-                    if(!isSelected){
-                        border = null;
-                        repaint();
-                    }
-                    
-                }
-                return renderer;
-            }
-            @Override
-            protected void paintBorder(Graphics g) {
-                if(border != null){
-                    g.setColor(border);
-                    g.fillRoundRect(0, 10, 4, getHeight() - 20, 2, 3);
-                }
-            }
-        });
+        list = new List<Datapoints.Page>(pageList, true, ListSelectionModel.SINGLE_SELECTION);
+        
         list.addListSelectionListener(listener -> {
             if(list.getSelectedIndex() != -1){
                 view.changeCard(list.getSelectedValue().name);

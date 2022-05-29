@@ -1,0 +1,64 @@
+package Components;
+
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JLabel;
+import javax.swing.JList;
+
+import Constants.Colors;
+import Constants.Fonts;
+import Server.Datapoints;
+
+import java.awt.Graphics;
+import java.awt.Color;
+import java.awt.Insets;
+import java.util.Vector;
+
+import javax.swing.border.EmptyBorder;
+import java.awt.Component;
+
+public class List<E> extends JList<E> {
+    public List(Vector<E> list, boolean hasIcon, int selectionModel) {
+        super(list);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
+        setSelectionMode(selectionModel);
+        setOpaque(false);
+        setFixedCellWidth(300);
+        setCellRenderer(new DefaultListCellRenderer() {
+            Color border = null;
+            @Override
+            public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (renderer instanceof JLabel) {
+                    ((JLabel) renderer).setText(value.toString());
+                    ((JLabel) renderer).setFont(Fonts.Body);
+                    if(hasIcon){
+                        ((JLabel) renderer).setIcon(((Datapoints.Page)value).icon);
+                    }
+                    ((JLabel) renderer).setOpaque(false);
+                    ((JLabel) renderer).setForeground(Colors.PLAIN_TEXT);
+                    ((JLabel) renderer).setAlignmentX(Component.LEFT_ALIGNMENT);
+                    ((JLabel) renderer).setIconTextGap(20);
+                    ((JLabel) renderer).setBorder(new EmptyBorder(new Insets(5, 15, 5, 0)));
+                    if(isSelected){
+                        border = Colors.ACCENT;
+                        ((JLabel) renderer).setOpaque(true);
+                        ((JLabel) renderer).setBackground(new Color(45, 45, 45));
+                    }
+                    if(!isSelected){
+                        border = null;
+                        repaint();
+                    }
+                    
+                }
+                return renderer;
+            }
+            @Override
+            protected void paintBorder(Graphics g) {
+                if(border != null){
+                    g.setColor(border);
+                    g.fillRoundRect(0, 10, 4, getHeight() - 20, 2, 3);
+                }
+            }
+        });
+    }
+}

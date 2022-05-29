@@ -45,6 +45,10 @@ public class Datapoints{
             this.icon = icon;
             this.panel = panel;
         }
+        @Override
+        public String toString(){
+            return name;
+        }
     };
     public Page[][] getPages() throws ClassNotFoundException, IOException{
         return new Page[][]{
