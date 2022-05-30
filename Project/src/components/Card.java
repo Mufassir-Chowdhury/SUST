@@ -1,21 +1,30 @@
 package Components;
 
 import java.awt.*;
-import java.awt.Graphics;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.tools.Tool;
 
+import java.awt.Graphics2D;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import Constants.Colors;
 import Constants.Fonts;
+import Constants.Icons;
 import Constants.Sizes;
 
 public class Card extends JPanel {
     Color background = Colors.CARD;
+    int curve = 7;
+    BufferedImage image = null;
     public Card(String text, Icon icon) {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -45,6 +54,7 @@ public class Card extends JPanel {
             }
         });
     }
+
     public Card(String text, Font font) {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -52,7 +62,7 @@ public class Card extends JPanel {
         add(Box.createVerticalGlue());
         add(new Label(text, font, Component.CENTER_ALIGNMENT));
         add(Box.createVerticalGlue());
-        addMouseListener(new MouseAdapter(){
+        addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent e) {
                 background = new Color(255, 255, 255, 25);
                 repaint();
@@ -64,13 +74,31 @@ public class Card extends JPanel {
             }
         });
     }
+    
+    public Card(BufferedImage image, int curve)
+    {
+        this.curve = curve;
+        this.image = Tools.makeRoundedCorner(image, curve);
+        setOpaque(false);
+        setMaximumSize(Sizes.DP);
+        
 
+    }
     
     @Override
     protected void paintComponent(Graphics g) {
+        if (image != null)
+            g.drawImage(image, 0, 0, this);
         g.setColor(background);
-        g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), curve, curve);
         super.paintComponent(g);
+        
+    }
+    
+    @Override
+    public Dimension getPreferredSize() {
+        if(image == null) return new Dimension(0, 0);
+        return new Dimension(image.getWidth(), image.getHeight());
     }
 
 }

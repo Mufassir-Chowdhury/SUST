@@ -2,11 +2,13 @@ package mainView;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Components.Card;
 import Components.Label;
 import Components.pageView.Panels.ListPanel;
 
@@ -23,6 +25,7 @@ import java.awt.Dimension;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
+import Constants.Sizes;
 import Server.Datapoints;
 
 class DashBoard extends JPanel {
@@ -56,11 +59,8 @@ class DashBoard extends JPanel {
             setOpaque(false);
             setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-            JLabel title = new JLabel(Icons.DP);
-            title.setForeground(Colors.PLAIN_TEXT);
-            title.setAlignmentX(Component.LEFT_ALIGNMENT);
-            
-            add(title);
+            Card card = new Card(Icons.DP, (int)Sizes.DP.getWidth());
+            add(card);
             add(Box.createHorizontalGlue());
             
             Box line = Box.createVerticalBox();

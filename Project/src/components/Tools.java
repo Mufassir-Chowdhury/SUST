@@ -3,7 +3,7 @@ package Components;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.awt.Graphics2D;
+import java.awt.*;
 import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -24,10 +24,15 @@ import java.awt.Dimension;
 
 public class Tools{
 
-    public static ImageIcon imageScaleB(String source, Dimension dimension){
+    public static ImageIcon imageScaleB(String source, Dimension dimension) {
         ImageIcon bgIcon = new ImageIcon(ClassLoader.getSystemResource(source));
-	    Image bgImage = bgIcon.getImage().getScaledInstance(dimension.width, dimension.height, Image.SCALE_SMOOTH);
-	    return new ImageIcon(bgImage);
+        Image bgImage = bgIcon.getImage().getScaledInstance(dimension.width, dimension.height, Image.SCALE_SMOOTH);
+        return new ImageIcon(bgImage);
+    }
+    
+    public static Image imageScale(ImageIcon img, Dimension dimension){
+	    Image bgImage = img.getImage().getScaledInstance(dimension.width, dimension.height, Image.SCALE_SMOOTH);
+        return bgImage;
     }
 
     public static ImageIcon imageScale(String source, Dimension dimension)
@@ -69,6 +74,48 @@ public class Tools{
             return new ImageIcon(source);
             // have to return something so added this.
         }
+
+    }
+
+    public static BufferedImage makeRoundedCorner(BufferedImage image, int cornerRadius) {
+        int w = image.getWidth();
+        int h = image.getHeight();
+        BufferedImage roundImage = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+    
+        Graphics2D g = roundImage.createGraphics();
+        
+        g.setComposite(AlphaComposite.Src);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.setColor(Color.WHITE);
+        g.fill(new RoundRectangle2D.Float(0, 0, w, h, cornerRadius, cornerRadius));
+
+        g.setComposite(AlphaComposite.SrcAtop);
+        g.drawImage(image, 0, 0, null);
+        
+        g.dispose();
+        return roundImage;
+    }
+
+    public static BufferedImage bufferImage(String source, Dimension dimension)
+    {
+        BufferedImage bImage = null;
+        try {
+            bImage = ImageIO.read(ClassLoader.getSystemResource(source));
+            Image image = bImage.getScaledInstance(dimension.width, dimension.height, java.awt.Image.SCALE_SMOOTH);
+            bImage = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_INT_ARGB);
+
+            Graphics2D g = bImage.createGraphics();
+            g.drawImage(image, 0, 0, null);
+            g.dispose();
+
+            return bImage;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return bImage;
+        }
+        
+
+
 
     }
     
