@@ -1,5 +1,4 @@
 package login;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.awt.Component;
@@ -75,13 +74,13 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     private void showPassword(){
         if(showPasswordCheckBox.isSelected()){
-            showPasswordCheckBox.setForeground(new Color(0, 191, 255));
+            showPasswordCheckBox.setForeground(Colors.CHECKBOX_SELECTED);
             passwordField.showPassword = true;
             passwordField.setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
             
         }
         if(showPasswordCheckBox.isSelected()==false){
-            showPasswordCheckBox.setForeground(new Color(135, 206, 250));
+            showPasswordCheckBox.setForeground(Colors.CHECKBOX_UNSELECTED);
             if(Arrays.equals(passwordField.getPassword(), Values.DEFAULT_PASSWORD)==false)
                 passwordField.setEchoChar(Values.PASSWORD_ECHO_CHAR);
         }
@@ -199,9 +198,9 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     private void showFieldValidity(TextField field, boolean condition)
     {
         if (condition)
-            field.border = Color.green;
+            field.border = Colors.VALID;
         else {
-            field.border = Color.red;
+            field.border = Colors.VALID;
             showFieldInstruction(field.getName());
         }
 
@@ -223,7 +222,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     
     private boolean isGreen()
     {
-        if (emailField.border == Color.green)
+        if (emailField.border == Colors.VALID)
         {
             if(fieldChecker.isPasswordFieldFilled(password.toCharArray()))
                 return true;

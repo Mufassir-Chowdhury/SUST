@@ -3,8 +3,8 @@ package Components.pageView.Box;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 
+import Constants.Colors;
 import Constants.Fonts;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Insets;
 import javax.swing.border.EmptyBorder;
@@ -15,7 +15,7 @@ public class ResultSummary extends Box {
     public ResultSummary(){
         super(BoxLayout.X_AXIS);
         setAlignmentY(Component.TOP_ALIGNMENT);
-        Label grade = new Label("A+", Fonts.BIG_DISPLAY, Color.GREEN);
+        Label grade = new Label("A+", Fonts.BIG_DISPLAY, Colors.GRADE_FIRST_CLASS);
         grade.setBorder(new EmptyBorder(new Insets(0, 0, 0, 5)));
         add(grade);
         Box resultSummarySmall = Box.createVerticalBox();

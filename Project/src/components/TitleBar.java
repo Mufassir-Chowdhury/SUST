@@ -53,14 +53,12 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		setLayout(springLayout);
 
 		closeIcon = new JLabel(Icons.CLOSE);
-		closeIcon.setSize(Sizes.ICON_SIZE);
 		springLayout.putConstraint(SpringLayout.NORTH, closeIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, closeIcon, 0, SpringLayout.EAST, this);
 		closeIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		add(closeIcon);
 
 		fullScreenIcon = new JLabel(Icons.RESTORE);
-		fullScreenIcon.setSize(Sizes.ICON_SIZE);
 		springLayout.putConstraint(SpringLayout.NORTH, fullScreenIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, fullScreenIcon, -5, SpringLayout.WEST, closeIcon);
 		fullScreenIcon.setBorder(Padding.TITLE_BAR_ITEM);
@@ -69,15 +67,12 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		minimizeIcon = new JLabel(Icons.MINIMIZE);
 		springLayout.putConstraint(SpringLayout.NORTH, minimizeIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, minimizeIcon, -5, SpringLayout.WEST, fullScreenIcon);
-		minimizeIcon.setSize(Sizes.ICON_SIZE);
 		minimizeIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		add(minimizeIcon);
 
-		// backIcon = new JLabel();
 		backIcon = new JLabel(Icons.BACK_COLORED);
 		springLayout.putConstraint(SpringLayout.NORTH, backIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, backIcon, 0, SpringLayout.WEST, this);
-		backIcon.setSize(Sizes.ICON_SIZE);
 		backIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		
 		backIcon.addMouseListener(new MouseAdapter(){

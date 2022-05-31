@@ -42,7 +42,7 @@ public class List<E> extends JList<E> {
                     if(isSelected){
                         border = Colors.ACCENT;
                         ((JLabel) renderer).setOpaque(true);
-                        ((JLabel) renderer).setBackground(new Color(45, 45, 45));
+                        ((JLabel) renderer).setBackground(Colors.LIST_ITEM_HOVER);
                     }
                     if(!isSelected){
                         border = null;

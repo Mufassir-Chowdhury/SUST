@@ -94,7 +94,7 @@ class DashBoard extends JPanel {
             }
             @Override
             protected void paintComponent(Graphics g) {
-                g.setColor(new Color(84, 84, 84, 163));
+                g.setColor(Colors.DASHBOARD_TITLE_BACKGROUND);
                 g.fillRoundRect(0, 0, getWidth(), getHeight()+7, 7, 7);
                 super.paintComponent(g);
             }
@@ -120,7 +120,7 @@ class DashBoard extends JPanel {
                 @Override
                 protected void paintComponent(Graphics g) {
                     if(severity == Datapoints.Notification.Severity.INFORMATIONAL)
-                        g.setColor(new Color(80, 70, 70, 255));
+                        g.setColor(Colors.NOTIFICATION_TOAST_INFORMATIONAL);
                     else if(severity == Datapoints.Notification.Severity.SUCCESS)
                         g.setColor(new Color(57, 61, 27, 255));
                     else if(severity == Datapoints.Notification.Severity.WARNING)

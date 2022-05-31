@@ -102,7 +102,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     @Override
     public void focusGained(FocusEvent e) {
         border = Colors.ACCENT;
-        background = new Color(30, 30, 30, 178);
+        background = Colors.TEXT_FIELD_BACKGROUND_FOCUSED;
         repaint();
     }
 
@@ -139,7 +139,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     @Override
     public void mouseEntered(MouseEvent e) {
         if(isFocusOwner()) return;
-        background = new Color(255, 255, 255, 21);
+        background = Colors.TEXT_FIELD_BACKGROUND_HOVER;
         repaint();
     }
 

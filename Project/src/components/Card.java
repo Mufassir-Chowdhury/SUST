@@ -8,13 +8,13 @@ import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Sizes;
 
-public class Card extends JPanel {
+public class Card extends JPanel implements MouseListener {
     Color background = Colors.CARD;
     public Card(String text, Icon icon) {
         setOpaque(false);
@@ -33,17 +33,7 @@ public class Card extends JPanel {
         add(label);
         add(Box.createVerticalGlue());
 
-        addMouseListener(new MouseAdapter(){
-            public void mouseEntered(MouseEvent e) {
-                background = new Color(255, 255, 255, 25);
-                repaint();
-            }
-
-            public void mouseExited(MouseEvent e) {
-                background = Colors.CARD;
-                repaint();
-            }
-        });
+        addMouseListener(this);
     }
     public Card(String text, Font font) {
         setOpaque(false);
@@ -52,17 +42,7 @@ public class Card extends JPanel {
         add(Box.createVerticalGlue());
         add(new Label(text, font, Component.CENTER_ALIGNMENT));
         add(Box.createVerticalGlue());
-        addMouseListener(new MouseAdapter(){
-            public void mouseEntered(MouseEvent e) {
-                background = new Color(255, 255, 255, 25);
-                repaint();
-            }
-
-            public void mouseExited(MouseEvent e) {
-                background = Colors.CARD;
-                repaint();
-            }
-        });
+        addMouseListener(this);
     }
 
     
@@ -71,6 +51,31 @@ public class Card extends JPanel {
         g.setColor(background);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
         super.paintComponent(g);
+    }
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void mousePressed(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        background = Colors.CARD_HOVER;
+        repaint();
+    }
+    @Override
+    public void mouseExited(MouseEvent e) {
+        background = Colors.CARD;
+        repaint();
     }
 
 }
