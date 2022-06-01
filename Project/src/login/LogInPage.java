@@ -33,7 +33,7 @@ public class LogInPage extends JPanel {
         gbc.weightx = 1;
         gbc.weighty = 1;
         gbc.gridwidth = 2;
-        gbc.insets = Margins.MAJOR_PANEL;
+        gbc.insets = Margins.MAJOR_PANEL.getBorderInsets();
 
         add(new LogInLeft(), gbc);
 

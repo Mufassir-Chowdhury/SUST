@@ -5,7 +5,7 @@ import java.awt.Component;
 import java.awt.Color;
 import java.awt.event.MouseListener;
 
-import java.awt.event.*;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
 import Constants.Colors;
 import Constants.Sizes;
@@ -18,6 +18,7 @@ public class AccentButton extends Button implements MouseListener{
         setForeground(Colors.PLAIN_TEXT_BLACK);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setFocusPainted(false);
+        // TODO localise listener calls every where
         addMouseListener(this);
         addFocusListener(this);
     }

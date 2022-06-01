@@ -4,22 +4,13 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.*;
 import java.util.Arrays;
 
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import Constants.Colors;
-import Constants.Fonts;
-import Constants.Margins;
-import Constants.Sizes;
-import Constants.Values;
+import Constants.*;
 
 public class TextField extends JPasswordField implements MouseListener, FocusListener, KeyListener {
     public Boolean showPassword;
@@ -50,7 +41,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
         setMaximumSize(Sizes.TEXT_FIELD_SIZE);
         setForeground(Colors.PLAIN_TEXT);
         setFont(Fonts.PLAIN_TEXT);
-        setMargin(Margins.TEXT_FIELD);
+        setBorder(Margins.TEXT_FIELD);
         if(type == TYPE.PASSWORD)
             setText(Values.PASSWORD_PLACEHOLDER);
         else
@@ -63,13 +54,13 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     
     protected void paintComponent(Graphics g) {
         g.setColor(background);
-        g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 4, 4);
+        g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, Sizes.SMALLER_BORDER_RAIDUS, Sizes.SMALLER_BORDER_RAIDUS);
         super.paintComponent(g);
     }
     
     protected void paintBorder(Graphics g) {
         g.setColor(border);
-        g.drawRoundRect(0, getHeight()-1, getWidth() - 2, 1, 0, 0);
+        g.drawRoundRect(0, getHeight()-1, getWidth() - 2, 1, Sizes.SMALLER_BORDER_RAIDUS, Sizes.SMALLER_BORDER_RAIDUS);
     }
     
     public boolean checkPlaceholder(){

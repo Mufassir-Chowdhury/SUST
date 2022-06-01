@@ -10,6 +10,7 @@ import Components.pageView.Panels.TilesPanel;
 import Components.pageView.Panels.ViewPortPanel;
 
 import Constants.Icons;
+import Constants.Sizes;
 import Server.Datapoints;
 import Components.pageView.Panels.Post;
 
@@ -24,7 +25,7 @@ public class resources extends ViewPortPanel {
         add(new Options(Datapoints.getInstance().SEMESTER, secondOptions));
         add(Box.createVerticalStrut(20));
 
-        TilesPanel list = new TilesPanel(2, 3, 50);
+        TilesPanel list = new TilesPanel(2, 3, Sizes.CARD_SPACING_LONG);
         
         for(String resource: Datapoints.getInstance().RESOURCES){
             Card card = new Card(resource, Icons.PAYMENT);

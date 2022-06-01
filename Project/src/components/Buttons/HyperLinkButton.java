@@ -5,8 +5,6 @@ import Constants.Margins;
 
 import java.awt.event.*;
 
-import javax.swing.border.EmptyBorder;
-
 import java.awt.event.MouseEvent;
 
 public class HyperLinkButton extends Button implements MouseListener  {
@@ -14,7 +12,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
         super(text);
         setOpaque(false);
         setForeground(Colors.ACCENT_TEXT);
-        setBorder(new EmptyBorder(Margins.BUTTON));
+        setBorder(Margins.BUTTON);
     }
 
     @Override

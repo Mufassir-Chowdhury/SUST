@@ -2,10 +2,7 @@ package Main;
 import javax.swing.SwingUtilities;
 
 import Components.Background;
-import Components.TitleBar;
 import Constants.Sizes;
-import Server.Client;
-import Server.Datapoints;
 import login.LogInPage;
 import mainView.MainPage;
 import registration.RegiPage;
@@ -17,7 +14,6 @@ import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
-import java.awt.Dimension;
 
 public class Main extends JFrame {
 	public JFrame currentFrame;
@@ -64,8 +60,6 @@ public class Main extends JFrame {
 	}
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
-		Client client = new Client();
-
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				try {

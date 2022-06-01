@@ -10,7 +10,7 @@ public class Fonts {
 
     public static final Font TITLE = new Font("Segoe UI", Font.PLAIN, 24);
     public static final Font DISPLAY = new Font("Segoe UI", Font.BOLD, 28);
-    public static final Font SECOND_DISPLAY = new Font("Segoe UI", Font.BOLD, 34);
+    public static final Font SECOND_DISPLAY = new Font("Segoe UI", Font.BOLD, 40);
     public static final Font BIG_DISPLAY = new Font("Segoe UI Display", Font.BOLD, 60);
     public static final Font SUBTITLE = new Font("Segoe UI Semibold", Font.BOLD, 20);
 }

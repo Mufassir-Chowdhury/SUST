@@ -6,6 +6,7 @@ import javax.swing.JList;
 
 import Constants.Colors;
 import Constants.Fonts;
+import Constants.Sizes;
 import Server.Datapoints;
 
 import java.awt.Graphics;
@@ -22,7 +23,7 @@ public class List<E> extends JList<E> {
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setSelectionMode(selectionModel);
         setOpaque(false);
-        setFixedCellWidth(300);
+        setFixedCellWidth(Sizes.LIST_ITEM_WIDTH);
         setCellRenderer(new DefaultListCellRenderer() {
             Color border = null;
             @Override

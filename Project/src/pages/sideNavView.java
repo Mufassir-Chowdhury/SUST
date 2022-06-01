@@ -51,7 +51,7 @@ public class sideNavView extends JPanel{
         gbc.gridy = 0;
         gbc.weighty = 1;
         gbc.gridwidth = 1;
-        gbc.insets = Margins.MAJOR_PANEL;
+        gbc.insets = Margins.MAJOR_PANEL.getBorderInsets();
 
         add(buttonPane, gbc);
         gbc.fill = GridBagConstraints.BOTH;

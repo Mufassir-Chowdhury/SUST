@@ -17,7 +17,7 @@ import Constants.Sizes;
 
 public class Card extends JPanel implements MouseListener {
     Color background = Colors.CARD;
-    int curve = 7;
+    int curve = Sizes.BORDER_RADIUS;
     BufferedImage image = null;
     public Card(String text, Icon icon) {
         setOpaque(false);
@@ -71,7 +71,7 @@ public class Card extends JPanel implements MouseListener {
     
     @Override
     public Dimension getPreferredSize() {
-        if(image == null) return new Dimension(0, 0);
+        if(image == null) return Sizes.CARD_SIZE;
         return new Dimension(image.getWidth(), image.getHeight());
     }
     @Override

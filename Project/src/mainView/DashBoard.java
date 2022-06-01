@@ -18,7 +18,6 @@ import java.awt.Component;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
-import java.awt.Dimension;
 
 import Constants.Colors;
 import Constants.Fonts;
@@ -75,7 +74,7 @@ class DashBoard extends JPanel {
     }
     class Due extends JPanel {
         public Due(){
-            setLayout(new GridLayout(1, 2, 10, 0));
+            setLayout(new GridLayout(1, 2, Sizes.CARD_SPACING, 0));
             setOpaque(false);
             add(new DashBoardItem("Upcoming Exams", Datapoints.getInstance().EXAM));
             add(new DashBoardItem("Due Assignments", Datapoints.getInstance().ASSIGNMENT));
@@ -104,7 +103,7 @@ class DashBoard extends JPanel {
                     setLayout(new BorderLayout());
                     setOpaque(false);
                     this.severity = notification.severity;
-                    setMaximumSize(new Dimension(1000, 40));
+                    setMaximumSize(Sizes.NOTIFICATION_SIZE);
                     setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
                     add(new JLabel(Icons.INFO), BorderLayout.WEST);
                     Label title = new Label(notification.title);

@@ -17,8 +17,9 @@ public class Title extends Box {
     public Title(Label label, JComponent component){
         super(BoxLayout.X_AXIS);
         setAlignmentX(Component.LEFT_ALIGNMENT);
-        label.setAlignmentY(Component.TOP_ALIGNMENT);
-        add(label);
+        titleLabel = label;
+        titleLabel.setAlignmentY(Component.TOP_ALIGNMENT);
+        add(titleLabel);
 
         add(Box.createHorizontalGlue());
         if(component != null){

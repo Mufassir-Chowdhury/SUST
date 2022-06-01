@@ -5,12 +5,12 @@ import javax.swing.BoxLayout;
 
 import java.awt.Component;
 import Components.InputFields.ComboBox;
-import java.awt.Dimension;
+import Constants.Sizes;
 
 public class Options extends Box {
     public Options(String[] firstOptions, String[] secondOptions){
         super(BoxLayout.X_AXIS);
-        setMaximumSize(new Dimension(1000, 40));
+        setMaximumSize(Sizes.OPTIONS);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         ComboBox<String> filter = new ComboBox<>(firstOptions);
         ComboBox<String> filter2 = new ComboBox<>(secondOptions);

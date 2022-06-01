@@ -6,6 +6,7 @@ import Components.pageView.Panels.TilesPanel;
 import Components.pageView.Panels.ViewPortPanel;
 
 import Constants.Icons;
+import Constants.Sizes;
 import Server.Datapoints;
 
 import java.awt.CardLayout;
@@ -15,7 +16,7 @@ import java.awt.event.MouseAdapter;
 public class payment extends ViewPortPanel {
     public payment(){
         super("Payment", null);
-        TilesPanel list = new TilesPanel(2, 3, 50);
+        TilesPanel list = new TilesPanel(2, 3, Sizes.CARD_SPACING_LONG);
         
         for(String payment: Datapoints.getInstance().PAYMENT){
             Card card = new Card(payment, Icons.PAYMENT);

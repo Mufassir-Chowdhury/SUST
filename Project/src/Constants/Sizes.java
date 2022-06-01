@@ -9,6 +9,7 @@ public class Sizes {
     public static final int CARD_SPACING_LONG = 50;
     public static final int BORDER_RADIUS = 8;
     public static final int SMALLER_BORDER_RAIDUS = 4;
+    public static final int LIST_ITEM_WIDTH = 300;
 
     public static final Dimension DP = new Dimension(75, 75);
 
@@ -29,4 +30,10 @@ public class Sizes {
     
     public static final Dimension CARD_SIZE = new Dimension(190, 115);
     public static final Dimension CARD_SIZE_2 = new Dimension(350, 200);
+
+    public static final Dimension LIST_ITEM = new Dimension(1000, 60);
+    public static final Dimension OPTIONS = new Dimension(1000, 40);
+    public static final Dimension COLUMN = new Dimension(1000, 200);
+    public static final Dimension NOTIFICATION_SIZE = new Dimension(1000, 40);
+    public static final Dimension SEARCH_FIELD = new Dimension(288, 32);
 }

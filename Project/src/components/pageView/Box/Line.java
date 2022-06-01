@@ -3,13 +3,16 @@ package Components.pageView.Box;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
-import java.awt.Dimension;
+
+import Constants.Sizes;
+
 import java.awt.Component;
 
 public class Line extends Box {
     public Line(JComponent component){
         super(BoxLayout.X_AXIS);
-        setMaximumSize(new Dimension(1000, 60));
+        //TODO Line is always called with ListItem, so merge them together
+        setMaximumSize(Sizes.LIST_ITEM);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         add(component);
     }    

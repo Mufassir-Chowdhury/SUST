@@ -12,10 +12,10 @@ import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Constants.Fonts;
 import Constants.Icons;
+import Constants.Sizes;
 import Server.Datapoints;
 
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Insets;
 import java.io.IOException;
 import java.util.Vector;
@@ -39,7 +39,7 @@ public class sideNav extends JPanel {
         searchField.addMouseListener(searchField);
         searchField.addFocusListener(searchField);
         searchField.addKeyListener(searchField);
-        searchField.setMaximumSize(new Dimension(288, 32));
+        searchField.setMaximumSize(Sizes.SEARCH_FIELD);
         line.add(searchField);
         line.add(Box.createHorizontalStrut(5));
         add(line);

@@ -2,7 +2,6 @@ package Components.Buttons;
 
 import javax.swing.JButton;
 import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 
 import Constants.Fonts;
 import Constants.Margins;
@@ -19,16 +18,13 @@ public class Button extends JButton implements FocusListener{
     public Button(String text) {
         setOpaque(false); 
         setText(text);
-        setSize(Sizes.BUTTON_SIZE);
         setMaximumSize(Sizes.BUTTON_SIZE);
-        setMinimumSize(Sizes.BUTTON_SIZE);
         setContentAreaFilled(false);
         setFocusPainted(false);
         setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         setFont(Fonts.PLAIN_TEXT);
-        setMargin(Margins.BUTTON);
+        setBorder(Margins.BUTTON);
         setFocusable(true);
-
     }
 
     @Override
@@ -42,7 +38,7 @@ public class Button extends JButton implements FocusListener{
 
             @Override
             public Insets getBorderInsets(java.awt.Component c) {
-                return Margins.BUTTON;
+                return Margins.BUTTON.getBorderInsets();
             }
 
             @Override
@@ -55,7 +51,7 @@ public class Button extends JButton implements FocusListener{
 
     @Override
     public void focusLost(FocusEvent e) {
-        setBorder(new EmptyBorder(Margins.BUTTON));
+        setBorder(Margins.BUTTON);
         repaint();
     }
 }

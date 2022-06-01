@@ -40,13 +40,10 @@ public class MainCardListItem extends Box {
         setAlignmentX(Component.LEFT_ALIGNMENT);
         ListPanel line = listItem;
         line.addMouseListener(new MouseAdapter(){
-            expanded marks = null;
+            expanded marks = new expanded(type);
             Boolean open = false;
             @Override
             public void mouseClicked(MouseEvent e){
-                if(marks == null){
-                    marks = new expanded(type);
-                }
                 if(open == false){
                     line.add(marks);
                     open = true;
