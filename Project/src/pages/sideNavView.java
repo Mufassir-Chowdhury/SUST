@@ -10,10 +10,7 @@ import Server.Datapoints;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints ;
 import java.awt.CardLayout;
-import java.awt.Insets;
 import java.io.IOException;
-
-import javax.swing.border.EmptyBorder;
 
 public class sideNavView extends JPanel{
     JPanel cards;
@@ -37,7 +34,7 @@ public class sideNavView extends JPanel{
 
         
         cards = new JPanel(new CardLayout());
-        cards.setBorder(new EmptyBorder(new Insets(10, 0, 50, 40)));
+        cards.setBorder(Padding.SIDE_NAV_VIEW);
         cards.setOpaque(false);
         for(Datapoints.Page[] page: Datapoints.getInstance().getPages()){
             for(Datapoints.Page pair: page){

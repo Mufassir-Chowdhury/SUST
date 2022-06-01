@@ -7,9 +7,9 @@ import Components.pageView.Panels.GridBagPanel;
 import Components.pageView.Panels.InformationPanel;
 import Components.pageView.Panels.ViewPort;
 import Constants.Fonts;
+import Constants.Margins;
 import Server.Datapoints;
 
-import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
 public class bus extends ViewPort {
@@ -24,7 +24,7 @@ public class bus extends ViewPort {
         gbc.weighty = 1;
         gbc.weightx = 1;
         gbc.gridwidth = 1;
-        gbc.insets = new Insets(0, 0, 0, 5);
+        gbc.insets = Margins.INFORMATION_PANEL;
 
         
         list.add(new InformationPanel("Buses", null, Datapoints.getInstance().BUSES), gbc);
@@ -35,7 +35,7 @@ public class bus extends ViewPort {
             gbc.weighty = 1;
             gbc.weightx = 1;
             gbc.gridwidth = 1;
-            gbc.insets = new Insets(0, 5, 0, 5);
+            gbc.insets = Margins.COLUMN;
             list.add(new Column(new Title(new Label("Bus 1", Fonts.SUBTITLE), null), new Day()), gbc);
         }
 

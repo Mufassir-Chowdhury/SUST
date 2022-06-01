@@ -5,7 +5,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
 
 import Components.Card;
 import Components.Label;
@@ -13,7 +12,6 @@ import Components.pageView.Panels.ListPanel;
 
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.Component;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -22,6 +20,8 @@ import java.awt.GridLayout;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
+import Constants.Margins;
+import Constants.Padding;
 import Constants.Sizes;
 import Server.Datapoints;
 
@@ -31,7 +31,7 @@ class DashBoard extends JPanel {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = new Insets(5, 0, 5, 0);
+        gbc.insets = Margins.DASHBOARD;
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.weightx = 1;
@@ -74,7 +74,7 @@ class DashBoard extends JPanel {
     }
     class Due extends JPanel {
         public Due(){
-            setLayout(new GridLayout(1, 2, Sizes.CARD_SPACING, 0));
+            setLayout(new GridLayout(1, 2, Padding.CARD_SPACING, 0));
             setOpaque(false);
             add(new DashBoardItem("Upcoming Exams", Datapoints.getInstance().EXAM));
             add(new DashBoardItem("Due Assignments", Datapoints.getInstance().ASSIGNMENT));
@@ -86,7 +86,7 @@ class DashBoard extends JPanel {
             public Title(String title){
                 setOpaque(false);
                 setLayout(new BorderLayout());
-                setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
+                setBorder(Padding.TITLE);
                 add(new Label(title, Fonts.BODY_LARGE, SwingConstants.CENTER));
             }
             @Override
@@ -104,10 +104,10 @@ class DashBoard extends JPanel {
                     setOpaque(false);
                     this.severity = notification.severity;
                     setMaximumSize(Sizes.NOTIFICATION_SIZE);
-                    setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
+                    setBorder(Padding.NOTIFICATION);
                     add(new JLabel(Icons.INFO), BorderLayout.WEST);
                     Label title = new Label(notification.title);
-                    title.setBorder(new EmptyBorder(5, 10, 5, 10));
+                    title.setBorder(Padding.LIST_PANEL);
                     add(title, BorderLayout.CENTER);
                     Label date = new Label(notification.date, Fonts.CAPTION, SwingConstants.LEADING);
                     if(notification.dismissable)
@@ -129,7 +129,7 @@ class DashBoard extends JPanel {
                 }
             }
             public DashBoardInfo(Datapoints.Notification[] notifications){
-                setBorder(new EmptyBorder(new Insets(5, 5, 5, 5)));
+                setBorder(Padding.NOTIFICATION);
                 for(int i=0; i<notifications.length; i++){
                     add(new DashBoardInfoCard(notifications[i]));
                     if(i != notifications.length -1 )

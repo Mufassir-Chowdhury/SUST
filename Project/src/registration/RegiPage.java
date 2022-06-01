@@ -58,7 +58,7 @@ public class RegiPage extends JScrollPane {
         label.setForeground(Colors.ACCENT_TEXT);
 		field = new TextField("", TYPE.PLAIN);
 		col.add(label);
-		col.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
+		col.add(Box.createHorizontalStrut(Padding.CARD_SPACING_LONG));
 		col.add(field);
 		return col;
 	}
@@ -73,11 +73,11 @@ public class RegiPage extends JScrollPane {
 		row.setLayout(new BoxLayout(row, BoxLayout.X_AXIS));
 
 		row.add(createColumn(col1, label1, text1, field1));
-		row.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
+		row.add(Box.createHorizontalStrut(Padding.CARD_SPACING_LONG));
 		row.add(createColumn(col2, label2, text2, field2));
 
 		allFieldPanel.add(row);
-		allFieldPanel.add(Box.createVerticalStrut(Sizes.CARD_SPACING));
+		allFieldPanel.add(Box.createVerticalStrut(Padding.CARD_SPACING));
 	}
 
 	private void createROw(JPanel row, JPanel col1, JPanel col2)
@@ -87,11 +87,11 @@ public class RegiPage extends JScrollPane {
 		row.setLayout(new BoxLayout(row, BoxLayout.X_AXIS));
 
 		row.add(col1);
-		row.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
+		row.add(Box.createHorizontalStrut(Padding.CARD_SPACING_LONG));
 		row.add(col2);
 
 		allFieldPanel.add(row);
-		allFieldPanel.add(Box.createVerticalStrut(Sizes.CARD_SPACING));
+		allFieldPanel.add(Box.createVerticalStrut(Padding.CARD_SPACING));
 	}
 
 	public RegiPage(Main main) {
@@ -116,7 +116,7 @@ public class RegiPage extends JScrollPane {
 			getViewport().setOpaque(false);
 
 			allFieldPanel.setLayout(new BoxLayout(allFieldPanel, BoxLayout.Y_AXIS));
-			allFieldPanel.add(Box.createVerticalStrut(Sizes.CARD_SPACING));
+			allFieldPanel.add(Box.createVerticalStrut(Padding.CARD_SPACING));
 
 			createRow(row1, emailPanel, secondaryEmailPanel,
 					emailLabel, secondaryEmailLabel,

@@ -5,18 +5,17 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
-import javax.swing.border.EmptyBorder;
 import Components.Label;
 import Components.List;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Constants.Fonts;
 import Constants.Icons;
+import Constants.Padding;
 import Constants.Sizes;
 import Server.Datapoints;
 
 import java.awt.Component;
-import java.awt.Insets;
 import java.io.IOException;
 import java.util.Vector;
 
@@ -67,7 +66,7 @@ public class sideNav extends JPanel {
         settings.setIcon(Icons.SETTINGS);
         settings.setOpaque(false);
         settings.setIconTextGap(20);
-        settings.setBorder(new EmptyBorder(new Insets(5, 0, 5,0)));
+        settings.setBorder(Padding.LIST);
         add(settings);
     }
 }

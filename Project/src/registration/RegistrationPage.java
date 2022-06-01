@@ -6,7 +6,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import Constants.Sizes;
+import Constants.Padding;
 public class RegistrationPage extends JPanel {
     
 
@@ -35,9 +35,9 @@ public class RegistrationPage extends JPanel {
         //         line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
         // }
 
-        add(Box.createVerticalStrut(Sizes.CARD_SPACING_LONG));
+        add(Box.createVerticalStrut(Padding.CARD_SPACING_LONG));
         add(line);
-        add(Box.createVerticalStrut(Sizes.CARD_SPACING_LONG));
+        add(Box.createVerticalStrut(Padding.CARD_SPACING_LONG));
     }
     
 }

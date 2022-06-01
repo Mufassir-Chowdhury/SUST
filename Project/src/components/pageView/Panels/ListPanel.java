@@ -4,8 +4,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 import java.awt.Component;
-import java.awt.Insets;
-import javax.swing.border.EmptyBorder;
+
+import Constants.Padding;
 
 public class ListPanel extends JPanel {
 
@@ -20,7 +20,7 @@ public class ListPanel extends JPanel {
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBorder(new EmptyBorder(new Insets(5, 10, 5, 10)));
+        setBorder(Padding.LIST_PANEL);
 
         add(component);
         if(component2 != null){

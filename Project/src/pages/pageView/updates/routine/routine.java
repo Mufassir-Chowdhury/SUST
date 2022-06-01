@@ -9,10 +9,10 @@ import Components.pageView.Panels.InformationPanel;
 import Components.pageView.Panels.ScrollPane;
 import Components.pageView.Panels.ViewPort;
 import Constants.Fonts;
+import Constants.Margins;
 import Server.Datapoints;
 import pages.pageView.misc.bus.Day;
 
-import java.awt.Insets;
 import java.awt.GridBagConstraints;
 
 public class routine extends ViewPort{
@@ -27,7 +27,7 @@ public class routine extends ViewPort{
         gbc.weighty = 1;
         gbc.weightx = 1;
         gbc.gridwidth = 2;
-        gbc.insets = new Insets(5, 0, 5, 5);
+        gbc.insets = Margins.INFORMATION_PANEL;
 
         
         list.add(new InformationPanel("Your Courses", new AccentButton("Manage Courses") , Datapoints.getInstance().COURSES), gbc);

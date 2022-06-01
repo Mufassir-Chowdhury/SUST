@@ -6,15 +6,14 @@ import javax.swing.JList;
 
 import Constants.Colors;
 import Constants.Fonts;
+import Constants.Padding;
 import Constants.Sizes;
 import Server.Datapoints;
 
 import java.awt.Graphics;
 import java.awt.Color;
-import java.awt.Insets;
 import java.util.Vector;
 
-import javax.swing.border.EmptyBorder;
 import java.awt.Component;
 
 public class List<E> extends JList<E> {
@@ -39,7 +38,7 @@ public class List<E> extends JList<E> {
                     ((JLabel) renderer).setForeground(Colors.PLAIN_TEXT);
                     ((JLabel) renderer).setAlignmentX(Component.LEFT_ALIGNMENT);
                     ((JLabel) renderer).setIconTextGap(20);
-                    ((JLabel) renderer).setBorder(new EmptyBorder(new Insets(5, 15, 5, 0)));
+                    ((JLabel) renderer).setBorder(Padding.LIST);
                     if(isSelected){
                         border = Colors.ACCENT;
                         ((JLabel) renderer).setOpaque(true);

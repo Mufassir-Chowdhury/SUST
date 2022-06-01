@@ -13,7 +13,6 @@ import Components.Label;
 import Components.pageView.Panels.ListPanel;
 import Constants.Fonts;
 import Constants.Padding;
-import Constants.Sizes;
 import Main.Main;
 import Server.Datapoints;
 
@@ -32,7 +31,7 @@ class AllPages extends ListPanel {
                     }
                 });
                 line.add(card);
-                line.add(Box.createHorizontalStrut(Sizes.CARD_SPACING));
+                line.add(Box.createHorizontalStrut(Padding.CARD_SPACING));
             }
             line.setAlignmentX(Component.LEFT_ALIGNMENT);
             
