@@ -25,6 +25,7 @@ public class Button extends JButton implements FocusListener{
         setFont(Fonts.PLAIN_TEXT);
         setBorder(Padding.BUTTON);
         setFocusable(true);
+        addFocusListener(this);
     }
 
     @Override

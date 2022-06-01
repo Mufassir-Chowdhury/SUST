@@ -9,13 +9,11 @@ import javax.swing.JPanel;
 import Constants.Margins;
 import Constants.Sizes;
 import Main.Main;
-import Components.Background;
 
 public class LogInPage extends JPanel {
 
 	private static final long serialVersionUID = 1L;
     private Main frame;
-    private Background background;
 	public void LogIn(String page) throws ClassNotFoundException, IOException{
 		frame.changeFrame(page);
 	}

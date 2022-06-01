@@ -104,6 +104,9 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 
 		backIcon.addMouseListener(this);
 		backIcon.addMouseMotionListener(this);
+
+		addMouseListener(this);
+		addMouseMotionListener(this);
 	}
 
 	@Override

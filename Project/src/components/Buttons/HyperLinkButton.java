@@ -13,6 +13,9 @@ public class HyperLinkButton extends Button implements MouseListener  {
         setOpaque(false);
         setForeground(Colors.ACCENT_TEXT);
         setBorder(Padding.BUTTON);
+
+        addMouseListener(this);
+        addFocusListener(this);
     }
 
     @Override

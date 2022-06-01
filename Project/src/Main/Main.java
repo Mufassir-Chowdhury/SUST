@@ -61,7 +61,7 @@ public class Main extends JFrame {
 	}
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
-		Client client = new Client();
+		new Client();
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {

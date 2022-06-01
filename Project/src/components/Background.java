@@ -78,7 +78,5 @@ public class Background extends JFrame {
                 setLocation(logInTitleBar.point);
             }
         });
-        logInTitleBar.addMouseListener(logInTitleBar);
-        logInTitleBar.addMouseMotionListener(logInTitleBar);
     }
 }

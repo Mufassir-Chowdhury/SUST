@@ -2,8 +2,6 @@ package login;
 
 import java.util.Arrays;
 
-import javax.print.FlavorException;
-
 import Constants.Values;
 
 public class FieldValidity {

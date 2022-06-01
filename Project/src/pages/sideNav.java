@@ -35,9 +35,6 @@ public class sideNav extends JPanel {
         line.add(Box.createHorizontalStrut(5));
 
         TextField searchField = new TextField("Search", TYPE.PLAIN);
-        searchField.addMouseListener(searchField);
-        searchField.addFocusListener(searchField);
-        searchField.addKeyListener(searchField);
         searchField.setMaximumSize(Sizes.SEARCH_FIELD);
         line.add(searchField);
         line.add(Box.createHorizontalStrut(5));
