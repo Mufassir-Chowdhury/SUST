@@ -41,7 +41,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
         setMaximumSize(Sizes.TEXT_FIELD_SIZE);
         setForeground(Colors.PLAIN_TEXT);
         setFont(Fonts.PLAIN_TEXT);
-        setBorder(Margins.TEXT_FIELD);
+        setBorder(Padding.TEXT_FIELD);
         if(type == TYPE.PASSWORD)
             setText(Values.PASSWORD_PLACEHOLDER);
         else
@@ -54,7 +54,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     
     protected void paintComponent(Graphics g) {
         g.setColor(background);
-        g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, Sizes.SMALLER_BORDER_RAIDUS, Sizes.SMALLER_BORDER_RAIDUS);
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), Sizes.SMALLER_BORDER_RAIDUS, Sizes.SMALLER_BORDER_RAIDUS);
         super.paintComponent(g);
     }
     

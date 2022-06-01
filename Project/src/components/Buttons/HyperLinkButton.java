@@ -1,7 +1,7 @@
 package Components.Buttons;
 
 import Constants.Colors;
-import Constants.Margins;
+import Constants.Padding;
 
 import java.awt.event.*;
 
@@ -12,7 +12,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
         super(text);
         setOpaque(false);
         setForeground(Colors.ACCENT_TEXT);
-        setBorder(Margins.BUTTON);
+        setBorder(Padding.BUTTON);
     }
 
     @Override

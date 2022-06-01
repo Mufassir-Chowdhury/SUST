@@ -3,6 +3,7 @@ import javax.swing.SwingUtilities;
 
 import Components.Background;
 import Constants.Sizes;
+import Server.Client;
 import login.LogInPage;
 import mainView.MainPage;
 import registration.RegiPage;
@@ -60,6 +61,8 @@ public class Main extends JFrame {
 	}
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException {
+		Client client = new Client();
+
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				try {

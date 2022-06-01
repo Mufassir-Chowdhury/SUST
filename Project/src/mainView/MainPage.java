@@ -24,7 +24,7 @@ public class MainPage extends JPanel {
         gbc.weightx = 1;
         gbc.weighty = 1;
         gbc.gridwidth = 2;
-        gbc.insets = Margins.MAJOR_PANEL.getBorderInsets();
+        gbc.insets = Margins.MAJOR_PANEL;
 
         add(new AllPages(main), gbc);
 
