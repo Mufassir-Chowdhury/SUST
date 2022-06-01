@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.net.URI;
 
 import Components.Label;
-import Components.ListItem;
 import Components.pageView.Box.Line;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.ScrollPane;
@@ -34,7 +33,7 @@ public class links extends ViewPort {
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
             list.add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
             for(Datapoints.Link link: Datapoints.getInstance().LINKS[i]){
-                Line info = new Line(new ListItem(link.title, "", "", link.title));
+                Line info = new Line(link.title, "", "", link.title);
                 
                 info.addMouseListener(new MouseAdapter() {
                     @Override

@@ -9,7 +9,6 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import Components.Label;
-import Components.ListItem;
 import Components.pageView.Box.Line;
 import Components.pageView.Box.ResultSummary;
 import Components.pageView.Box.Title;
@@ -107,11 +106,11 @@ public class Datapoints{
         }
         @Override
         public Line getListItem() {
-            return new Line(new ListItem(
+            return new Line(
                 name, 
                 blood + " | " + birthDay + " | " + hometown, 
                 email, 
-                "+880" + number));
+                "+880" + number);
         }
         @Override
         public String getTitle() {
@@ -155,11 +154,11 @@ public class Datapoints{
             }
             @Override
             public Line getListItem() {
-                return new Line(new ListItem(
+                return new Line(
                     title, 
                     courseName,
                     date, 
-                    String.format("%03d", totalMarks) + "   " + String.format("%03d", marksObtained)));
+                    String.format("%03d", totalMarks) + "   " + String.format("%03d", marksObtained));
             }
             @Override
             public String getTitle() {
@@ -252,14 +251,14 @@ public class Datapoints{
             assignments.add(new Assignment(name, title, date, description, totalMarks, marksObtained));
         }
         public Line getAttendance(){
-            return new Line(new ListItem(
+            return new Line(
                 name, 
                 code, 
                 String.valueOf(attendance), 
-                String.format("%03d", absent) + "   " + String.format("%03d", leave)));
+                String.format("%03d", absent) + "   " + String.format("%03d", leave));
         }
         public Line getResult(){
-            return new Line(new ListItem(name, code, grade, String.format("%.2f", gpa)));
+            return new Line(name, code, grade, String.format("%.2f", gpa));
         }
         @Override
         public JComponent getInformation() {
@@ -294,11 +293,11 @@ public class Datapoints{
         }
         @Override
         public Line getListItem() {
-            return new Line(new ListItem(
+            return new Line(
                 title, 
                 location, 
                 duration + " at  " + date, 
-                String.format("%03d", interested) + "   " + String.format("%03d", going)));
+                String.format("%03d", interested) + "   " + String.format("%03d", going));
         }
         @Override
         public String getTitle() {
@@ -326,11 +325,11 @@ public class Datapoints{
         }
         @Override
         public Line getListItem() {
-            return new Line(new ListItem(
+            return new Line(
                 title, 
                 "", 
                 "", 
-                date));
+                date);
         }
         @Override
         public String getTitle() {
