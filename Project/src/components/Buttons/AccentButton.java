@@ -8,13 +8,14 @@ import java.awt.event.MouseListener;
 import java.awt.event.*;
 import java.awt.event.MouseEvent;
 import Constants.Colors;
+import Constants.Sizes;
 
 public class AccentButton extends Button implements MouseListener{
     private Color background = Colors.ACCENT_FILL;
     public AccentButton(String text) {
         super(text);
         setOpaque(false);
-        setForeground(Colors.PLAIN_TEXT);
+        setForeground(Colors.PLAIN_TEXT_BLACK);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setFocusPainted(false);
         addMouseListener(this);
@@ -23,14 +24,14 @@ public class AccentButton extends Button implements MouseListener{
 
     protected void paintComponent(Graphics g) {
         g.setColor(background);
-        // TODO arch measures to Size class
-        g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
+        // TODO make paint Component and paint border in separate class or interface
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), Sizes.BORDER_RADIUS, Sizes.BORDER_RADIUS);
         super.paintComponent(g);
     }
 
     protected void paintBorder(Graphics g) {
         g.setColor(background);
-        g.drawRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
+        g.drawRoundRect(0, 0, getWidth(), getHeight(), Sizes.BORDER_RADIUS, Sizes.BORDER_RADIUS);
     }
 
     @Override

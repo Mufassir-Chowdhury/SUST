@@ -10,7 +10,6 @@ import Constants.Margins;
 import Constants.Sizes;
 import Main.Main;
 import Components.Background;
-import Components.TitleBar;
 
 public class LogInPage extends JPanel {
 

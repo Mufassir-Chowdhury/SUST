@@ -3,19 +3,19 @@ import java.awt.Color;
 
 public class Colors {
 
-    // TODO low priority: add transparency to colors
+    // TODO Check guidelines to update colors
 
-    public static final Color ACCENT = new Color(163, 236, 254);
-    public static final Color ACCENT_TEXT = new Color(163, 236, 254);
-    public static final Color ACCENT_FILL = new Color(0,95,184);
+    public static final Color ACCENT = new Color(96,205,255);
+    public static final Color ACCENT_TEXT = new Color(153,235,255);
+    public static final Color ACCENT_FILL = new Color(96,205,255);
 
-    public static final Color SECONDARY = new Color(96,204,254);
+    public static final Color SECONDARY = new Color(0,94,183);
 
     public static final Color CLOSE_BUTTON_HOVER = new Color(196, 43, 28);
     public static final Color CLOSE_BUTTON_PRESSED = new Color(179, 42, 28);
     public static final Color STANDARD_BUTTON_HOVER = new Color(45, 45, 45);
-    public static final Color ACCENT_BUTTON_HOVER = new Color(0,95,184, 230);
-    public static final Color ACCENT_BUTTON_PRESSED = new Color(0,95,184, 200);
+    public static final Color ACCENT_BUTTON_HOVER = new Color(96,205,255, 230);
+    public static final Color ACCENT_BUTTON_PRESSED = new Color(96,205,255, 200);
     public static final Color HYPER_LINK_BUTTON_HOVER = new Color(55, 40, 44);
     public static final Color HYPER_LINK_BUTTON_PRESSED = new Color(52, 35, 40);
 

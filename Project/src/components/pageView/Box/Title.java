@@ -5,7 +5,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 
 import Components.Label;
-import java.awt.Font;
 import java.awt.Component;
 
 public class Title extends Box {
@@ -15,12 +14,11 @@ public class Title extends Box {
         titleLabel.setText(title);
     }
 
-    public Title(String name, Font font, JComponent component){
+    public Title(Label label, JComponent component){
         super(BoxLayout.X_AXIS);
         setAlignmentX(Component.LEFT_ALIGNMENT);
-        titleLabel = new Label(name, font);
-        titleLabel.setAlignmentY(Component.TOP_ALIGNMENT);
-        add(titleLabel);
+        label.setAlignmentY(Component.TOP_ALIGNMENT);
+        add(label);
 
         add(Box.createHorizontalGlue());
         if(component != null){

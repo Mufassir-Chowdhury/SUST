@@ -37,7 +37,7 @@ public class Button extends JButton implements FocusListener{
             @Override
             public void paintBorder(java.awt.Component c, java.awt.Graphics g, int x, int y, int width, int height) {
                 g.setColor(Constants.Colors.PLAIN_TEXT);
-                g.drawRoundRect(x, y, width, height, 7, 7);
+                g.drawRoundRect(x, y, width, height, Sizes.BORDER_RADIUS, Sizes.BORDER_RADIUS);
             }
 
             @Override

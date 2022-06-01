@@ -45,7 +45,7 @@ public class routine extends ViewPort{
             gbc.weighty = 1;
             gbc.weightx = 1;
             gbc.gridwidth = 2;
-            list.add(new Column(new Title("Tuesday", Fonts.SUBTITLE, new Label("Date")), new Day("2")), gbc);
+            list.add(new Column(new Title(new Label("Tuesday", Fonts.SUBTITLE), new Label("Date")), new Day("2")), gbc);
         }
         add(new ScrollPane(list));
     }

@@ -8,6 +8,7 @@ import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
 import Constants.Colors;
 import Constants.Fonts;
+import Constants.Sizes;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -18,15 +19,15 @@ public class Day extends TilesPanel {
         private Color color;
 
         public IndividualPlace(String className, String classroom, String special, Color color){
-            super(new Label(className, Fonts.Body, Component.LEFT_ALIGNMENT),
-                new Title(classroom, Fonts.CAPTION, new Label(special, Fonts.CAPTION))
+            super(new Label(className, Fonts.Body, Colors.PLAIN_TEXT_BLACK),
+                new Title(new Label(classroom, Fonts.CAPTION, Colors.PLAIN_TEXT_BLACK), new Label(special, Fonts.CAPTION, Colors.PLAIN_TEXT_BLACK))
             );
             this.color = color;
         }
         @Override
         protected void paintComponent(Graphics g) {
             g.setColor(color);
-            g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
+            g.fillRoundRect(0, 0, getWidth(), getHeight(), Sizes.SMALLER_BORDER_RAIDUS, Sizes.SMALLER_BORDER_RAIDUS);
             super.paintComponent(g);
         }
     }
@@ -54,7 +55,7 @@ public class Day extends TilesPanel {
     @Override
     protected void paintComponent(Graphics g) {
         g.setColor(Colors.CARD);
-        g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), Sizes.BORDER_RADIUS, Sizes.BORDER_RADIUS);
         super.paintComponent(g);
     }
 }
