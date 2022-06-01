@@ -1,13 +1,14 @@
 package Components;
 
 import java.awt.*;
-import java.awt.Graphics;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.Icon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import Constants.Colors;
@@ -16,6 +17,8 @@ import Constants.Sizes;
 
 public class Card extends JPanel implements MouseListener {
     Color background = Colors.CARD;
+    int curve = 7;
+    BufferedImage image = null;
     public Card(String text, Icon icon) {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -35,6 +38,7 @@ public class Card extends JPanel implements MouseListener {
 
         addMouseListener(this);
     }
+
     public Card(String text, Font font) {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -44,13 +48,31 @@ public class Card extends JPanel implements MouseListener {
         add(Box.createVerticalGlue());
         addMouseListener(this);
     }
+    
+    public Card(BufferedImage image, int curve)
+    {
+        this.curve = curve;
+        this.image = Tools.makeRoundedCorner(image, curve);
+        setOpaque(false);
+        setMaximumSize(Sizes.DP);
+        
 
+    }
     
     @Override
     protected void paintComponent(Graphics g) {
+        if (image != null)
+            g.drawImage(image, 0, 0, this);
         g.setColor(background);
-        g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), curve, curve);
         super.paintComponent(g);
+        
+    }
+    
+    @Override
+    public Dimension getPreferredSize() {
+        if(image == null) return new Dimension(0, 0);
+        return new Dimension(image.getWidth(), image.getHeight());
     }
     @Override
     public void mouseClicked(MouseEvent e) {

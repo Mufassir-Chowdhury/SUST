@@ -57,7 +57,6 @@ public class course extends ViewPort {
         resources.add(availableCourses);
         resources.add(Box.createHorizontalGlue());
         resources.add(transfer);
-        // resources.add(new JSeparator(JSeparator.VERTICAL));
         resources.add(Box.createHorizontalGlue());
         resources.add(registeredCourses);
         add(resources);

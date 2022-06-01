@@ -55,7 +55,7 @@ public class RegiPage extends JScrollPane {
 		col.setLayout(new BoxLayout(col, BoxLayout.X_AXIS));
 		label = new JLabel(text+" :");
 		label.setFont(Fonts.BODY_LARGE);
-        label.setForeground(Colors.ACCENT);
+        label.setForeground(Colors.ACCENT_TEXT);
 		field = new TextField("", TYPE.PLAIN);
 		col.add(label);
 		col.add(Box.createHorizontalStrut(Sizes.CARD_SPACING_LONG));
@@ -105,7 +105,7 @@ public class RegiPage extends JScrollPane {
 
 			registerTitle = new JLabel("Registration");
 			registerTitle.setFont(Fonts.BODY_LARGE);
-			registerTitle.setForeground(Colors.ACCENT);
+			registerTitle.setForeground(Colors.ACCENT_TEXT);
 			titlePanel.add(registerTitle);
 			setColumnHeaderView(titlePanel);
 			getColumnHeader().setOpaque(false);

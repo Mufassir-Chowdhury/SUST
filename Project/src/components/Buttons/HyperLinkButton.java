@@ -13,7 +13,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
     public HyperLinkButton(String text) {
         super(text);
         setOpaque(false);
-        setForeground(Colors.ACCENT);
+        setForeground(Colors.ACCENT_TEXT);
         setBorder(new EmptyBorder(Margins.BUTTON));
     }
 

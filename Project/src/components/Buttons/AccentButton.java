@@ -10,11 +10,11 @@ import java.awt.event.MouseEvent;
 import Constants.Colors;
 
 public class AccentButton extends Button implements MouseListener{
-    private Color background = Colors.ACCENT;
+    private Color background = Colors.ACCENT_FILL;
     public AccentButton(String text) {
         super(text);
         setOpaque(false);
-        setForeground(Colors.PLAIN_TEXT_BLACK);
+        setForeground(Colors.PLAIN_TEXT);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setFocusPainted(false);
         addMouseListener(this);
@@ -42,7 +42,7 @@ public class AccentButton extends Button implements MouseListener{
     @Override
     public void mouseExited(MouseEvent e) {
         if(isFocusOwner()) return;
-        background = Colors.ACCENT;
+        background = Colors.ACCENT_FILL;
         repaint();
     }
     @Override
@@ -56,7 +56,7 @@ public class AccentButton extends Button implements MouseListener{
     }
     @Override
     public void mouseReleased(MouseEvent e) {
-        background = Colors.ACCENT;
+        background = Colors.ACCENT_FILL;
         repaint();
     }
 
@@ -68,7 +68,7 @@ public class AccentButton extends Button implements MouseListener{
 
     @Override
     public void focusLost(FocusEvent e) {
-        background = Colors.ACCENT;
+        background = Colors.ACCENT_FILL;
         repaint();
     }
 }

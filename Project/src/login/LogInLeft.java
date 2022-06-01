@@ -42,7 +42,7 @@ class LogInLeft extends JPanel {
         public Text(){
             setOpaque(false);
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-            add(new Label("SUST", Fonts.DISPLAY, Colors.ACCENT));
+            add(new Label("SUST", Fonts.DISPLAY, Colors.ACCENT_TEXT));
             add(new Label("Bringing Everything in One Place", Fonts.SUBTITLE));
         }
     }

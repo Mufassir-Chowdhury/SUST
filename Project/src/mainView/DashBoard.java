@@ -7,13 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import Components.Card;
 import Components.Label;
 import Components.pageView.Panels.ListPanel;
 
 import java.awt.Graphics;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -23,6 +23,7 @@ import java.awt.Dimension;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
+import Constants.Sizes;
 import Server.Datapoints;
 
 class DashBoard extends JPanel {
@@ -56,11 +57,8 @@ class DashBoard extends JPanel {
             setOpaque(false);
             setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-            JLabel title = new JLabel(Icons.DP);
-            title.setForeground(Colors.PLAIN_TEXT);
-            title.setAlignmentX(Component.LEFT_ALIGNMENT);
-            
-            add(title);
+            Card card = new Card(Icons.DP, (int)Sizes.DP.getWidth());
+            add(card);
             add(Box.createHorizontalGlue());
             
             Box line = Box.createVerticalBox();
@@ -122,11 +120,11 @@ class DashBoard extends JPanel {
                     if(severity == Datapoints.Notification.Severity.INFORMATIONAL)
                         g.setColor(Colors.NOTIFICATION_TOAST_INFORMATIONAL);
                     else if(severity == Datapoints.Notification.Severity.SUCCESS)
-                        g.setColor(new Color(57, 61, 27, 255));
+                        g.setColor(Colors.NOTIFICATION_TOAST_SUCCESS);
                     else if(severity == Datapoints.Notification.Severity.WARNING)
-                        g.setColor(new Color(67, 53, 25, 255));
+                        g.setColor(Colors.NOTIFICATION_TOAST_WARNING);
                     else if(severity == Datapoints.Notification.Severity.CRITICAL)
-                        g.setColor(new Color(68, 39, 38, 255));
+                        g.setColor(Colors.NOTIFICATION_TOAST_CRITICAL);
                     g.fillRoundRect(0, 0, getWidth(), getHeight()+7, 7, 7);
                     super.paintComponent(g);
                 }
@@ -148,7 +146,7 @@ class DashBoard extends JPanel {
         }
         @Override
         protected void paintComponent(Graphics g) {
-            g.setColor(new Color(84, 84, 84, 163));
+            g.setColor(Colors.DASHBOARD_BACKGROUND);
             g.fillRoundRect(0, 0, getWidth(), getHeight(), 7, 7);
             super.paintComponent(g);
         }

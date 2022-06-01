@@ -10,7 +10,6 @@ import Server.Datapoints;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints ;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Insets;
 import java.io.IOException;
 
@@ -32,14 +31,12 @@ public class sideNavView extends JPanel{
 
     public sideNavView() throws ClassNotFoundException, IOException{
         setOpaque(false);
-        setBackground(new Color(30, 30, 30));
         setSize(Sizes.DEFAULT_WINDOW_SIZE);
         setBorder(Padding.MAIN_VIEW_PORT);
         setLayout(new GridBagLayout());
 
         
         cards = new JPanel(new CardLayout());
-        // cards.setBackground(new Color(58, 58, 58, 76));
         cards.setBorder(new EmptyBorder(new Insets(10, 0, 50, 40)));
         cards.setOpaque(false);
         for(Datapoints.Page[] page: Datapoints.getInstance().getPages()){

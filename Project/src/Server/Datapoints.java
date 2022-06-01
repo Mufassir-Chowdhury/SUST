@@ -1,6 +1,5 @@
 package Server;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Vector;
@@ -17,6 +16,7 @@ import Components.pageView.Box.Title;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.Post;
 import Components.pageView.Panels.ViewPortBasicPanel;
+import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
 import pages.pageView.course_information.*;
@@ -263,7 +263,7 @@ public class Datapoints{
         }
         @Override
         public JComponent getInformation() {
-            return new Title("     " + name, Fonts.CAPTION, new Label(regular.equals(false) ? "(Drop)" : "", Fonts.CAPTION, new Color(120,121,241)));
+            return new Title("     " + name, Fonts.CAPTION, new Label(regular.equals(false) ? "(Drop)" : "", Fonts.CAPTION, Colors.SECONDARY));
         }
     }
 

@@ -1,5 +1,7 @@
 package Constants;
 
+import java.awt.image.BufferedImage;
+
 import javax.swing.ImageIcon;
 import Components.Tools;
 
@@ -15,7 +17,9 @@ public class Icons {
 
     public static final ImageIcon INFO = Tools.imageScale("static/images/info.png", Sizes.ICON_SIZE);
     
-    public static final ImageIcon DP = Tools.imageScale("static/images/2019331073.png", Sizes.DP);
+    // public static final ImageIcon DP = Tools.imageScale("static/images/2019331073.png", Sizes.DP);
+    public static final BufferedImage DP = Tools.bufferImage("static/images/2019331073.png", Sizes.DP);
+    // public static final BufferedImage DP = Tools.makeRoundedCorner(DPB,50);
     // PAGE ICONS 
     
     public static final ImageIcon SCHEDULE = Tools.imageScale("static/pages/routine.png", Sizes.GUI_SMALL_SIZE);
