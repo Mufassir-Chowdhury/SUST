@@ -34,7 +34,7 @@ public class resources extends ViewPortPanel {
                 @Override
                 public void mouseClicked(MouseEvent e){
                     getTitle().setText("Resources > " + resource);
-                    Post individualExam = new Post("title", "date", "totalMarks", "description");
+                    Post individualExam = new Post("title", "date", "totalMarks", "description", false);
                     panel.add(individualExam, resource);
                     CardLayout cl = (CardLayout)(panel.getLayout());
                     cl.show(panel, resource);

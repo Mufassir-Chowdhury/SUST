@@ -25,7 +25,7 @@ public class payment extends ViewPortPanel {
                 @Override
                 public void mouseClicked(MouseEvent e){
                     getTitle().setText("Payment > " + payment);
-                    Post individualExam = new Post("title", "date", "totalMarks", "description");
+                    Post individualExam = new Post("title", "date", "totalMarks", "description", false);
                     panel.add(individualExam, payment);
                     CardLayout cl = (CardLayout)(panel.getLayout());
                     cl.show(panel, payment);
