@@ -5,7 +5,6 @@ import java.awt.Font;
 /**
  * This class contains all the text styles used in the application.
  * The only font use here is 'Segoe UI' and it's variants.
- * @author Mufassir Ahmad Chowdhury
  */
 public class Fonts {
     /**

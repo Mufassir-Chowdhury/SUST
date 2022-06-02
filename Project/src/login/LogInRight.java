@@ -81,7 +81,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         }
         if(showPasswordCheckBox.isSelected()==false){
             showPasswordCheckBox.setForeground(Colors.CheckBox.UNSELECTED);
-            if(Arrays.equals(passwordField.getPassword(), Values.DEFAULT_PASSWORD)==false)
+            if(Arrays.equals(passwordField.getPassword(), Values.PASSWORD_PLACEHOLDER)==false)
                 passwordField.setEchoChar(Values.PASSWORD_ECHO_CHAR);
         }
     }
@@ -242,15 +242,15 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     {
         if (isGreen()) {
             String result = database.runQuery(email, password);
-            if (result == Values.WRONG_EMAIL)
+            if (result == Values.ValidationHints.WRONG_EMAIL)
             {
                 //TODO show wrong email and password
             }
-            else if (result == Values.WRONG_PASSWORD)
+            else if (result == Values.ValidationHints.WRONG_PASSWORD)
             {
                 //TODO show wrong password
             }
-            else if (result == Values.PASSED)
+            else if (result == Values.ValidationHints.PASSED)
             {
                 nextPage("mainPage");
             }

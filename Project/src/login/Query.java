@@ -25,13 +25,13 @@ public class Query {
             {
                 if(exist.getString("password") == password)
                 {
-                    return Values.PASSED;
+                    return Values.ValidationHints.PASSED;
                 }
                 else
-                    return Values.WRONG_PASSWORD;
+                    return Values.ValidationHints.WRONG_PASSWORD;
             }
             else
-                return Values.WRONG_EMAIL;
+                return Values.ValidationHints.WRONG_EMAIL;
 
         } catch (ClassNotFoundException | IOException | SQLException e) {
             

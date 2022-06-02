@@ -22,7 +22,7 @@ public class FieldValidity {
 
     public boolean isPasswordFieldFilled(char[] password)
     {
-        condition = Arrays.equals(password, Values.DEFAULT_PASSWORD);
+        condition = Arrays.equals(password, Values.PASSWORD_PLACEHOLDER);
         return !condition;
 
     }
@@ -70,11 +70,11 @@ public class FieldValidity {
         if (condition) {
             int namePartLength = username.length() - 2;
             String regPart = username.substring(namePartLength);
-            condition = regPart.matches(Values.ONLY_NUMBERS);
+            condition = regPart.matches(Values.ValidationHints.ONLY_NUMBERS);
 
             if (condition) {
                 String namePart = username.substring(0, namePartLength);
-                condition = namePart.matches(Values.ONLY_LOWERCASE_LETTERS);
+                condition = namePart.matches(Values.ValidationHints.ONLY_LOWERCASE_LETTERS);
             }
         }
         return condition;
@@ -89,8 +89,8 @@ public class FieldValidity {
             condition = (partsLength == 0 | partsLength == 2);
 
             if (condition) {
-                condition = (parts[0].matches(Values.ONLY_LOWERCASE_LETTERS)
-                        & parts[1].matches(Values.ONLY_LOWERCASE_LETTERS));
+                condition = (parts[0].matches(Values.ValidationHints.ONLY_LOWERCASE_LETTERS)
+                        & parts[1].matches(Values.ValidationHints.ONLY_LOWERCASE_LETTERS));
             }
         }
         return condition;

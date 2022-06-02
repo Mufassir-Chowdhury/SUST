@@ -4,7 +4,6 @@ import java.awt.Color;
 /**
  * This class contains all the colors used in the application.
  * This file includes variable colors.
- * @author Mufassir Ahmad Chowdhury
  */
 public class Colors {
     // Theme colors

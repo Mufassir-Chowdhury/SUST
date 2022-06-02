@@ -43,7 +43,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
         setFont(Fonts.PLAIN_TEXT);
         setBorder(Padding.TEXT_FIELD);
         if(type == TYPE.PASSWORD)
-            setText(Values.PASSWORD_PLACEHOLDER);
+            setText(Values.PASSWORD_PLACEHOLDER.toString());
         else
             setText(placeholder);
         setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
@@ -67,7 +67,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     
     public boolean checkPlaceholder(){
         if(type == TYPE.PASSWORD)
-            return Arrays.equals(getPassword(), Values.DEFAULT_PASSWORD);
+            return Arrays.equals(getPassword(), Values.PASSWORD_PLACEHOLDER);
         else
             return ((JTextField) this).getText().equals(placeholder);
     }
@@ -78,7 +78,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     
     public void setPlaceholder(){
         if(type == TYPE.PASSWORD){   
-            setText(Values.PASSWORD_PLACEHOLDER);
+            setText(Values.PASSWORD_PLACEHOLDER.toString());
             setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
         }
         else
