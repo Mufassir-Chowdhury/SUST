@@ -22,7 +22,7 @@ public class Post extends GridBagPanel {
             setAlignmentX(Component.LEFT_ALIGNMENT);
             add(new Label(title, Fonts.TITLE, Colors.Theme.ACCENT_TEXT));
             add(Box.createVerticalStrut(10));
-            add(new Label("Posted By: Mufassir Ahmad Chowdhury, May 24", Fonts.Body, Component.LEFT_ALIGNMENT));
+            add(new Label("Posted By: Mufassir Ahmad Chowdhury, May 24", Fonts.BODY, Component.LEFT_ALIGNMENT));
             add(Box.createVerticalStrut(10));
             add(new Title(new Label(String.valueOf(totalMarks)), new Label(date)));
             add(Box.createVerticalStrut(15));
@@ -45,7 +45,7 @@ public class Post extends GridBagPanel {
         details.setOpaque(false);
         details.setAlignmentX(Component.LEFT_ALIGNMENT);
         for(int i=0; i<25; i++)
-            details.add(new Label(description, Fonts.Body, Component.LEFT_ALIGNMENT));
+            details.add(new Label(description, Fonts.BODY, Component.LEFT_ALIGNMENT));
         info.add(new ScrollPane(details));
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);

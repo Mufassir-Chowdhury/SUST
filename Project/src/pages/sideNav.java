@@ -59,7 +59,7 @@ public class sideNav extends JPanel {
         add(list);
         add(Box.createVerticalGlue());
         add(new JSeparator());
-        Label settings = new Label("Settings", Fonts.Body, Component.LEFT_ALIGNMENT);
+        Label settings = new Label("Settings", Fonts.BODY, Component.LEFT_ALIGNMENT);
         settings.setIcon(Icons.SETTINGS);
         settings.setOpaque(false);
         settings.setIconTextGap(20);

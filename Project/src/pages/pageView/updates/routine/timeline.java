@@ -18,7 +18,7 @@ public class timeline extends JPanel {
             for(int i=8; i<=17; i++){
                 JPanel panel = new JPanel(new BorderLayout());
                 panel.setOpaque(false);
-                panel.add(new Label(i + ":00", Fonts.Body, Component.RIGHT_ALIGNMENT), BorderLayout.NORTH);
+                panel.add(new Label(i + ":00", Fonts.BODY, Component.RIGHT_ALIGNMENT), BorderLayout.NORTH);
                 add(panel);
             }
         }

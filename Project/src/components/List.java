@@ -30,7 +30,7 @@ public class List<E> extends JList<E> {
                 Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
                 if (renderer instanceof JLabel) {
                     ((JLabel) renderer).setText(value.toString());
-                    ((JLabel) renderer).setFont(Fonts.Body);
+                    ((JLabel) renderer).setFont(Fonts.BODY);
                     if(hasIcon){
                         ((JLabel) renderer).setIcon(((Datapoints.Page)value).icon);
                     }

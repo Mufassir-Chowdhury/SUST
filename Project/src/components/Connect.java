@@ -1,4 +1,4 @@
-package Constants;
+package Components;
 
 import java.sql.*;
 

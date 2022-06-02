@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Constants.Connect;
+import Components.Connect;
 import Server.Datapoints.Courses;
 import Server.Datapoints.Event;
 import Server.Datapoints.Link;

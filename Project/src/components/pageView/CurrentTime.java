@@ -13,7 +13,7 @@ public class CurrentTime extends ListPanel {
         add(Box.createVerticalStrut(-10));
         add(new Label("12:59 PM", Fonts.SECOND_DISPLAY, Component.LEFT_ALIGNMENT));
         add(Box.createVerticalStrut(-10));
-        add(new Label("Saturday,     April 16, 2022", Fonts.Body, Component.LEFT_ALIGNMENT));
+        add(new Label("Saturday,     April 16, 2022", Fonts.BODY, Component.LEFT_ALIGNMENT));
         add(Box.createVerticalGlue());
     }    
 }

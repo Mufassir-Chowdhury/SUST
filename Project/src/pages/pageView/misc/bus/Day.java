@@ -19,7 +19,7 @@ public class Day extends TilesPanel {
         private Color color;
 
         public IndividualPlace(String className, String classroom, String special, Color color){
-            super(new Label(className, Fonts.Body, Colors.PLAIN_TEXT_BLACK),
+            super(new Label(className, Fonts.BODY, Colors.PLAIN_TEXT_BLACK),
                 new Title(new Label(classroom, Fonts.CAPTION, Colors.PLAIN_TEXT_BLACK), new Label(special, Fonts.CAPTION, Colors.PLAIN_TEXT_BLACK))
             );
             this.color = color;

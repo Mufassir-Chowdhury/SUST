@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import Constants.Connect;
+import Components.Connect;
 import Constants.Values;
 
 public class Query {
