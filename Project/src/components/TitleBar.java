@@ -166,19 +166,19 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		source = e.getComponent();
 		if(source == closeIcon) {
 			closeIcon.setOpaque(true);
-			closeIcon.setBackground(Colors.CLOSE_BUTTON_HOVER);
+			closeIcon.setBackground(Colors.Button.CLOSE_BUTTON_HOVER);
 		}
 		else if(source == fullScreenIcon) {
 			fullScreenIcon.setOpaque(true);
-			fullScreenIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
+			fullScreenIcon.setBackground(Colors.Button.TITLE_BAR_BUTTON_HOVER);
 		}
 		else if (source == minimizeIcon) {
 			minimizeIcon.setOpaque(true);
-			minimizeIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
+			minimizeIcon.setBackground(Colors.Button.TITLE_BAR_BUTTON_HOVER);
 		}
 		else if (source == backIcon) {
 			backIcon.setOpaque(true);
-			backIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
+			backIcon.setBackground(Colors.Button.TITLE_BAR_BUTTON_HOVER);
 		}
 	}
 

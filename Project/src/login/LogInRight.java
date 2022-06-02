@@ -74,13 +74,13 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     private void showPassword(){
         if(showPasswordCheckBox.isSelected()){
-            showPasswordCheckBox.setForeground(Colors.CHECKBOX_SELECTED);
+            showPasswordCheckBox.setForeground(Colors.CheckBox.SELECTED);
             passwordField.showPassword = true;
             passwordField.setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
             
         }
         if(showPasswordCheckBox.isSelected()==false){
-            showPasswordCheckBox.setForeground(Colors.CHECKBOX_UNSELECTED);
+            showPasswordCheckBox.setForeground(Colors.CheckBox.UNSELECTED);
             if(Arrays.equals(passwordField.getPassword(), Values.DEFAULT_PASSWORD)==false)
                 passwordField.setEchoChar(Values.PASSWORD_ECHO_CHAR);
         }
@@ -186,9 +186,9 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     private void showFieldValidity(TextField field, boolean condition)
     {
         if (condition)
-            field.border = Colors.VALID;
+            field.border = Colors.TextField.VALID;
         else {
-            field.border = Colors.VALID;
+            field.border = Colors.TextField.VALID;
             showFieldInstruction(field.getName());
         }
 
@@ -210,7 +210,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     
     private boolean isGreen()
     {
-        if (emailField.border == Colors.VALID)
+        if (emailField.border == Colors.TextField.VALID)
         {
             if(fieldChecker.isPasswordFieldFilled(password.toCharArray()))
                 return true;
@@ -264,7 +264,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     private void typing(TextField field)
     {
-        field.border = Colors.ACCENT;
+        field.border = Colors.Theme.ACCENT;
         repaint();
     }
     

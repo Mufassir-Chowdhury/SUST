@@ -14,8 +14,8 @@ import Constants.*;
 
 public class TextField extends JPasswordField implements MouseListener, FocusListener, KeyListener {
     public Boolean showPassword;
-    private Color background = Colors.TEXT_FIELD_BACKGROUND;
-    public Color border = Colors.TEXT_FIELD_BORDER;
+    private Color background = Colors.TextField.BACKGROUND;
+    public Color border = Colors.TextField.BORDER;
     public enum TYPE{
         PLAIN,
         PASSWORD
@@ -94,15 +94,15 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     }
     @Override
     public void focusGained(FocusEvent e) {
-        border = Colors.ACCENT;
-        background = Colors.TEXT_FIELD_BACKGROUND_FOCUSED;
+        border = Colors.TextField.BORDER_FOCUSED;
+        background = Colors.TextField.BACKGROUND_FOCUSED;
         repaint();
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-        border = Colors.TEXT_FIELD_BORDER;
-        background = Colors.TEXT_FIELD_BACKGROUND;
+        border = Colors.TextField.BORDER;
+        background = Colors.TextField.BACKGROUND;
         if(isEmpty()) setPlaceholder();
         repaint();
     }
@@ -132,14 +132,14 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     @Override
     public void mouseEntered(MouseEvent e) {
         if(isFocusOwner()) return;
-        background = Colors.TEXT_FIELD_BACKGROUND_HOVER;
+        background = Colors.TextField.BACKGROUND_HOVER;
         repaint();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         if(isFocusOwner()) return;
-        background = Colors.TEXT_FIELD_BACKGROUND;
+        background = Colors.TextField.BACKGROUND;
         repaint();
     }
 

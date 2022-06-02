@@ -40,7 +40,7 @@ public class List<E> extends JList<E> {
                     ((JLabel) renderer).setIconTextGap(20);
                     ((JLabel) renderer).setBorder(Padding.LIST);
                     if(isSelected){
-                        border = Colors.ACCENT;
+                        border = Colors.Theme.ACCENT;
                         ((JLabel) renderer).setOpaque(true);
                         ((JLabel) renderer).setBackground(Colors.LIST_ITEM_HOVER);
                     }

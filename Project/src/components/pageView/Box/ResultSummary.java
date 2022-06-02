@@ -15,7 +15,7 @@ public class ResultSummary extends Box {
     public ResultSummary(){
         super(BoxLayout.X_AXIS);
         setAlignmentY(Component.TOP_ALIGNMENT);
-        Label grade = new Label("A+", Fonts.BIG_DISPLAY, Colors.GRADE_FIRST_CLASS);
+        Label grade = new Label("A+", Fonts.BIG_DISPLAY, Colors.Grade.FIRST_CLASS);
         grade.setBorder(Padding.GRADE);
         add(grade);
         Box resultSummarySmall = Box.createVerticalBox();

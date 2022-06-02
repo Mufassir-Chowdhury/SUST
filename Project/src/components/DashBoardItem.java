@@ -30,7 +30,7 @@ public class DashBoardItem extends JPanel {
         }
         @Override
         protected void paintComponent(Graphics g) {
-            g.setColor(Colors.DASHBOARD_TITLE_BACKGROUND);
+            g.setColor(Colors.DashBoard.TITLE_BACKGROUND);
             g.fillRoundRect(0, 0, getWidth(), getHeight()+7, Sizes.BORDER_RADIUS, Sizes.BORDER_RADIUS);
             super.paintComponent(g);
         }
@@ -56,13 +56,13 @@ public class DashBoardItem extends JPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 if(severity == Datapoints.Notification.Severity.INFORMATIONAL)
-                    g.setColor(Colors.NOTIFICATION_TOAST_INFORMATIONAL);
+                    g.setColor(Colors.Notification.INFORMATIONAL);
                 else if(severity == Datapoints.Notification.Severity.SUCCESS)
-                    g.setColor(Colors.NOTIFICATION_TOAST_SUCCESS);
+                    g.setColor(Colors.Notification.SUCCESS);
                 else if(severity == Datapoints.Notification.Severity.WARNING)
-                    g.setColor(Colors.NOTIFICATION_TOAST_WARNING);
+                    g.setColor(Colors.Notification.WARNING);
                 else if(severity == Datapoints.Notification.Severity.CRITICAL)
-                    g.setColor(Colors.NOTIFICATION_TOAST_CRITICAL);
+                    g.setColor(Colors.Notification.CRITICAL);
                 g.fillRoundRect(0, 0, getWidth(), getHeight()+7, Sizes.BORDER_RADIUS, Sizes.BORDER_RADIUS);
                 super.paintComponent(g);
             }
@@ -91,7 +91,7 @@ public class DashBoardItem extends JPanel {
     }
     @Override
     protected void paintComponent(Graphics g) {
-        g.setColor(Colors.DASHBOARD_BACKGROUND);
+        g.setColor(Colors.DashBoard.BACKGROUND);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), Sizes.BORDER_RADIUS, Sizes.BORDER_RADIUS);
         super.paintComponent(g);
     }

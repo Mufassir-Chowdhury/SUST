@@ -261,7 +261,7 @@ public class Datapoints{
         }
         @Override
         public JComponent getInformation() {
-            return new Title(new Label("     " + name, Fonts.CAPTION), new Label(regular.equals(false) ? "(Drop)" : "", Fonts.CAPTION, Colors.SECONDARY));
+            return new Title(new Label("     " + name, Fonts.CAPTION), new Label(regular.equals(false) ? "(Drop)" : "", Fonts.CAPTION, Colors.Theme.SECONDARY));
         }
     }
 

@@ -35,21 +35,21 @@ public class Day extends TilesPanel {
     public Day(){
         super(16, 1, 0);
         for(int i=0;i<8; i++){
-            add(new IndividualPlace("place", "", "", Colors.ACCENT_FILL));
+            add(new IndividualPlace("place", "", "", Colors.Theme.ACCENT_FILL));
             add(new Label("", Fonts.BODY_LARGE, Component.CENTER_ALIGNMENT));
         }
     }
     public Day(String item){
         super(9, 1, 0);
-        add(new IndividualPlace("Class", "G2", " ", Colors.ACCENT_FILL));
+        add(new IndividualPlace("Class", "G2", " ", Colors.Theme.ACCENT_FILL));
         add(new Label("", Fonts.BODY_LARGE, Component.CENTER_ALIGNMENT));
         add(new Label("", Fonts.BODY_LARGE, Component.CENTER_ALIGNMENT));
-        add(new IndividualPlace("Class", "G2", "EXAM", Colors.ACCENT_FILL));
+        add(new IndividualPlace("Class", "G2", "EXAM", Colors.Theme.ACCENT_FILL));
         add(new Label("", Fonts.BODY_LARGE, Component.CENTER_ALIGNMENT));
         Box Line = Box.createHorizontalBox();
-        Line.add(new IndividualPlace("Class", "303", "Assignment", Colors.ACCENT_FILL));
+        Line.add(new IndividualPlace("Class", "303", "Assignment", Colors.Theme.ACCENT_FILL));
         if(item == "2")
-            Line.add(new IndividualPlace("Class", "303", " ",Colors.SECONDARY));
+            Line.add(new IndividualPlace("Class", "303", " ",Colors.Theme.SECONDARY));
         add(Line);
     }
     @Override

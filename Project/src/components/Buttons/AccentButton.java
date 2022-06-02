@@ -11,7 +11,7 @@ import Constants.Colors;
 import Constants.Sizes;
 
 public class AccentButton extends Button implements MouseListener{
-    private Color background = Colors.ACCENT_FILL;
+    private Color background = Colors.Theme.ACCENT_FILL;
     public AccentButton(String text) {
         super(text);
         setOpaque(false);
@@ -36,14 +36,14 @@ public class AccentButton extends Button implements MouseListener{
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        background = Colors.ACCENT_BUTTON_HOVER;
+        background = Colors.Theme.Button.ACCENT_BUTTON_HOVER;
         repaint();
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         if(isFocusOwner()) return;
-        background = Colors.ACCENT_FILL;
+        background = Colors.Theme.ACCENT_FILL;
         repaint();
     }
     @Override
@@ -52,24 +52,24 @@ public class AccentButton extends Button implements MouseListener{
     }
     @Override
     public void mousePressed(MouseEvent e) {
-        background = Colors.ACCENT_BUTTON_PRESSED;
+        background = Colors.Theme.Button.ACCENT_BUTTON_PRESSED;
         repaint();
     }
     @Override
     public void mouseReleased(MouseEvent e) {
-        background = Colors.ACCENT_FILL;
+        background = Colors.Theme.ACCENT_FILL;
         repaint();
     }
 
     @Override
     public void focusGained(FocusEvent e) {
-        background = Colors.ACCENT_BUTTON_HOVER;
+        background = Colors.Theme.Button.ACCENT_BUTTON_HOVER;
         repaint();
     }
 
     @Override
     public void focusLost(FocusEvent e) {
-        background = Colors.ACCENT_FILL;
+        background = Colors.Theme.ACCENT_FILL;
         repaint();
     }
 }

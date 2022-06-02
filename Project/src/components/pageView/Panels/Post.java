@@ -20,7 +20,7 @@ public class Post extends GridBagPanel {
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
             setOpaque(false);
             setAlignmentX(Component.LEFT_ALIGNMENT);
-            add(new Label(title, Fonts.TITLE, Colors.ACCENT_TEXT));
+            add(new Label(title, Fonts.TITLE, Colors.Theme.ACCENT_TEXT));
             add(Box.createVerticalStrut(10));
             add(new Label("Posted By: Mufassir Ahmad Chowdhury, May 24", Fonts.Body, Component.LEFT_ALIGNMENT));
             add(Box.createVerticalStrut(10));
@@ -29,7 +29,7 @@ public class Post extends GridBagPanel {
         }
         @Override
         protected void paintBorder(Graphics g) {
-            g.setColor(Colors.ACCENT_FILL);
+            g.setColor(Colors.Theme.ACCENT_FILL);
             g.fillRoundRect(0, getHeight() -1, getWidth(), 2, 0, 0);
         }
     }
