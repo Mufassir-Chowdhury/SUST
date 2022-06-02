@@ -50,7 +50,7 @@ public class DashBoardItem extends JPanel {
                 add(title, BorderLayout.CENTER);
                 Label date = new Label(notification.date, Fonts.CAPTION, SwingConstants.LEADING);
                 if(notification.dismissable)
-                    date.setIcon(Icons.CLOSE);
+                    date.setIcon(Icons.TitleBar.CLOSE);
                 add(date, BorderLayout.EAST);
             }
             @Override

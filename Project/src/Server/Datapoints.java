@@ -52,20 +52,20 @@ public class Datapoints{
     };
     public Page[][] getPages() throws ClassNotFoundException, IOException{
         return new Page[][]{
-            {new Page("Class Routines", Icons.SCHEDULE, new routine()), 
-                new Page("Due Assignments", Icons.ASSIGNMENT, new ViewPortBasicPanel("Assignment", Components.pageView.Box.MainCardListItem.Type.ASSIGNMENT)),
-                new Page("Upcoming Exams", Icons.EXAM, new ViewPortBasicPanel("Exam", Components.pageView.Box.MainCardListItem.Type.EXAM)),
-                new Page("Notice Board", Icons.NOTICE, new ViewPortBasicPanel("Notices", NOTICES))},
-            { new Page("Resources", Icons.RESOURCES, new resources()),
-                new Page("Results", Icons.RESULT, new ViewPortBasicPanel("Results", new ResultSummary(), Components.pageView.Box.MainCardListItem.Type.RESULT)),
-                new Page("Attendance", Icons.ATTENDANCE, new ViewPortBasicPanel("Attendance", null, Components.pageView.Box.MainCardListItem.Type.ATTENDANCE))},
-            { new Page("Payment", Icons.PAYMENT, new payment()),
-                new Page("Course Registration", Icons.COURSE_REGISTRATION, new course()),
-                new Page("Important Links", Icons.IMPORTANT_LINKS, new links())},
-            { new Page("Bus Schedule", Icons.BUS_SCHEDULE, new bus()),
-                new Page("Student Information", Icons.STUDENT_INFO, new ViewPortBasicPanel("Students", STUDENTS)),
-                new Page("Events", Icons.EVENTS, new ViewPortBasicPanel("Events", EVENTS)),
-                new Page("Map", Icons.MAP, new map())},
+            {new Page("Class Routines", Icons.Pages.SCHEDULE, new routine()), 
+                new Page("Due Assignments", Icons.Pages.ASSIGNMENT, new ViewPortBasicPanel("Assignment", Components.pageView.Box.MainCardListItem.Type.ASSIGNMENT)),
+                new Page("Upcoming Exams", Icons.Pages.EXAM, new ViewPortBasicPanel("Exam", Components.pageView.Box.MainCardListItem.Type.EXAM)),
+                new Page("Notice Board", Icons.Pages.NOTICE, new ViewPortBasicPanel("Notices", NOTICES))},
+            { new Page("Resources", Icons.Pages.RESOURCES, new resources()),
+                new Page("Results", Icons.Pages.RESULT, new ViewPortBasicPanel("Results", new ResultSummary(), Components.pageView.Box.MainCardListItem.Type.RESULT)),
+                new Page("Attendance", Icons.Pages.ATTENDANCE, new ViewPortBasicPanel("Attendance", null, Components.pageView.Box.MainCardListItem.Type.ATTENDANCE))},
+            { new Page("Payment", Icons.Pages.PAYMENT, new payment()),
+                new Page("Course Registration", Icons.Pages.COURSE_REGISTRATION, new course()),
+                new Page("Important Links", Icons.Pages.IMPORTANT_LINKS, new links())},
+            { new Page("Bus Schedule", Icons.Pages.BUS_SCHEDULE, new bus()),
+                new Page("Student Information", Icons.Pages.STUDENT_INFO, new ViewPortBasicPanel("Students", STUDENTS)),
+                new Page("Events", Icons.Pages.EVENTS, new ViewPortBasicPanel("Events", EVENTS)),
+                new Page("Map", Icons.Pages.MAP, new map())},
         };
     }
     // public static final Page[] CLIENT = {

@@ -28,7 +28,7 @@ public class resources extends ViewPortPanel {
         TilesPanel list = new TilesPanel(2, 3, Padding.CARD_SPACING_LONG);
         
         for(String resource: Datapoints.getInstance().RESOURCES){
-            Card card = new Card(resource, Icons.PAYMENT);
+            Card card = new Card(resource, Icons.Pages.PAYMENT);
             list.add(card);
             card.addMouseListener(new MouseAdapter(){
                 @Override

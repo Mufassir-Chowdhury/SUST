@@ -51,8 +51,9 @@ public class course extends ViewPort {
         registeredCourses.add(registered);
 
         ListPanel transfer = new ListPanel();
-        transfer.add(new JLabel(Icons.BACK));
-        transfer.add(new JLabel(Icons.BACK));
+        // TODO add icons for transfer
+        transfer.add(new JLabel(Icons.TitleBar.BACK));
+        transfer.add(new JLabel(Icons.TitleBar.BACK));
 
         resources.add(availableCourses);
         resources.add(Box.createHorizontalGlue());
