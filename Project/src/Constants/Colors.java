@@ -2,9 +2,6 @@ package Constants;
 import java.awt.Color;
 
 public class Colors {
-
-    // TODO Check guidelines to update colors
-
     public static final Color ACCENT = new Color(96,205,255);
     public static final Color ACCENT_TEXT = new Color(153,235,255);
     public static final Color ACCENT_FILL = new Color(96,205,255);

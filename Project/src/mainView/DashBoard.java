@@ -56,7 +56,7 @@ class DashBoard extends JPanel {
             setOpaque(false);
             setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-            Card card = new Card(Icons.DP, (int)Sizes.DP.getWidth());
+            Card card = new Card(Icons.DP, (int)Sizes.DP.getWidth(), Sizes.DP);
             add(card);
             add(Box.createHorizontalGlue());
             

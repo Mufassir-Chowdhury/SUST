@@ -7,6 +7,7 @@ import java.util.Vector;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import java.awt.image.BufferedImage;
 
 import Components.Label;
 import Components.pageView.Box.Line;
@@ -88,14 +89,10 @@ public class Datapoints{
         }
     }
     public static class Student implements Serializable, Tilable{
-        public String registration;
-        public String name;
-        public String email;
-        public String number;
-        public String blood;
-        public String birthDay;
-        public String hometown;
+        public transient BufferedImage DP;
+        public String registration, name, email, number, blood, birthDay, hometown;
         public Student(String registration, String name, String email, String number, String blood, String birthDay, String hometown){
+            this.DP = Icons.DP;
             this.registration = registration;
             this.name = name;
             this.email = email;
@@ -107,6 +104,8 @@ public class Datapoints{
         @Override
         public Line getListItem() {
             return new Line(
+                registration,
+                DP,
                 name, 
                 blood + " | " + birthDay + " | " + hometown, 
                 email, 
