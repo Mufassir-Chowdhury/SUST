@@ -1,7 +1,8 @@
 package Constants;
 
 import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.GraphicsEnvironment;
+
 
 public class Sizes {
     public static final int TITLE_BAR_HEIGHT = 35;
@@ -12,8 +13,7 @@ public class Sizes {
     public static final Dimension DP = new Dimension(50, 50);
 
     public static final Dimension BUTTON_SIZE = new Dimension(120, 32);
-    public static final Dimension DEFAULT_WINDOW_SIZE = new Dimension(1280, 675);
-    // public static final Dimension DEFAULT_WINDOW_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+    public static final Dimension DEFAULT_WINDOW_SIZE = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
     public static final Dimension NORMAL_WINDOW_SIZE = new Dimension(1000, 600);
     public static Dimension USABLE_WINDOW_SIZE = Sizes.DEFAULT_WINDOW_SIZE;
 
