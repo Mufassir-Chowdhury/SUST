@@ -1,6 +1,7 @@
 package Constants;
 
 import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class Sizes {
     public static final int TITLE_BAR_HEIGHT = 35;
