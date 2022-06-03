@@ -28,13 +28,13 @@ public class resources extends ViewPortPanel {
         TilesPanel list = new TilesPanel(2, 3, Padding.CARD_SPACING_LONG);
         
         for(String resource: Datapoints.getInstance().RESOURCES){
-            Card card = new Card(resource, Icons.PAYMENT);
+            Card card = new Card(resource, Icons.Pages.PAYMENT);
             list.add(card);
             card.addMouseListener(new MouseAdapter(){
                 @Override
                 public void mouseClicked(MouseEvent e){
                     getTitle().setText("Resources > " + resource);
-                    Post individualExam = new Post("title", "date", "totalMarks", "description");
+                    Post individualExam = new Post("title", "date", "totalMarks", "description", false);
                     panel.add(individualExam, resource);
                     CardLayout cl = (CardLayout)(panel.getLayout());
                     cl.show(panel, resource);

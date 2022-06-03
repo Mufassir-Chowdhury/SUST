@@ -11,7 +11,7 @@ import Constants.Fonts;
 public class Label extends JLabel{
     public Label(String text){
         super(text);
-        setFont(Fonts.Body);
+        setFont(Fonts.BODY);
         setForeground(Colors.PLAIN_TEXT);
     }
     public Label(String text, Font font){

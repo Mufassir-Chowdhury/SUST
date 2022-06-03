@@ -30,7 +30,7 @@ public class List<E> extends JList<E> {
                 Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
                 if (renderer instanceof JLabel) {
                     ((JLabel) renderer).setText(value.toString());
-                    ((JLabel) renderer).setFont(Fonts.Body);
+                    ((JLabel) renderer).setFont(Fonts.BODY);
                     if(hasIcon){
                         ((JLabel) renderer).setIcon(((Datapoints.Page)value).icon);
                     }
@@ -40,7 +40,7 @@ public class List<E> extends JList<E> {
                     ((JLabel) renderer).setIconTextGap(20);
                     ((JLabel) renderer).setBorder(Padding.LIST);
                     if(isSelected){
-                        border = Colors.ACCENT;
+                        border = Colors.Theme.ACCENT;
                         ((JLabel) renderer).setOpaque(true);
                         ((JLabel) renderer).setBackground(Colors.LIST_ITEM_HOVER);
                     }

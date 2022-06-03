@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.io.IOException;
 import java.net.URI;
 
+import Components.Connect;
 import Components.Label;
 import Components.pageView.Box.Line;
 import Components.pageView.Panels.ListPanel;
@@ -17,7 +18,6 @@ import java.net.URISyntaxException;
 import java.sql.ResultSet;
 
 import Constants.Fonts;
-import Constants.Connect;
 import Server.Datapoints;
 import Server.Server;
 

@@ -7,6 +7,7 @@ import java.util.Vector;
 import javax.swing.Icon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import java.awt.image.BufferedImage;
 
 import Components.Label;
 import Components.pageView.Box.Line;
@@ -51,20 +52,20 @@ public class Datapoints{
     };
     public Page[][] getPages() throws ClassNotFoundException, IOException{
         return new Page[][]{
-            {new Page("Class Routines", Icons.SCHEDULE, new routine()), 
-                new Page("Due Assignments", Icons.ASSIGNMENT, new ViewPortBasicPanel("Assignment", Components.pageView.Box.MainCardListItem.Type.ASSIGNMENT)),
-                new Page("Upcoming Exams", Icons.EXAM, new ViewPortBasicPanel("Exam", Components.pageView.Box.MainCardListItem.Type.EXAM)),
-                new Page("Notice Board", Icons.NOTICE, new ViewPortBasicPanel("Notices", NOTICES))},
-            { new Page("Resources", Icons.RESOURCES, new resources()),
-                new Page("Results", Icons.RESULT, new ViewPortBasicPanel("Results", new ResultSummary(), Components.pageView.Box.MainCardListItem.Type.RESULT)),
-                new Page("Attendance", Icons.ATTENDANCE, new ViewPortBasicPanel("Attendance", null, Components.pageView.Box.MainCardListItem.Type.ATTENDANCE))},
-            { new Page("Payment", Icons.PAYMENT, new payment()),
-                new Page("Course Registration", Icons.COURSE_REGISTRATION, new course()),
-                new Page("Important Links", Icons.IMPORTANT_LINKS, new links())},
-            { new Page("Bus Schedule", Icons.BUS_SCHEDULE, new bus()),
-                new Page("Student Information", Icons.STUDENT_INFO, new ViewPortBasicPanel("Students", STUDENTS)),
-                new Page("Events", Icons.EVENTS, new ViewPortBasicPanel("Events", EVENTS)),
-                new Page("Map", Icons.MAP, new map())},
+            {new Page("Class Routines", Icons.Pages.SCHEDULE, new routine()), 
+                new Page("Due Assignments", Icons.Pages.ASSIGNMENT, new ViewPortBasicPanel("Assignment", Components.pageView.Box.MainCardListItem.Type.ASSIGNMENT)),
+                new Page("Upcoming Exams", Icons.Pages.EXAM, new ViewPortBasicPanel("Exam", Components.pageView.Box.MainCardListItem.Type.EXAM)),
+                new Page("Notice Board", Icons.Pages.NOTICE, new ViewPortBasicPanel("Notices", NOTICES))},
+            { new Page("Resources", Icons.Pages.RESOURCES, new resources()),
+                new Page("Results", Icons.Pages.RESULT, new ViewPortBasicPanel("Results", new ResultSummary(), Components.pageView.Box.MainCardListItem.Type.RESULT)),
+                new Page("Attendance", Icons.Pages.ATTENDANCE, new ViewPortBasicPanel("Attendance", null, Components.pageView.Box.MainCardListItem.Type.ATTENDANCE))},
+            { new Page("Payment", Icons.Pages.PAYMENT, new payment()),
+                new Page("Course Registration", Icons.Pages.COURSE_REGISTRATION, new course()),
+                new Page("Important Links", Icons.Pages.IMPORTANT_LINKS, new links())},
+            { new Page("Bus Schedule", Icons.Pages.BUS_SCHEDULE, new bus()),
+                new Page("Student Information", Icons.Pages.STUDENT_INFO, new ViewPortBasicPanel("Students", STUDENTS)),
+                new Page("Events", Icons.Pages.EVENTS, new ViewPortBasicPanel("Events", EVENTS)),
+                new Page("Map", Icons.Pages.MAP, new map())},
         };
     }
     // public static final Page[] CLIENT = {
@@ -88,14 +89,10 @@ public class Datapoints{
         }
     }
     public static class Student implements Serializable, Tilable{
-        public String registration;
-        public String name;
-        public String email;
-        public String number;
-        public String blood;
-        public String birthDay;
-        public String hometown;
+        public transient BufferedImage DP;
+        public String registration, name, email, number, blood, birthDay, hometown;
         public Student(String registration, String name, String email, String number, String blood, String birthDay, String hometown){
+            this.DP = Icons.DP;
             this.registration = registration;
             this.name = name;
             this.email = email;
@@ -107,6 +104,8 @@ public class Datapoints{
         @Override
         public Line getListItem() {
             return new Line(
+                registration,
+                DP,
                 name, 
                 blood + " | " + birthDay + " | " + hometown, 
                 email, 
@@ -122,7 +121,7 @@ public class Datapoints{
                 name, 
                 blood + " | " + birthDay + " | " + hometown, 
                 email, 
-                "+880" + number);
+                "+880" + number, false);
         }
     }
 
@@ -170,7 +169,7 @@ public class Datapoints{
                     title,
                     "Due Date: " + date, 
                     "Total Marks: " + totalMarks, 
-                    description);
+                    description, true);
             }
         }
         public static class Assignment extends EvaluationItem{
@@ -262,7 +261,7 @@ public class Datapoints{
         }
         @Override
         public JComponent getInformation() {
-            return new Title(new Label("     " + name, Fonts.CAPTION), new Label(regular.equals(false) ? "(Drop)" : "", Fonts.CAPTION, Colors.SECONDARY));
+            return new Title(new Label("     " + name, Fonts.CAPTION), new Label(regular.equals(false) ? "(Drop)" : "", Fonts.CAPTION, Colors.Theme.SECONDARY));
         }
     }
 
@@ -309,7 +308,7 @@ public class Datapoints{
                 title,
                 "Date: " + date, 
                 "Location: " + location, 
-                description);
+                description, false);
         }
     }
     public static class Notice implements Serializable, Tilable{
@@ -341,7 +340,7 @@ public class Datapoints{
                 title,
                 date, 
                 "", 
-                description);
+                description, false);
         }
     }
 

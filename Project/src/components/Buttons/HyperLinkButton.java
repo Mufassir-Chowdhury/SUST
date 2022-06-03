@@ -11,7 +11,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
     public HyperLinkButton(String text) {
         super(text);
         setOpaque(false);
-        setForeground(Colors.ACCENT_TEXT);
+        setForeground(Colors.Theme.ACCENT_TEXT);
         setBorder(Padding.BUTTON);
 
         addMouseListener(this);
@@ -20,7 +20,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        setBackground(Colors.HYPER_LINK_BUTTON_HOVER);
+        setBackground(Colors.Button.HYPER_LINK_BUTTON_HOVER);
         setOpaque(true);
     }
 
@@ -36,7 +36,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
     }
     @Override
     public void mousePressed(MouseEvent e) {
-        setBackground(Colors.HYPER_LINK_BUTTON_PRESSED);
+        setBackground(Colors.Button.HYPER_LINK_BUTTON_PRESSED);
         setOpaque(true);
     }
     @Override
@@ -49,7 +49,7 @@ public class HyperLinkButton extends Button implements MouseListener  {
 
     @Override
     public void focusGained(FocusEvent e) {
-        setBackground(Colors.HYPER_LINK_BUTTON_HOVER);
+        setBackground(Colors.Button.HYPER_LINK_BUTTON_HOVER);
         setOpaque(true);
     }
 

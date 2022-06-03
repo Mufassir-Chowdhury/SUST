@@ -52,25 +52,25 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		setOpaque(false);
 		setLayout(springLayout);
 
-		closeIcon = new JLabel(Icons.CLOSE);
+		closeIcon = new JLabel(Icons.TitleBar.CLOSE);
 		springLayout.putConstraint(SpringLayout.NORTH, closeIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, closeIcon, 0, SpringLayout.EAST, this);
 		closeIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		add(closeIcon);
 
-		fullScreenIcon = new JLabel(Icons.RESTORE);
+		fullScreenIcon = new JLabel(Icons.TitleBar.RESTORE);
 		springLayout.putConstraint(SpringLayout.NORTH, fullScreenIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, fullScreenIcon, -5, SpringLayout.WEST, closeIcon);
 		fullScreenIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		add(fullScreenIcon);
 
-		minimizeIcon = new JLabel(Icons.MINIMIZE);
+		minimizeIcon = new JLabel(Icons.TitleBar.MINIMIZE);
 		springLayout.putConstraint(SpringLayout.NORTH, minimizeIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.EAST, minimizeIcon, -5, SpringLayout.WEST, fullScreenIcon);
 		minimizeIcon.setBorder(Padding.TITLE_BAR_ITEM);
 		add(minimizeIcon);
 
-		backIcon = new JLabel(Icons.BACK_COLORED);
+		backIcon = new JLabel(Icons.TitleBar.BACK_COLORED);
 		springLayout.putConstraint(SpringLayout.NORTH, backIcon, 0, SpringLayout.NORTH, this);
 		springLayout.putConstraint(SpringLayout.WEST, backIcon, 0, SpringLayout.WEST, this);
 		backIcon.setBorder(Padding.TITLE_BAR_ITEM);
@@ -133,12 +133,12 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		}
 		else if(e.getSource() == fullScreenIcon) {
 			size = Toolkit.getDefaultToolkit().getScreenSize();
-			if(fullScreenIcon.getIcon() == Icons.FULL_SCREEN) {
+			if(fullScreenIcon.getIcon() == Icons.TitleBar.FULL_SCREEN) {
 				frame.Extend();
-				fullScreenIcon.setIcon(Icons.RESTORE);
+				fullScreenIcon.setIcon(Icons.TitleBar.RESTORE);
 			}
 			else{
-				fullScreenIcon.setIcon(Icons.FULL_SCREEN);
+				fullScreenIcon.setIcon(Icons.TitleBar.FULL_SCREEN);
 				frame.Normal();
 			}
 		}
@@ -166,19 +166,19 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		source = e.getComponent();
 		if(source == closeIcon) {
 			closeIcon.setOpaque(true);
-			closeIcon.setBackground(Colors.CLOSE_BUTTON_HOVER);
+			closeIcon.setBackground(Colors.Button.CLOSE_BUTTON_HOVER);
 		}
 		else if(source == fullScreenIcon) {
 			fullScreenIcon.setOpaque(true);
-			fullScreenIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
+			fullScreenIcon.setBackground(Colors.Button.TITLE_BAR_BUTTON_HOVER);
 		}
 		else if (source == minimizeIcon) {
 			minimizeIcon.setOpaque(true);
-			minimizeIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
+			minimizeIcon.setBackground(Colors.Button.TITLE_BAR_BUTTON_HOVER);
 		}
 		else if (source == backIcon) {
 			backIcon.setOpaque(true);
-			backIcon.setBackground(Colors.STANDARD_BUTTON_HOVER);
+			backIcon.setBackground(Colors.Button.TITLE_BAR_BUTTON_HOVER);
 		}
 	}
 
@@ -202,6 +202,6 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	
 	public static final void setBackIcon()
 	{
-		backIcon = new JLabel(Icons.BACK_COLORED);
+		backIcon = new JLabel(Icons.TitleBar.BACK_COLORED);
 	}
 }

@@ -49,7 +49,7 @@ public class Card extends JPanel implements MouseListener {
         addMouseListener(this);
     }
     
-    public Card(BufferedImage image, int curve)
+    public Card(BufferedImage image, int curve, Dimension size)
     {
         this.curve = curve;
         this.image = Tools.makeRoundedCorner(image, curve);

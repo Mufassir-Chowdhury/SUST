@@ -14,7 +14,7 @@ class Utilities {
             setSize(Sizes.CHECKBOX_SIZE);
             setFocusPainted(false);
             setBackground(Colors.PLAIN_TEXT);
-            setForeground(Colors.ACCENT_TEXT);
+            setForeground(Colors.Theme.ACCENT_TEXT);
             setBorder(null);
             setText("Show Password");
             setContentAreaFilled(false);

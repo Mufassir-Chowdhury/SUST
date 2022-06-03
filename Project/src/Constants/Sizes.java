@@ -1,7 +1,6 @@
 package Constants;
 
 import java.awt.Dimension;
-import java.awt.*;
 
 public class Sizes {
     public static final int TITLE_BAR_HEIGHT = 35;
@@ -9,11 +8,11 @@ public class Sizes {
     public static final int SMALLER_BORDER_RAIDUS = 4;
     public static final int LIST_ITEM_WIDTH = 300;
 
-    public static final Dimension DP = new Dimension(75, 75);
+    public static final Dimension DP = new Dimension(50, 50);
 
     public static final Dimension BUTTON_SIZE = new Dimension(120, 32);
-    // public static final Dimension DEFAULT_WINDOW_SIZE = new Dimension(1280, 675);
-    public static final Dimension DEFAULT_WINDOW_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
+    public static final Dimension DEFAULT_WINDOW_SIZE = new Dimension(1280, 675);
+    // public static final Dimension DEFAULT_WINDOW_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
     public static final Dimension NORMAL_WINDOW_SIZE = new Dimension(1000, 600);
     public static Dimension USABLE_WINDOW_SIZE = Sizes.DEFAULT_WINDOW_SIZE;
 
@@ -30,7 +29,7 @@ public class Sizes {
     public static final Dimension CARD_SIZE = new Dimension(190, 115);
     public static final Dimension CARD_SIZE_2 = new Dimension(350, 200);
 
-    public static final Dimension LIST_ITEM = new Dimension(1000, 60);
+    public static final Dimension LIST_ITEM = new Dimension(1000, 70);
     public static final Dimension OPTIONS = new Dimension(1000, 40);
     public static final Dimension COLUMN = new Dimension(1000, 200);
     public static final Dimension NOTIFICATION_SIZE = new Dimension(1000, 40);

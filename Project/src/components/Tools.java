@@ -123,7 +123,7 @@ public class Tools{
     {
         Box box = Box.createHorizontalBox();
         box.setAlignmentX(Component.LEFT_ALIGNMENT);
-        box.add(new Label(title, Fonts.DISPLAY, Colors.ACCENT_BUTTON_HOVER));
+        box.add(new Label(title, Fonts.DISPLAY, Colors.Theme.Button.ACCENT_BUTTON_HOVER));
         return box;
     }
     

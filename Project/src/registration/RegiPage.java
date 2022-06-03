@@ -60,8 +60,7 @@ public class RegiPage extends ViewPort {
 
 		label = new JLabel(text+" :");
 		label.setFont(Fonts.BODY_LARGE);
-		label.setForeground(Colors.ACCENT_TEXT);
-		
+        label.setForeground(Colors.Theme.ACCENT_TEXT);
 		field = new TextField("", TYPE.PLAIN);
 
 		col.add(label);

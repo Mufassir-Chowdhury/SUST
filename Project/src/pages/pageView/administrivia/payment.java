@@ -19,13 +19,13 @@ public class payment extends ViewPortPanel {
         TilesPanel list = new TilesPanel(2, 3, Padding.CARD_SPACING_LONG);
         
         for(String payment: Datapoints.getInstance().PAYMENT){
-            Card card = new Card(payment, Icons.PAYMENT);
+            Card card = new Card(payment, Icons.Pages.PAYMENT);
             list.add(card);
             card.addMouseListener(new MouseAdapter(){
                 @Override
                 public void mouseClicked(MouseEvent e){
                     getTitle().setText("Payment > " + payment);
-                    Post individualExam = new Post("title", "date", "totalMarks", "description");
+                    Post individualExam = new Post("title", "date", "totalMarks", "description", false);
                     panel.add(individualExam, payment);
                     CardLayout cl = (CardLayout)(panel.getLayout());
                     cl.show(panel, payment);
