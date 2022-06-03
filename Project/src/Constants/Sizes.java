@@ -16,7 +16,6 @@ public class Sizes {
     public static final Dimension DEFAULT_WINDOW_SIZE = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
     public static final Dimension NORMAL_WINDOW_SIZE = new Dimension(1000, 600);
     public static Dimension USABLE_WINDOW_SIZE = Sizes.DEFAULT_WINDOW_SIZE;
-
     public static final Dimension TEXT_FIELD_SIZE = new Dimension(350, 32);
 
     public static final Dimension ICON_SIZE = new Dimension(15, 15);

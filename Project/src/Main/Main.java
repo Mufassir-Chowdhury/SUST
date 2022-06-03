@@ -29,7 +29,7 @@ public class Main extends JFrame {
 	public Main() throws ClassNotFoundException, IOException {
 
 		currentFrame = new Background();
-		panel.setSize(Sizes.USABLE_WINDOW_SIZE);
+		panel.setSize(Sizes.DEFAULT_WINDOW_SIZE);
 		panel.setLayout(new CardLayout());
 		panel.setOpaque(false);
 		panel.add(new sideNavView(), "sideNav");
