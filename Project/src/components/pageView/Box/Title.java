@@ -14,7 +14,7 @@ public class Title extends Box {
         titleLabel.setText(title);
     }
 
-    public Title(Label label, JComponent component){
+    public Title(Label label, JComponent component) {
         super(BoxLayout.X_AXIS);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         titleLabel = label;
@@ -22,9 +22,17 @@ public class Title extends Box {
         add(titleLabel);
 
         add(Box.createHorizontalGlue());
-        if(component != null){
+        if (component != null) {
             add(component);
             component.setAlignmentY(Component.TOP_ALIGNMENT);
         }
+    }
+    
+    public Title(Label label){
+        super(BoxLayout.X_AXIS);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
+        titleLabel = label;
+        titleLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
+        add(titleLabel);
     }
 }

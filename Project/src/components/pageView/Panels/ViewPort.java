@@ -10,14 +10,23 @@ import Components.pageView.Box.Title;
 import Constants.Fonts;
 
 public class ViewPort extends JPanel {
-    Title title;
+    protected Title title;
     public Title getTitle(){
         return title;
     }
-    public ViewPort(String title, JComponent component){
+
+    public ViewPort(String title, JComponent component) {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.title = new Title(new Label(title, Fonts.DISPLAY), component);
+        add(this.title);
+        add(Box.createVerticalStrut(20));
+    }
+
+    public ViewPort(String title){
+        setOpaque(false);
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.title = new Title(new Label(title, Fonts.DISPLAY));
         add(this.title);
         add(Box.createVerticalStrut(20));
     }

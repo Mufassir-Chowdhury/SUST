@@ -20,7 +20,7 @@ public class LogInPage extends JPanel {
 
 	public LogInPage(Main frame) {
         this.frame = frame;
-		setSize(Sizes.DEFAULT_WINDOW_SIZE);
+		setSize(Sizes.USABLE_WINDOW_SIZE);
 		setLayout(new GridBagLayout());
 
 		setOpaque(false);
