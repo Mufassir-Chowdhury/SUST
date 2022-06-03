@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import Components.Label;
 import Components.pageView.Box.Title;
 import Constants.Fonts;
+import Constants.Sizes;
 
 public class ViewPort extends JPanel {
     protected Title title;
@@ -20,7 +21,7 @@ public class ViewPort extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.title = new Title(new Label(title, Fonts.DISPLAY), component);
         add(this.title);
-        add(Box.createVerticalStrut(20));
+        add(Box.createVerticalStrut(Sizes.TITLE_AND_PANEL_GAP));
     }
 
     public ViewPort(String title){
@@ -28,6 +29,6 @@ public class ViewPort extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.title = new Title(new Label(title, Fonts.DISPLAY));
         add(this.title);
-        add(Box.createVerticalStrut(20));
+        add(Box.createVerticalStrut(Sizes.TITLE_AND_PANEL_GAP));
     }
 }

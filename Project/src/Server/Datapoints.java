@@ -23,6 +23,7 @@ import pages.pageView.course_information.*;
 import pages.pageView.administrivia.*;
 import pages.pageView.misc.*;
 import pages.pageView.misc.bus.bus;
+import pages.pageView.misc.map.map;
 import pages.pageView.updates.routine.routine;
 
 public class Datapoints{

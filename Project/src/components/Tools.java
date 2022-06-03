@@ -10,6 +10,9 @@ import javax.swing.ImageIcon;
 
 import Constants.Colors;
 import Constants.Fonts;
+import Constants.Margins;
+import Constants.Padding;
+import Constants.Sizes;
 
 import java.awt.Component;
 import java.awt.RenderingHints;
@@ -119,18 +122,38 @@ public class Tools{
 
     }
     
-    public static Box createBox(String title)
-    {
-        Box box = Box.createHorizontalBox();
-        box.setAlignmentX(Component.LEFT_ALIGNMENT);
-        box.add(new Label(title, Fonts.DISPLAY, Colors.Theme.Button.ACCENT_BUTTON_HOVER));
-        return box;
-    }
-    
     public static Dimension locate(Dimension parent, Dimension child)
     {
         int x = (int) (parent.getWidth() - child.getWidth()) / 2;
         int y = (int) (parent.getHeight() - child.getHeight()) / 2;
         return new Dimension(x, y);
+    }
+
+    /**
+     * extracts width for canvas portion
+     * @return
+     */
+    public static int extractWidth()
+    {
+        int a = (int) Sizes.USABLE_WINDOW_SIZE.getWidth();
+        int b = (int) Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 4;
+        int c = Padding.SIDE_NAV_VIEW.getBorderInsets().left + Padding.SIDE_NAV_VIEW.getBorderInsets().right;
+        int d = Margins.MAJOR_PANEL.left + Margins.MAJOR_PANEL.right;
+        return a - b - c - d + 11;
+    }
+    
+    /**
+     * extracts height for canvas portion
+     * @return
+     */
+    public static int extractHeight()
+    {
+        int a = (int) Sizes.USABLE_WINDOW_SIZE.getHeight();
+        int b = Sizes.TITLE_BAR_HEIGHT;
+        int c = Padding.MAIN_VIEW_PORT.getBorderInsets().top + Padding.MAIN_VIEW_PORT.getBorderInsets().bottom;
+        int d = Padding.SIDE_NAV_VIEW.getBorderInsets().top + Padding.SIDE_NAV_VIEW.getBorderInsets().bottom;
+        int e = Fonts.TITLE.getSize();
+        int f = Sizes.TITLE_AND_PANEL_GAP;
+        return a - b - c - d - e - f;
     }
 }

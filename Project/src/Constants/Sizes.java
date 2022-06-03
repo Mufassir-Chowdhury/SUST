@@ -9,13 +9,14 @@ public class Sizes {
     public static final int BORDER_RADIUS = 8;
     public static final int SMALLER_BORDER_RAIDUS = 4;
     public static final int LIST_ITEM_WIDTH = 300;
+    public static final int TITLE_AND_PANEL_GAP = 20;
 
     public static final Dimension DP = new Dimension(50, 50);
 
     public static final Dimension BUTTON_SIZE = new Dimension(120, 32);
     public static final Dimension DEFAULT_WINDOW_SIZE = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
     public static final Dimension NORMAL_WINDOW_SIZE = new Dimension(1000, 600);
-    public static Dimension USABLE_WINDOW_SIZE = Sizes.DEFAULT_WINDOW_SIZE;
+    public static       Dimension USABLE_WINDOW_SIZE = Sizes.DEFAULT_WINDOW_SIZE;
     public static final Dimension TEXT_FIELD_SIZE = new Dimension(350, 32);
 
     public static final Dimension ICON_SIZE = new Dimension(15, 15);
