@@ -28,7 +28,7 @@ public class sideNavView extends JPanel{
 
     public sideNavView() throws ClassNotFoundException, IOException{
         setOpaque(false);
-        setSize(Sizes.DEFAULT_WINDOW_SIZE);
+        setSize(Sizes.USABLE_WINDOW_SIZE);
         setBorder(Padding.MAIN_VIEW_PORT);
         setLayout(new GridBagLayout());
 

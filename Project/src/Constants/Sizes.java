@@ -15,6 +15,7 @@ public class Sizes {
     // public static final Dimension DEFAULT_WINDOW_SIZE = new Dimension(1280, 675);
     public static final Dimension DEFAULT_WINDOW_SIZE = Toolkit.getDefaultToolkit().getScreenSize();
     public static final Dimension NORMAL_WINDOW_SIZE = new Dimension(1000, 600);
+    public static Dimension USABLE_WINDOW_SIZE = Sizes.DEFAULT_WINDOW_SIZE;
 
     public static final Dimension TEXT_FIELD_SIZE = new Dimension(350, 32);
 

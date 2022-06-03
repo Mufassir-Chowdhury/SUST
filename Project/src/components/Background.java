@@ -14,6 +14,7 @@ public class Background extends JFrame {
 
     public void Extend(){
         setExtendedState(Frame.MAXIMIZED_BOTH);
+        Sizes.USABLE_WINDOW_SIZE = Sizes.DEFAULT_WINDOW_SIZE;
         backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage2, getSize()));
 		setContentPane(backgroundImage);
         Main.getInstance().panel.setSize(getSize());
@@ -23,7 +24,7 @@ public class Background extends JFrame {
     }
 
     public void Normal(){
-        this.size = Sizes.NORMAL_WINDOW_SIZE;
+        Sizes.USABLE_WINDOW_SIZE = this.size = Sizes.NORMAL_WINDOW_SIZE;
         // setBounds(Tools.locate(Sizes.DEFAULT_WINDOW_SIZE, Sizes.NORMAL_WINDOW_SIZE));
         Main.getInstance().panel.setSize(size);
         setSize(size);
@@ -35,7 +36,7 @@ public class Background extends JFrame {
     }
 
     public Background() {
-        this.size = Sizes.DEFAULT_WINDOW_SIZE;
+        this.size = Sizes.USABLE_WINDOW_SIZE;
         decorateFrame();
         logInTitleBar = new TitleBar(this, (int) size.getWidth());
         addTitleBar();
@@ -50,7 +51,7 @@ public class Background extends JFrame {
     
     public Background(String s)
     {
-        this.size = Sizes.DEFAULT_WINDOW_SIZE;
+        this.size = Sizes.USABLE_WINDOW_SIZE;
         decorateFrame();
         logInTitleBar = new TitleBar(this, (int) size.getWidth(), s);
         addTitleBar();
