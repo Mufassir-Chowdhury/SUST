@@ -1,7 +1,6 @@
 package pages.pageView.administrivia;
 
 import Components.Card;
-import Components.pageView.Panels.Post;
 import Components.pageView.Panels.TilesPanel;
 import Components.pageView.Panels.ViewPortPanel;
 
@@ -25,7 +24,7 @@ public class payment extends ViewPortPanel {
                 @Override
                 public void mouseClicked(MouseEvent e){
                     getTitle().setText("Payment > " + payment);
-                    Post individualExam = new Post("title", "date", "totalMarks", "description", false);
+                    paymentPage individualExam = new paymentPage();
                     panel.add(individualExam, payment);
                     CardLayout cl = (CardLayout)(panel.getLayout());
                     cl.show(panel, payment);
