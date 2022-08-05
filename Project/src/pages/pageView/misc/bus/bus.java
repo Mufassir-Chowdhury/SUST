@@ -17,26 +17,17 @@ public class bus extends ViewPort {
         super("Bus Schedule", null);
 
         GridBagPanel list = new GridBagPanel();
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weighty = 1;
-        gbc.weightx = 1;
-        gbc.gridwidth = 1;
-        gbc.insets = Margins.INFORMATION_PANEL;
-
         
-        list.add(new InformationPanel("Buses", null, Datapoints.getInstance().BUSES), gbc);
+        list.add(
+            new InformationPanel("Buses", null, Datapoints.getInstance().BUSES), 
+            GridBagPanel.GetConstant(1, 0, 0, 1, 1, 1, 1, Margins.INFORMATION_PANEL)
+        );
 
         for(int i=1; i<=5; i++){
-            gbc.gridx = i;
-            gbc.gridy = 0;
-            gbc.weighty = 1;
-            gbc.weightx = 1;
-            gbc.gridwidth = 1;
-            gbc.insets = Margins.COLUMN;
-            list.add(new Column(new Title(new Label("Bus 1", Fonts.SUBTITLE), null), new Day()), gbc);
+            list.add(
+                new Column(new Title(new Label("Bus 1", Fonts.SUBTITLE), null), new Day()), 
+                GridBagPanel.GetConstant(1, i, 0, 1, 1, 1, 1, Margins.COLUMN)
+            );
         }
 
         add(list);

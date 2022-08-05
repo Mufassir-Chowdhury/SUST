@@ -5,7 +5,6 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
 
 import Components.DashBoardItem;
 import Components.Label;
@@ -48,29 +47,22 @@ public class Post extends GridBagPanel {
             details.add(new Label(description, Fonts.BODY, Component.LEFT_ALIGNMENT));
         info.add(new ScrollPane(details));
         setOpaque(false);
-        setAlignmentX(Component.LEFT_ALIGNMENT);
+        setAlignmentX(Component.LEFT_ALIGNMENT); 
+            
+        add(
+            info, 
+            GridBagPanel.GetConstant(1, 0, 0, 1, 1, 3, 1, Margins.MAJOR_PANEL)
+        );
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1;
-        gbc.weighty = 1;
-        gbc.gridwidth = 3;
-        gbc.insets = Margins.MAJOR_PANEL;
-
-        add(info, gbc);
-
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.gridx = 3;
-        gbc.weighty = 0;
-        gbc.weightx = .3;
-        gbc.gridwidth = 1;
 
         JPanel image = new JPanel();
         image.setOpaque(false);
         image.add(new DashBoardItem());
-        if(submission)
-            add(image, gbc);       
+        if(submission){
+            add(
+                image,
+                GridBagPanel.GetConstant(2, 3, 0, .3, 1, 1, 1, null)
+            );       
+        }
     }
 }

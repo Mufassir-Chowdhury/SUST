@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 import Components.Card;
 import Components.DashBoardItem;
 import Components.Label;
+import Components.pageView.Panels.GridBagPanel;
 
 import java.awt.GridBagLayout;
 import java.awt.Component;
-import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 
 import Constants.Fonts;
@@ -24,26 +24,26 @@ class DashBoard extends JPanel {
     public DashBoard(){
         setOpaque(false);
         setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.insets = Margins.DASHBOARD;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1;
-        gbc.weighty = .5;
-        gbc.gridheight = 1;
-        add(new Profile(), gbc);
 
-        gbc.gridy = 1;
-        add(new Due(), gbc);
+        add(
+            new Profile(), 
+            GridBagPanel.GetConstant(1, 0, 0, 1, .5, 1, 1, Margins.DASHBOARD)
+        );
+
+        add(
+            new Due(),
+            GridBagPanel.GetConstant(1, 0, 1, 1, .5, 1, 1, Margins.DASHBOARD)
+        );
         
-        gbc.gridy = 2;
-        add(new DashBoardItem("Due Registrations", Datapoints.getInstance().REGISTRATION), gbc);
+        add(
+            new DashBoardItem("Due Registrations", Datapoints.getInstance().REGISTRATION), 
+            GridBagPanel.GetConstant(1, 0, 2, 1, .5, 1, 1, Margins.DASHBOARD)
+        );
 
-        gbc.gridy = 3;
-        gbc.weighty = 1;
-        gbc.gridheight = 2;
-        add(new DashBoardItem("Notifications", Datapoints.getInstance().NOTIFICATION), gbc);
+        add(
+            new DashBoardItem("Notifications", Datapoints.getInstance().NOTIFICATION), 
+            GridBagPanel.GetConstant(1, 0, 3, 1, 1, 1, 2, Margins.DASHBOARD)
+        );
     }
 
     class Profile extends JPanel{

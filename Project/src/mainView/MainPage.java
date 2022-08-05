@@ -7,29 +7,22 @@ import Constants.Sizes;
 import Main.Main;
 
 import java.io.IOException;
-import java.awt.GridBagConstraints ;
 
 public class MainPage extends GridBagPanel {
     public MainPage(Main main) throws ClassNotFoundException, IOException{
         setOpaque(false);
         setSize(Sizes.USABLE_WINDOW_SIZE);
         setBorder(Padding.MAIN_VIEW_PORT);
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1;
-        gbc.weighty = 1;
-        gbc.gridwidth = 2;
-        gbc.insets = Margins.MAJOR_PANEL;
+        
+        add(
+            new AllPages(main), 
+            GridBagPanel.GetConstant(1, 0, 0, 1, 1, 2, 1, Margins.MAJOR_PANEL)
+        );
 
-        add(new AllPages(main), gbc);
-
-        gbc.gridx = 2;
-        gbc.weightx = .5;
-        gbc.gridwidth = 1;
-
-        add(new DashBoard(), gbc);
+        add(
+            new DashBoard(), 
+            GridBagPanel.GetConstant(1, 2, 0, .5, 1, 1, 1, Margins.MAJOR_PANEL)
+        );
 
     }
 }

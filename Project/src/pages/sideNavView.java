@@ -2,13 +2,13 @@ package pages;
 
 import javax.swing.JPanel;
 
+import Components.pageView.Panels.GridBagPanel;
 import Constants.Margins;
 import Constants.Padding;
 import Constants.Sizes;
 import Server.Datapoints;
 
 import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints ;
 import java.awt.CardLayout;
 import java.io.IOException;
 
@@ -42,23 +42,15 @@ public class sideNavView extends JPanel{
             }
         }
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.VERTICAL;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weighty = 1;
-        gbc.gridwidth = 1;
-        gbc.insets = Margins.MAJOR_PANEL;
+        add(
+            buttonPane, 
+            GridBagPanel.GetConstant(3, 0, 0, 0, 1, 1, 1, Margins.MAJOR_PANEL)
+        );
 
-        add(buttonPane, gbc);
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.weighty = 1;
-        gbc.weightx = 1;
-        gbc.gridwidth = 3;
-
-        add(cards, gbc);
+        add(
+            cards,
+            GridBagPanel.GetConstant(1, 1, 0, 1, 1, 3, 1, Margins.MAJOR_PANEL)
+        );
 
     }
 }

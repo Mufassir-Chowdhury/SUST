@@ -13,39 +13,45 @@ import Constants.Margins;
 import Server.Datapoints;
 import pages.pageView.misc.bus.Day;
 
-import java.awt.GridBagConstraints;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class routine extends ViewPort{
     public routine(){
         super("Class Routine", null);
 
         GridBagPanel list = new GridBagPanel();
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weighty = 1;
-        gbc.weightx = 1;
-        gbc.gridwidth = 2;
-        gbc.insets = Margins.INFORMATION_PANEL;
-
         
-        list.add(new InformationPanel("Your Courses", new AccentButton("Manage Courses") , Datapoints.getInstance().COURSES), gbc);
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridx = 2;
-        gbc.gridy = 0;
-        gbc.weighty = 1;
-        gbc.weightx = .5;
-        gbc.gridwidth = 1;
-        list.add(new timeline(), gbc);
+        list.add(
+            new InformationPanel("Your Courses", new AccentButton("Manage Courses") , Datapoints.getInstance().COURSES), 
+            GridBagPanel.GetConstant(1, 0, 0, 1, 1, 2, 1, Margins.INFORMATION_PANEL)
+        );
 
-        for(int i=3; i<=7; i+=2){
-            gbc.gridx = i;
-            gbc.gridy = 0;
-            gbc.weighty = 1;
-            gbc.weightx = 1;
-            gbc.gridwidth = 2;
-            list.add(new Column(new Title(new Label("Tuesday", Fonts.SUBTITLE), new Label("Date")), new Day("2")), gbc);
+        list.add(
+            new timeline(), 
+            GridBagPanel.GetConstant(1, 2, 0, .5, 1, 1, 1, null)
+        );
+
+        for(int i=0; i<3; i++){
+            list.add(
+                new Column(
+                    new Title(
+                        new Label(
+                            DateTimeFormatter.ofPattern("EEEE")
+                                                .format(LocalDate.now()
+                                                                .plusDays(i)), 
+                            Fonts.SUBTITLE
+                        ), 
+                        new Label(
+                            DateTimeFormatter.ofPattern("dd/MM")
+                                                .format(LocalDate.now()
+                                                                .plusDays(i))
+                        )
+                    ), 
+                    new Day(i%2 == 1 ? "2": "1")
+                ), 
+                GridBagPanel.GetConstant(1, 2*i+3, 0, 1, 1, 2, 1, Margins.COLUMN)
+            );
         }
         add(new ScrollPane(list));
     }

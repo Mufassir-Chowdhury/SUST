@@ -2,10 +2,10 @@ package login;
 
 import java.awt.GridBagLayout;
 import java.io.IOException;
-import java.awt.GridBagConstraints;
 
 import javax.swing.JPanel;
 
+import Components.pageView.Panels.GridBagPanel;
 import Constants.Margins;
 import Constants.Sizes;
 import Main.Main;
@@ -24,21 +24,15 @@ public class LogInPage extends JPanel {
 		setLayout(new GridBagLayout());
 
 		setOpaque(false);
-		GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1;
-        gbc.weighty = 1;
-        gbc.gridwidth = 2;
-        gbc.insets = Margins.MAJOR_PANEL;
 
-        add(new LogInLeft(), gbc);
+        add(
+            new LogInLeft(), 
+            GridBagPanel.GetConstant(1, 0, 0, 1, 1, 2, 1, Margins.MAJOR_PANEL)
+        );
 
-        gbc.gridx = 2;
-        gbc.weightx = .5;
-        gbc.gridwidth = 1;
-
-        add(new LogInRight(this), gbc);
+        add(
+            new LogInRight(this),
+            GridBagPanel.GetConstant(0, 2, 0, .5, 1, 1, 1, null)
+        );
 	}
 }
