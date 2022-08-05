@@ -1,4 +1,4 @@
-package Components;
+package Deprecated;
 
 import java.awt.Graphics;
 

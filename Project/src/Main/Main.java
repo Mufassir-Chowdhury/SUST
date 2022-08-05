@@ -3,11 +3,11 @@ import javax.swing.SwingUtilities;
 
 import Components.Background;
 import Constants.Sizes;
+import Deprecated.registration.RegiPage;
+import Deprecated.registration.RegistrationPage;
 import Server.Client;
 import login.LogInPage;
 import mainView.MainPage;
-import registration.RegiPage;
-import registration.RegistrationPage;
 import pages.sideNavView;
 
 import java.io.IOException;

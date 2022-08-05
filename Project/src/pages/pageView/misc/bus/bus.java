@@ -10,8 +10,6 @@ import Constants.Fonts;
 import Constants.Margins;
 import Server.Datapoints;
 
-import java.awt.GridBagConstraints;
-
 public class bus extends ViewPort {
     public bus(){
         super("Bus Schedule", null);

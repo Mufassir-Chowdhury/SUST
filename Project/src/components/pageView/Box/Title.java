@@ -18,13 +18,13 @@ public class Title extends Box {
         super(BoxLayout.X_AXIS);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         titleLabel = label;
-        titleLabel.setAlignmentY(Component.TOP_ALIGNMENT);
+        titleLabel.setAlignmentY(Component.BOTTOM_ALIGNMENT);
         add(titleLabel);
 
         add(Box.createHorizontalGlue());
         if (component != null) {
             add(component);
-            component.setAlignmentY(Component.TOP_ALIGNMENT);
+            component.setAlignmentY(Component.BOTTOM_ALIGNMENT);
         }
     }
     

@@ -1,4 +1,4 @@
-package registration;
+package Deprecated.registration;
 
 import java.awt.*;
 
