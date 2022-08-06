@@ -1,25 +1,22 @@
-package Teacher.Main;
+package Modes.Teacher.Main;
 
 import java.io.IOException;
 
 import Server.Client;
 import mainView.MainPage;
 import pages.sideNavView;
-import java.awt.CardLayout;
 import javax.swing.SwingUtilities;
 
 import Common.login.LogInPage;
 
-public class TeacherMain extends Common.Main.Main {
+public class Main extends Common.Main.Main {
 
-    public TeacherMain() throws ClassNotFoundException, IOException {
+    public Main() throws ClassNotFoundException, IOException {
         super();
         panel.add(new sideNavView(), "sideNav");
 		panel.add(new MainPage(this), "mainPage");
 		panel.add(new LogInPage(this, "Teacher"), "logInPage");
-        CardLayout cl = (CardLayout) (panel.getLayout());
-        cl.show(panel, "logInPage");
-		currentPage = "logInPage";
+		cl.show(panel, "logInPage");
     }
     public static void main(String[] args) throws ClassNotFoundException, IOException {
 		new Client();
@@ -27,7 +24,7 @@ public class TeacherMain extends Common.Main.Main {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					single_instance = new TeacherMain();
+					single_instance = new Main();
 				} catch (ClassNotFoundException | IOException e) {
 					e.printStackTrace();
 				}

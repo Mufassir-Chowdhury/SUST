@@ -63,7 +63,7 @@ public class Datapoints{
                 new Page("Course Registration", Icons.Pages.COURSE_REGISTRATION, new course()),
                 new Page("Important Links", Icons.Pages.IMPORTANT_LINKS, new links())},
             { new Page("Bus Schedule", Icons.Pages.BUS_SCHEDULE, new bus()),
-                new Page("Student Information", Icons.Pages.STUDENT_INFO, new ViewPortBasicPanel("Students", STUDENTS)),
+                new Page("People", Icons.Pages.STUDENT_INFO, new ViewPortBasicPanel("Students", STUDENTS)),
                 new Page("Events", Icons.Pages.EVENTS, new ViewPortBasicPanel("Events", EVENTS)),
                 new Page("Map", Icons.Pages.MAP, new map())},
         };

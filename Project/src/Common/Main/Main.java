@@ -15,6 +15,7 @@ public class Main extends JFrame {
 	public JPanel panel = new JPanel();
 	public static Main single_instance = null;
 	public static String currentPage = null;
+	public CardLayout cl;
 
 	public static Main getInstance() {
 		return single_instance;
@@ -26,6 +27,8 @@ public class Main extends JFrame {
 		panel.setLayout(new CardLayout());
 		panel.setOpaque(false);
 		currentFrame.add(panel);
+		cl = (CardLayout) (panel.getLayout());
+		currentPage = "logInPage";
 		currentFrame.pack();
 		currentFrame.setVisible(true);
 	}
