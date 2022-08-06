@@ -4,9 +4,10 @@ import Components.pageView.Panels.GridBagPanel;
 import Constants.Margins;
 import Constants.Padding;
 import Constants.Sizes;
-import Main.Main;
 
 import java.io.IOException;
+
+import Common.Main.Main;
 
 public class MainPage extends GridBagPanel {
     public MainPage(Main main) throws ClassNotFoundException, IOException{

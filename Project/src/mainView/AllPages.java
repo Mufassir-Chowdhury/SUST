@@ -2,6 +2,8 @@ package mainView;
 
 import javax.swing.Box;
 
+import Common.Main.Main;
+
 import java.awt.Component;
 import java.io.IOException;
 
@@ -13,7 +15,6 @@ import Components.Label;
 import Components.pageView.Panels.ListPanel;
 import Constants.Fonts;
 import Constants.Padding;
-import Main.Main;
 import Server.Datapoints;
 
 class AllPages extends ListPanel { 

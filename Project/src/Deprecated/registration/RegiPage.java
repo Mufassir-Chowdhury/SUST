@@ -2,14 +2,13 @@ package Deprecated.registration;
 
 import javax.swing.JPanel;
 
+import Common.Main.Main;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.TilesPanel;
 import Components.pageView.Panels.ViewPort;
 import java.awt.*;
 import java.io.IOException;
-
-import Main.Main;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;

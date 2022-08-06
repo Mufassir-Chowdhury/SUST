@@ -13,11 +13,11 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.SpringLayout;
 
+import Common.Main.Main;
 import Constants.Colors;
 import Constants.Icons;
 import Constants.Padding;
 import Constants.Sizes;
-import Main.Main;
 
 import java.awt.Component;
 

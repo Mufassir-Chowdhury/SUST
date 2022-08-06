@@ -2,8 +2,10 @@ package Components;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import Common.Main.Main;
 import Constants.Sizes;
-import Main.Main;
+
 import java.awt.*;
 
 public class Background extends JFrame {

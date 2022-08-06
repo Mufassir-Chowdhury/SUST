@@ -1,4 +1,4 @@
-package login;
+package Common.login;
 import java.awt.Dimension;
 import java.awt.event.*;
 import java.awt.Component;
@@ -9,13 +9,15 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import Common.login.Utilities.showPassword;
+import Components.Label;
 import Components.Buttons.AccentButton;
 import Components.Buttons.HyperLinkButton;
 import Components.InputFields.TextField;
 import Constants.Colors;
+import Constants.Fonts;
 import Constants.Sizes;
 import Constants.Values;
-import login.Utilities.showPassword;
 
 
 public class LogInRight extends JPanel implements KeyListener, FocusListener {
@@ -38,7 +40,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     private FieldValidity fieldChecker = new FieldValidity();
     private Query database = new Query();
     
-    public LogInRight(LogInPage page) {
+    public LogInRight(LogInPage page, String mode) {
         this.page = page;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setOpaque(false);
@@ -48,6 +50,8 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         line.add(showPasswordCheckBox);
 
         add(Box.createVerticalGlue());
+        add(new Label(mode + " Portal", Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
+        add(Box.createVerticalStrut(30));
         add(emailField);
         add(Box.createVerticalStrut(30));
         add(passwordField);

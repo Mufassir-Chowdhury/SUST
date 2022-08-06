@@ -1,14 +1,14 @@
-package login;
+package Common.login;
 
 import java.awt.GridBagLayout;
 import java.io.IOException;
 
 import javax.swing.JPanel;
 
+import Common.Main.Main;
 import Components.pageView.Panels.GridBagPanel;
 import Constants.Margins;
 import Constants.Sizes;
-import Main.Main;
 
 public class LogInPage extends JPanel {
 
@@ -18,7 +18,7 @@ public class LogInPage extends JPanel {
 		frame.changeFrame(page);
 	}
 
-	public LogInPage(Main frame) {
+	public LogInPage(Main frame, String mode) {
         this.frame = frame;
 		setSize(Sizes.USABLE_WINDOW_SIZE);
 		setLayout(new GridBagLayout());
@@ -31,7 +31,7 @@ public class LogInPage extends JPanel {
         );
 
         add(
-            new LogInRight(this),
+            new LogInRight(this, mode),
             GridBagPanel.GetConstant(0, 2, 0, .5, 1, 1, 1, null)
         );
 	}

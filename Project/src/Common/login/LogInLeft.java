@@ -1,4 +1,4 @@
-package login;
+package Common.login;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
