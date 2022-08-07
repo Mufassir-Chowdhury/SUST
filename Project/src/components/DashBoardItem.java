@@ -22,7 +22,6 @@ public class DashBoardItem extends JPanel {
     class Title extends JPanel{
         public Title(String title){
             setOpaque(false);
-            setBorder(Padding.TITLE);
             setAlignmentX(SwingConstants.CENTER);
             add(new Label(title, Fonts.BODY_LARGE, SwingConstants.CENTER));
         }

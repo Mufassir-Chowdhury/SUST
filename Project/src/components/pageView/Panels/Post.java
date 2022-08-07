@@ -13,6 +13,7 @@ import Components.pageView.Box.Title;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Margins;
+import Constants.Padding;
 
 public class Post extends ListPanel {
     class meta extends JPanel{
@@ -56,6 +57,7 @@ public class Post extends ListPanel {
             sideBar.setOpaque(false);
             sideBar.setLayout(new BoxLayout(sideBar, BoxLayout.Y_AXIS));
             sideBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+            sideBar.setBorder(Padding.LIST_ITEM);
             sideBar.add(new Work());
             sideBar.add(Box.createVerticalStrut(30));
             sideBar.add(new Comment()); 

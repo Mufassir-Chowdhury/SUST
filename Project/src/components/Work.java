@@ -15,7 +15,7 @@ public class Work extends DashBoardItem {
             new ListPanel(
                 new AccentButton("+ Add or Create"), 
                 new AccentButton("Mark as Done"), 
-                10
+                30
             ),
             BorderLayout.PAGE_END
         );
