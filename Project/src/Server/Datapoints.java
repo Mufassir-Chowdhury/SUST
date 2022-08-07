@@ -363,7 +363,9 @@ public class Datapoints{
         public JComponent getInformation() {
             return new ListPanel(
                 new Label("Bus " + busNo + " - " + busName),
-                new Label(Liscense + " - " + driverName, Fonts.CAPTION));
+                new Label(Liscense + " - " + driverName, Fonts.CAPTION),
+                0    
+            );
         }
     }
     public String[] route = {

@@ -49,10 +49,10 @@ public class MainCardList extends ListPanel {
                 if(course.regular.equals(value)){
                     ListPanel line;
                     if(type == Type.ATTENDANCE){
-                        line = new ListPanel(course.getAttendance(), null);
+                        line = new ListPanel(course.getAttendance(), null, 0);
                     }
                     else{
-                        line = new ListPanel(course.getResult(), null);
+                        line = new ListPanel(course.getResult(), null, 0);
                     }
                     add(new MainCardListItem(pageName, course, title, type, line));
                     add(Box.createVerticalStrut(10));

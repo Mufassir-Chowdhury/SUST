@@ -6,14 +6,15 @@ import javax.swing.JPanel;
 import java.awt.Component;
 import java.awt.Graphics;
 
-import Components.DashBoardItem;
+import Components.Comment;
 import Components.Label;
+import Components.Work;
 import Components.pageView.Box.Title;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Margins;
 
-public class Post extends GridBagPanel {
+public class Post extends ListPanel {
     class meta extends JPanel{
         public meta(String title, String date, String totalMarks){
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -34,35 +35,35 @@ public class Post extends GridBagPanel {
     }
 
     public Post(String title, String date, String totalMarks, String description, boolean submission){
-        JPanel info = new JPanel();
-        info.setLayout(new BoxLayout(info, BoxLayout.Y_AXIS));
-        info.setOpaque(false);
-        info.add(new meta(title, date, totalMarks));
-        info.add(Box.createVerticalStrut(15));
+        setOpaque(false);
+        setAlignmentX(Component.LEFT_ALIGNMENT); 
+        add(new meta(title, date, totalMarks));
+        GridBagPanel info = new GridBagPanel();
+
         JPanel details = new JPanel();
         details.setLayout(new BoxLayout(details, BoxLayout.Y_AXIS));
         details.setOpaque(false);
         details.setAlignmentX(Component.LEFT_ALIGNMENT);
         for(int i=0; i<25; i++)
             details.add(new Label(description, Fonts.BODY, Component.LEFT_ALIGNMENT));
-        info.add(new ScrollPane(details));
-        setOpaque(false);
-        setAlignmentX(Component.LEFT_ALIGNMENT); 
-            
-        add(
-            info, 
+        info.add(
+            new ScrollPane(details),
             GridBagPanel.GetConstant(1, 0, 0, 1, 1, 3, 1, Margins.MAJOR_PANEL)
         );
-
-
-        JPanel image = new JPanel();
-        image.setOpaque(false);
-        image.add(new DashBoardItem());
+        
         if(submission){
-            add(
-                image,
-                GridBagPanel.GetConstant(2, 3, 0, .3, 1, 1, 1, null)
-            );       
+            JPanel sideBar = new JPanel();
+            sideBar.setOpaque(false);
+            sideBar.setLayout(new BoxLayout(sideBar, BoxLayout.Y_AXIS));
+            sideBar.setAlignmentX(Component.LEFT_ALIGNMENT);
+            sideBar.add(new Work());
+            sideBar.add(Box.createVerticalStrut(30));
+            sideBar.add(new Comment()); 
+            info.add(
+                sideBar,
+                GridBagPanel.GetConstant(1, 3, 0, .3, 1, 1, 1, null)
+            );
         }
+        add(info);
     }
 }

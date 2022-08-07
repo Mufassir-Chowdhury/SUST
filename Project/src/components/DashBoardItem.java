@@ -6,12 +6,10 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 import Components.DashBoardItem;
-import Components.Buttons.AccentButton;
 import Components.pageView.Panels.ListPanel;
 
 import java.awt.Graphics;
 import java.awt.BorderLayout;
-import java.awt.Component;
 
 import Constants.Colors;
 import Constants.Fonts;
@@ -24,8 +22,8 @@ public class DashBoardItem extends JPanel {
     class Title extends JPanel{
         public Title(String title){
             setOpaque(false);
-            setLayout(new BorderLayout());
             setBorder(Padding.TITLE);
+            setAlignmentX(SwingConstants.CENTER);
             add(new Label(title, Fonts.BODY_LARGE, SwingConstants.CENTER));
         }
         @Override
@@ -84,10 +82,7 @@ public class DashBoardItem extends JPanel {
     }
     public DashBoardItem(){
         setLayout(new BorderLayout());
-        setAlignmentX(Component.LEFT_ALIGNMENT);
         setOpaque(false);
-        add(new Title("Your Work"), BorderLayout.PAGE_START);
-        add(new ListPanel(new AccentButton("+ Add or Create"), new AccentButton("Mark as Done")));
     }
     @Override
     protected void paintComponent(Graphics g) {

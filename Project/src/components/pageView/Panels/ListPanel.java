@@ -1,5 +1,6 @@
 package Components.pageView.Panels;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
@@ -16,13 +17,14 @@ public class ListPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     }
 
-    public ListPanel(JComponent component, JComponent component2){
+    public ListPanel(JComponent component, JComponent component2, int padding){
         setOpaque(false);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(Padding.LIST_PANEL);
 
         add(component);
+        add(Box.createVerticalStrut(padding));
         if(component2 != null){
             add(component2);
         }
