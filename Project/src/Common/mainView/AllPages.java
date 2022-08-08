@@ -1,4 +1,4 @@
-package mainView;
+package Common.mainView;
 
 import javax.swing.Box;
 
@@ -19,13 +19,13 @@ import Constants.Padding;
 import Server.Datapoints;
 
 class AllPages extends ListPanel { 
-    public AllPages(Main main) throws ClassNotFoundException, IOException{
+    public AllPages(Main main, Page[][] pageList) throws ClassNotFoundException, IOException{
         for(int i=0; i<Datapoints.getInstance().TITLES.length; i++){
             Label title = new Label(Datapoints.getInstance().TITLES[i], Fonts.TITLE, Component.LEFT_ALIGNMENT);
             title.setBorder(Padding.TITLE_LINE_HEIGHT);
             
             Box line = Box.createHorizontalBox();
-            for(Page pair: Page.getPages()[i]){
+            for(Page pair: pageList[i]){
                 Card card = new Card(pair.name, pair.icon);
                 card.addMouseListener(new MouseAdapter(){
                     public void mouseClicked(MouseEvent e){

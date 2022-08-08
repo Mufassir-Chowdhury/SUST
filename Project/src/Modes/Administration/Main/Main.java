@@ -3,19 +3,21 @@ package Modes.Administration.Main;
 import java.io.IOException;
 
 import Server.Client;
-import mainView.MainPage;
 
 import javax.swing.SwingUtilities;
 
 import Common.login.LogInPage;
+import Common.mainView.MainPage;
 import Common.pages.sideNavView;
+import Modes.Student.pages.PageList;
 
 public class Main extends Common.Main.Main {
 
     public Main() throws ClassNotFoundException, IOException {
         super();
-        panel.add(new sideNavView(), "sideNav");
-		panel.add(new MainPage(this), "mainPage");
+		// TODO add new getPages for admin
+        panel.add(new sideNavView(PageList.getPages()), "sideNav");
+		panel.add(new MainPage(this, PageList.getPages()), "mainPage");
 		panel.add(new LogInPage(this, "Administrator"), "logInPage");
 		cl.show(panel, "logInPage");
     }

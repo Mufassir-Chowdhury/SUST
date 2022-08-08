@@ -26,7 +26,7 @@ public class sideNav extends JPanel {
         list.setSelectedIndex(pageNames.indexOf(nameOfPage));
         list.repaint();
     }
-    public sideNav(sideNavView view) throws ClassNotFoundException, IOException {
+    public sideNav(sideNavView view, Page[][] pages) throws ClassNotFoundException, IOException {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box line = Box.createHorizontalBox();
@@ -41,7 +41,7 @@ public class sideNav extends JPanel {
         add(Box.createVerticalStrut(10));
         Vector<Page> pageList = new Vector<>();
         pageNames = new Vector<>();
-        for(Page[] page: Page.getPages()){
+        for(Page[] page: pages){
             for(Page pair: page){
                 pageList.add(pair);
                 pageNames.add(pair.name);
