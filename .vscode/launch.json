@@ -1,0 +1,36 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Experiment",
+            "request": "launch",
+            "mainClass": "Server.Experiment",
+            "projectName": "SUST"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch BoxDemo",
+            "request": "launch",
+            "mainClass": "BoxDemo",
+            "projectName": "Lab_239693be"
+        },
+        {
+            "type": "java",
+            "name": "Launch A$MainClass",
+            "request": "launch",
+            "mainClass": "A$MainClass"
+        },
+        {
+            "type": "java",
+            "name": "Launch Server",
+            "request": "launch",
+            "mainClass": "Server.Server"
+        }
+    ]
+}

@@ -128,7 +128,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
             logInButton.requestFocus();
 
             updateEmailStatus(key.getClass());
-            logInWithoutFetch();
+            // logInWithoutFetch();
             logInWithFetch();
             return;
         }
@@ -214,6 +214,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     {
         if (emailField.border == Colors.TextField.VALID)
         {
+            System.err.println("checking");
             if(fieldChecker.isPasswordFieldFilled(password.toCharArray()))
                 return true;
             else 
@@ -244,6 +245,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     {
         if (isGreen()) {
             String result = database.runQuery(email, password);
+            // System.err.println(password);
             if (result == Values.ValidationHints.WRONG_EMAIL)
             {
                 //TODO show wrong email and password
@@ -261,7 +263,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     private void logInWithoutFetch()
     {
-        nextPage("mainPage");
+        // nextPage("mainPage");
     }
 
     private void typing(TextField field)

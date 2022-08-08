@@ -23,6 +23,7 @@ public class Query {
         try {
             if (extractData(email))
             {
+                System.err.println(exist.getString("password"));
                 if(exist.getString("password") == password)
                 {
                     return Values.ValidationHints.PASSED;
