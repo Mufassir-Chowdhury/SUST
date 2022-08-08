@@ -1,4 +1,4 @@
-package pages;
+package Common.pages;
 
 import javax.swing.JPanel;
 
@@ -6,7 +6,6 @@ import Components.pageView.Panels.GridBagPanel;
 import Constants.Margins;
 import Constants.Padding;
 import Constants.Sizes;
-import Server.Datapoints;
 
 import java.awt.GridBagLayout;
 import java.awt.CardLayout;
@@ -36,8 +35,8 @@ public class sideNavView extends JPanel{
         cards = new JPanel(new CardLayout());
         cards.setBorder(Padding.SIDE_NAV_VIEW);
         cards.setOpaque(false);
-        for(Datapoints.Page[] page: Datapoints.getInstance().getPages()){
-            for(Datapoints.Page pair: page){
+        for(Page[] page: Page.getPages()){
+            for(Page pair: page){
                 cards.add(pair.panel, pair.name);
             }
         }

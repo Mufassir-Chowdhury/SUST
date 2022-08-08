@@ -2,12 +2,14 @@ package Common.Main;
 
 import Components.Background;
 import Constants.Sizes;
-import pages.sideNavView;
 
 import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import Common.pages.sideNavView;
+
 import java.awt.CardLayout;
 
 public class Main extends JFrame {

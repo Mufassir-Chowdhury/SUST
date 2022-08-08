@@ -1,4 +1,4 @@
-package pages.pageView.misc.bus;
+package Common.pages.pageView.misc.bus;
 
 import java.awt.Graphics;
 

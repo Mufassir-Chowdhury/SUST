@@ -1,4 +1,4 @@
-package pages.pageView.misc.map;
+package Common.pages.pageView.misc.map;
 
 import Components.pageView.Panels.ViewPort;
 

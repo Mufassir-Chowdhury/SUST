@@ -1,4 +1,4 @@
-package pages.pageView.administrivia;
+package Common.pages.pageView.administrivia;
 
 import Components.Card;
 import Components.pageView.Panels.TilesPanel;

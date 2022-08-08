@@ -4,10 +4,11 @@ import java.io.IOException;
 
 import Server.Client;
 import mainView.MainPage;
-import pages.sideNavView;
+
 import javax.swing.SwingUtilities;
 
 import Common.login.LogInPage;
+import Common.pages.sideNavView;
 
 public class Main extends Common.Main.Main {
 

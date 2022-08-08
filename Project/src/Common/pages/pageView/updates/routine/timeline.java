@@ -1,4 +1,4 @@
-package pages.pageView.updates.routine;
+package Common.pages.pageView.updates.routine;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;

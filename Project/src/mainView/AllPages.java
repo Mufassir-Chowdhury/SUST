@@ -3,6 +3,7 @@ package mainView;
 import javax.swing.Box;
 
 import Common.Main.Main;
+import Common.pages.Page;
 
 import java.awt.Component;
 import java.io.IOException;
@@ -24,7 +25,7 @@ class AllPages extends ListPanel {
             title.setBorder(Padding.TITLE_LINE_HEIGHT);
             
             Box line = Box.createHorizontalBox();
-            for(Datapoints.Page pair: Datapoints.getInstance().getPages()[i]){
+            for(Page pair: Page.getPages()[i]){
                 Card card = new Card(pair.name, pair.icon);
                 card.addMouseListener(new MouseAdapter(){
                     public void mouseClicked(MouseEvent e){

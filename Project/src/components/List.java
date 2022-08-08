@@ -4,11 +4,11 @@ import javax.swing.DefaultListCellRenderer;
 import javax.swing.JLabel;
 import javax.swing.JList;
 
+import Common.pages.Page;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Padding;
 import Constants.Sizes;
-import Server.Datapoints;
 
 import java.awt.Graphics;
 import java.awt.Color;
@@ -32,7 +32,7 @@ public class List<E> extends JList<E> {
                     ((JLabel) renderer).setText(value.toString());
                     ((JLabel) renderer).setFont(Fonts.BODY);
                     if(hasIcon){
-                        ((JLabel) renderer).setIcon(((Datapoints.Page)value).icon);
+                        ((JLabel) renderer).setIcon(((Page)value).icon);
                     }
                     ((JLabel) renderer).setOpaque(false);
                     ((JLabel) renderer).setForeground(Colors.PLAIN_TEXT);
