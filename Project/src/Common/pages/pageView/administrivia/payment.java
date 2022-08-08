@@ -3,10 +3,9 @@ package Common.pages.pageView.administrivia;
 import Components.Card;
 import Components.pageView.Panels.TilesPanel;
 import Components.pageView.Panels.ViewPortPanel;
-
+import Constants.Collections;
 import Constants.Icons;
 import Constants.Padding;
-import Server.Datapoints;
 
 import java.awt.CardLayout;
 import java.awt.event.MouseEvent;
@@ -17,7 +16,7 @@ public class payment extends ViewPortPanel {
         super("Payment", null);
         TilesPanel list = new TilesPanel(2, 3, Padding.CARD_SPACING_LONG);
         
-        for(String payment: Datapoints.getInstance().PAYMENT){
+        for(String payment: Collections.PAYMENT){
             Card card = new Card(payment, Icons.Pages.PAYMENT);
             list.add(card);
             card.addMouseListener(new MouseAdapter(){

@@ -338,21 +338,24 @@ public class Datapoints{
     public String[] SEMESTER = {
         "Semester", "Semester 2"
     };
-    public String[] RESOURCES = {"Syllabus",
-                                "Class Videos",
-                                "CT Questions",
-                                "Term Final Questions",
-                                "Lecture Notes",
-                                "Books",};
-    public String[] PAYMENT = {
-        "Registration Fee",
-        "Library Fine",
-        "Migration Fee",
-        "Credit Fee",
-        "Documents Fee",
-        "Apply for Transcript",
+    public Object[] TITLE_FOR_SYLLABUS_TABLE = {
+        "Title", "Description"
     };
-    public String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
+    public Object[][] SYLLABUS = {
+        {
+            "Programming Language",
+            "Basic concept, Overview of programming languages, Problem Solving Techniques and Data Flow Diagram"
+        },
+        {
+            "C-Lanuage",
+            "Preliminaries, Program constructs, variables and data types in C"
+        },
+        {
+            "Sorting",
+            "Insertion sort, selection sort, bubble sort, merge sort, quick sort"
+        }
+    };
+    
     public static Event[] EVENTS = null;
     public String[] LINK_TITLES = null;
     public Link[][] LINKS = null;
