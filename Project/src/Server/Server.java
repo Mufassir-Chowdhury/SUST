@@ -124,6 +124,7 @@ public class Server {
     public void startServer() {
 
         try {
+            Experiment ex = new Experiment();
             echoServer = new ServerSocket(port);
         }
         catch (IOException e) {
