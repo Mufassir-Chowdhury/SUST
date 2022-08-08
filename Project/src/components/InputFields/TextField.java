@@ -25,6 +25,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
 
     public TextField(boolean showPassword, TYPE type) {
         this.showPassword = showPassword;
+        this.placeholder = Values.PASSWORD_PLACEHOLDER_STRING;
         this.type = type;
         initialize();
     }
@@ -42,10 +43,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
         setForeground(Colors.PLAIN_TEXT);
         setFont(Fonts.PLAIN_TEXT);
         setBorder(Padding.TEXT_FIELD);
-        if(type == TYPE.PASSWORD)
-            setText(Values.PASSWORD_PLACEHOLDER.toString());
-        else
-            setText(placeholder);
+        setText(placeholder);
         setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
         setAlignmentX(Component.CENTER_ALIGNMENT);
         setCaretColor(Colors.PLAIN_TEXT);
@@ -67,7 +65,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     
     public boolean checkPlaceholder(){
         if(type == TYPE.PASSWORD)
-            return Arrays.equals(getPassword(), Values.PASSWORD_PLACEHOLDER);
+            return Arrays.equals(getPassword(), Values.PASSWORD_PLACEHOLDER_CHAR);
         else
             return ((JTextField) this).getText().equals(placeholder);
     }
@@ -78,7 +76,7 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     
     public void setPlaceholder(){
         if(type == TYPE.PASSWORD){   
-            setText(Values.PASSWORD_PLACEHOLDER.toString());
+            setText(Values.PASSWORD_PLACEHOLDER_STRING);
             setEchoChar(Values.PASSWORD_PLAIN_ECHO_CHAR);
         }
         else
@@ -103,7 +101,8 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
     public void focusLost(FocusEvent e) {
         border = Colors.TextField.BORDER;
         background = Colors.TextField.BACKGROUND;
-        if(isEmpty()) setPlaceholder();
+        if (isEmpty())
+            setPlaceholder();
         repaint();
     }
 

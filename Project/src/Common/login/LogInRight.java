@@ -26,12 +26,10 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     public TextField emailField = new TextField(Values.EMAIL_PLACEHOLDER, TextField.TYPE.PLAIN);
     public TextField passwordField = new TextField(false, TextField.TYPE.PASSWORD);
     private showPassword showPasswordCheckBox = new Utilities.showPassword();
-    private HyperLinkButton forgetPasswordText = new HyperLinkButton("Forget Password?");
+    private HyperLinkButton forgetPasswordText = new HyperLinkButton("Forgotten  Password?");
     private HyperLinkButton registerText = new HyperLinkButton("Create an account!");
     private static final long serialVersionUID = 1L;  
     private Box line = Box.createHorizontalBox();
-    // private JLabel emailInstruction = new JLabel("hi");
-    // private JLabel passwordInstruction = new JLabel("hi");
     private LogInPage page;
     private Component source;
     private Character key = KeyEvent.VK_ENTER;
@@ -67,8 +65,8 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         line.add(forgetPasswordText);
         line.add(Box.createHorizontalGlue());
         registerText.setFocusable(false);
-        line.add(registerText);
-        line.add(Box.createHorizontalGlue());
+        // line.add(registerText);
+        // line.add(Box.createHorizontalGlue());
         add(line);
 
         add(Box.createVerticalGlue());
@@ -85,7 +83,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         }
         if(showPasswordCheckBox.isSelected()==false){
             showPasswordCheckBox.setForeground(Colors.CheckBox.UNSELECTED);
-            if(Arrays.equals(passwordField.getPassword(), Values.PASSWORD_PLACEHOLDER)==false)
+            if(Arrays.equals(passwordField.getPassword(), Values.PASSWORD_PLACEHOLDER_CHAR)==false)
                 passwordField.setEchoChar(Values.PASSWORD_ECHO_CHAR);
         }
     }
@@ -100,8 +98,8 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
         showPasswordCheckBox.addActionListener(e -> showPassword());
         logInButton.addActionListener(e -> {
-            logInWithoutTry();
-            letsLogIn();
+            logInWithoutFetch();
+            logInWithFetch();
 
         });
         forgetPasswordText.addActionListener(l -> forgetPassword());
@@ -130,8 +128,8 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
             logInButton.requestFocus();
 
             updateEmailStatus(key.getClass());
-            logInWithoutTry();
-            letsLogIn();
+            logInWithoutFetch();
+            logInWithFetch();
             return;
         }
     }
@@ -192,7 +190,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         if (condition)
             field.border = Colors.TextField.VALID;
         else {
-            field.border = Colors.TextField.VALID;
+            field.border = Colors.TextField.INVALID;
             showFieldInstruction(field.getName());
         }
 
@@ -242,7 +240,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         }
     }
 
-    private void letsLogIn()
+    private void logInWithFetch()
     {
         if (isGreen()) {
             String result = database.runQuery(email, password);
@@ -261,7 +259,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         }
     }
 
-    private void logInWithoutTry()
+    private void logInWithoutFetch()
     {
         nextPage("mainPage");
     }

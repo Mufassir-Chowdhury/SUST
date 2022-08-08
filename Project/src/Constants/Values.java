@@ -7,11 +7,12 @@ public class Values {
     /**
      * This is the placeholder for password fields.
      */
-    public static final char[] PASSWORD_PLACEHOLDER = new char[]{' ', 'P','a','s','s','w','o','r','d'};
+    public static final char[] PASSWORD_PLACEHOLDER_CHAR = new char[]{' ', 'P','a','s','s','w','o','r','d'};
+    public static final String PASSWORD_PLACEHOLDER_STRING = " Password";
     /**
      * This is the placeholder for email fields.
      */
-    public static final String EMAIL_PLACEHOLDER = " Email Address ( Academic )";
+    public static final String EMAIL_PLACEHOLDER = " Email Address";
 
     /**
      * This is the echo character to show when the show password check box is not selected.

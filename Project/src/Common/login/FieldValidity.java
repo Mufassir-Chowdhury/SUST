@@ -22,7 +22,7 @@ public class FieldValidity {
 
     public boolean isPasswordFieldFilled(char[] password)
     {
-        condition = Arrays.equals(password, Values.PASSWORD_PLACEHOLDER);
+        condition = Arrays.equals(password, Values.PASSWORD_PLACEHOLDER_CHAR);
         return !condition;
 
     }
@@ -31,6 +31,7 @@ public class FieldValidity {
     {
         this.email = email;
         condition = email.split("@").length == 2;
+        System.err.println(condition);
         if(condition)
             condition = isValidInput();
         
