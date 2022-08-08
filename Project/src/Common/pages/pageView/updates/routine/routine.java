@@ -1,4 +1,4 @@
-package pages.pageView.updates.routine;
+package Common.pages.pageView.updates.routine;
 
 import Components.Label;
 import Components.Buttons.AccentButton;
@@ -11,10 +11,11 @@ import Components.pageView.Panels.ViewPort;
 import Constants.Fonts;
 import Constants.Margins;
 import Server.Datapoints;
-import pages.pageView.misc.bus.Day;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
+import Common.pages.pageView.misc.bus.Day;
 
 public class routine extends ViewPort{
     public routine(){

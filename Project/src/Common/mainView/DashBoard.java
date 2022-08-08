@@ -1,4 +1,4 @@
-package mainView;
+package Common.mainView;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;

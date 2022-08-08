@@ -1,4 +1,4 @@
-package pages.pageView.course_information;
+package Common.pages.pageView.course_information;
 
 import javax.swing.Box;
 import java.awt.CardLayout;

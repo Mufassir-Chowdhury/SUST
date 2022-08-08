@@ -1,4 +1,4 @@
-package pages.pageView.misc.map;
+package Common.pages.pageView.misc.map;
 
 import java.awt.Canvas;
 import java.awt.Color;

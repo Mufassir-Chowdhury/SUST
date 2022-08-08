@@ -1,4 +1,4 @@
-package pages;
+package Common.pages;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -13,21 +13,20 @@ import Constants.Fonts;
 import Constants.Icons;
 import Constants.Padding;
 import Constants.Sizes;
-import Server.Datapoints;
 
 import java.awt.Component;
 import java.io.IOException;
 import java.util.Vector;
 
 public class sideNav extends JPanel {
-    List<Datapoints.Page> list;
+    List<Page> list;
     Vector<String> pageNames;
 
     public void setSelected(String nameOfPage){
         list.setSelectedIndex(pageNames.indexOf(nameOfPage));
         list.repaint();
     }
-    public sideNav(sideNavView view) throws ClassNotFoundException, IOException {
+    public sideNav(sideNavView view, Page[][] pages) throws ClassNotFoundException, IOException {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box line = Box.createHorizontalBox();
@@ -40,18 +39,19 @@ public class sideNav extends JPanel {
         line.add(Box.createHorizontalStrut(5));
         add(line);
         add(Box.createVerticalStrut(10));
-        Vector<Datapoints.Page> pageList = new Vector<>();
+        Vector<Page> pageList = new Vector<>();
         pageNames = new Vector<>();
-        for(Datapoints.Page[] page: Datapoints.getInstance().getPages()){
-            for(Datapoints.Page pair: page){
+        for(Page[] page: pages){
+            for(Page pair: page){
                 pageList.add(pair);
                 pageNames.add(pair.name);
             }
         }
-        list = new List<Datapoints.Page>(pageList, true, ListSelectionModel.SINGLE_SELECTION);
+        list = new List<Page>(pageList, true, ListSelectionModel.SINGLE_SELECTION);
         
         list.addListSelectionListener(listener -> {
             if(list.getSelectedIndex() != -1){
+                // TODO create a new object and delete previous one each time a item is selected
                 view.changeCard(list.getSelectedValue().name);
             }
         });

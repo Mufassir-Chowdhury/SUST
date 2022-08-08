@@ -1,29 +1,20 @@
 package Server;
 
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.Vector;
 
-import javax.swing.Icon;
 import javax.swing.JComponent;
-import javax.swing.JPanel;
 import java.awt.image.BufferedImage;
 
 import Components.Label;
 import Components.pageView.Box.Line;
-import Components.pageView.Box.ResultSummary;
 import Components.pageView.Box.Title;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.Post;
-import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
-import pages.pageView.course_information.*;
-import pages.pageView.administrivia.*;
-import pages.pageView.misc.bus.bus;
-import pages.pageView.misc.map.map;
-import pages.pageView.updates.routine.routine;
+
 
 public class Datapoints{
     public static interface Tilable{
@@ -34,45 +25,6 @@ public class Datapoints{
     public static interface Information{
         public JComponent getInformation();
     }
-
-
-    public static class Page{
-        public String name;
-        public Icon icon;
-        public JPanel panel;
-        public Page(String name, Icon icon, JPanel panel)  throws ClassNotFoundException, IOException{
-            this.name = name;
-            this.icon = icon;
-            this.panel = panel;
-        }
-        @Override
-        public String toString(){
-            return name;
-        }
-    };
-    public Page[][] getPages() throws ClassNotFoundException, IOException{
-        return new Page[][]{
-            {new Page("Class Routines", Icons.Pages.SCHEDULE, new routine()), 
-                new Page("Due Assignments", Icons.Pages.ASSIGNMENT, new ViewPortBasicPanel("Assignment", Components.pageView.Box.MainCardListItem.Type.ASSIGNMENT)),
-                new Page("Upcoming Exams", Icons.Pages.EXAM, new ViewPortBasicPanel("Exam", Components.pageView.Box.MainCardListItem.Type.EXAM)),
-                new Page("Notice Board", Icons.Pages.NOTICE, new ViewPortBasicPanel("Notices", NOTICES))},
-            { new Page("Resources", Icons.Pages.RESOURCES, new resources()),
-                new Page("Results", Icons.Pages.RESULT, new ViewPortBasicPanel("Results", new ResultSummary(), Components.pageView.Box.MainCardListItem.Type.RESULT)),
-                new Page("Attendance", Icons.Pages.ATTENDANCE, new ViewPortBasicPanel("Attendance", null, Components.pageView.Box.MainCardListItem.Type.ATTENDANCE))},
-            { new Page("Payment", Icons.Pages.PAYMENT, new payment()),
-                new Page("Course Registration", Icons.Pages.COURSE_REGISTRATION, new course()),
-                new Page("Important Links", Icons.Pages.IMPORTANT_LINKS, new links())},
-            { new Page("Bus Schedule", Icons.Pages.BUS_SCHEDULE, new bus()),
-                new Page("People", Icons.Pages.STUDENT_INFO, new ViewPortBasicPanel("Students", STUDENTS)),
-                new Page("Events", Icons.Pages.EVENTS, new ViewPortBasicPanel("Events", EVENTS)),
-                new Page("Map", Icons.Pages.MAP, new map())},
-        };
-    }
-    // public static final Page[] CLIENT = {
-    //     new Page("STUDENT", Icons.STUDENT, new students()),
-    //     new Page("TEACHER", Icons.TEACHER, new students()),
-    //     new Page("ADMINISTRATOR", Icons.ADMINISTRATOR, new students()) 
-    // };
 
     public static class Notification  implements Serializable{
         public String title, date;
@@ -401,7 +353,7 @@ public class Datapoints{
         "Apply for Transcript",
     };
     public String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
-    public Event[] EVENTS = null;
+    public static Event[] EVENTS = null;
     public String[] LINK_TITLES = null;
     public Link[][] LINKS = null;
     public Courses[] COURSES = null;
@@ -410,8 +362,8 @@ public class Datapoints{
     public Notification[] ASSIGNMENT = null;
     public Notification[] REGISTRATION = null;
     public Notification[] NOTIFICATION = null;
-    public Student[] STUDENTS = null;
-    public Notice[] NOTICES =  null;
+    public static Student[] STUDENTS = null;
+    public static Notice[] NOTICES =  null;
 
     private static Datapoints single_instance = null;
   

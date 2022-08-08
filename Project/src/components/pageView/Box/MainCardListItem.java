@@ -4,11 +4,11 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import Common.pages.pageView.course_information.expanded;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.Post;
 import Server.Datapoints.Courses;
 import Server.Datapoints.Tilable;
-import pages.pageView.course_information.expanded;
 
 import java.awt.Component;
 import java.awt.event.MouseAdapter;

@@ -5,16 +5,13 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.awt.*;
 import javax.imageio.ImageIO;
-import javax.swing.Box;
 import javax.swing.ImageIcon;
 
-import Constants.Colors;
 import Constants.Fonts;
 import Constants.Margins;
 import Constants.Padding;
 import Constants.Sizes;
 
-import java.awt.Component;
 import java.awt.RenderingHints;
 import java.awt.AlphaComposite ;
 

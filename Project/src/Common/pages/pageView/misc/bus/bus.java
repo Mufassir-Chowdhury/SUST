@@ -1,4 +1,4 @@
-package pages.pageView.misc.bus;
+package Common.pages.pageView.misc.bus;
 
 import Components.Label;
 import Components.pageView.Box.Title;

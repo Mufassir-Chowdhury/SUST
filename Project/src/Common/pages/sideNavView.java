@@ -1,4 +1,4 @@
-package pages;
+package Common.pages;
 
 import javax.swing.JPanel;
 
@@ -6,7 +6,6 @@ import Components.pageView.Panels.GridBagPanel;
 import Constants.Margins;
 import Constants.Padding;
 import Constants.Sizes;
-import Server.Datapoints;
 
 import java.awt.GridBagLayout;
 import java.awt.CardLayout;
@@ -14,7 +13,7 @@ import java.io.IOException;
 
 public class sideNavView extends JPanel{
     JPanel cards;
-    sideNav buttonPane = new sideNav(this);
+    sideNav buttonPane;
 
     public void changeCard(String cardName){
         CardLayout cl = (CardLayout)(cards.getLayout());
@@ -26,7 +25,7 @@ public class sideNavView extends JPanel{
         buttonPane.setSelected(nameOfPage);
     }
 
-    public sideNavView() throws ClassNotFoundException, IOException{
+    public sideNavView(Page[][] pages) throws ClassNotFoundException, IOException{
         setOpaque(false);
         setSize(Sizes.USABLE_WINDOW_SIZE);
         setBorder(Padding.MAIN_VIEW_PORT);
@@ -36,11 +35,12 @@ public class sideNavView extends JPanel{
         cards = new JPanel(new CardLayout());
         cards.setBorder(Padding.SIDE_NAV_VIEW);
         cards.setOpaque(false);
-        for(Datapoints.Page[] page: Datapoints.getInstance().getPages()){
-            for(Datapoints.Page pair: page){
+        for(Page[] page: pages){
+            for(Page pair: page){
                 cards.add(pair.panel, pair.name);
             }
         }
+        buttonPane = new sideNav(this, pages);
 
         add(
             buttonPane, 
