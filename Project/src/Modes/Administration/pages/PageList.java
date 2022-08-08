@@ -1,13 +1,10 @@
-package Modes.Teacher.pages;
+package Modes.Administration.pages;
 
 import Common.pages.Page;
 import Common.pages.pageView.administrivia.*;
 import Common.pages.pageView.course_information.*;
 import Common.pages.pageView.misc.bus.bus;
 import Common.pages.pageView.misc.map.map;
-import Common.pages.pageView.updates.routine.routine;
-import Components.Buttons.AccentButton;
-import Components.pageView.Box.ResultSummary;
 import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Icons;
 import Server.Datapoints;
@@ -18,32 +15,6 @@ public class PageList {
     public static Page[][] getPages() throws ClassNotFoundException, IOException{
         return new Page[][]{
             {
-                new Page(
-                    "Class Routines", 
-                    Icons.Pages.SCHEDULE, 
-                    new routine(
-                            new AccentButton("Add or remove class"), 
-                            null
-                    )
-                ), 
-                new Page(
-                    "Assignments", 
-                    Icons.Pages.ASSIGNMENT, 
-                    new ViewPortBasicPanel(
-                            "Assignment",
-                            new AccentButton("Add Assignment"), 
-                            Components.pageView.Box.MainCardListItem.Type.ASSIGNMENT
-                    )
-                ),
-                new Page(
-                    "Exams", 
-                    Icons.Pages.EXAM, 
-                    new ViewPortBasicPanel(
-                            "Exam", 
-                            new AccentButton("Add Exam"),
-                            Components.pageView.Box.MainCardListItem.Type.EXAM
-                    )
-                ),
                 new Page(
                     "Notice Board", 
                     Icons.Pages.NOTICE, 
@@ -56,27 +27,9 @@ public class PageList {
             { 
                 new Page(
                     "Resources", 
-                    Icons.Pages.RESOURCES,
+                    Icons.Pages.RESOURCES, 
                     new resources()
                 ),
-                new Page(
-                    "Results",
-                    Icons.Pages.RESULT,
-                    new ViewPortBasicPanel(
-                            "Results", 
-                            new ResultSummary(), 
-                            Components.pageView.Box.MainCardListItem.Type.RESULT
-                    )
-                ),
-                new Page(
-                    "Attendance", 
-                    Icons.Pages.ATTENDANCE, 
-                    new ViewPortBasicPanel(
-                            "Attendance",
-                            null,
-                            Components.pageView.Box.MainCardListItem.Type.ATTENDANCE
-                    )
-                )
             },
             { 
                 new Page(
@@ -85,10 +38,15 @@ public class PageList {
                     new payment()
                 ),
                 new Page(
+                    "Course Registration", 
+                    Icons.Pages.COURSE_REGISTRATION, 
+                    new course()
+                ),
+                new Page(
                     "Important Links", 
                     Icons.Pages.IMPORTANT_LINKS, 
                     new links()
-                    )
+                )
             },
             { 
                 new Page(
