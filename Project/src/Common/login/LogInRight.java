@@ -128,7 +128,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
             logInButton.requestFocus();
 
             updateEmailStatus(key.getClass());
-            // logInWithoutFetch();
+            logInWithoutFetch();
             logInWithFetch();
             return;
         }
@@ -263,7 +263,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
     private void logInWithoutFetch()
     {
-        // nextPage("mainPage");
+        nextPage("mainPage");
     }
 
     private void typing(TextField field)
