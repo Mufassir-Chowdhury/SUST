@@ -1,6 +1,8 @@
 package Server;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Vector;
 
 import javax.swing.JComponent;
@@ -11,6 +13,8 @@ import Components.pageView.Box.Line;
 import Components.pageView.Box.Title;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.Post;
+import Components.pageView.Panels.ScrollPane;
+import Components.pageView.Panels.Table;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
@@ -320,6 +324,43 @@ public class Datapoints{
             );
         }
     }
+    public static class Resource implements Serializable, Information {
+        public String title;
+        public Object[][] data;
+        public Object[] columnNames;
+        public Resource(String title, Object[][] data, Object[] columnNames){
+            this.title = title;
+            this.data = data;
+            this.columnNames = columnNames;
+        }
+        public JComponent getInformation() {
+            return new ListPanel(
+                new ScrollPane(
+                    new Table(data, columnNames)
+                ),
+                null,
+                0    
+            );
+        }
+    }
+    public static class Routine implements Serializable{
+        public LocalDate date;
+        public LocalTime startTime;
+        public LocalTime endTime;
+        public String courseCode;
+        public String department;
+        public String room;
+        public String remarks;
+        public Routine (LocalDate date, LocalTime startTime, LocalTime endTime, String courseCode, String department, String room, String remarks){
+            this.date = date;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.courseCode = courseCode;
+            this.department = department;
+            this.room = room;
+            this.remarks = remarks;
+        }
+    }
     public String[] route = {
         "Place", "Place", "Place","Place", "Place", "Place","Place"
     };
@@ -338,9 +379,6 @@ public class Datapoints{
     public String[] SEMESTER = {
         "Semester", "Semester 2"
     };
-    public Object[] TITLE_FOR_SYLLABUS_TABLE = {
-        "Title", "Description"
-    };
     public Object[][] SYLLABUS = {
         {
             "Programming Language",
@@ -353,6 +391,23 @@ public class Datapoints{
         {
             "Sorting",
             "Insertion sort, selection sort, bubble sort, merge sort, quick sort"
+        }
+    };
+    public Object[][] RESOURCES = {
+        {
+            "Resource 1",
+            "Uploader 1",
+            "Download link 1"
+        },
+        {
+            "Resource 2",
+            "Uploader 2",
+            "Download link 2"
+        },
+        {
+            "Resource 3",
+            "Uploader 3",
+            "Download link 3"
         }
     };
     
