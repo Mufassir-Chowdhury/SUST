@@ -13,18 +13,7 @@ import Constants.Sizes;
 
 public class paymentPage extends ListPanel {
     public paymentPage(){
-        add(new Label("Mufassir Ahmad Chowdhury", Fonts.TITLE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("2019331071", Fonts.SUBTITLE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("Computer Science and Engineering", Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("2019-20", Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("01771144308", Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("mac22214u@gmail.com", Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(15));
+        add(new Profile());
         String[] semesters = {"1-2", "2-1"};
         ComboBox<String> availableSemesters = new ComboBox<>(semesters);
         availableSemesters.setMaximumSize(Sizes.TEXT_FIELD_SIZE);

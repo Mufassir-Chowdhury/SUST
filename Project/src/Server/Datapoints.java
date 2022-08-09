@@ -408,9 +408,47 @@ public class Datapoints {
             );
         }
     }
+    public static class Resource implements Serializable, Information{
+        public String title;
+        public Object[][] data;
+        public Object[] columnNames;
+        public Resource(String title, Object[][] data, Object[] columnNames) {
+            this.title = title;
+            this.data = data;
+            this.columnNames = columnNames;
+        }
+        public ListPanel getInformation() {
+            return new ListPanel(
+                new ScrollPane(
+                    new Table(data, columnNames)
+                ),
+                null,
+                0
+            );
+        }
+    }
+    public static class Routine implements Serializable{
+        public LocalDate date;
+        public LocalTime startTime;
+        public LocalTime endTime;
+        public String courseCode;
+        public String classRoom;
+        public String remarks;
+        public String department;
+        public Routine(LocalDate date, LocalTime startTime, LocalTime endTime, String courseCode, String classRoom, String remarks, String department) {
+            this.date = date;
+            this.startTime = startTime;
+            this.endTime = endTime;
+            this.courseCode = courseCode;
+            this.classRoom = classRoom;
+            this.remarks = remarks;
+            this.department = department;
+        }
+    }
     public String[] route = {
             "Place", "Place", "Place", "Place", "Place", "Place", "Place"
     };
+
     public Bus[] BUSES = {
             new Bus(1, "busName", "license", "driverName", route, "time"),
             new Bus(2, "busName", "license", "driverName", route, "time"),
@@ -426,19 +464,36 @@ public class Datapoints {
     public String[] SEMESTER = {
             "Semester", "Semester 2"
     };
-    public String[] RESOURCES = {"Syllabus",
-                                "Class Videos",
-                                "CT Questions",
-                                "Term Final Questions",
-                                "Lecture Notes",
-                                "Books",};
-    public String[] PAYMENT = {
-        "Registration Fee",
-        "Library Fine",
-        "Migration Fee",
-        "Credit Fee",
-        "Documents Fee",
-        "Apply for Transcript",
+    public Object[][] SYLLABUS = {
+        {
+            "Programming Language",
+            "Basic Concept, OverView of Programming languages, Problem solving techniques and data flow diagram"
+        },
+        {
+            "Operating System",
+            "Basic Concept, OverView of Operating systems, Problem solving techniques and data flow diagram"
+        },
+        {
+            "C-Language",
+            "Preliminaries, Arrays, Functions, Files, Pointers"
+        }
+    };
+    public Object[][] RESOURCES = {
+        {
+            "Resource 1",
+            "Uploader 1",
+            "Download Link 1"
+        },
+        {
+            "Resource 2",
+            "Uploader 2",
+            "Download Link 2"
+        },
+        {
+            "Resource 3",
+            "Uploader 3",
+            "Download Link 3"
+        }
     };
     
     public static Event[] EVENTS = null;
