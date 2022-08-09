@@ -2,6 +2,8 @@ package Components.pageView.Panels;
 
 import javax.swing.JComponent;
 import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.Component;
 
 public class ScrollPane extends JScrollPane {
@@ -10,6 +12,6 @@ public class ScrollPane extends JScrollPane {
         setAlignmentX(Component.LEFT_ALIGNMENT);
         setOpaque(false);
         getViewport().setOpaque(false);
-        setBorder(null);
+        setBorder(new EmptyBorder(0, 0, 0, 0));
     }
 }

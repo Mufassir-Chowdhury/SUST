@@ -15,16 +15,18 @@ import Server.Datapoints;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import javax.swing.JComponent;
+
 import Common.pages.pageView.misc.bus.Day;
 
 public class routine extends ViewPort{
-    public routine(){
-        super("Class Routine", null);
+    public routine(JComponent update, AccentButton button){
+        super("Class Routine", update);
 
         GridBagPanel list = new GridBagPanel();
         
         list.add(
-            new InformationPanel("Your Courses", new AccentButton("Manage Courses") , Datapoints.getInstance().COURSES), 
+            new InformationPanel("Your Courses", button , Datapoints.getInstance().COURSES), 
             GridBagPanel.GetConstant(1, 0, 0, 1, 1, 2, 1, Margins.INFORMATION_PANEL)
         );
 

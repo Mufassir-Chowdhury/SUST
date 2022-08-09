@@ -1,6 +1,8 @@
 package Server;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -13,6 +15,8 @@ import Components.pageView.Box.Line;
 import Components.pageView.Box.Title;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.Post;
+import Components.pageView.Panels.ScrollPane;
+import Components.pageView.Panels.Table;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Icons;
@@ -398,12 +402,12 @@ public class Datapoints {
         @Override
         public JComponent getInformation() {
             return new ListPanel(
-                    new Label("Bus " + busNo + " - " + busName),
-                    new Label(License + " - " + driverName, Fonts.CAPTION),
-                    0);
+                new Label("Bus " + busNo + " - " + busName),
+                new Label(License + " - " + driverName, Fonts.CAPTION),
+                0    
+            );
         }
     }
-
     public String[] route = {
             "Place", "Place", "Place", "Place", "Place", "Place", "Place"
     };
@@ -422,21 +426,21 @@ public class Datapoints {
     public String[] SEMESTER = {
             "Semester", "Semester 2"
     };
-    public String[] RESOURCES = { "Syllabus",
-            "Class Videos",
-            "CT Questions",
-            "Term Final Questions",
-            "Lecture Notes",
-            "Books", };
+    public String[] RESOURCES = {"Syllabus",
+                                "Class Videos",
+                                "CT Questions",
+                                "Term Final Questions",
+                                "Lecture Notes",
+                                "Books",};
     public String[] PAYMENT = {
-            "Registration Fee",
-            "Library Fine",
-            "Migration Fee",
-            "Credit Fee",
-            "Documents Fee",
-            "Apply for Transcript",
+        "Registration Fee",
+        "Library Fine",
+        "Migration Fee",
+        "Credit Fee",
+        "Documents Fee",
+        "Apply for Transcript",
     };
-    public String[] TITLES = { "UPDATES", "COURSE INFORMATION", "ADMINISTRIVIA", "MISCELLANEOUS" };
+    
     public static Event[] EVENTS = null;
     public String[] LINK_TITLES = null;
     public Link[][] LINKS = null;

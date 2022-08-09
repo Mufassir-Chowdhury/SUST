@@ -23,7 +23,7 @@ public class MainPage extends GridBagPanel {
 
         add(
             new DashBoard(), 
-            GridBagPanel.GetConstant(1, 2, 0, .5, 1, 1, 1, Margins.MAJOR_PANEL)
+            GridBagPanel.GetConstant(1, 2, 0, 0, 1, 1, 1, Margins.MAJOR_PANEL)
         );
 
     }

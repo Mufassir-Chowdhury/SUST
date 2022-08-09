@@ -14,14 +14,14 @@ import java.awt.event.MouseEvent;
 import Components.Card;
 import Components.Label;
 import Components.pageView.Panels.ListPanel;
+import Constants.Collections;
 import Constants.Fonts;
 import Constants.Padding;
-import Server.Datapoints;
 
 class AllPages extends ListPanel { 
     public AllPages(Main main, Page[][] pageList) throws ClassNotFoundException, IOException{
-        for(int i=0; i<Datapoints.getInstance().TITLES.length; i++){
-            Label title = new Label(Datapoints.getInstance().TITLES[i], Fonts.TITLE, Component.LEFT_ALIGNMENT);
+        for(int i=0; i<Collections.TITLES.length; i++){
+            Label title = new Label(Collections.TITLES[i], Fonts.TITLE, Component.LEFT_ALIGNMENT);
             title.setBorder(Padding.TITLE_LINE_HEIGHT);
             
             Box line = Box.createHorizontalBox();
