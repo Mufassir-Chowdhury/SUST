@@ -1,0 +1,56 @@
+{
+    "ORGANIZATION_LINKS": [
+        {
+            "title": "IQAC-SUST",
+            "url": "https://iqacsust.org/"
+        },
+        {
+            "title": "IQAC-SUST",
+            "url": "https://iqacsust.org/"
+        },
+        {
+            "title": "ACM SUST",
+            "url": "https://sustsc.acm.org/"
+        },
+        {
+            "title": "SUSTian View",
+            "url": "https://www.facebook.com/groups/1576654242498653/"
+        }
+    ],
+    "FACEBOOK_LINKS": [
+        {
+            "title": "Amra SUSTian",
+            "url": "https://www.facebook.com/groups/AMRASUSTIAN"
+        },
+        {
+            "title": "Amra SUSTian",
+            "url": "https://www.facebook.com/groups/AMRASUSTIAN"
+        }
+    ],
+    "OFFICIAL_LINKS": [
+        {
+            "title": "SUST",
+            "url": "https://www.sust.edu/"
+        },
+        {
+            "title": "SUST",
+            "url": "https://www.sust.edu/"
+        },
+        {
+            "title": "E-Payment",
+            "url": "https://epayment.sust.edu/"
+        },
+        {
+            "title": "Services",
+            "url": "https://services.student.sust.edu/"
+        },
+        {
+            "title": "Library",
+            "url": "http://library.sust.edu/"
+        },
+        {
+            "title": "Course Registration",
+            "url": "http://services.student.sust.edu:9090/student_login.jsp"
+        }
+    ]
+}

@@ -2,11 +2,14 @@ package Server;
 
 import java.io.*;
 import java.net.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Vector;
 
-import Components.Connect;
+
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
+
 import Server.Datapoints.Courses;
 import Server.Datapoints.Event;
 import Server.Datapoints.Link;
@@ -15,31 +18,34 @@ import Server.Datapoints.Notification;
 import Server.Datapoints.Student;
 
 public class Server {
-    
-    public static  String[] LINK_TITLES = {
-        "OFFICIAL_LINKS",
-        "ORGANIZATION_LINKS",
-        "FACEBOOK_LINKS"
-    };
+
+    public static Vector<String> LINK_TITLES = new Vector<>();
+
+    // public static  String[] LINK_TITLES = {
+    //     "OFFICIAL_LINKS",
+    //     "ORGANIZATION_LINKS",
+    //     "FACEBOOK_LINKS"
+    // };
 
     
+    public static Vector<Vector<Link>> LINKS = new Vector<>();
     
-    
-    public static Link[][] LINKS = {
-        {
-            new Link("SUST", "https://www.sust.edu/"),
-            new Link("E-Payment", "https://epayment.sust.edu/"),
-            new Link("Services", "https://services.student.sust.edu/"),
-            new Link("Library", "http://library.sust.edu/"),
-            new Link("Course Registration", "http://services.student.sust.edu:9090/student_login.jsp"),
-        },{
-            new Link("IQAC-SUST", "https://iqacsust.org/"),
-            new Link("ACM SUST", "https://sustsc.acm.org/"),
-        },{
-            new Link("SUSTian View", "https://www.facebook.com/groups/1576654242498653/"),
-            new Link("Amra SUSTian", "https://www.facebook.com/groups/AMRASUSTIAN"),
-        }
-    };
+    // public static Link[][] LINKS = {
+    //     {
+    //         new Link("SUST", "https://www.sust.edu/"),
+    //         new Link("E-Payment", "https://epayment.sust.edu/"),
+    //         new Link("Services", "https://services.student.sust.edu/"),
+    //         new Link("Library", "http://library.sust.edu/"),
+    //         new Link("Course Registration", "http://services.student.sust.edu:9090/student_login.jsp"),
+    //     },{
+    //         new Link("IQAC-SUST", "https://iqacsust.org/"),
+    //         new Link("ACM SUST", "https://sustsc.acm.org/"),
+    //     },{
+    //         new Link("SUSTian View", "https://www.facebook.com/groups/1576654242498653/"),
+    //         new Link("Amra SUSTian", "https://www.facebook.com/groups/AMRASUSTIAN"),
+    //     }
+    // };
+
     public static Event[] EVENTS = {
         new Event("SUSTian Event 1", "1st April", "This is event 1", "SUST", "This is event 1", 0, 0),
         new Event("SUSTian Event 2", "2nd April", "This is event 2", "SUST", "This is event 2", 0, 0),
@@ -124,25 +130,46 @@ public class Server {
     public void startServer() {
 
         try {
-            Experiment ex = new Experiment();
+            fetchLinks();
             echoServer = new ServerSocket(port);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println(e);
-        }   
+        }
 
-        System.out.println( "Waiting for connections. Only one connection is allowed." );
+        System.out.println("Waiting for connections. Only one connection is allowed.");
 
-        while ( true ) {
+        while (true) {
             try {
                 clientSocket = echoServer.accept();
                 ServerConnection oneConnection = new ServerConnection(clientSocket, this);
                 oneConnection.run();
-            }   
-            catch (IOException e) {
+            } catch (IOException e) {
                 System.out.println(e);
             }
         }
+    }
+
+    public void fetchLinks() throws FileNotFoundException {
+        
+        GsonBuilder c = new GsonBuilder();
+        Gson d = c.create();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("links.json"));
+        
+        Map<String, Vector<Link>> links = new HashMap<>();
+        
+        links = d.fromJson(bufferedReader, new TypeToken<Map<String, Vector<Link>>>() {}.getType());
+
+        Vector<String> titleList = new Vector<>();
+        Vector<Vector<Link>> linkList = new Vector<>();
+
+        links.forEach((title, link) -> 
+        {
+            titleList.add(title);
+            linkList.add(link);
+        });
+
+        Server.LINK_TITLES = titleList;
+        Server.LINKS = linkList;
     }
 }
 
@@ -161,39 +188,8 @@ class ServerConnection {
             System.out.println(e);
         }
     }
-    void fetchData(){
-        Connect c = new Connect();
-        ArrayList<Link[]> links = new ArrayList<>();
-        ArrayList<String> list = new ArrayList<>();
-        String query = "select * from link_titles;";
-        try {
-            ResultSet rs = c.s.executeQuery(query);
-            while (rs.next()) {
-                String element = rs.getString("titles");
-                list.add(element);
-            }
 
-            Server.LINK_TITLES = list.toArray(new String[list.size()]);
-
-            for (String key : Server.LINK_TITLES) {
-                query = "select * from links where linker = '" + key + "';";
-                ResultSet rss = c.s.executeQuery(query);
-
-                ArrayList<Link> element = new ArrayList<Link>();
-                while (rss.next()) {
-                    element.add(new Link(rss.getString("title"), rss.getString("url")));
-                }
-                links.add(element.toArray(new Link[element.size()]));
-            }
-
-            Server.LINKS = links.toArray(new Link[links.size()][]);
-        } catch (SQLException e2) {
-            e2.printStackTrace();
-        }
-    }
-
-    public void run() {
-        // fetchData();
+    public void run() throws FileNotFoundException {
 
         try {
             oos.writeObject(Server.LINKS);
