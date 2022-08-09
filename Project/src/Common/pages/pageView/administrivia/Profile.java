@@ -1,26 +1,44 @@
 package Common.pages.pageView.administrivia;
 
-import Components.Label;
-import Components.pageView.Panels.ListPanel;
-import Constants.Fonts;
-
 import java.awt.Component;
 
-import javax.swing.Box;
+import Components.pageView.Panels.ListPanel;
+import Components.pageView.Panels.Table;
 
 public class Profile extends ListPanel {
+    public static String[] columnNames = {
+        "Field",
+        "Value"
+    };
     public Profile(){
-        add(new Label("Mufassir Ahmad Chowdhury", Fonts.TITLE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("2019331073", Fonts.SUBTITLE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("Computer Science and Engineering", Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("2019-20", Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("01771144308", Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(5));
-        add(new Label("mac22214u@gmail.com", Fonts.BODY_LARGE, Component.LEFT_ALIGNMENT));
-        add(Box.createVerticalStrut(15));
+        Object[][] data = {
+            {
+                "Name",
+                "Mufassir Ahmad Chowdhury"
+            },
+            {
+                "Registration Number",
+                "2019331073"
+            },
+            {
+                "Department",
+                "Computer Science and Engineering"
+            },
+            {
+                "Session",
+                "2019-2020"
+            },
+            {
+                "Mobile",
+                "01771144308"
+            },
+            {
+                "Email",
+                "mac22214u@gmail.com"
+            }
+        };
+        
+        add(new Table(data, columnNames));
+        setAlignmentX(Component.LEFT_ALIGNMENT);
     }
 }

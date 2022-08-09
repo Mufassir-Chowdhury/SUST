@@ -1,6 +1,8 @@
 package Common.pages.pageView.administrivia;
 
 import Components.Card;
+import Components.Payment;
+import Components.Buttons.AccentButton;
 import Components.pageView.Panels.TilesPanel;
 import Components.pageView.Panels.ViewPortPanel;
 import Constants.Collections;
@@ -13,20 +15,19 @@ import java.awt.event.MouseAdapter;
 
 public class payment extends ViewPortPanel {
     public payment(){
-        super("Payment", null);
+        super("Payment", new AccentButton("See payment history"));
         TilesPanel list = new TilesPanel(2, 3, Padding.CARD_SPACING_LONG);
         
-        for(String payment: Collections.PAYMENT){
-            Card card = new Card(payment, Icons.Pages.PAYMENT);
+        for(Payment payment: Collections.PAYMENT){
+            Card card = new Card(payment.title, Icons.Pages.PAYMENT);
             list.add(card);
             card.addMouseListener(new MouseAdapter(){
                 @Override
                 public void mouseClicked(MouseEvent e){
-                    getTitle().setText("Payment > " + payment);
-                    paymentPage individualExam = new paymentPage();
-                    panel.add(individualExam, payment);
+                    getTitle().setText("Payment > " + payment.title);
+                    panel.add(payment.page, payment.title);
                     CardLayout cl = (CardLayout)(panel.getLayout());
-                    cl.show(panel, payment);
+                    cl.show(panel, payment.title);
                 }
             });
         }

@@ -1,5 +1,7 @@
 package Components.pageView.Panels;
 
+import java.awt.Component;
+
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
@@ -9,6 +11,7 @@ import Constants.Fonts;
 public class Table extends JTable {
     public Table(Object[][] data, Object[] columnNames) {
         super(data, columnNames);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
         setFillsViewportHeight(true);
         setOpaque(false);
         setShowGrid(false);
