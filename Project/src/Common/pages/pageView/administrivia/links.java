@@ -1,6 +1,7 @@
 package Common.pages.pageView.administrivia;
 
 import javax.swing.Box;
+import javax.swing.JComponent;
 
 import java.awt.Desktop;
 import java.awt.event.MouseAdapter;
@@ -20,8 +21,8 @@ import Server.Datapoints;
 
 public class links extends ViewPort {
 
-    public links() throws ClassNotFoundException, IOException {
-        super("Links", null);
+    public links(JComponent component) throws ClassNotFoundException, IOException {
+        super("Links", component);
 
         ListPanel list = new ListPanel();
 

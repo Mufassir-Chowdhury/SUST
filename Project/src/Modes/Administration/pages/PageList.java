@@ -6,9 +6,12 @@ import Common.pages.pageView.course_information.*;
 import Common.pages.pageView.misc.bus.bus;
 import Common.pages.pageView.misc.map.map;
 import Components.Buttons.AccentButton;
+import Components.Buttons.EventButton;
+import Components.Buttons.LinkButton;
+import Components.Buttons.NoticeButton;
+import Components.Buttons.RegisterProfile;
 import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Icons;
-import Modes.Administration.pages.updates.NoticeButton;
 import Server.Datapoints;
 
 import java.io.IOException;
@@ -48,7 +51,9 @@ public class PageList {
                 new Page(
                     "Important Links", 
                     Icons.Pages.IMPORTANT_LINKS, 
-                    new links()
+                    new links(
+                        new LinkButton()
+                    )
                 )
             },
             { 
@@ -64,7 +69,7 @@ public class PageList {
                     Icons.Pages.STUDENT_INFO, 
                     new ViewPortBasicPanel(
                             "People", 
-                            new AccentButton("Register new profile"),
+                            new RegisterProfile(),
                             Datapoints.STUDENTS
                     )
                 ),
@@ -73,7 +78,7 @@ public class PageList {
                     Icons.Pages.EVENTS, 
                     new ViewPortBasicPanel(
                             "Events", 
-                            new AccentButton("Add an event"),
+                            new EventButton(),
                             Datapoints.EVENTS
                     )
                 ),

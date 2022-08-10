@@ -1,25 +1,23 @@
-package Modes.Administration.pages.updates;
+package Components.Buttons;
 
-import Components.Background;
 import Components.Label;
-import Components.Buttons.AccentButton;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
-import Constants.Icons;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import java.awt.Component;
 
 public class NoticeButton extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel{
-        public Dialog(){
+        public Dialog(JDialog dialog){
             add(Box.createVerticalStrut(50));
 
             TilesPanel tilesPanel = new TilesPanel(2, 2, 10);
@@ -29,10 +27,16 @@ public class NoticeButton extends AccentButton implements ActionListener {
             tilesPanel.add(new TextField("Write Message", TYPE.PLAIN));
             tilesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(tilesPanel);
-            
+            add(new FileButton("Choose a file"));
             add(Box.createVerticalGlue());
             AccentButton proceed = new AccentButton("Proceed");
             proceed.setAlignmentX(Component.CENTER_ALIGNMENT);
+            proceed.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    dialog.dispose();
+                }
+            });
             add(proceed);
         }
     }
@@ -43,13 +47,16 @@ public class NoticeButton extends AccentButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(
-            new Background(), 
-            new Dialog(), 
-            "Add A Notice",
-            JOptionPane.OK_CANCEL_OPTION,
-            Icons.INFO
-        );
+        final JDialog dialog = new JDialog();
+        final JOptionPane optionPane = new JOptionPane(new Dialog(dialog), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+
+        dialog.setTitle("Add an event");
+        dialog.setModal(true);
+        dialog.setContentPane(optionPane);
+        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        dialog.pack();
+
+        dialog.setVisible(true);
 
     }
 }

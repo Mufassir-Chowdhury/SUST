@@ -6,7 +6,9 @@ import Common.pages.pageView.course_information.*;
 import Common.pages.pageView.misc.bus.bus;
 import Common.pages.pageView.misc.map.map;
 import Common.pages.pageView.updates.routine.routine;
-import Components.Buttons.AccentButton;
+import Components.Buttons.AssignmentButton;
+import Components.Buttons.ClassButton;
+import Components.Buttons.ExamButton;
 import Components.pageView.Box.ResultSummary;
 import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Icons;
@@ -22,7 +24,7 @@ public class PageList {
                     "Class Routines", 
                     Icons.Pages.SCHEDULE, 
                     new routine(
-                            new AccentButton("Add or remove class"), 
+                            new ClassButton(), 
                             null
                     )
                 ), 
@@ -31,7 +33,7 @@ public class PageList {
                     Icons.Pages.ASSIGNMENT, 
                     new ViewPortBasicPanel(
                             "Assignment",
-                            new AccentButton("Add Assignment"), 
+                            new AssignmentButton(), 
                             Components.pageView.Box.MainCardListItem.Type.ASSIGNMENT
                     )
                 ),
@@ -40,7 +42,7 @@ public class PageList {
                     Icons.Pages.EXAM, 
                     new ViewPortBasicPanel(
                             "Exam", 
-                            new AccentButton("Add Exam"),
+                            new ExamButton(),
                             Components.pageView.Box.MainCardListItem.Type.EXAM
                     )
                 ),
@@ -81,14 +83,11 @@ public class PageList {
             },
             { 
                 new Page(
-                    "Payment", 
-                    Icons.Pages.PAYMENT, 
-                    new payment()
-                ),
-                new Page(
                     "Important Links", 
                     Icons.Pages.IMPORTANT_LINKS, 
-                    new links()
+                    new links(
+                        null
+                    )
                     )
             },
             { 
