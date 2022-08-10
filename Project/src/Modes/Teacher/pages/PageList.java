@@ -49,6 +49,7 @@ public class PageList {
                     Icons.Pages.NOTICE, 
                     new ViewPortBasicPanel(
                             "Notices", 
+                            null,
                             Datapoints.NOTICES
                     )
                 )
@@ -94,13 +95,14 @@ public class PageList {
                 new Page(
                     "Bus Schedule", 
                     Icons.Pages.BUS_SCHEDULE, 
-                    new bus()
+                    new bus(null)
                 ),
                 new Page(
                     "People", 
                     Icons.Pages.STUDENT_INFO, 
                     new ViewPortBasicPanel(
                             "People", 
+                            null,
                             Datapoints.STUDENTS
                     )
                 ),
@@ -109,6 +111,7 @@ public class PageList {
                     Icons.Pages.EVENTS, 
                     new ViewPortBasicPanel(
                             "Events", 
+                            null,
                             Datapoints.EVENTS
                     )
                 ),

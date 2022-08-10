@@ -5,6 +5,7 @@ import Common.pages.pageView.administrivia.*;
 import Common.pages.pageView.course_information.*;
 import Common.pages.pageView.misc.bus.bus;
 import Common.pages.pageView.misc.map.map;
+import Components.Buttons.AccentButton;
 import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Icons;
 import Server.Datapoints;
@@ -20,6 +21,7 @@ public class PageList {
                     Icons.Pages.NOTICE, 
                     new ViewPortBasicPanel(
                             "Notices", 
+                            new AccentButton("Post New Notice"),
                             Datapoints.NOTICES
                     )
                 )
@@ -52,13 +54,16 @@ public class PageList {
                 new Page(
                     "Bus Schedule", 
                     Icons.Pages.BUS_SCHEDULE, 
-                    new bus()
+                    new bus(
+                        new AccentButton("Change bus schedule")
+                    )
                 ),
                 new Page(
                     "People", 
                     Icons.Pages.STUDENT_INFO, 
                     new ViewPortBasicPanel(
                             "People", 
+                            new AccentButton("Register new profile"),
                             Datapoints.STUDENTS
                     )
                 ),
@@ -67,6 +72,7 @@ public class PageList {
                     Icons.Pages.EVENTS, 
                     new ViewPortBasicPanel(
                             "Events", 
+                            new AccentButton("Add an event"),
                             Datapoints.EVENTS
                     )
                 ),

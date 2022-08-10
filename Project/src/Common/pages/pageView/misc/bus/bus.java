@@ -1,5 +1,7 @@
 package Common.pages.pageView.misc.bus;
 
+import javax.swing.JComponent;
+
 import Components.Label;
 import Components.pageView.Box.Title;
 import Components.pageView.Panels.Column;
@@ -11,8 +13,8 @@ import Constants.Margins;
 import Server.Datapoints;
 
 public class bus extends ViewPort {
-    public bus(){
-        super("Bus Schedule", null);
+    public bus(JComponent component){
+        super("Bus Schedule", component);
 
         GridBagPanel list = new GridBagPanel();
         

@@ -31,6 +31,7 @@ public class PageList {
                     Icons.Pages.ASSIGNMENT, 
                     new ViewPortBasicPanel(
                             "Assignment", 
+                            null,
                             Components.pageView.Box.MainCardListItem.Type.ASSIGNMENT
                     )
                 ),
@@ -39,6 +40,7 @@ public class PageList {
                     Icons.Pages.EXAM, 
                     new ViewPortBasicPanel(
                             "Exam", 
+                            null,
                             Components.pageView.Box.MainCardListItem.Type.EXAM
                     )
                 ),
@@ -46,7 +48,8 @@ public class PageList {
                     "Notice Board", 
                     Icons.Pages.NOTICE, 
                     new ViewPortBasicPanel(
-                            "Notices", 
+                            "Notices",
+                            null, 
                             Datapoints.NOTICES
                     )
                 )
@@ -97,13 +100,14 @@ public class PageList {
                 new Page(
                     "Bus Schedule", 
                     Icons.Pages.BUS_SCHEDULE, 
-                    new bus()
+                    new bus(null)
                 ),
                 new Page(
                     "People", 
                     Icons.Pages.STUDENT_INFO, 
                     new ViewPortBasicPanel(
                             "People", 
+                            null,
                             Datapoints.STUDENTS
                     )
                 ),
@@ -112,6 +116,7 @@ public class PageList {
                     Icons.Pages.EVENTS, 
                     new ViewPortBasicPanel(
                             "Events", 
+                            null,
                             Datapoints.EVENTS
                     )
                 ),
