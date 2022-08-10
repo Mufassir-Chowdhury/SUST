@@ -50,27 +50,4 @@ public class links extends ViewPort {
         }
         add(new ScrollPane(list));
     }
-
-//     //don't call this function
-//     private void makeDatabaseFromStatic()
-//     {
-//         for (int i = 0; i < Datapoints.getInstance().LINKS.length; i++) {
-//             add(new Label(Server.LINK_TITLES[i], Fonts.TITLE));
-//             for (Datapoints.Link link : Datapoints.getInstance().LINKS[i]) {
-//                 String command="insert into links values('"+Datapoints.getInstance().LINK_TITLES[i]+"','"+link.title+"','"+
-//                 link.url + "');";
-//                 String query = "select * from links where linker = '" + Datapoints.getInstance().LINK_TITLES[i] + "' and title = '"
-//                         + link.title + "' and url = '" + link.url + "';";
-//                 try {
-//                 ResultSet exist = c.s.executeQuery(query);
-//                 if (!exist.next())
-//                     c.s.executeUpdate(command);
-//                 }
-//                 catch (Exception ee) {
-//                     ee.printStackTrace();
-//                 }
-//             }
-//         }
-        
-//     }
 }

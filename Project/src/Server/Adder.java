@@ -8,6 +8,7 @@ import com.google.gson.reflect.TypeToken;
 
 import Server.Datapoints.Event;
 import Server.Datapoints.Link;
+import Server.Datapoints.Student;
 
 public class Adder {
     static GsonBuilder builder = new GsonBuilder();
@@ -58,6 +59,75 @@ public class Adder {
         writer.close();
     }
 
-    // public static void addCources()
-    // {
+    public static void addNewStudent(Student student) throws IOException
+    {
+        {
+            bufferedReader = new BufferedReader(
+                    new FileReader("students.json"));
+
+            Map<String, Student> students = new HashMap<>();
+            students = gson.fromJson(bufferedReader, new TypeToken<Map<String, Student>>() {
+            }.getType());
+
+            if (students == null)
+                students = new HashMap<>();
+
+            if (students.containsKey(student.registration))
+                return;
+
+            students.put(student.registration, student);
+
+            writer = new FileWriter("students.json");
+            writer.write(gson.toJson(students));
+            writer.close();
+        }
+        
+        {
+            bufferedReader = new BufferedReader(
+                    new FileReader("password.json"));
+
+            Map<String, String> passwords = new HashMap<>();
+            passwords = gson.fromJson(bufferedReader, new TypeToken<Map<String, String>>() {
+            }.getType());
+
+            if (passwords == null)
+                passwords = new HashMap<>();
+
+            passwords.put(student.registration, student.registration);
+
+            writer = new FileWriter("password.json");
+            writer.write(gson.toJson(passwords));
+            writer.close();
+        }
+
+        {
+            bufferedReader = new BufferedReader(
+                    new FileReader("peoples.json"));
+
+            Map<String, Map<String, Set<String>>> sortedStudents = new HashMap<>();
+
+            sortedStudents = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Set<String>>>>() {
+            }.getType());
+
+            if (sortedStudents == null)
+                sortedStudents = new HashMap<>();
+
+            String department = student.department;
+            String session = student.session;
+
+            if (sortedStudents.containsKey(department) == false)
+                sortedStudents.put(department, new HashMap<>());
+
+            if (sortedStudents.get(department).containsKey(session) == false)
+                sortedStudents.get(department).put(session, new HashSet<>());
+
+            sortedStudents.get(department).get(session).add(student.registration);
+
+            writer = new FileWriter("peoples.json");
+            writer.write(gson.toJson(sortedStudents));
+            writer.close();
+        }
+    } 
+
+    
 }

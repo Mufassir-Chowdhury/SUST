@@ -78,7 +78,10 @@ public class Datapoints {
     public enum Department {
         CSE("Computer Science and Engineering", 331, 12.5, 13.5),
         SWE("Software Engineering", 123, 12.5, 13.5),
-        EEE("Electrical and Electronic Engineering", 234, 12.5, 13.5);
+        PHY("Physics", 132, 12.5, 13.5),
+        SOC("Sociology", 232, 12.5, 13.5),
+        CEP("Chemical Engineering and Polymer Science", 332, 12.5, 13.5),
+        EEE("Electrical and Electronics Engineering", 338, 12.5, 13.5);
 
         private static final Map<Integer, Department> ByDeptCode = new HashMap<>();
 
@@ -110,28 +113,31 @@ public class Datapoints {
             return ByDeptCode.get(deptCode).theoryFee;
         }
 
-        public static double deptLabFee(int deptCode){
+        public static double deptLabFee(int deptCode) {
             return ByDeptCode.get(deptCode).labFee;
         }
     }
 
+
     public static class Student implements Serializable, Tilable, JsonConversion {
         public transient BufferedImage DP;
-        public String registration, name, email, email2, number, blood, birthDay, hometown;
-        public int deptCode;
+        public String registration, name, email, email2, number, blood, birthDay, hometown, session;
+        public int deptCode, semester;
         public String department;
-        public Map<String, String[]> courses;
+        public Map<String, String[]> courses = new HashMap<>();
 
         
 
         public Student(String registration, String name, String email, String number, String blood, String birthDay,
-                String hometown, String[] regular, String[] drop) {
+                String hometown, String session, int semester, String[] regular, String[] drop) {
 
             this.DP = Icons.DP;
             this.deptCode = getDeptCode(registration);
             this.department = Department.deptFullForm(this.deptCode);
             this.registration = registration;
             this.name = name;
+            this.session = session;
+            this.semester = semester;
             this.email = email;
             this.number = number;
             this.blood = blood;
