@@ -1,17 +1,19 @@
 package Common.pages.pageView.administrivia;
 
-import java.awt.Component;
+import Components.Label;
+import Components.pageView.Panels.TilesPanel;
+import Constants.Colors;
+import java.awt.Graphics;
 
-import Components.pageView.Panels.ListPanel;
-import Components.pageView.Panels.Table;
-
-public class Profile extends ListPanel {
+public class Profile extends TilesPanel {
     public static String[] columnNames = {
         "Field",
         "Value"
     };
     public Profile(){
-        Object[][] data = {
+        super(6, 2, 0, 0);
+
+        String[][] data = {
             {
                 "Name",
                 "Mufassir Ahmad Chowdhury"
@@ -37,8 +39,14 @@ public class Profile extends ListPanel {
                 "mac22214u@gmail.com"
             }
         };
-        
-        add(new Table(data, columnNames));
-        setAlignmentX(Component.LEFT_ALIGNMENT);
+        for(int i=0; i<data.length; i++){
+            add(new Label(data[i][0]));
+            add(new Label(data[i][1]));
+        }
+    }
+    @Override
+    protected void paintBorder(Graphics g) {
+        g.setColor(Colors.Theme.ACCENT_FILL);
+        g.fillRoundRect(0, getHeight() -1, getWidth(), 2, 0, 0);
     }
 }

@@ -3,55 +3,40 @@ package Common.pages.pageView.administrivia;
 import java.awt.Component;
 
 import javax.swing.Box;
-import javax.swing.DefaultCellEditor;
 
+import Components.Label;
 import Components.Buttons.AccentButton;
 import Components.InputFields.ComboBox;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
-import Components.pageView.Panels.Table;
+import Components.pageView.Panels.TilesPanel;
+import Constants.Sizes;
 
 public class CreditFee extends ListPanel {
+    String[] semesters = {"1-2", "2-1"};
     public CreditFee(){
         add(new Profile());
-        String[] semesters = {"1-2", "2-1"};
-
         add(Box.createVerticalStrut(50));
-        Object[][] data = {
-            {
-                "Semester",
-                "Select a semester"
-            }
-        };
-        Object[][] data2 = {
-            {
-                "Number of Credits (Theory)",
-                "Enter number of credits"
-            },
-            {
-                "Number of Credits (Lab)",
-                "Enter number of credits"
-            }
-        };
-        Object[][] amount = {
-            {
-                "Total amount",
-                "0 BDT"
-            }
-        };
+
+        TilesPanel tilesPanel = new TilesPanel(4, 2, 0);
+        tilesPanel.add(new Label("Semester"));
+        ComboBox<String> comboBox = new ComboBox<>(semesters);
+        comboBox.setMaximumSize(Sizes.TEXT_FIELD_SIZE);
+        tilesPanel.add(comboBox);
+        tilesPanel.add(new Label("Number of Credits (Theory)"));
+        tilesPanel.add(new TextField("Enter number of credits", TYPE.PLAIN));
+        tilesPanel.add(new Label("Number of Credits (Theory)"));
+        tilesPanel.add(new TextField("Enter number of credits", TYPE.PLAIN));
+        tilesPanel.add(new Label("Total Amount"));
+        tilesPanel.add(new Label("0 BDT"));
         
-        Table table = new Table(data, Profile.columnNames);
-        table.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(new ComboBox<>(semesters)));
-        table.setEnabled(true);
-        add(table);
-        Table table2 = new Table(data2, Profile.columnNames);
-        table2.getColumnModel().getColumn(1).setCellEditor(new DefaultCellEditor(new TextField("Enter number of credits", TYPE.PLAIN)));
-        table2.setEnabled(true);
-        add(table2);
-        add(new Table(amount, Profile.columnNames));
+        add(tilesPanel);
+
+        add(Box.createVerticalStrut(10));
         AccentButton proceed = new AccentButton("Proceed");
         proceed.setAlignmentX(Component.LEFT_ALIGNMENT);
         add(proceed);
+        add(Box.createVerticalGlue());
     }
 }
