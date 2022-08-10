@@ -24,13 +24,15 @@ public class RegisterProfile extends AccentButton implements ActionListener {
             tilesPanel.add(new TextField("Write Registration", TYPE.PLAIN));
             tilesPanel.add(new Label("Name"));
             tilesPanel.add(new TextField("Write Name", TYPE.PLAIN));
-            tilesPanel.add(new Label("Number"));
+            tilesPanel.add(new Label("Session (20xx-xx)"));
+            tilesPanel.add(new TextField("Write Session", TYPE.PLAIN));
+            tilesPanel.add(new Label("Number (Without +88)"));
             tilesPanel.add(new TextField("Write Number", TYPE.PLAIN));
             tilesPanel.add(new Label("Email"));
             tilesPanel.add(new TextField("Write Email", TYPE.PLAIN));
-            tilesPanel.add(new Label("Blood Group"));
+            tilesPanel.add(new Label("Blood Group (X+/-)"));
             tilesPanel.add(new TextField("Write Blood Group", TYPE.PLAIN));
-            tilesPanel.add(new Label("Birthday"));
+            tilesPanel.add(new Label("Birthday (DD/MM/YYYY)"));
             tilesPanel.add(new TextField("Write Birthday", TYPE.PLAIN));
             tilesPanel.add(new Label("Hometown"));
             tilesPanel.add(new TextField("Write Hometown", TYPE.PLAIN));

@@ -2,7 +2,7 @@ package Common.pages.pageView.administrivia;
 
 import Components.Card;
 import Components.Payment;
-import Components.Buttons.AccentButton;
+import Components.Buttons.PaymentHistoryButton;
 import Components.pageView.Panels.TilesPanel;
 import Components.pageView.Panels.ViewPortPanel;
 import Constants.Collections;
@@ -15,7 +15,7 @@ import java.awt.event.MouseAdapter;
 
 public class payment extends ViewPortPanel {
     public payment(){
-        super("Payment", new AccentButton("See payment history"));
+        super("Payment", new PaymentHistoryButton());
         TilesPanel list = new TilesPanel(2, 3, Padding.CARD_SPACING_LONG);
         
         for(Payment payment: Collections.PAYMENT){
