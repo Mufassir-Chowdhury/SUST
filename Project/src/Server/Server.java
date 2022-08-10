@@ -2,13 +2,6 @@ package Server;
 
 import java.io.*;
 import java.net.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Vector;
-
-
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 
 import Server.Datapoints.Courses;
 import Server.Datapoints.Event;
@@ -20,38 +13,11 @@ import Server.Datapoints.Student;
 public class Server {
 
     public static String[] LINK_TITLES;
-
-    // public static  String[] LINK_TITLES = {
-    //     "OFFICIAL_LINKS",
-    //     "ORGANIZATION_LINKS",
-    //     "FACEBOOK_LINKS"
-    // };
-
     
     public static Link[][] LINKS;
-    
-    // public static Link[][] LINKS = {
-    //     {
-    //         new Link("SUST", "https://www.sust.edu/"),
-    //         new Link("E-Payment", "https://epayment.sust.edu/"),
-    //         new Link("Services", "https://services.student.sust.edu/"),
-    //         new Link("Library", "http://library.sust.edu/"),
-    //         new Link("Course Registration", "http://services.student.sust.edu:9090/student_login.jsp"),
-    //     },{
-    //         new Link("IQAC-SUST", "https://iqacsust.org/"),
-    //         new Link("ACM SUST", "https://sustsc.acm.org/"),
-    //     },{
-    //         new Link("SUSTian View", "https://www.facebook.com/groups/1576654242498653/"),
-    //         new Link("Amra SUSTian", "https://www.facebook.com/groups/AMRASUSTIAN"),
-    //     }
-    // };
 
-    public static Event[] EVENTS = {
-        new Event("SUSTian Event 1", "1st April", "This is event 1", "SUST", "This is event 1", 0, 0),
-        new Event("SUSTian Event 2", "2nd April", "This is event 2", "SUST", "This is event 2", 0, 0),
-        new Event("SUSTian Event 3", "3rd April", "This is event 3", "SUST", "This is event 3", 0, 0),
-        new Event("SUSTian Event 4", "4th April", "This is event 4", "SUST", "This is event 4", 0, 0),
-    };
+    public static Event[] EVENTS;
+    
     public static Courses[] COURSES = {
         new Courses("CSE101", "Data Structure", "3", "A", 4.00f, 20, 0, true, 0),
         new Courses("CSE102", "Algorithm", "3", "A", 4.00f, 15, 5, true, 0),
@@ -130,7 +96,6 @@ public class Server {
     public void startServer() {
 
         try {
-            fetchLinks();
             echoServer = new ServerSocket(port);
         } catch (IOException e) {
             System.out.println(e);
@@ -147,27 +112,6 @@ public class Server {
                 System.out.println(e);
             }
         }
-    }
-
-    public void fetchLinks() throws FileNotFoundException {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("links.json"));
-
-        Map<String, Link[]> links = new HashMap<>();
-        links = gson.fromJson(bufferedReader, new TypeToken<Map<String, Link[]>>(){}.getType());
-
-        Vector<String> titleList = new Vector<>();
-        Vector<Link[]> linkList = new Vector<>();
-
-        links.forEach((title, link) -> 
-        {
-            titleList.add(title);
-            linkList.add(link);
-        });
-
-        Server.LINK_TITLES = titleList.toArray(new String[titleList.size()]);
-        Server.LINKS = linkList.toArray(new Link[linkList.size()][]);
     }
 }
 
@@ -188,7 +132,7 @@ class ServerConnection {
     }
 
     public void run() throws FileNotFoundException {
-
+        Fetcher.fetch();
         try {
             oos.writeObject(Server.LINKS);
             oos.writeObject(Server.LINK_TITLES);
@@ -206,13 +150,16 @@ class ServerConnection {
             System.out.println(e);
         }
     }
+
     protected void finalize() {
         try {
-            System.out.println( "Connection closed." );
+            System.out.println("Connection closed.");
             oos.close();
             clientSocket.close();
         } catch (IOException e) {
             System.out.println(e);
         }
     }
+
+    
 }

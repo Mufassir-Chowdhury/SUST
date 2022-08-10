@@ -228,12 +228,12 @@ public class Datapoints {
 
             @Override
             public String toJSON() {
-                return gson.toJson(this);
+                    return gson.toJson(this);
             }
 
             @Override
             public Object fromJSON(String json) {
-                return gson.fromJson(json, (Type) this);
+                    return gson.fromJson(json, (Type) this);
             }
         }
 
@@ -288,12 +288,12 @@ public class Datapoints {
 
                 @Override
                 public String toJSON() {
-                    return gson.toJson(this);
+                            return gson.toJson(this);
                 }
 
                 @Override
                 public Object fromJSON(String json) {
-                    return gson.fromJson(json, (Type) this);
+                            return gson.fromJson(json, (Type) this);
                 }
             }
 
@@ -317,12 +317,12 @@ public class Datapoints {
 
             @Override
             public String toJSON() {
-                return gson.toJson(this);
+                    return gson.toJson(this);
             }
 
             @Override
             public Object fromJSON(String json) {
-                return gson.fromJson(json, (Type) this);
+                    return gson.fromJson(json, (Type) this);
             }
         }
 
