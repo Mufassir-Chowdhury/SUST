@@ -1,11 +1,14 @@
 package Server;
 
 import java.io.Serializable;
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
+
+import com.google.gson.*;
 
 import javax.swing.JComponent;
 import java.awt.image.BufferedImage;
@@ -22,6 +25,10 @@ import Constants.Fonts;
 import Constants.Icons;
 
 public class Datapoints {
+
+    static GsonBuilder builder = new GsonBuilder();
+    static Gson gson = builder.create();
+
     public static interface Tilable {
         public Line getListItem();
 
@@ -30,11 +37,17 @@ public class Datapoints {
         public Post getPost();
     }
 
+    public static interface JsonConversion {
+        public String toJSON();
+
+        public Object fromJSON(String json);
+    }
+
     public static interface Information {
         public JComponent getInformation();
     }
 
-    public static class Notification implements Serializable {
+    public static class Notification implements Serializable , JsonConversion {
         public String title, date;
         public Severity severity;
         public Boolean dismissable;
@@ -49,44 +62,69 @@ public class Datapoints {
             this.date = date;
             this.dismissable = dismissable;
         }
+
+        @Override
+        public String toJSON() {
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            return gson.fromJson(json, (Type) this);
+        }
     }
 
     public enum Department {
-        CSE("Computer Science and Engineering", 331),
-        SWE("Software Engineering", 123),
-        EEE("Electrical and Electronic Engineering", 234);
+        CSE("Computer Science and Engineering", 331, 12.5, 13.5),
+        SWE("Software Engineering", 123, 12.5, 13.5),
+        EEE("Electrical and Electronic Engineering", 234, 12.5, 13.5);
 
         private static final Map<Integer, Department> ByDeptCode = new HashMap<>();
 
         static {
             for (Department e : values())
-                ByDeptCode.put(e.DeptCode, e);
+                ByDeptCode.put(e.deptCode, e);
         }
 
         public final String fullForm;
-        public final int DeptCode;
+        public final int deptCode;
+        public final double theoryFee, labFee;
 
-        private Department(String fullForm, int DeptCode) {
+        private Department(String fullForm, int deptCode, double theoryFee, double labFee) {
             this.fullForm = fullForm;
-            this.DeptCode = DeptCode;
+            this.deptCode = deptCode;
+            this.theoryFee = theoryFee;
+            this.labFee = labFee;
         }
 
-        public static Department valueOfCode(int DeptCode) {
-            return ByDeptCode.get(DeptCode);
+        public static String deptFullForm(int deptCode) {
+            return ByDeptCode.get(deptCode).fullForm;
+        }
+
+        public static Department deptShortForm(int deptCode) {
+            return ByDeptCode.get(deptCode);
+        }
+
+        public static double deptTheoryFee(int deptCode) {
+            return ByDeptCode.get(deptCode).theoryFee;
+        }
+
+        public static double deptLabFee(int deptCode){
+            return ByDeptCode.get(deptCode).labFee;
         }
     }
 
-    public static class Student implements Serializable, Tilable {
+    public static class Student implements Serializable, Tilable, JsonConversion {
         public transient BufferedImage DP;
         public String registration, name, email, email2, number, blood, birthDay, hometown;
-        public int DeptCode;
-        public Department department;
+        public int deptCode;
+        public String department;
 
         public Student(String registration, String name, String email, String number, String blood, String birthDay,
                 String hometown) {
             this.DP = Icons.DP;
-            this.DeptCode = getDeptCode(registration);
-            this.department = Department.valueOfCode(this.DeptCode);
+            this.deptCode = getDeptCode(registration);
+            this.department = Department.deptFullForm(this.deptCode);
             this.registration = registration;
             this.name = name;
             this.email = email;
@@ -124,9 +162,19 @@ public class Datapoints {
                     email,
                     "+880" + number, false);
         }
+
+        @Override
+        public String toJSON() {
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            return gson.fromJson(json, (Type) this);
+        }
     }
 
-    public static class Courses implements Serializable, Information {
+    public static class Courses implements Serializable, Information, JsonConversion {
         public String code;
         public String name;
         public String credit;
@@ -137,7 +185,7 @@ public class Datapoints {
         public Boolean regular;
         public int leave;
 
-        public static class EvaluationItem implements Serializable, Tilable {
+        public static class EvaluationItem implements Serializable, Tilable, JsonConversion {
             public String courseName;
             public String title;
             public String date;
@@ -177,6 +225,16 @@ public class Datapoints {
                         "Total Marks: " + totalMarks,
                         description, true);
             }
+
+            @Override
+            public String toJSON() {
+                return gson.toJson(this);
+            }
+
+            @Override
+            public Object fromJSON(String json) {
+                return gson.fromJson(json, (Type) this);
+            }
         }
 
         public static class Assignment extends EvaluationItem {
@@ -193,7 +251,7 @@ public class Datapoints {
             }
         }
 
-        public static class Resource implements Serializable {
+        public static class Resource implements Serializable, JsonConversion {
             public static class Syllabus implements Serializable {
                 public String title;
                 public Vector<String> topics;
@@ -206,7 +264,7 @@ public class Datapoints {
                 }
             }
 
-            public static class ResourceItem implements Serializable {
+            public static class ResourceItem implements Serializable , JsonConversion{
                 public String session = null;
                 public String title;
                 public String uploader;
@@ -227,6 +285,16 @@ public class Datapoints {
                     this.date = date;
                     this.url = url;
                 }
+
+                @Override
+                public String toJSON() {
+                    return gson.toJson(this);
+                }
+
+                @Override
+                public Object fromJSON(String json) {
+                    return gson.fromJson(json, (Type) this);
+                }
             }
 
             public Syllabus syllabus;
@@ -245,6 +313,16 @@ public class Datapoints {
                 this.termFinalQuestions = termFinalQuestions;
                 this.lectureNotes = lectureNotes;
                 this.books = books;
+            }
+
+            @Override
+            public String toJSON() {
+                return gson.toJson(this);
+            }
+
+            @Override
+            public Object fromJSON(String json) {
+                return gson.fromJson(json, (Type) this);
             }
         }
 
@@ -290,9 +368,19 @@ public class Datapoints {
             return new Title(new Label("     " + name, Fonts.CAPTION),
                     new Label(regular.equals(false) ? "(Drop)" : "", Fonts.CAPTION, Colors.Theme.SECONDARY));
         }
+
+        @Override
+        public String toJSON() {
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            return gson.fromJson(json, (Type) this);
+        }
     }
 
-    public static class Link implements Serializable {
+    public static class Link implements Serializable, JsonConversion {
         public String title;
         public String url;
 
@@ -300,9 +388,19 @@ public class Datapoints {
             this.title = title;
             this.url = url;
         }
+
+        @Override
+        public String toJSON() {
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            return gson.fromJson(json, (Type) this);
+        }
     }
 
-    public static class Event implements Serializable, Tilable {
+    public static class Event implements Serializable, Tilable, JsonConversion {
         public String title;
         public String date;
         public String description;
@@ -343,9 +441,19 @@ public class Datapoints {
                     "Location: " + location,
                     description, false);
         }
+
+        @Override
+        public String toJSON() {
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            return gson.fromJson(json, (Type) this);
+        }
     }
 
-    public static class Notice implements Serializable, Tilable {
+    public static class Notice implements Serializable, Tilable, JsonConversion {
         public String title;
         public String date;
         public String description;
@@ -380,9 +488,19 @@ public class Datapoints {
                     "",
                     description, false);
         }
+
+        @Override
+        public String toJSON() {
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            return gson.fromJson(json, (Type) this);
+        }
     }
 
-    public static class Bus implements Serializable, Information {
+    public static class Bus implements Serializable, Information, JsonConversion {
         public int busNo;
         public String busName;
         public String License;
@@ -402,32 +520,53 @@ public class Datapoints {
         @Override
         public JComponent getInformation() {
             return new ListPanel(
-                new Label("Bus " + busNo + " - " + busName),
-                new Label(License + " - " + driverName, Fonts.CAPTION),
-                0    
-            );
+                    new Label("Bus " + busNo + " - " + busName),
+                    new Label(License + " - " + driverName, Fonts.CAPTION),
+                    0);
+        }
+
+        @Override
+        public String toJSON() {
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            return gson.fromJson(json, (Type) this);
         }
     }
-    public static class Resource implements Serializable, Information{
+
+    public static class Resource implements Serializable, Information, JsonConversion {
         public String title;
         public Object[][] data;
         public Object[] columnNames;
+
         public Resource(String title, Object[][] data, Object[] columnNames) {
             this.title = title;
             this.data = data;
             this.columnNames = columnNames;
         }
+
         public ListPanel getInformation() {
             return new ListPanel(
-                new ScrollPane(
-                    new Table(data, columnNames)
-                ),
-                null,
-                0
-            );
+                    new ScrollPane(
+                            new Table(data, columnNames)),
+                    null,
+                    0);
+        }
+
+        @Override
+        public String toJSON() {
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            return gson.fromJson(json, (Type) this);
         }
     }
-    public static class Routine implements Serializable{
+
+    public static class Routine implements Serializable, JsonConversion {
         public LocalDate date;
         public LocalTime startTime;
         public LocalTime endTime;
@@ -435,7 +574,9 @@ public class Datapoints {
         public String classRoom;
         public String remarks;
         public String department;
-        public Routine(LocalDate date, LocalTime startTime, LocalTime endTime, String courseCode, String classRoom, String remarks, String department) {
+
+        public Routine(LocalDate date, LocalTime startTime, LocalTime endTime, String courseCode, String classRoom,
+                String remarks, String department) {
             this.date = date;
             this.startTime = startTime;
             this.endTime = endTime;
@@ -444,7 +585,18 @@ public class Datapoints {
             this.remarks = remarks;
             this.department = department;
         }
+
+        @Override
+        public String toJSON() {
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            return gson.fromJson(json, (Type) this);
+        }
     }
+
     public String[] route = {
             "Place", "Place", "Place", "Place", "Place", "Place", "Place"
     };
@@ -465,37 +617,37 @@ public class Datapoints {
             "Semester", "Semester 2"
     };
     public Object[][] SYLLABUS = {
-        {
-            "Programming Language",
-            "Basic Concept, OverView of Programming languages, Problem solving techniques and data flow diagram"
-        },
-        {
-            "Operating System",
-            "Basic Concept, OverView of Operating systems, Problem solving techniques and data flow diagram"
-        },
-        {
-            "C-Language",
-            "Preliminaries, Arrays, Functions, Files, Pointers"
-        }
+            {
+                    "Programming Language",
+                    "Basic Concept, OverView of Programming languages, Problem solving techniques and data flow diagram"
+            },
+            {
+                    "Operating System",
+                    "Basic Concept, OverView of Operating systems, Problem solving techniques and data flow diagram"
+            },
+            {
+                    "C-Language",
+                    "Preliminaries, Arrays, Functions, Files, Pointers"
+            }
     };
     public Object[][] RESOURCES = {
-        {
-            "Resource 1",
-            "Uploader 1",
-            "Download Link 1"
-        },
-        {
-            "Resource 2",
-            "Uploader 2",
-            "Download Link 2"
-        },
-        {
-            "Resource 3",
-            "Uploader 3",
-            "Download Link 3"
-        }
+            {
+                    "Resource 1",
+                    "Uploader 1",
+                    "Download Link 1"
+            },
+            {
+                    "Resource 2",
+                    "Uploader 2",
+                    "Download Link 2"
+            },
+            {
+                    "Resource 3",
+                    "Uploader 3",
+                    "Download Link 3"
+            }
     };
-    
+
     public static Event[] EVENTS = null;
     public String[] LINK_TITLES = null;
     public Link[][] LINKS = null;
