@@ -26,9 +26,6 @@ import Constants.Icons;
 
 public class Datapoints {
 
-    static GsonBuilder builder = new GsonBuilder();
-    static Gson gson = builder.create();
-
     public static interface Tilable {
         public Line getListItem();
 
@@ -65,11 +62,15 @@ public class Datapoints {
 
         @Override
         public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.toJson(this);
         }
 
         @Override
         public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
         }
     }
@@ -119,9 +120,13 @@ public class Datapoints {
         public String registration, name, email, email2, number, blood, birthDay, hometown;
         public int deptCode;
         public String department;
+        public Map<String, String[]> courses;
+
+        
 
         public Student(String registration, String name, String email, String number, String blood, String birthDay,
-                String hometown) {
+                String hometown, String[] regular, String[] drop) {
+
             this.DP = Icons.DP;
             this.deptCode = getDeptCode(registration);
             this.department = Department.deptFullForm(this.deptCode);
@@ -132,6 +137,9 @@ public class Datapoints {
             this.blood = blood;
             this.birthDay = birthDay;
             this.hometown = hometown;
+            this.courses.put("regular", regular);
+            this.courses.put("drop", drop);
+
         }
 
         public int getDeptCode(String registration) {
@@ -165,11 +173,15 @@ public class Datapoints {
 
         @Override
         public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.toJson(this);
         }
 
         @Override
         public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
         }
     }
@@ -228,12 +240,16 @@ public class Datapoints {
 
             @Override
             public String toJSON() {
-                    return gson.toJson(this);
+                GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();    
+                return gson.toJson(this);
             }
 
             @Override
             public Object fromJSON(String json) {
-                    return gson.fromJson(json, (Type) this);
+                GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();    
+                return gson.fromJson(json, (Type) this);
             }
         }
 
@@ -288,12 +304,16 @@ public class Datapoints {
 
                 @Override
                 public String toJSON() {
-                            return gson.toJson(this);
+                    GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();        
+                    return gson.toJson(this);
                 }
 
                 @Override
                 public Object fromJSON(String json) {
-                            return gson.fromJson(json, (Type) this);
+                    GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();        
+                    return gson.fromJson(json, (Type) this);
                 }
             }
 
@@ -317,12 +337,16 @@ public class Datapoints {
 
             @Override
             public String toJSON() {
-                    return gson.toJson(this);
+                GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();    
+                return gson.toJson(this);
             }
 
             @Override
             public Object fromJSON(String json) {
-                    return gson.fromJson(json, (Type) this);
+                GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();    
+                return gson.fromJson(json, (Type) this);
             }
         }
 
@@ -330,17 +354,16 @@ public class Datapoints {
         public Vector<Exam> exams = new Vector<>();
         public Resource resources;
 
-        public Courses(String code, String name, String credit, String grade, float gpa, int attendance, int absent,
-                Boolean regular, int leave) {
-            this.code = code;
-            this.name = name;
-            this.credit = credit;
-            this.grade = grade;
-            this.gpa = gpa;
-            this.attendance = attendance;
-            this.absent = absent;
+        public Courses(Course course, Attendance rollCall, Result result, Boolean regular) {
+            this.code = course.courseCode;
+            this.name = course.courseTitle;
+            this.credit = course.credit;
+            this.attendance = rollCall.attendance;
+            this.absent = rollCall.absent;
+            this.leave = rollCall.leave;
+            this.grade = result.grade;
+            this.gpa = result.gpa;
             this.regular = regular;
-            this.leave = leave;
             assignments.add(new Assignment(name, "Assignment 1" + this.name, this.attendance + "th April",
                     "This is assignment 1", 100, 80));
             exams.add(new Exam(name, "Exam 1" + this.name, this.attendance + "th April", "This is exam 1", 100, 80));
@@ -371,11 +394,15 @@ public class Datapoints {
 
         @Override
         public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.toJson(this);
         }
 
         @Override
         public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
         }
     }
@@ -391,11 +418,15 @@ public class Datapoints {
 
         @Override
         public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.toJson(this);
         }
 
         @Override
         public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
         }
     }
@@ -444,11 +475,15 @@ public class Datapoints {
 
         @Override
         public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.toJson(this);
         }
 
         @Override
         public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
         }
     }
@@ -491,11 +526,15 @@ public class Datapoints {
 
         @Override
         public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.toJson(this);
         }
 
         @Override
         public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
         }
     }
@@ -527,11 +566,15 @@ public class Datapoints {
 
         @Override
         public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.toJson(this);
         }
 
         @Override
         public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
         }
     }
@@ -557,11 +600,15 @@ public class Datapoints {
 
         @Override
         public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.toJson(this);
         }
 
         @Override
         public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
         }
     }
@@ -588,18 +635,62 @@ public class Datapoints {
 
         @Override
         public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.toJson(this);
         }
 
         @Override
         public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
         }
     }
 
+    public static class Course {
+        String courseCode, courseTitle, credit;
+
+        public Course(String courseCode, String courseTitle, String credit) {
+            this.courseCode = courseCode;
+            this.courseTitle = courseTitle;
+            this.credit = credit;
+        }
+    }
+
+    public static class Attendance {
+        int absent, leave, attendance;
+
+        public Attendance(int attendance, int absent, int leave) {
+            this.attendance = attendance;
+            this.absent = absent;
+            this.leave = leave;
+        }
+    }
+
+    public static class Result {
+        String grade;
+        float gpa;
+        int totalMarks;
+        float marksObtained;
+
+        public Result(int totalMarks, float marksObtained, String grade, float gpa) {
+            this.grade = grade;
+            this.gpa = gpa;
+            this.totalMarks = totalMarks;
+            this.marksObtained = marksObtained;
+        }
+    }
+    
+    
+    
     public String[] route = {
             "Place", "Place", "Place", "Place", "Place", "Place", "Place"
     };
+
+    
+
+    
 
     public Bus[] BUSES = {
             new Bus(1, "busName", "license", "driverName", route, "time"),

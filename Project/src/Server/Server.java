@@ -2,15 +2,15 @@ package Server;
 
 import java.io.*;
 import java.net.*;
+import java.util.HashMap;
+import java.util.Map;
 
-import Server.Datapoints.Courses;
-import Server.Datapoints.Event;
-import Server.Datapoints.Link;
-import Server.Datapoints.Notice;
-import Server.Datapoints.Notification;
-import Server.Datapoints.Student;
+import Server.Datapoints.*;
 
 public class Server {
+
+    static String[] regular = { "CSE101", "CSE201" };
+    static String[] drop = { "CSE301", "CSE401" };
 
     public static String[] LINK_TITLES;
     
@@ -19,13 +19,15 @@ public class Server {
     public static Event[] EVENTS;
     
     public static Courses[] COURSES = {
-        new Courses("CSE101", "Data Structure", "3", "A", 4.00f, 20, 0, true, 0),
-        new Courses("CSE102", "Algorithm", "3", "A", 4.00f, 15, 5, true, 0),
-        new Courses("CSE103", "Computer Architecture", "3", "A", 4.00f, 16, 4, true, 0),
-        new Courses("CSE104", "Operating System", "3", "A", 4.00f, 5, 15, true, 2),
-        new Courses("CSE105", "Computer Network", "3", "A", 4.00f, 12, 8, false, 0),
-        new Courses("CSE106", "Data Base", "3", "A", 4.00f, 10, 10, false, 2),
-        new Courses("CSE107", "Software Engineering", "3", "A", 4.00f, 16, 4, true, 0),
+        new Courses(new Course("CSE101", "Data Structure", "3"), new Attendance(20,0,0), new Result(100, 100, "A+", 4.00f), true),
+        new Courses(new Course("CSE101", "Data Structure", "3"), new Attendance(20,0,0), new Result(100, 100, "A+", 4.00f), true),
+        // new Courses("CSE101", "Data Structure", "3", "A", 4.00f, 20, 0, true, 0),
+        // new Courses("CSE102", "Algorithm", "3", "A", 4.00f, 15, 5, true, 0),
+        // new Courses("CSE103", "Computer Architecture", "3", "A", 4.00f, 16, 4, true, 0),
+        // new Courses("CSE104", "Operating System", "3", "A", 4.00f, 5, 15, true, 2),
+        // new Courses("CSE105", "Computer Network", "3", "A", 4.00f, 12, 8, false, 0),
+        // new Courses("CSE106", "Data Base", "3", "A", 4.00f, 10, 10, false, 2),
+        // new Courses("CSE107", "Software Engineering", "3", "A", 4.00f, 16, 4, true, 0),
     };
     public static String[] DETAILS = {
         "Mufassir Ahmad Chowdhury",
@@ -51,22 +53,23 @@ public class Server {
         new Notification(Notification.Severity.INFORMATIONAL, "Resources", "Someone uploaded a resource", true),
         new Notification(Notification.Severity.CRITICAL, "Fee Overdue", "Contact with register office today!", true),
     };
+
     public static Student[] STUDENTS = {
-        new Student("2019331053", "M. M. Kabid Hasan", "kabidhasan34@gmail.com", "1521575632", "A+", "27 October", "Rajbari"),
-        new Student("2019331054", "Syed Sazid Hossain Rezvi", "fazle.rabbi.mahin.539@gmail.com", "1884374959", "O+", "12 November", "Dhamrai, Dhaka"),
-        new Student("2019331055", "Niloy Roy", "niloyroy1715@gmail.com", "1705814064", "O+", "14 May, 2000", "Rangpur"),
-        new Student("2019331057", "Ihsan Mirani Rumi", "ihsanmirani9865@gmail.com", "1864024910", "AB+", "5 June", "Dhaka"),
-        new Student("2019331058", "Md. Shihab Raihan", "soebshihab@gmail.com", "1798942838", "O+", "23,September", "Bogra"),
-        new Student("2019331059", "Mehedi Hasan", "imehedi357@gmail.com", "1706007087", "A+", "2 July", "Sirajganj"),
-        new Student("2019331060", "Muktadir Ahmed Palash", "palashmuktadir84@gmail.com", "1742655094", "A+", "10 February", "Bogra"),
-        new Student("2019331062", "Ariful Islam Farhad", "arifulfarhad300@gmail.com", "1856870527", "B+", "25 October", "Kishoreganj"),
-        new Student("2019331063", "Rubayet Sadman Sami", "rssami.bd@gmail.com", "1754966414", "B+", "23 March", "Sylhet"),
-        new Student("2019331064", "Md. Muhtasim Ahmed Bhuiyan", "muhtasim.ahmed.nhuiyan@gmail.com", "1715036340", "O+", "28 March", "Dhaka"),
-        new Student("2019331065", "MD. Naimul Haque", "nhnahin65@gmail.com", "1622403404", "A-", "16 September", "Chittagong"),
-        new Student("2019331067", "Mubashshira Tasneem", "mubashshiratasneem140918@gmail.com", "1761429552", "O+", "28 December,2000", "Tangail"),
-        new Student("2019331068", "Abdullah All Ferdouse", "siababdullah3946@gmail.com", "1575087097", "A+", "13 November", "Dhaka"),
-        new Student("2019331070", "Mostahid Hasan Fahim", "mostahidhasanFahim@gmail.com", "1759300449", "O+", "8 November", "Gaibandha"),
-        new Student("2019331071", "Md Mostakim Billah", "mostakimbillah512@gmail.com", "1814560020", "B+", "15 July", "Lalmonirhat"),
+        new Student("2019331053", "M. M. Kabid Hasan", "kabidhasan34@gmail.com", "1521575632", "A+", "27 October", "Rajbari", regular, drop),
+        new Student("2019331054", "Syed Sazid Hossain Rezvi", "fazle.rabbi.mahin.539@gmail.com", "1884374959", "O+", "12 November", "Dhamrai, Dhaka",regular,drop),
+        new Student("2019331055", "Niloy Roy", "niloyroy1715@gmail.com", "1705814064", "O+", "14 May, 2000", "Rangpur",regular,drop),
+        new Student("2019331057", "Ihsan Mirani Rumi", "ihsanmirani9865@gmail.com", "1864024910", "AB+", "5 June", "Dhaka",regular,drop),
+        new Student("2019331058", "Md. Shihab Raihan", "soebshihab@gmail.com", "1798942838", "O+", "23,September", "Bogra",regular,drop),
+        new Student("2019331059", "Mehedi Hasan", "imehedi357@gmail.com", "1706007087", "A+", "2 July", "Sirajganj",regular,drop),
+        new Student("2019331060", "Muktadir Ahmed Palash", "palashmuktadir84@gmail.com", "1742655094", "A+", "10 February", "Bogra",regular,drop),
+        new Student("2019331062", "Ariful Islam Farhad", "arifulfarhad300@gmail.com", "1856870527", "B+", "25 October", "Kishoreganj",regular,drop),
+        new Student("2019331063", "Rubayet Sadman Sami", "rssami.bd@gmail.com", "1754966414", "B+", "23 March", "Sylhet",regular,drop),
+        new Student("2019331064", "Md. Muhtasim Ahmed Bhuiyan", "muhtasim.ahmed.nhuiyan@gmail.com", "1715036340", "O+", "28 March", "Dhaka",regular,drop),
+        new Student("2019331065", "MD. Naimul Haque", "nhnahin65@gmail.com", "1622403404", "A-", "16 September", "Chittagong",regular,drop),
+        new Student("2019331067", "Mubashshira Tasneem", "mubashshiratasneem140918@gmail.com", "1761429552", "O+", "28 December,2000", "Tangail",regular,drop),
+        new Student("2019331068", "Abdullah All Ferdouse", "siababdullah3946@gmail.com", "1575087097", "A+", "13 November", "Dhaka",regular,drop),
+        new Student("2019331070", "Mostahid Hasan Fahim", "mostahidhasanFahim@gmail.com", "1759300449", "O+", "8 November", "Gaibandha",regular,drop),
+        new Student("2019331071", "Md Mostakim Billah", "mostakimbillah512@gmail.com", "1814560020", "B+", "15 July", "Lalmonirhat",regular,drop),
     };
     public static Notice[] NOTICES = {
         new Notice("Example Notice 1", "14 March, 2022", "Example Notice 1\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
