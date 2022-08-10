@@ -7,6 +7,7 @@ import Common.pages.pageView.misc.bus.bus;
 import Common.pages.pageView.misc.map.map;
 import Components.Buttons.AccentButton;
 import Components.Buttons.EventButton;
+import Components.Buttons.LinkButton;
 import Components.Buttons.NoticeButton;
 import Components.Buttons.RegisterProfile;
 import Components.pageView.Panels.ViewPortBasicPanel;
@@ -50,7 +51,9 @@ public class PageList {
                 new Page(
                     "Important Links", 
                     Icons.Pages.IMPORTANT_LINKS, 
-                    new links()
+                    new links(
+                        new LinkButton()
+                    )
                 )
             },
             { 

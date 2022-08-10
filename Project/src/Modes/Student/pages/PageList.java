@@ -93,7 +93,9 @@ public class PageList {
                 new Page(
                     "Important Links", 
                     Icons.Pages.IMPORTANT_LINKS, 
-                    new links()
+                    new links(
+                        null
+                    )
                 )
             },
             { 
