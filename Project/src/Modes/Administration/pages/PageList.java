@@ -6,11 +6,11 @@ import Common.pages.pageView.course_information.*;
 import Common.pages.pageView.misc.bus.bus;
 import Common.pages.pageView.misc.map.map;
 import Components.Buttons.AccentButton;
+import Components.Buttons.EventButton;
+import Components.Buttons.NoticeButton;
+import Components.Buttons.RegisterProfile;
 import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Icons;
-import Modes.Administration.pages.updates.EventButton;
-import Modes.Administration.pages.updates.NoticeButton;
-import Modes.Administration.pages.updates.RegisterProfile;
 import Server.Datapoints;
 
 import java.io.IOException;

@@ -5,7 +5,7 @@ import javax.swing.Box;
 import java.awt.CardLayout;
 
 import Components.Card;
-import Components.Buttons.AccentButton;
+import Components.Buttons.PostResource;
 import Components.pageView.Box.Options;
 import Components.pageView.Panels.TilesPanel;
 import Components.pageView.Panels.ViewPortPanel;
@@ -20,7 +20,7 @@ import java.awt.event.MouseAdapter;
 
 public class resources extends ViewPortPanel {
     public resources(){
-        super("Resources", new AccentButton("Post New Material"));
+        super("Resources", new PostResource());
 
         String[] secondOptions = {"Course", "Course 2"};
         add(new Options(Datapoints.getInstance().SEMESTER, secondOptions));
