@@ -7,10 +7,13 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
 
 import Common.pages.sideNavView;
 
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 
 public class Main extends JFrame {
 	public JFrame currentFrame;
@@ -33,6 +36,10 @@ public class Main extends JFrame {
 		currentPage = "logInPage";
 		currentFrame.pack();
 		currentFrame.setVisible(true);
+		UIManager.put("OptionPane.background", new Color(33, 33, 33));
+        UIManager.put("Panel.background", new Color(33, 33, 33));
+        UIManager.put("OptionPane.minimumSize", new Dimension(1000, 500));
+
 	}
 	
 

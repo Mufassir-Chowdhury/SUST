@@ -8,6 +8,7 @@ import Common.pages.pageView.misc.map.map;
 import Components.Buttons.AccentButton;
 import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Icons;
+import Modes.Administration.pages.updates.NoticeButton;
 import Server.Datapoints;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class PageList {
                     Icons.Pages.NOTICE, 
                     new ViewPortBasicPanel(
                             "Notices", 
-                            new AccentButton("Post New Notice"),
+                            new NoticeButton(),
                             Datapoints.NOTICES
                     )
                 )
