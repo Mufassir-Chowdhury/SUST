@@ -14,22 +14,31 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-
 import java.awt.Component;
 
-public class NoticeButton extends AccentButton implements ActionListener {
+public class RegisterProfile extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel{
         public Dialog(JDialog dialog){
             add(Box.createVerticalStrut(50));
 
-            TilesPanel tilesPanel = new TilesPanel(2, 2, 10);
-            tilesPanel.add(new Label("Title"));
-            tilesPanel.add(new TextField("Write Title", TYPE.PLAIN));
-            tilesPanel.add(new Label("Message"));
-            tilesPanel.add(new TextField("Write Message", TYPE.PLAIN));
+            TilesPanel tilesPanel = new TilesPanel(7, 2, 10);
+            tilesPanel.add(new Label("Registration"));
+            tilesPanel.add(new TextField("Write Registration", TYPE.PLAIN));
+            tilesPanel.add(new Label("Name"));
+            tilesPanel.add(new TextField("Write Name", TYPE.PLAIN));
+            tilesPanel.add(new Label("Number"));
+            tilesPanel.add(new TextField("Write Number", TYPE.PLAIN));
+            tilesPanel.add(new Label("Email"));
+            tilesPanel.add(new TextField("Write Email", TYPE.PLAIN));
+            tilesPanel.add(new Label("Blood Group"));
+            tilesPanel.add(new TextField("Write Blood Group", TYPE.PLAIN));
+            tilesPanel.add(new Label("Birthday"));
+            tilesPanel.add(new TextField("Write Birthday", TYPE.PLAIN));
+            tilesPanel.add(new Label("Hometown"));
+            tilesPanel.add(new TextField("Write Hometown", TYPE.PLAIN));
             tilesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(tilesPanel);
-            add(new FileButton("Choose a file"));
+            add(new FileButton("Choose a photo"));
             add(Box.createVerticalGlue());
             AccentButton proceed = new AccentButton("Proceed");
             proceed.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -42,8 +51,8 @@ public class NoticeButton extends AccentButton implements ActionListener {
             add(proceed);
         }
     }
-    public NoticeButton(){
-        super("Post New Notice");
+    public RegisterProfile(){
+        super("Add new Profile");
         addActionListener(this);
     }
 
@@ -52,7 +61,7 @@ public class NoticeButton extends AccentButton implements ActionListener {
         final JDialog dialog = new JDialog();
         final JOptionPane optionPane = new JOptionPane(new Dialog(dialog), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
 
-        dialog.setTitle("Add an event");
+        dialog.setTitle("Register a new profile");
         dialog.setModal(true);
         dialog.setContentPane(optionPane);
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);

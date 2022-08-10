@@ -8,7 +8,9 @@ import Common.pages.pageView.misc.map.map;
 import Components.Buttons.AccentButton;
 import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Icons;
+import Modes.Administration.pages.updates.EventButton;
 import Modes.Administration.pages.updates.NoticeButton;
+import Modes.Administration.pages.updates.RegisterProfile;
 import Server.Datapoints;
 
 import java.io.IOException;
@@ -64,7 +66,7 @@ public class PageList {
                     Icons.Pages.STUDENT_INFO, 
                     new ViewPortBasicPanel(
                             "People", 
-                            new AccentButton("Register new profile"),
+                            new RegisterProfile(),
                             Datapoints.STUDENTS
                     )
                 ),
@@ -73,7 +75,7 @@ public class PageList {
                     Icons.Pages.EVENTS, 
                     new ViewPortBasicPanel(
                             "Events", 
-                            new AccentButton("Add an event"),
+                            new EventButton(),
                             Datapoints.EVENTS
                     )
                 ),

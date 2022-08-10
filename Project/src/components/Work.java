@@ -3,6 +3,7 @@ package Components;
 import java.awt.BorderLayout;
 
 import Components.Buttons.AccentButton;
+import Components.Buttons.FileButton;
 import Components.pageView.Panels.ListPanel;
 
 public class Work extends DashBoardItem {
@@ -13,7 +14,7 @@ public class Work extends DashBoardItem {
         );
         add(
             new ListPanel(
-                new AccentButton("+ Add or Create"), 
+                new FileButton("+ Add or Create"),
                 new AccentButton("Mark as Done"), 
                 30
             ),

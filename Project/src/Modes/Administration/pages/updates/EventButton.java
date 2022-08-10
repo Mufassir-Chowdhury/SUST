@@ -2,7 +2,6 @@ package Modes.Administration.pages.updates;
 
 import Components.Label;
 import Components.Buttons.AccentButton;
-import Components.Buttons.FileButton;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
@@ -17,19 +16,25 @@ import javax.swing.JOptionPane;
 
 import java.awt.Component;
 
-public class NoticeButton extends AccentButton implements ActionListener {
+public class EventButton extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel{
         public Dialog(JDialog dialog){
             add(Box.createVerticalStrut(50));
 
-            TilesPanel tilesPanel = new TilesPanel(2, 2, 10);
+            TilesPanel tilesPanel = new TilesPanel(5, 2, 10);
             tilesPanel.add(new Label("Title"));
             tilesPanel.add(new TextField("Write Title", TYPE.PLAIN));
-            tilesPanel.add(new Label("Message"));
-            tilesPanel.add(new TextField("Write Message", TYPE.PLAIN));
+            tilesPanel.add(new Label("Description"));
+            tilesPanel.add(new TextField("Write Description", TYPE.PLAIN));
+            tilesPanel.add(new Label("Date"));
+            tilesPanel.add(new TextField("Write Date", TYPE.PLAIN));
+            tilesPanel.add(new Label("Location"));
+            tilesPanel.add(new TextField("Write Location", TYPE.PLAIN));
+            tilesPanel.add(new Label("Organiser"));
+            tilesPanel.add(new TextField("Write Organiser", TYPE.PLAIN));
             tilesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(tilesPanel);
-            add(new FileButton("Choose a file"));
+            
             add(Box.createVerticalGlue());
             AccentButton proceed = new AccentButton("Proceed");
             proceed.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -42,8 +47,8 @@ public class NoticeButton extends AccentButton implements ActionListener {
             add(proceed);
         }
     }
-    public NoticeButton(){
-        super("Post New Notice");
+    public EventButton(){
+        super("Post New Event");
         addActionListener(this);
     }
 
@@ -59,6 +64,5 @@ public class NoticeButton extends AccentButton implements ActionListener {
         dialog.pack();
 
         dialog.setVisible(true);
-
     }
 }
