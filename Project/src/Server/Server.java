@@ -19,7 +19,7 @@ import Server.Datapoints.Student;
 
 public class Server {
 
-    public static Vector<String> LINK_TITLES = new Vector<>();
+    public static String[] LINK_TITLES;
 
     // public static  String[] LINK_TITLES = {
     //     "OFFICIAL_LINKS",
@@ -28,7 +28,7 @@ public class Server {
     // };
 
     
-    public static Vector<Vector<Link>> LINKS = new Vector<>();
+    public static Link[][] LINKS;
     
     // public static Link[][] LINKS = {
     //     {
@@ -150,17 +150,15 @@ public class Server {
     }
 
     public void fetchLinks() throws FileNotFoundException {
-        
-        GsonBuilder c = new GsonBuilder();
-        Gson d = c.create();
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
         BufferedReader bufferedReader = new BufferedReader(new FileReader("links.json"));
-        
-        Map<String, Vector<Link>> links = new HashMap<>();
-        
-        links = d.fromJson(bufferedReader, new TypeToken<Map<String, Vector<Link>>>() {}.getType());
+
+        Map<String, Link[]> links = new HashMap<>();
+        links = gson.fromJson(bufferedReader, new TypeToken<Map<String, Link[]>>(){}.getType());
 
         Vector<String> titleList = new Vector<>();
-        Vector<Vector<Link>> linkList = new Vector<>();
+        Vector<Link[]> linkList = new Vector<>();
 
         links.forEach((title, link) -> 
         {
@@ -168,8 +166,8 @@ public class Server {
             linkList.add(link);
         });
 
-        Server.LINK_TITLES = titleList;
-        Server.LINKS = linkList;
+        Server.LINK_TITLES = titleList.toArray(new String[titleList.size()]);
+        Server.LINKS = linkList.toArray(new Link[linkList.size()][]);
     }
 }
 
