@@ -24,7 +24,6 @@ public class AccentButton extends Button implements MouseListener{
 
     protected void paintComponent(Graphics g) {
         g.setColor(background);
-        // TODO make paint Component and paint border in separate class or interface
         g.fillRoundRect(0, 0, getWidth(), getHeight(), Sizes.BORDER_RADIUS, Sizes.BORDER_RADIUS);
         super.paintComponent(g);
     }

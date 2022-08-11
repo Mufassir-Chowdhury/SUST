@@ -90,7 +90,7 @@ public class Results extends ViewPort {
                 try {
                     new Table(data, columnNames).print();
                 } catch (PrinterException e1) {
-                    // TODO Auto-generated catch block
+                    System.err.println("Error printing table");
                     e1.printStackTrace();
                 }
             }

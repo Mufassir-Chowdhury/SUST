@@ -3,6 +3,7 @@ package Modes.Student.Main;
 import java.io.IOException;
 
 import Server.Client;
+import Server.Datapoints;
 
 import javax.swing.SwingUtilities;
 
@@ -21,7 +22,7 @@ public class Main extends Common.Main.Main {
         cl.show(panel, "logInPage");
     }
     public static void main(String[] args) throws ClassNotFoundException, IOException {
-		new Client();
+		Datapoints.getInstance().client = new Client();
 
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
