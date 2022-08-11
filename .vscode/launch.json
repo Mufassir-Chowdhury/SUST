@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch Main",
+            "request": "launch",
+            "mainClass": "Modes.Administration.Main.Main",
+            "projectName": "SUST"
+        },
+        {
+            "type": "java",
             "name": "Launch Experiment",
             "request": "launch",
             "mainClass": "Server.Experiment",
