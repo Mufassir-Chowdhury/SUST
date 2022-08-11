@@ -44,6 +44,7 @@ public class Client {
         System.out.println("received response - " + in.readLine());
 
         out.println(1);
+        // out.print(obj);
         Link[][] links = (Link[][]) ois.readObject();
         System.out.println("received links");
 
