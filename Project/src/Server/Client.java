@@ -13,6 +13,7 @@ import Server.Datapoints.Student;
 public class Client {
     Socket clientSocket = null;  
     ObjectInputStream ois = null;
+    ObjectOutputStream oos = null;
 
     public Client() throws IOException, ClassNotFoundException {
         String hostname = "localhost";
@@ -22,6 +23,8 @@ public class Client {
         try {
             clientSocket = new Socket(hostname, port);
             ois = new ObjectInputStream(clientSocket.getInputStream());
+            oos = new ObjectOutputStream(clientSocket.getOutputStream());
+            
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host: " + hostname);
         } catch (IOException e) {

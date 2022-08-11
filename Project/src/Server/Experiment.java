@@ -1,27 +1,43 @@
 package Server;
 
-import java.io.BufferedReader; 
-import java.io.FileNotFoundException; 
-import java.io.FileReader; 
-import java.io.FileWriter; 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.*;
 
-import com.google.gson.*; 
+// import com.google.gson.*;
+
+import Server.Datapoints.Event;
+import Server.Datapoints.Link;
+import Server.Datapoints.Student;
 
 public class Experiment {
+    static Map<String, Map<String, Link>> links = new HashMap<>();
+    static Map<String, Event> events = new HashMap<>();
+    static String[] regular = { "CSE101", "CSE201" };
+    static String[] drop = { "CSE301", "CSE401" };
+
     public static void main(String args[]) {
 
-        Experiment tester = new Experiment();
+        // GsonBuilder builder = new GsonBuilder();
+        // Gson gson = builder.create();
+
         try {
-            Name name = new Name("asanul", "haque");
-            ParentsName parentsName = new ParentsName("mojammel haque", "ayasha siddika");
-            Date birthday = new Date(2000, 12, 03);
-            String[] courses = new String[] { "cse137", "cse223" };
-            String image = "image";
-            Student student = new Student("2019331013", "2019-20", name, parentsName, "Rajshahi", birthday, "A+", "2 1", "Computer Science and Engineering", courses, image);
-            tester.writeJSON(student);
-            Student student1 = tester.readJSON();
-            System.out.println(student1);
+            Adder.addNewStudent(new Student("2019331053", "M. M. Kabid Hasan", "kabidhasan34@gmail.com", "1521575632", "A+", "27 October", "Rajbari", "2019-20",3,regular, drop));
+            Adder.addNewStudent(new Student("2019331054", "Syed Sazid Hossain Rezvi", "fazle.rabbi.mahin.539@gmail.com", "1884374959", "O+", "12 November", "Dhamrai, Dhaka","2019-20",3,regular,drop));
+            Adder.addNewStudent(new Student("2019331055", "Niloy Roy", "niloyroy1715@gmail.com", "1705814064", "O+", "14 May, 2000", "Rangpur","2019-20",3,regular,drop));
+            Adder.addNewStudent(new Student("2019331057", "Ihsan Mirani Rumi", "ihsanmirani9865@gmail.com", "1864024910", "AB+", "5 June", "Dhaka","2019-20",3,regular,drop));
+            Adder.addNewStudent(new Student("2019132058", "Md. Shihab Raihan", "soebshihab@gmail.com", "1798942838", "O+", "23,September", "Bogra","2019-20",3,regular,drop));
+            Adder.addNewStudent(new Student("2019132059", "Mehedi Hasan", "imehedi357@gmail.com", "1706007087", "A+", "2 July", "Sirajganj","2019-20",3,regular,drop));
+            Adder.addNewStudent(new Student("2019232060", "Muktadir Ahmed Palash", "palashmuktadir84@gmail.com", "1742655094", "A+", "10 February", "Bogra","2016-17",3,regular,drop));
+            Adder.addNewStudent(new Student("2019232062", "Ariful Islam Farhad", "arifulfarhad300@gmail.com", "1856870527", "B+", "25 October", "Kishoreganj","2017-18",3,regular,drop));
+            Adder.addNewStudent(new Student("2019232063", "Rubayet Sadman Sami", "rssami.bd@gmail.com", "1754966414", "B+", "23 March", "Sylhet","2019-20",3,regular,drop));
+            Adder.addNewStudent(new Student("2019332064", "Md. Muhtasim Ahmed Bhuiyan", "muhtasim.ahmed.nhuiyan@gmail.com", "1715036340", "O+", "28 March", "Dhaka","2019-20",3,regular,drop));
+            Adder.addNewStudent(new Student("2019332065", "MD. Naimul Haque", "nhnahin65@gmail.com", "1622403404", "A-", "16 September", "Chittagong","2019-20",3,regular,drop));
+            Adder.addNewStudent(new Student("2019338067", "Mubashshira Tasneem", "mubashshiratasneem140918@gmail.com", "1761429552", "O+", "28 December,2000", "Tangail","2019-20",3,regular,drop));
+            Adder.addNewStudent(new Student("2019331068", "Abdullah All Ferdouse", "siababdullah3946@gmail.com", "1575087097", "A+", "13 November", "Dhaka","2019-19",3,regular,drop));
+            Adder.addNewStudent(new Student("2019331070", "Mostahid Hasan Fahim", "mostahidhasanFahim@gmail.com", "1759300449", "O+", "8 November", "Gaibandha","2018-19",3,regular,drop));
+            Adder.addNewStudent(new Student("2019331071", "Md Mostakim Billah", "mostakimbillah512@gmail.com", "1814560020", "B+", "15 July", "Lalmonirhat","2018-19",3,regular,drop));
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -29,79 +45,31 @@ public class Experiment {
         }
     }
 
-    private void writeJSON(Student student) throws IOException {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        FileWriter writer = new FileWriter("student.json");
-        writer.write(gson.toJson(student));
-        writer.close();
-    }
+    // private static void add(String s, Link l) {
+    //     if (links.containsKey(s) == false) {
+    //         links.put(s, new HashMap<>());
+    //         links.get(s).put(l.title, l);
+    //     }
+    //     links.get(s).put(l.title, l);
+    // }
 
-    private Student readJSON() throws FileNotFoundException {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        BufferedReader bufferedReader = new BufferedReader(
-                new FileReader("student.json"));
+    // private void writeJSON(Student student) throws IOException {
+    //     GsonBuilder builder = new GsonBuilder();
+    //     Gson gson = builder.create();
+    //     FileWriter writer = new FileWriter("student.json");
+    //     writer.write(gson.toJson(student));
+    //     writer.close();
+    // }
 
-        Student student = gson.fromJson(bufferedReader, Student.class);
-        return student;
-    }
-}
+    // private Student readJSON() throws FileNotFoundException {
+    //     GsonBuilder builder = new GsonBuilder();
+    //     Gson gson = builder.create();
+    //     BufferedReader bufferedReader = new BufferedReader(
+    //             new FileReader("links.json"));
 
-class Name {
-    private String firstName, LastName;
+    //     Student student = gson.fromJson(bufferedReader, Student.class);
+    //     return student;
+    // }
 
-    Name(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.LastName = lastName;
-    }
-}
-
-class ParentsName {
-    private String fatherName, motherName;
-
-    ParentsName(String fatherName, String motherName) {
-        this.fatherName = fatherName;
-        this.motherName = motherName;
-    }
-}
-
-class Date {
-    private int year, month, day;
-
-    Date(int year, int month, int day) {
-        this.year = year;
-        this.month = month;
-        this.day = day;
-    }
-}
-
-class Student {
-    private String registrationNo, session;
-    private Name name;
-    private ParentsName parentsName;
-    private String Hometown;
-    private Date birthday;
-    private String bloodGroup;
-    private String currentSemester;
-    private String departmentName;
-    private String[] courses;
-    private String image;
-
-    Student(String registrationNo, String session, Name name,
-    ParentsName parentsName, String Hometown, Date birthday,
-    String bloodGroup, String currentSemester, String departmentName,
-    String[] courses, String image)
-    {
-        this.registrationNo = registrationNo;
-        this.session = session;
-        this.parentsName = parentsName;
-        this.Hometown = Hometown;
-        this.birthday = birthday;
-        this.bloodGroup = bloodGroup;
-        this.currentSemester = currentSemester;
-        this.departmentName = departmentName;
-        this.courses = courses;
-        this.image = image;
-    }
+    
 }

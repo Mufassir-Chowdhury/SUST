@@ -2,71 +2,58 @@ package Server;
 
 import java.io.*;
 import java.net.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Vector;
 
-
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-
-import Server.Datapoints.Courses;
-import Server.Datapoints.Event;
-import Server.Datapoints.Link;
-import Server.Datapoints.Notice;
-import Server.Datapoints.Notification;
-import Server.Datapoints.Student;
+import Server.Datapoints.*;
 
 public class Server {
-
+    
+    static String[] regular = { "CSE101", "CSE201" };
+    static String[] drop = { "CSE301", "CSE401" };
+    
     public static String[] LINK_TITLES;
-
-    // public static  String[] LINK_TITLES = {
-    //     "OFFICIAL_LINKS",
-    //     "ORGANIZATION_LINKS",
-    //     "FACEBOOK_LINKS"
-    // };
-
     
     public static Link[][] LINKS;
     
-    // public static Link[][] LINKS = {
-    //     {
-    //         new Link("SUST", "https://www.sust.edu/"),
-    //         new Link("E-Payment", "https://epayment.sust.edu/"),
-    //         new Link("Services", "https://services.student.sust.edu/"),
-    //         new Link("Library", "http://library.sust.edu/"),
-    //         new Link("Course Registration", "http://services.student.sust.edu:9090/student_login.jsp"),
-    //     },{
-    //         new Link("IQAC-SUST", "https://iqacsust.org/"),
-    //         new Link("ACM SUST", "https://sustsc.acm.org/"),
-    //     },{
-    //         new Link("SUSTian View", "https://www.facebook.com/groups/1576654242498653/"),
-    //         new Link("Amra SUSTian", "https://www.facebook.com/groups/AMRASUSTIAN"),
-    //     }
+    public static Event[] EVENTS;
+
+    public static Student Profile;
+    
+    public static String[] DETAILS;
+
+    public static Student[] STUDENTS;
+
+    // public static Student[] STUDENTS = {
+    //     new Student("2019331053", "M. M. Kabid Hasan", "kabidhasan34@gmail.com", "1521575632", "A+", "27 October", "Rajbari","2019-20",3,regular, drop),
+    //     new Student("2019331054", "Syed Sazid Hossain 3,Rezvi", "fazle.rabbi.mahin.539@gmail.com", "1884374959", "O+", "12 November", "Dhamrai, Dhaka","2019-20",3,regular,drop),
+    //     new Student("2019331055", "Niloy Roy", "niloyroy1715@gmail.com", "1705814064", "O+", "14 May, 2000", "Rangpur","2019-20",3,regular,drop),
+    //     new Student("2019331057", "Ihsan Mirani Rumi", "ihsanmirani9865@gmail.com", "1864024910", "AB+", "5 June", "Dhaka","2019-20",3,regular,drop),
+    //     new Student("2019331058", "Md. Shihab Raihan", "soebshihab@gmail.com", "1798942838", "O+", "23,September", "Bogra","2019-20",3,regular,drop),
+    //     new Student("2019331059", "Mehedi Hasan", "imehedi357@gmail.com", "1706007087", "A+", "2 July", "Sirajganj","2019-20",3,regular,drop),
+    //     new Student("2019331060", "Muktadir Ahmed Palash", "palashmuktadir84@gmail.com", "1742655094", "A+", "10 February", "Bogra","2019-20",3,regular,drop),
+    //     new Student("2019331062", "Ariful Islam Farhad", "arifulfarhad300@gmail.com", "1856870527", "B+", "25 October", "Kisho3,reganj","2019-20",3,regular,drop),
+    //     new Student("2019331063", "Rubayet Sadman Sami", "rssami.bd@gmail.com", "1754966414", "B+", "23 March", "Sylhet","2019-20",3,regular,drop),
+    //     new Student("2019331064", "Md. Muhtasim Ahmed Bhuiyan", "muhtasim.ahmed.nhuiyan@gmail.com", "1715036340", "O+", "28 March", "Dhaka","2019-20",3,regular,drop),
+    //     new Student("2019331065", "MD. Naimul Haque", "nhnahin65@gmail.com", "1622403404", "A-", "16 September", "Chittagong","2019-20",3,regular,drop),
+    //     new Student("2019331067", "Mubashshira Tasneem", "mubashshiratasneem140918@gmail.com", "1761429552", "O+", "28 December,2000", "Tangail","2019-20",3,regular,drop),
+    //     new Student("2019331068", "Abdullah All Ferdouse", "siababdullah3946@gmail.com", "1575087097", "A+", "13 November", "Dhaka","2019-20",3,regular,drop),
+    //     new Student("2019331070", "Mostahid Hasan Fahim", "mostahidhasanFahim@gmail.com", "1759300449", "O+", "8 November", "Gaibandha","2019-20",3,regular,drop),
+    //     new Student("2019331071", "Md Mostakim Billah", "mostakimbillah512@gmail.com", "1814560020", "B+", "15 July", "Lalmonirhat","2019-20",3,regular,drop),
     // };
 
-    public static Event[] EVENTS = {
-        new Event("SUSTian Event 1", "1st April", "This is event 1", "SUST", "This is event 1", 0, 0),
-        new Event("SUSTian Event 2", "2nd April", "This is event 2", "SUST", "This is event 2", 0, 0),
-        new Event("SUSTian Event 3", "3rd April", "This is event 3", "SUST", "This is event 3", 0, 0),
-        new Event("SUSTian Event 4", "4th April", "This is event 4", "SUST", "This is event 4", 0, 0),
-    };
+    
     public static Courses[] COURSES = {
-        new Courses("CSE101", "Data Structure", "3", "A", 4.00f, 20, 0, true, 0),
-        new Courses("CSE102", "Algorithm", "3", "A", 4.00f, 15, 5, true, 0),
-        new Courses("CSE103", "Computer Architecture", "3", "A", 4.00f, 16, 4, true, 0),
-        new Courses("CSE104", "Operating System", "3", "A", 4.00f, 5, 15, true, 2),
-        new Courses("CSE105", "Computer Network", "3", "A", 4.00f, 12, 8, false, 0),
-        new Courses("CSE106", "Data Base", "3", "A", 4.00f, 10, 10, false, 2),
-        new Courses("CSE107", "Software Engineering", "3", "A", 4.00f, 16, 4, true, 0),
+        new Courses(new Course("CSE101", "Data Structure", "3"), new Attendance(20,0,0), new Result(100, 100, "A+", 4.00f), true),
+        new Courses(new Course("CSE101", "Data Structure", "3"), new Attendance(20,0,0), new Result(100, 100, "A+", 4.00f), true),
+        // new Courses("CSE101", "Data Structure", "3", "A", 4.00f, 20, 0, true, 0),
+        // new Courses("CSE102", "Algorithm", "3", "A", 4.00f, 15, 5, true, 0),
+        // new Courses("CSE103", "Computer Architecture", "3", "A", 4.00f, 16, 4, true, 0),
+        // new Courses("CSE104", "Operating System", "3", "A", 4.00f, 5, 15, true, 2),
+        // new Courses("CSE105", "Computer Network", "3", "A", 4.00f, 12, 8, false, 0),
+        // new Courses("CSE106", "Data Base", "3", "A", 4.00f, 10, 10, false, 2),
+        // new Courses("CSE107", "Software Engineering", "3", "A", 4.00f, 16, 4, true, 0),
     };
-    public static String[] DETAILS = {
-        "Mufassir Ahmad Chowdhury",
-        "Student",
-        "Computer Science and Engineering",
-        "2nd year 1st semester"
-    };
+
+
     
     public static Notification[] EXAM = {
         new Notification(Notification.Severity.CRITICAL, "STAT", "Today", false),
@@ -85,23 +72,7 @@ public class Server {
         new Notification(Notification.Severity.INFORMATIONAL, "Resources", "Someone uploaded a resource", true),
         new Notification(Notification.Severity.CRITICAL, "Fee Overdue", "Contact with register office today!", true),
     };
-    public static Student[] STUDENTS = {
-        new Student("2019331053", "M. M. Kabid Hasan", "kabidhasan34@gmail.com", "1521575632", "A+", "27 October", "Rajbari"),
-        new Student("2019331054", "Syed Sazid Hossain Rezvi", "fazle.rabbi.mahin.539@gmail.com", "1884374959", "O+", "12 November", "Dhamrai, Dhaka"),
-        new Student("2019331055", "Niloy Roy", "niloyroy1715@gmail.com", "1705814064", "O+", "14 May, 2000", "Rangpur"),
-        new Student("2019331057", "Ihsan Mirani Rumi", "ihsanmirani9865@gmail.com", "1864024910", "AB+", "5 June", "Dhaka"),
-        new Student("2019331058", "Md. Shihab Raihan", "soebshihab@gmail.com", "1798942838", "O+", "23,September", "Bogra"),
-        new Student("2019331059", "Mehedi Hasan", "imehedi357@gmail.com", "1706007087", "A+", "2 July", "Sirajganj"),
-        new Student("2019331060", "Muktadir Ahmed Palash", "palashmuktadir84@gmail.com", "1742655094", "A+", "10 February", "Bogra"),
-        new Student("2019331062", "Ariful Islam Farhad", "arifulfarhad300@gmail.com", "1856870527", "B+", "25 October", "Kishoreganj"),
-        new Student("2019331063", "Rubayet Sadman Sami", "rssami.bd@gmail.com", "1754966414", "B+", "23 March", "Sylhet"),
-        new Student("2019331064", "Md. Muhtasim Ahmed Bhuiyan", "muhtasim.ahmed.nhuiyan@gmail.com", "1715036340", "O+", "28 March", "Dhaka"),
-        new Student("2019331065", "MD. Naimul Haque", "nhnahin65@gmail.com", "1622403404", "A-", "16 September", "Chittagong"),
-        new Student("2019331067", "Mubashshira Tasneem", "mubashshiratasneem140918@gmail.com", "1761429552", "O+", "28 December,2000", "Tangail"),
-        new Student("2019331068", "Abdullah All Ferdouse", "siababdullah3946@gmail.com", "1575087097", "A+", "13 November", "Dhaka"),
-        new Student("2019331070", "Mostahid Hasan Fahim", "mostahidhasanFahim@gmail.com", "1759300449", "O+", "8 November", "Gaibandha"),
-        new Student("2019331071", "Md Mostakim Billah", "mostakimbillah512@gmail.com", "1814560020", "B+", "15 July", "Lalmonirhat"),
-    };
+
     public static Notice[] NOTICES = {
         new Notice("Example Notice 1", "14 March, 2022", "Example Notice 1\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
         new Notice("Example Notice 2", "14 March, 2022", "Example Notice 2\nDate : 2022/03/14 - 2022/06/30", "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
@@ -130,7 +101,6 @@ public class Server {
     public void startServer() {
 
         try {
-            fetchLinks();
             echoServer = new ServerSocket(port);
         } catch (IOException e) {
             System.out.println(e);
@@ -147,27 +117,6 @@ public class Server {
                 System.out.println(e);
             }
         }
-    }
-
-    public void fetchLinks() throws FileNotFoundException {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("links.json"));
-
-        Map<String, Link[]> links = new HashMap<>();
-        links = gson.fromJson(bufferedReader, new TypeToken<Map<String, Link[]>>(){}.getType());
-
-        Vector<String> titleList = new Vector<>();
-        Vector<Link[]> linkList = new Vector<>();
-
-        links.forEach((title, link) -> 
-        {
-            titleList.add(title);
-            linkList.add(link);
-        });
-
-        Server.LINK_TITLES = titleList.toArray(new String[titleList.size()]);
-        Server.LINKS = linkList.toArray(new Link[linkList.size()][]);
     }
 }
 
@@ -188,7 +137,7 @@ class ServerConnection {
     }
 
     public void run() throws FileNotFoundException {
-
+        Fetcher.fetch();
         try {
             oos.writeObject(Server.LINKS);
             oos.writeObject(Server.LINK_TITLES);
@@ -206,13 +155,16 @@ class ServerConnection {
             System.out.println(e);
         }
     }
+
     protected void finalize() {
         try {
-            System.out.println( "Connection closed." );
+            System.out.println("Connection closed.");
             oos.close();
             clientSocket.close();
         } catch (IOException e) {
             System.out.println(e);
         }
     }
+
+    
 }
