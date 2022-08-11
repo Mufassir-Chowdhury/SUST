@@ -25,6 +25,7 @@ import Constants.Fonts;
 import Constants.Icons;
 
 public class Datapoints {
+    public Client client;
 
     public static interface Tilable {
         public Line getListItem();
