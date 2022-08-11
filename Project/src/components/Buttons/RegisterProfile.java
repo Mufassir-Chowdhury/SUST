@@ -24,19 +24,24 @@ import java.awt.Component;
 
 public class RegisterProfile extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel {
+
+        String[] bgGroup = { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" };
+
         ComboBox<String> depts = new ComboBox<>(Datapoints.getInstance().Departments);
         TextField registrationField= new TextField("Write Registration", TYPE.PLAIN);
         TextField nameField= new TextField("Write Name", TYPE.PLAIN);
         TextField DesignationField = new TextField("Write Designation", TYPE.PLAIN);
         TextField sessionField = new TextField("Write Session", TYPE.PLAIN);
         TextField numberField= new TextField("Write Number", TYPE.PLAIN);
-        TextField emailField= new TextField("Write Email", TYPE.PLAIN);
-        TextField bloodField= new TextField("Write Blood Group", TYPE.PLAIN);
+        TextField emailField = new TextField("Write Email", TYPE.PLAIN);
+        ComboBox<String> bloodField = new ComboBox<>(bgGroup);
+        // TextField bloodField= new TextField("Write Blood Group", TYPE.PLAIN);
         TextField birthdayField= new TextField("Write Birthday", TYPE.PLAIN);
         TextField hometownField= new TextField("Write Hometown", TYPE.PLAIN);
         public Dialog(JDialog dialog, String type){
             add(Box.createVerticalStrut(50));
 
+            
 
             TilesPanel tilesPanel = new TilesPanel(9, 2, 10);
             if(type == "Student"){
@@ -93,7 +98,7 @@ public class RegisterProfile extends AccentButton implements ActionListener {
             if(type == "Student")
             {
                 Student student = new Student(registrationField.getText(), nameField.getText(), emailField.getText(),
-                        numberField.getText(), bloodField.getText(), birthdayField.getText(), hometownField.getText(),
+                        numberField.getText(), bloodField.getSelectedItem().toString(), birthdayField.getText(), hometownField.getText(),
                         sessionField.getText(), null, null, null);
                 Datapoints.getInstance().client.addNewStudent(student);       
             }
