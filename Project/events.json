@@ -1,0 +1,38 @@
+{
+    "SUSTian Event 1": {
+        "title": "SUSTian Event 1",
+        "date": "1st April",
+        "description": "This is event 1",
+        "location": "SUST",
+        "duration": "This is event 1",
+        "interested": 0,
+        "going": 0
+    },
+    "SUSTian Event 2": {
+        "title": "SUSTian Event 2",
+        "date": "2nd April",
+        "description": "This is event 2",
+        "location": "SUST",
+        "duration": "This is event 2",
+        "interested": 0,
+        "going": 0
+    },
+    "SUSTian Event 3": {
+        "title": "SUSTian Event 3",
+        "date": "3rd April",
+        "description": "This is event 3",
+        "location": "SUST",
+        "duration": "This is event 3",
+        "interested": 0,
+        "going": 0
+    },
+    "SUSTian Event 4": {
+        "title": "SUSTian Event 4",
+        "date": "4th April",
+        "description": "This is event 4",
+        "location": "SUST",
+        "duration": "This is event 4",
+        "interested": 0,
+        "going": 0
+    }
+}

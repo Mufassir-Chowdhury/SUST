@@ -23,12 +23,4 @@ public class ViewPort extends JPanel {
         add(this.title);
         add(Box.createVerticalStrut(Sizes.TITLE_AND_PANEL_GAP));
     }
-
-    public ViewPort(String title){
-        setOpaque(false);
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.title = new Title(new Label(title, Fonts.DISPLAY));
-        add(this.title);
-        add(Box.createVerticalStrut(Sizes.TITLE_AND_PANEL_GAP));
-    }
 }

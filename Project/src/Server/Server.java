@@ -121,6 +121,7 @@ public class Server {
 }
 
 class ServerConnection {
+    ObjectInputStream ois;
     ObjectOutputStream oos;
     Socket clientSocket;
     Server server;
@@ -130,6 +131,7 @@ class ServerConnection {
         this.server = server;
         System.out.println( "Connection established with: " + clientSocket );
         try {
+            ois = new ObjectInputStream(clientSocket.getInputStream());
             oos = new ObjectOutputStream(clientSocket.getOutputStream());
         } catch (IOException e) {
             System.out.println(e);
