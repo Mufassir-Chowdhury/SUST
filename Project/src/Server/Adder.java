@@ -6,6 +6,7 @@ import java.util.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
+import Server.Datapoints.Course;
 import Server.Datapoints.Event;
 import Server.Datapoints.Link;
 import Server.Datapoints.Student;
@@ -129,5 +130,52 @@ public class Adder {
         }
     } 
 
-    
+    public static void addCourse(Course course) throws IOException
+    {
+        {
+            bufferedReader = new BufferedReader(
+                    new FileReader("allCourseListDeptWise.json"));
+
+            Map<String, Map<Integer, Set<String>>> allCourseList = new HashMap<>();
+
+            allCourseList = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<Integer, Set<String>>>>() {
+            }.getType());
+
+            if (allCourseList == null)
+                allCourseList = new HashMap<>();
+
+            if (allCourseList.containsKey(course.department) == false)
+                allCourseList.put(course.department, new HashMap<>());
+
+            if (allCourseList.get(course.department).containsKey(course.semester) == false)
+                allCourseList.get(course.department).put(course.semester, new HashSet<>());
+
+            allCourseList.get(course.department).get(course.semester).add(course.courseCode);
+
+            writer = new FileWriter("allCourseListDeptWise.json");
+            writer.write(gson.toJson(allCourseList));
+            writer.close();
+        }
+        
+        {
+            bufferedReader = new BufferedReader(
+                    new FileReader("allCourseListCourseCodeWise.json"));
+
+            Map<String, Course> allCourseList = new HashMap<>();
+
+            allCourseList = gson.fromJson(bufferedReader, new TypeToken<Map<String, Course>>() {
+            }.getType());
+
+            if (allCourseList == null)
+                allCourseList = new HashMap<>();
+
+            if (allCourseList.containsKey(course.department) == false)
+                allCourseList.put(course.courseCode, course);
+
+            writer = new FileWriter("allCourseListCourseCodeWise.json");
+            writer.write(gson.toJson(allCourseList));
+            writer.close();
+
+        }
+    }
 }

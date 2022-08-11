@@ -77,7 +77,7 @@ public class Datapoints {
 
     public enum Department {
         CSE("Computer Science and Engineering", 331, 12.5, 13.5),
-        SWE("Software Engineering", 123, 12.5, 13.5),
+        SWE("Software Engineering", 831, 12.5, 13.5),
         PHY("Physics", 132, 12.5, 13.5),
         SOC("Sociology", 232, 12.5, 13.5),
         CEP("Chemical Engineering and Polymer Science", 332, 12.5, 13.5),
@@ -655,12 +655,15 @@ public class Datapoints {
     }
 
     public static class Course {
-        String courseCode, courseTitle, credit;
+        String courseCode, courseTitle, credit, department;
+        int semester;
 
-        public Course(String courseCode, String courseTitle, String credit) {
+        public Course(String courseCode, String courseTitle, String credit, String department, int semester) {
             this.courseCode = courseCode;
             this.courseTitle = courseTitle;
             this.credit = credit;
+            this.department = department;
+            this.semester = semester;
         }
     }
 
