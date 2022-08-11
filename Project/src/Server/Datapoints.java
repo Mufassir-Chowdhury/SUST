@@ -25,6 +25,7 @@ import Constants.Fonts;
 import Constants.Icons;
 
 public class Datapoints {
+    public final static String ADD_STUDENT = "13";
 
     public Client client;
 

@@ -16,6 +16,11 @@ public class Client {
     ObjectOutputStream oos;
     PrintWriter out;
     BufferedReader in;
+    
+    public void add(Object object, String type) throws IOException {
+        out.println(Datapoints.ADD_STUDENT);
+        oos.writeObject(object);
+    }
 
     public void addNewStudent(Student student) throws IOException
     {

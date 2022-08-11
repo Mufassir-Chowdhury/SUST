@@ -91,6 +91,11 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
         }
     }
     @Override
+    public String getText(){
+        return getPassword().toString();
+    }
+
+    @Override
     public void focusGained(FocusEvent e) {
         border = Colors.TextField.BORDER_FOCUSED;
         background = Colors.TextField.BACKGROUND_FOCUSED;

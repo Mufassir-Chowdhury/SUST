@@ -7,11 +7,9 @@ import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
 import Constants.Sizes;
-import Server.Client;
 import Server.Datapoints;
 import Server.Datapoints.Student;
 
-import Modes.Administration.Main.Main;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -100,7 +98,8 @@ public class RegisterProfile extends AccentButton implements ActionListener {
                 Student student = new Student(registrationField.getText(), nameField.getText(), emailField.getText(),
                         numberField.getText(), bloodField.getSelectedItem().toString(), birthdayField.getText(), hometownField.getText(),
                         sessionField.getText(), null, null, null);
-                Datapoints.getInstance().client.addNewStudent(student);       
+                // Datapoints.getInstance().client.addNewStudent(student);
+                Datapoints.getInstance().client.add(student, Datapoints.ADD_STUDENT);       
             }
         }
     }
