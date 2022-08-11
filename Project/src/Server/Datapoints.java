@@ -44,7 +44,7 @@ public class Datapoints {
         public JComponent getInformation();
     }
 
-    public static class Notification implements Serializable , JsonConversion {
+    public static class Notification implements Serializable, JsonConversion {
         public String title, date;
         public Severity severity;
         public Boolean dismissable;
@@ -77,7 +77,7 @@ public class Datapoints {
 
     public enum Department {
         CSE("Computer Science and Engineering", 331, 12.5, 13.5),
-        SWE("Software Engineering", 123, 12.5, 13.5),
+        SWE("Software Engineering", 831, 12.5, 13.5),
         PHY("Physics", 132, 12.5, 13.5),
         SOC("Sociology", 232, 12.5, 13.5),
         CEP("Chemical Engineering and Polymer Science", 332, 12.5, 13.5),
@@ -118,15 +118,12 @@ public class Datapoints {
         }
     }
 
-
     public static class Student implements Serializable, Tilable, JsonConversion {
         public transient BufferedImage DP;
         public String registration, name, email, email2, number, blood, birthDay, hometown, session;
         public int deptCode, semester;
         public String department;
         public Map<String, String[]> courses = new HashMap<>();
-
-        
 
         public Student(String registration, String name, String email, String number, String blood, String birthDay,
                 String hometown, String session, int semester, String[] regular, String[] drop) {
@@ -203,76 +200,6 @@ public class Datapoints {
         public Boolean regular;
         public int leave;
 
-        public static class EvaluationItem implements Serializable, Tilable, JsonConversion {
-            public String courseName;
-            public String title;
-            public String date;
-            public String description;
-            public int totalMarks;
-            public int marksObtained;
-
-            public EvaluationItem(String courseName, String title, String date, String description, int totalMarks,
-                    int marksObtained) {
-                this.courseName = courseName;
-                this.title = title;
-                this.date = date;
-                this.description = description;
-                this.totalMarks = totalMarks;
-                this.marksObtained = marksObtained;
-            }
-
-            @Override
-            public Line getListItem() {
-                return new Line(
-                        title,
-                        courseName,
-                        date,
-                        String.format("%03d", totalMarks) + "   " + String.format("%03d", marksObtained));
-            }
-
-            @Override
-            public String getTitle() {
-                return title;
-            }
-
-            @Override
-            public Post getPost() {
-                return new Post(
-                        title,
-                        "Due Date: " + date,
-                        "Total Marks: " + totalMarks,
-                        description, true);
-            }
-
-            @Override
-            public String toJSON() {
-                GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();    
-                return gson.toJson(this);
-            }
-
-            @Override
-            public Object fromJSON(String json) {
-                GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();    
-                return gson.fromJson(json, (Type) this);
-            }
-        }
-
-        public static class Assignment extends EvaluationItem {
-            public Assignment(String courseName, String title, String date, String description, int totalMarks,
-                    int marksObtained) {
-                super(courseName, title, date, description, totalMarks, marksObtained);
-            }
-        }
-
-        public static class Exam extends EvaluationItem {
-            public Exam(String courseName, String title, String date, String description, int totalMarks,
-                    int marksObtained) {
-                super(courseName, title, date, description, totalMarks, marksObtained);
-            }
-        }
-
         public static class Resource implements Serializable, JsonConversion {
             public static class Syllabus implements Serializable {
                 public String title;
@@ -286,7 +213,7 @@ public class Datapoints {
                 }
             }
 
-            public static class ResourceItem implements Serializable , JsonConversion{
+            public static class ResourceItem implements Serializable, JsonConversion {
                 public String session = null;
                 public String title;
                 public String uploader;
@@ -311,14 +238,14 @@ public class Datapoints {
                 @Override
                 public String toJSON() {
                     GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();        
+                    Gson gson = builder.create();
                     return gson.toJson(this);
                 }
 
                 @Override
                 public Object fromJSON(String json) {
                     GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();        
+                    Gson gson = builder.create();
                     return gson.fromJson(json, (Type) this);
                 }
             }
@@ -344,14 +271,14 @@ public class Datapoints {
             @Override
             public String toJSON() {
                 GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();    
+                Gson gson = builder.create();
                 return gson.toJson(this);
             }
 
             @Override
             public Object fromJSON(String json) {
                 GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();    
+                Gson gson = builder.create();
                 return gson.fromJson(json, (Type) this);
             }
         }
@@ -370,8 +297,7 @@ public class Datapoints {
             this.grade = result.grade;
             this.gpa = result.gpa;
             this.regular = regular;
-            assignments.add(new Assignment(name, "Assignment 1" + this.name, this.attendance + "th April",
-                    "This is assignment 1", 100, 80));
+            assignments.add(new Assignment(name, "Assignment 1" + this.name, this.attendance + "th April","This is assignment 1", 100, 80));
             exams.add(new Exam(name, "Exam 1" + this.name, this.attendance + "th April", "This is exam 1", 100, 80));
             exams.add(new Exam(name, "Exam 2" + this.name, this.attendance + "th April", "This is exam 2", 100, 80));
         }
@@ -410,6 +336,76 @@ public class Datapoints {
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
+        }
+    }
+
+    public static class EvaluationItem implements Serializable, Tilable, JsonConversion {
+        public String courseName;
+        public String title;
+        public String date;
+        public String description;
+        public int totalMarks;
+        public int marksObtained;
+
+        public EvaluationItem(String courseName, String title, String date, String description, int totalMarks,
+                int marksObtained) {
+            this.courseName = courseName;
+            this.title = title;
+            this.date = date;
+            this.description = description;
+            this.totalMarks = totalMarks;
+            this.marksObtained = marksObtained;
+        }
+
+        @Override
+        public Line getListItem() {
+            return new Line(
+                    title,
+                    courseName,
+                    date,
+                    String.format("%03d", totalMarks) + "   " + String.format("%03d", marksObtained));
+        }
+
+        @Override
+        public String getTitle() {
+            return title;
+        }
+
+        @Override
+        public Post getPost() {
+            return new Post(
+                    title,
+                    "Due Date: " + date,
+                    "Total Marks: " + totalMarks,
+                    description, true);
+        }
+
+        @Override
+        public String toJSON() {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
+            return gson.toJson(this);
+        }
+
+        @Override
+        public Object fromJSON(String json) {
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
+            return gson.fromJson(json, (Type) this);
+        }
+    }
+
+    public static class Assignment extends EvaluationItem {
+        public Assignment(String courseName, String title, String date, String description, int totalMarks,
+                int marksObtained) {
+            super(courseName, title, date, description, totalMarks, marksObtained);
+        }
+    }
+
+    public static class Exam extends EvaluationItem {
+        public Exam(String courseName, String title, String date, String description, int totalMarks,
+                int marksObtained) {
+            super(courseName, title, date, description, totalMarks, marksObtained);
         }
     }
 
@@ -655,12 +651,15 @@ public class Datapoints {
     }
 
     public static class Course {
-        String courseCode, courseTitle, credit;
+        String courseCode, courseTitle, credit, department;
+        int semester;
 
-        public Course(String courseCode, String courseTitle, String credit) {
+        public Course(String courseCode, String courseTitle, String credit, String department, int semester) {
             this.courseCode = courseCode;
             this.courseTitle = courseTitle;
             this.credit = credit;
+            this.department = department;
+            this.semester = semester;
         }
     }
 
@@ -680,23 +679,56 @@ public class Datapoints {
         int totalMarks;
         float marksObtained;
 
-        public Result(int totalMarks, float marksObtained, String grade, float gpa) {
-            this.grade = grade;
-            this.gpa = gpa;
-            this.totalMarks = totalMarks;
+        public Result(float marksObtained, EvaluationItem item) {
+            this.grade = getGrade(item.totalMarks, marksObtained);
+            this.gpa = getGPA(this.grade);
+            this.totalMarks = item.totalMarks;
             this.marksObtained = marksObtained;
         }
+
+        private float getGPA(String grade) {
+            if (grade == "F") return 0f; 
+            if (grade == "C-") return 2f;
+            if (grade == "C") return 2.25f;
+            if (grade == "C+") return 2.50f;
+            if (grade == "B-") return 2.75f;
+            if (grade == "B") return 3f;
+            if (grade == "B+") return 3.25f;
+            if (grade == "A-") return 3.5f;
+            if (grade == "A") return 3.75f;
+            if (grade == "A+") return 4f;
+            
+            return 0;
+        }
+
+        private String getGrade(int totalMarks, float marksObtained) {
+            float mark = (marksObtained * 100) / totalMarks;
+            if (mark < 40.0)
+                return "F";
+            if (mark < 45.0)
+                return "C-";
+            if (mark < 50.0)
+                return "C";
+            if (mark < 55.0)
+                return "C+";
+            if (mark < 60.0)
+                return "B-";
+            if (mark < 65.0)
+                return "B";
+            if (mark < 70.0)
+                return "B+";
+            if (mark < 75.0)
+                return "A-";
+            if (mark < 80.0)
+                return "A";
+            return "A+";
+
+        }
     }
-    
-    
-    
+
     public String[] route = {
             "Place", "Place", "Place", "Place", "Place", "Place", "Place"
     };
-
-    
-
-    
 
     public Bus[] BUSES = {
             new Bus(1, "busName", "license", "driverName", route, "time"),

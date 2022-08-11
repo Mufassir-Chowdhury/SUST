@@ -11,7 +11,7 @@ import Server.Datapoints.Notification;
 import Server.Datapoints.Student;
 
 public class Client {
-    Socket clientSocket = null;  
+    Socket clientSocket = null;
     ObjectInputStream ois;
     ObjectOutputStream oos;
     PrintWriter out;
@@ -21,14 +21,13 @@ public class Client {
         String hostname = "localhost";
         int port = 6789;
 
-        
         try {
             clientSocket = new Socket(hostname, port);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             ois = new ObjectInputStream(clientSocket.getInputStream());
             oos = new ObjectOutputStream(clientSocket.getOutputStream());
-            
+
         } catch (UnknownHostException e) {
             System.err.println("Don't know about host: " + hostname);
         } catch (IOException e) {
@@ -37,7 +36,7 @@ public class Client {
         }
 
         if (clientSocket == null) {
-            System.err.println( "Something is wrong. One variable is null." );
+            System.err.println("Something is wrong. One variable is null.");
             return;
         }
         out.println("2019331053");
@@ -103,4 +102,8 @@ public class Client {
         Datapoints.NOTICES = notices;
     }           
 }
+
+
+
+        
 
