@@ -87,7 +87,10 @@ public class Client {
         String[] details = (String[]) ois.readObject();
         System.out.println("received details");
 
-        Datapoints.getInstance().EVENTS = events;
+
+
+        Datapoints.getInstance().LINKS = links;
+        Datapoints.EVENTS = events;
         Datapoints.getInstance().LINK_TITLES = linkTitles;
         Datapoints.getInstance().COURSES = courses;
         Datapoints.getInstance().DETAILS = details;
@@ -95,8 +98,8 @@ public class Client {
         Datapoints.getInstance().ASSIGNMENT = assignment;
         Datapoints.getInstance().REGISTRATION = registration;
         Datapoints.getInstance().NOTIFICATION = notification;
-        Datapoints.getInstance().STUDENTS = students;
-        Datapoints.getInstance().NOTICES = notices;
+        Datapoints.STUDENTS = students;
+        Datapoints.NOTICES = notices;
     }           
 }
 

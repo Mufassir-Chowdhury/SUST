@@ -18,6 +18,7 @@ public class Table extends JTable {
         setRowHeight(30);
         setFont(Fonts.BODY);
         setEnabled(false);
+        setRowSelectionAllowed(false);
         setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {{
             setOpaque(false);
         }});
