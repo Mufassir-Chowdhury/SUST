@@ -17,18 +17,19 @@ import java.awt.Component;
 
 public class RegisterProfile extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel{
-        public Dialog(JDialog dialog){
+        public Dialog(JDialog dialog, String type){
             add(Box.createVerticalStrut(50));
-            String[] types = {"Teacher", "Student"};
 
-            TilesPanel tilesPanel = new TilesPanel(9, 2, 10);
-            tilesPanel.add(new Label("Type"));
-            tilesPanel.add(new ComboBox<>(types));
+            TilesPanel tilesPanel = new TilesPanel(8, 2, 10);
             tilesPanel.add(new Label("Registration"));
             tilesPanel.add(new TextField("Write Registration", TYPE.PLAIN));
             tilesPanel.add(new Label("Name"));
             tilesPanel.add(new TextField("Write Name", TYPE.PLAIN));
-            tilesPanel.add(new Label("Position (20xx-xx) / designation for teachers"));
+            if(type == "Student"){
+                tilesPanel.add(new Label("Position (20xx-xx)"));
+            } else {
+                tilesPanel.add(new Label("Designation"));
+            }
             tilesPanel.add(new TextField("Write Position", TYPE.PLAIN));
             tilesPanel.add(new Label("Number (Without +88)"));
             tilesPanel.add(new TextField("Write Number", TYPE.PLAIN));
@@ -64,7 +65,13 @@ public class RegisterProfile extends AccentButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         final JDialog dialog = new JDialog();
-        final JOptionPane optionPane = new JOptionPane(new Dialog(dialog), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+        final JOptionPane optionPane;
+        int returnValue = JOptionPane.showOptionDialog(null, "Choose type", "Choose a type", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Teacher", "Student"}, null);
+        if(returnValue == JOptionPane.YES_OPTION){
+            optionPane = new JOptionPane(new Dialog(dialog, "Teacher"), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+        } else{
+            optionPane = new JOptionPane(new Dialog(dialog, "Student"), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+        }
 
         dialog.setTitle("Register a new profile");
         dialog.setModal(true);
