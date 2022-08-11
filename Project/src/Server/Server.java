@@ -125,14 +125,18 @@ class ServerConnection {
     ObjectOutputStream oos;
     Socket clientSocket;
     Server server;
+    PrintWriter out;
+    BufferedReader in;
 
     public ServerConnection(Socket clientSocket, Server server) {
         this.clientSocket = clientSocket;
         this.server = server;
         System.out.println( "Connection established with: " + clientSocket );
         try {
-            ois = new ObjectInputStream(clientSocket.getInputStream());
+            out = new PrintWriter(clientSocket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             oos = new ObjectOutputStream(clientSocket.getOutputStream());
+            ois = new ObjectInputStream(clientSocket.getInputStream());
         } catch (IOException e) {
             System.out.println(e);
         }
@@ -141,17 +145,66 @@ class ServerConnection {
     public void run() throws FileNotFoundException {
         Fetcher.fetch();
         try {
-            oos.writeObject(Server.LINKS);
-            oos.writeObject(Server.LINK_TITLES);
-            oos.writeObject(Server.EVENTS);
-            oos.writeObject(Server.COURSES);
-            oos.writeObject(Server.DETAILS);
-            oos.writeObject(Server.EXAM);
-            oos.writeObject(Server.ASSIGNMENT);
-            oos.writeObject(Server.REGISTRATION);
-            oos.writeObject(Server.NOTIFICATIONS);
-            oos.writeObject(Server.STUDENTS);
-            oos.writeObject(Server.NOTICES);
+            System.out.println("Recieved connection request from - " + in.readLine());
+            out.println("Welcome to SUST Online Portal");
+
+            /**
+             * 1. REQUEST LINKS
+             * 2. REQUEST LINK_TITLES
+             * 3. REQUEST EVENTS
+             * 4. REQUEST COURSES
+             * 5. REQUEST EXAM
+             * 6. REQUEST ASSIGNMENT
+             * 7. REQUEST REGISTRATION
+             * 8. REQUEST NOTIFICATIONS
+             * 9. REQUEST NOTICES
+             * 10. REQUEST STUDENTS
+             * 11. REQUEST DETAILS
+             * 12. TERMINATE CONNECTION
+             */
+            while(true){
+                String input = in.readLine();
+                switch (input) {
+                    case "1":
+                        oos.writeObject(Server.LINKS);                    
+                        break;
+                    case "2":
+                        oos.writeObject(Server.LINK_TITLES);
+                        break;
+                    case "3":
+                        oos.writeObject(Server.EVENTS);
+                        break;
+                    case "4":
+                        oos.writeObject(Server.COURSES);
+                        break;
+                    case "5":
+                        oos.writeObject(Server.EXAM);
+                        break;
+                    case "6":
+                        oos.writeObject(Server.ASSIGNMENT);
+                        break;
+                    case "7":
+                        oos.writeObject(Server.REGISTRATION);
+                        break;
+                    case "8":
+                        oos.writeObject(Server.NOTIFICATIONS);
+                        break;
+                    case "9":
+                        oos.writeObject(Server.NOTICES);
+                        break;
+                    case "10":
+                        oos.writeObject(Server.STUDENTS);
+                        break;
+                    case "11":
+                        oos.writeObject(Server.DETAILS);
+                        break;
+                    case "12":
+                    default:
+                        System.out.println("Terminating connection");
+                        break;
+                }
+            }
+            
 
         } catch (IOException e) {
             System.out.println(e);
