@@ -17,6 +17,12 @@ public class Client {
     PrintWriter out;
     BufferedReader in;
 
+    public void addNewStudent(Student student) throws IOException
+    {
+        out.println("addNewStudent");
+        oos.writeObject(student);
+    }
+
     public Client() throws IOException, ClassNotFoundException {
         String hostname = "localhost";
         int port = 6789;
@@ -43,11 +49,12 @@ public class Client {
         System.out.println("sent connection request - 2019331053");
         System.out.println("received response - " + in.readLine());
 
+
         out.println(1);
         // out.print(obj);
         Link[][] links = (Link[][]) ois.readObject();
         System.out.println("received links");
-
+        
         out.println(2);
         String[] linkTitles = (String[]) ois.readObject();
         System.out.println("received link titles");
@@ -88,9 +95,12 @@ public class Client {
         String[] details = (String[]) ois.readObject();
         System.out.println("received details");
 
-
+        out.println(12);
+        String[] depts = (String[]) ois.readObject();
+        System.out.println("received depts");
 
         Datapoints.getInstance().LINKS = links;
+        Datapoints.getInstance().Departments = depts;
         Datapoints.EVENTS = events;
         Datapoints.getInstance().LINK_TITLES = linkTitles;
         Datapoints.getInstance().COURSES = courses;

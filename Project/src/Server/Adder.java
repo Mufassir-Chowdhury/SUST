@@ -206,7 +206,6 @@ public class Adder {
         
         {
             bufferedReader = new BufferedReader(new FileReader("allAssignmentExamResults.json"));
-
             Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>> allAssignmentExamResults = new HashMap<>();
 
             allAssignmentExamResults = gson.fromJson(bufferedReader,
@@ -222,8 +221,7 @@ public class Adder {
                 allAssignmentExamResults.get(course.courseCode).put("Assignment", new HashMap<>());
                 allAssignmentExamResults.get(course.courseCode).put("Exam", new HashMap<>());
             }
-            
-
+        
             writer = new FileWriter("allAssignmentExamResults.json");
             writer.write(gson.toJson(allAssignmentExamResults));
             writer.close();

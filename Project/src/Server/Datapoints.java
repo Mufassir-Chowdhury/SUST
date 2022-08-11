@@ -77,7 +77,7 @@ public class Datapoints {
         }
     }
 
-    public enum Department {
+    public static enum Department {
         CSE("Computer Science and Engineering", 331, 12.5, 13.5),
         SWE("Software Engineering", 831, 12.5, 13.5),
         PHY("Physics", 132, 12.5, 13.5),
@@ -123,12 +123,13 @@ public class Datapoints {
     public static class Student implements Serializable, Tilable, JsonConversion {
         public transient BufferedImage DP;
         public String registration, name, email, email2, number, blood, birthDay, hometown, session;
-        public int deptCode, semester;
+        public int deptCode;
+        Integer semester;
         public String department;
         public Map<String, String[]> courses = new HashMap<>();
 
         public Student(String registration, String name, String email, String number, String blood, String birthDay,
-                String hometown, String session, int semester, String[] regular, String[] drop) {
+                String hometown, String session, Integer semester, String[] regular, String[] drop) {
 
             this.DP = Icons.DP;
             this.deptCode = getDeptCode(registration);
@@ -801,6 +802,7 @@ public class Datapoints {
     public Notification[] NOTIFICATION = null;
     public static Student[] STUDENTS = null;
     public static Notice[] NOTICES = null;
+    public String[] Departments = null;
 
     private static Datapoints single_instance = null;
 

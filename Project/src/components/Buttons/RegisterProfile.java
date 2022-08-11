@@ -7,53 +7,67 @@ import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
 import Constants.Sizes;
+import Server.Client;
+import Server.Datapoints;
 import Server.Datapoints.Student;
 
+import Modes.Administration.Main.Main;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
 
 import javax.swing.Box;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
-import javax.swing.WindowConstants;
 
 import java.awt.Component;
 
 public class RegisterProfile extends AccentButton implements ActionListener {
-    public class Dialog extends ListPanel{
-        public Dialog(JDialog dialog){
+    public class Dialog extends ListPanel {
+        ComboBox<String> depts = new ComboBox<>(Datapoints.getInstance().Departments);
+        TextField registrationField= new TextField("Write Registration", TYPE.PLAIN);
+        TextField nameField= new TextField("Write Name", TYPE.PLAIN);
+        TextField DesignationField = new TextField("Write Designation", TYPE.PLAIN);
+        TextField sessionField = new TextField("Write Session", TYPE.PLAIN);
+        TextField numberField= new TextField("Write Number", TYPE.PLAIN);
+        TextField emailField= new TextField("Write Email", TYPE.PLAIN);
+        TextField bloodField= new TextField("Write Blood Group", TYPE.PLAIN);
+        TextField birthdayField= new TextField("Write Birthday", TYPE.PLAIN);
+        TextField hometownField= new TextField("Write Hometown", TYPE.PLAIN);
+        public Dialog(JDialog dialog, String type){
             add(Box.createVerticalStrut(50));
-            String[] types = { "Teacher", "Student" };
 
-            ComboBox<String> comboBox = new ComboBox<>(types);
-            TextField registrationField= new TextField("Write Registration", TYPE.PLAIN);
-            TextField nameField= new TextField("Write Name", TYPE.PLAIN);
-            TextField positionField= new TextField("Write Position", TYPE.PLAIN);
-            TextField numberField= new TextField("Write Number", TYPE.PLAIN);
-            TextField emailField= new TextField("Write Email", TYPE.PLAIN);
-            TextField bloodField= new TextField("Write Blood Group", TYPE.PLAIN);
-            TextField birthdayField= new TextField("Write Birthday", TYPE.PLAIN);
-            TextField hometownField= new TextField("Write Hometown", TYPE.PLAIN);
 
             TilesPanel tilesPanel = new TilesPanel(9, 2, 10);
-            tilesPanel.add(new Label("Type"));
-            tilesPanel.add(comboBox);
-            tilesPanel.add(new Label("Registration"));
-            tilesPanel.add(registrationField);
+            if(type == "Student"){
+                tilesPanel.add(new Label("Registration"));
+                tilesPanel.add(registrationField);
+            } else {
+                tilesPanel.add(new Label("Department"));
+                tilesPanel.add(depts);
+            }
+            
             tilesPanel.add(new Label("Name"));
             tilesPanel.add(nameField);
-            tilesPanel.add(new Label("Position (20xx-xx) / designation for teachers"));
-            tilesPanel.add(positionField);
-            tilesPanel.add(new Label("Number (Without +88)"));
-            tilesPanel.add(numberField);
+
+            if(type == "Student"){
+                tilesPanel.add(new Label("Session (20xx-xx)"));
+                tilesPanel.add(sessionField);
+            } else {
+                tilesPanel.add(new Label("Designation"));
+                tilesPanel.add(DesignationField);
+            }
             tilesPanel.add(new Label("Email"));
             tilesPanel.add(emailField);
+            tilesPanel.add(new Label("Number (Without +88)"));
+            tilesPanel.add(numberField);
             tilesPanel.add(new Label("Blood Group (X+/-)"));
             tilesPanel.add(bloodField);
             tilesPanel.add(new Label("Birthday (DD/MM/YYYY)"));
             tilesPanel.add(birthdayField);
             tilesPanel.add(new Label("Hometown"));
             tilesPanel.add(hometownField);
+
             tilesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(tilesPanel);
             add(new FileButton("Choose a photo"));
@@ -63,7 +77,11 @@ public class RegisterProfile extends AccentButton implements ActionListener {
             proceed.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    fetchData();
+                    try {
+                        fetchData(type);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
                     dialog.dispose();
 
                 }
@@ -71,11 +89,18 @@ public class RegisterProfile extends AccentButton implements ActionListener {
             add(proceed);
         }
 
-        private void fetchData() {
-            Student student = new Student(registration, name, email, number, blood, birthDay, hometown, session, semester, regular, drop)
+        private void fetchData(String type) throws IOException {
+            if(type == "Student")
+            {
+                Student student = new Student(registrationField.getText(), nameField.getText(), emailField.getText(),
+                        numberField.getText(), bloodField.getText(), birthdayField.getText(), hometownField.getText(),
+                        sessionField.getText(), null, null, null);
+                Datapoints.getInstance().client.addNewStudent(student);       
+            }
         }
     }
-    public RegisterProfile(){
+
+    public RegisterProfile() {
         super("Add new Profile");
         addActionListener(this);
     }
@@ -83,7 +108,16 @@ public class RegisterProfile extends AccentButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         final JDialog dialog = new JDialog();
-        final JOptionPane optionPane = new JOptionPane(new Dialog(dialog), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+        final JOptionPane optionPane;
+        int returnValue = JOptionPane.showOptionDialog(null, "Choose type", "Choose a type", JOptionPane.YES_NO_OPTION,
+                JOptionPane.INFORMATION_MESSAGE, null, new Object[] { "Teacher", "Student" }, null);
+        if (returnValue == JOptionPane.YES_OPTION) {
+            optionPane = new JOptionPane(new Dialog(dialog, "Teacher"), JOptionPane.INFORMATION_MESSAGE,
+                    JOptionPane.DEFAULT_OPTION, null, new Object[] {}, null);
+        } else {
+            optionPane = new JOptionPane(new Dialog(dialog, "Student"), JOptionPane.INFORMATION_MESSAGE,
+                    JOptionPane.DEFAULT_OPTION, null, new Object[] {}, null);
+        }
 
         dialog.setTitle("Register a new profile");
         dialog.setModal(true);
@@ -92,8 +126,9 @@ public class RegisterProfile extends AccentButton implements ActionListener {
         dialog.pack();
 
         Dimension size = Sizes.DEFAULT_WINDOW_SIZE;
-        dialog.setLocation((int)(size.getWidth()-dialog.getWidth())/2, (int)(size.getHeight()-dialog.getHeight())/2);
-        
+        dialog.setLocation((int) (size.getWidth() - dialog.getWidth()) / 2,
+                (int) (size.getHeight() - dialog.getHeight()) / 2);
+
         dialog.setVisible(true);
 
     }

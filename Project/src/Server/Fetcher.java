@@ -18,12 +18,23 @@ public class Fetcher {
     
     public static void fetch() throws FileNotFoundException
     {
+        fetchDept();
         fetchLinks();
         fetchEvents();
         fetchStudentDetails("2019332064");
         // fetchStudentDetails("2019331053");
     }
     
+    private static void fetchDept() throws FileNotFoundException {
+        bufferedReader = new BufferedReader(new FileReader("allDepartment.json"));
+        Set<String> allDepartment = new HashSet<>();
+
+        allDepartment = gson.fromJson(bufferedReader, new TypeToken<Set<String>>() {
+        }.getType());
+
+        Server.Departments = allDepartment.toArray(new String[0]);
+    }
+
     private static void fetchLinks() throws FileNotFoundException {
         
         bufferedReader = new BufferedReader(new FileReader("links.json"));

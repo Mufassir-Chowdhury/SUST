@@ -22,15 +22,15 @@ public class Experiment {
         try {
 
             Adder.addCourse(new Course("CSE101", "CSE 1", "3", "Computer Science and Engineering",3));
-            Adder.addCourse(new Course("CSE102", "CSE 2", "3", "Computer Science and Engineering",3));
-            Adder.addCourse(new Course("CSE103", "CSE 3", "3", "Computer Science and Engineering",3));
-            Adder.addCourse(new Course("PHY102", "PHY 2", "3", "Physics",3));
-            Adder.addCourse(new Course("PHY103", "PHY 3", "3", "Physics",3));
-            Adder.addCourse(new Course("SOC102", "SOC 2", "3", "Sociology",3));
-            Adder.addCourse(new Course("SOC101", "SOC 1", "3", "Sociology",3));
-            Adder.addCourse(new Course("SOC103", "SOC 3", "3", "Sociology",3));
-            Adder.addCourse(new Course("EEE102", "EEE 2", "3", "Electrical and Electronics Engineering",3));
-            Adder.addCourse(new Course("EEE105", "EEE 5", "3", "Electrical and Electronics Engineering",3));
+            // Adder.addCourse(new Course("CSE102", "CSE 2", "3", "Computer Science and Engineering",3));
+            // Adder.addCourse(new Course("CSE103", "CSE 3", "3", "Computer Science and Engineering",3));
+            // Adder.addCourse(new Course("PHY102", "PHY 2", "3", "Physics",3));
+            // Adder.addCourse(new Course("PHY103", "PHY 3", "3", "Physics",3));
+            // Adder.addCourse(new Course("SOC102", "SOC 2", "3", "Sociology",3));
+            // Adder.addCourse(new Course("SOC101", "SOC 1", "3", "Sociology",3));
+            // Adder.addCourse(new Course("SOC103", "SOC 3", "3", "Sociology",3));
+            // Adder.addCourse(new Course("EEE102", "EEE 2", "3", "Electrical and Electronics Engineering",3));
+            // Adder.addCourse(new Course("EEE105", "EEE 5", "3", "Electrical and Electronics Engineering",3));
             // addNewStudent();
 
         } catch (FileNotFoundException e) {
