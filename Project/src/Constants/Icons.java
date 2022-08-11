@@ -20,7 +20,6 @@ public class Icons {
     
     /**
      * This is the profile picture of the logged in profile and also used in the list of students.
-     * TODO fetch a list of dp from the server
      */
     // public static final ImageIcon DP = Tools.imageScale("static/images/2019331073.png", Sizes.DP);
     public static final BufferedImage DP = Tools.bufferImage("static/images/2019331073.png", Sizes.DP);

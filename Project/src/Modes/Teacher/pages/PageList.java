@@ -69,11 +69,7 @@ public class PageList {
                 new Page(
                     "Attendance", 
                     Icons.Pages.ATTENDANCE, 
-                    new ViewPortBasicPanel(
-                            "Attendance",
-                            null,
-                            Components.pageView.Box.MainCardListItem.Type.ATTENDANCE
-                    )
+                    new Attendance()
                 )
             },
             { 

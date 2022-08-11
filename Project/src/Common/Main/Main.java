@@ -38,7 +38,7 @@ public class Main extends JFrame {
 		currentFrame.setVisible(true);
 		UIManager.put("OptionPane.background", new Color(33, 33, 33));
         UIManager.put("Panel.background", new Color(33, 33, 33));
-        UIManager.put("OptionPane.minimumSize", new Dimension(1000, 500));
+        UIManager.put("OptionPane.minimumSize", new Dimension(1000, 600));
 
 	}
 	

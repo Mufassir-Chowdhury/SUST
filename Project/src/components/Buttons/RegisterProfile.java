@@ -1,6 +1,7 @@
 package Components.Buttons;
 
 import Components.Label;
+import Components.InputFields.ComboBox;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
@@ -18,14 +19,17 @@ public class RegisterProfile extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel{
         public Dialog(JDialog dialog){
             add(Box.createVerticalStrut(50));
+            String[] types = {"Teacher", "Student"};
 
-            TilesPanel tilesPanel = new TilesPanel(7, 2, 10);
+            TilesPanel tilesPanel = new TilesPanel(9, 2, 10);
+            tilesPanel.add(new Label("Type"));
+            tilesPanel.add(new ComboBox<>(types));
             tilesPanel.add(new Label("Registration"));
             tilesPanel.add(new TextField("Write Registration", TYPE.PLAIN));
             tilesPanel.add(new Label("Name"));
             tilesPanel.add(new TextField("Write Name", TYPE.PLAIN));
-            tilesPanel.add(new Label("Session (20xx-xx)"));
-            tilesPanel.add(new TextField("Write Session", TYPE.PLAIN));
+            tilesPanel.add(new Label("Position (20xx-xx) / designation for teachers"));
+            tilesPanel.add(new TextField("Write Position", TYPE.PLAIN));
             tilesPanel.add(new Label("Number (Without +88)"));
             tilesPanel.add(new TextField("Write Number", TYPE.PLAIN));
             tilesPanel.add(new Label("Email"));
