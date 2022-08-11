@@ -7,6 +7,7 @@ import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 
 import Server.Datapoints.Course;
+import Server.Datapoints.EvaluationItem;
 import Server.Datapoints.Event;
 import Server.Datapoints.Link;
 import Server.Datapoints.Student;
@@ -176,6 +177,56 @@ public class Adder {
             writer.write(gson.toJson(allCourseList));
             writer.close();
 
+        }
+
+        {
+            bufferedReader = new BufferedReader(new FileReader("allAssignmentExamDetails.json"));
+
+            Map<String, Map<String, Map<String, Map<String, EvaluationItem>>>> allAssignmentExamDetails = new HashMap<>();
+
+            allAssignmentExamDetails = gson.fromJson(bufferedReader,
+                    new TypeToken<Map<String, Map<String, Map<String, Map<String, EvaluationItem>>>>>() {
+                    }.getType());
+            
+            if (allAssignmentExamDetails == null)
+                allAssignmentExamDetails = new HashMap<>();
+
+            if (allAssignmentExamDetails.containsKey(course.courseCode) == false)
+            {
+                allAssignmentExamDetails.put(course.courseCode, new HashMap<>());
+                allAssignmentExamDetails.get(course.courseCode).put("Assignment", new HashMap<>());
+                allAssignmentExamDetails.get(course.courseCode).put("Exam", new HashMap<>());
+            }
+            
+
+            writer = new FileWriter("allAssignmentExamDetails.json");
+            writer.write(gson.toJson(allAssignmentExamDetails));
+            writer.close();
+        }
+        
+        {
+            bufferedReader = new BufferedReader(new FileReader("allAssignmentExamResults.json"));
+
+            Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>> allAssignmentExamResults = new HashMap<>();
+
+            allAssignmentExamResults = gson.fromJson(bufferedReader,
+                    new TypeToken<Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>>>() {
+                    }.getType());
+            
+            if (allAssignmentExamResults == null)
+                allAssignmentExamResults = new HashMap<>();
+
+            if (allAssignmentExamResults.containsKey(course.courseCode) == false)
+            {
+                allAssignmentExamResults.put(course.courseCode, new HashMap<>());
+                allAssignmentExamResults.get(course.courseCode).put("Assignment", new HashMap<>());
+                allAssignmentExamResults.get(course.courseCode).put("Exam", new HashMap<>());
+            }
+            
+
+            writer = new FileWriter("allAssignmentExamResults.json");
+            writer.write(gson.toJson(allAssignmentExamResults));
+            writer.close();
         }
     }
 }

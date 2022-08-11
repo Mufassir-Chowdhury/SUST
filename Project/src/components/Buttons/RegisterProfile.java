@@ -46,6 +46,7 @@ public class RegisterProfile extends AccentButton implements ActionListener {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     dialog.dispose();
+                    
                 }
             });
             add(proceed);

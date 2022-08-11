@@ -44,8 +44,8 @@ public class Server {
 
     
     public static Courses[] COURSES = {
-        new Courses(new Course("CSE101", "Data Structure", "3", "Computer Science and Engineering",2), new Attendance(20,0,0), new Result(100, 100, "A+", 4.00f), true),
-        new Courses(new Course("CSE102", "Data Structure 2", "3", "Computer Science and Engineering",1), new Attendance(20,0,0), new Result(100, 100, "A+", 4.00f), true),
+        new Courses(new Course("CSE101", "Data Structure", "3", "Computer Science and Engineering",2), new Attendance(20,0,0), new Result(79, new Assignment("Assignment", "Assignment 1 " + "Assignment", "20" + "th April","This is assignment 1", 100, 80)), true),
+        new Courses(new Course("CSE102", "Data Structure 2", "3", "Computer Science and Engineering",1), new Attendance(20,0,0), new Result(79, new Assignment("Assignment", "Assignment 1 " + "Assignment", "20" + "th April","This is assignment 1", 100, 80)), true),
         // new Courses("CSE101", "Data Structure", "3", "A", 4.00f, 20, 0, true, 0)1
         // new Courses("CSE102", "Algorithm", "3", "A", 4.00f, 15, 5, true, 0),
         // new Courses("CSE103", "Computer Architecture", "3", "A", 4.00f, 16, 4, true, 0),
@@ -54,6 +54,8 @@ public class Server {
         // new Courses("CSE106", "Data Base", "3", "A", 4.00f, 10, 10, false, 2),
         // new Courses("CSE107", "Software Engineering", "3", "A", 4.00f, 16, 4, true, 0),
     };
+
+
 
 
     
@@ -147,7 +149,7 @@ class ServerConnection {
     public void run() throws FileNotFoundException {
         Fetcher.fetch();
         try {
-            System.out.println("Recieved connection request from - " + in.readLine());
+            System.out.println("Received connection request from - " + in.readLine());
             out.println("Welcome to SUST Online Portal");
 
             /**
