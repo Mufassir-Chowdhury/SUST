@@ -91,7 +91,7 @@ public class Client {
 
 
         Datapoints.getInstance().LINKS = links;
-        Datapoints.getInstance().EVENTS = events;
+        Datapoints.EVENTS = events;
         Datapoints.getInstance().LINK_TITLES = linkTitles;
         Datapoints.getInstance().COURSES = courses;
         Datapoints.getInstance().DETAILS = details;
@@ -99,8 +99,8 @@ public class Client {
         Datapoints.getInstance().ASSIGNMENT = assignment;
         Datapoints.getInstance().REGISTRATION = registration;
         Datapoints.getInstance().NOTIFICATION = notification;
-        Datapoints.getInstance().STUDENTS = students;
-        Datapoints.getInstance().NOTICES = notices;
+        Datapoints.STUDENTS = students;
+        Datapoints.NOTICES = notices;
     }           
 }
 

@@ -164,6 +164,8 @@ class ServerConnection {
              */
             while(true){
                 String input = in.readLine();
+                if(input == null)
+                    break;
                 switch (input) {
                     case "1":
                         oos.writeObject(Server.LINKS);                    
@@ -201,6 +203,7 @@ class ServerConnection {
                     case "12":
                     default:
                         System.out.println("Terminating connection");
+                        finalize();
                         break;
                 }
             }
