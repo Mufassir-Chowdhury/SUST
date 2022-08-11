@@ -201,17 +201,15 @@ class ServerConnection {
              * 9. REQUEST NOTICES
              * 10. REQUEST STUDENTS
              * 11. REQUEST DETAILS
-             * 12. TERMINATE CONNECTION
+             * 12. ADD DEPARTMENT
+             * 13. ADD STUDENT
+             * 0. TERMINATE CONNECTION
              */
             while (true) {
                 String input = in.readLine();
                 if (input == null)
                     break;
                 switch (input) {
-                    case "addNewStudent":
-                        Student student = (Student) ois.readObject();
-                        Adder.addNewStudent(student);
-                        System.err.println("done");
                     case "1":
                         oos.writeObject(Server.LINKS);
                         break;
@@ -247,6 +245,11 @@ class ServerConnection {
                         break;
                     case "12":
                         oos.writeObject(Server.Departments);
+                        break;
+                    case Datapoints.ADD_STUDENT:
+                        Student student = (Student) ois.readObject();
+                        Adder.addNewStudent(student);
+                        System.err.println("done");
                         break;
                     default:
                         System.out.println("Terminating connection");
