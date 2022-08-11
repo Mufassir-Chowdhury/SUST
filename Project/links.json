@@ -1,56 +1,44 @@
 {
-    "ORGANIZATION_LINKS": [
-        {
-            "title": "IQAC-SUST",
-            "url": "https://iqacsust.org/"
-        },
-        {
-            "title": "IQAC-SUST",
-            "url": "https://iqacsust.org/"
-        },
-        {
+    "ORGANIZATION_LINKS": {
+        "ACM SUST": {
             "title": "ACM SUST",
             "url": "https://sustsc.acm.org/"
         },
-        {
+        "IQAC-SUST": {
+            "title": "IQAC-SUST",
+            "url": "https://iqacsust.org/"
+        }
+    },
+    "FACEBOOK_LINKS": {
+        "Amra SUSTian": {
+            "title": "Amra SUSTian",
+            "url": "https://www.facebook.com/groups/AMRASUSTIAN"
+        },
+        "SUSTian View": {
             "title": "SUSTian View",
             "url": "https://www.facebook.com/groups/1576654242498653/"
         }
-    ],
-    "FACEBOOK_LINKS": [
-        {
-            "title": "Amra SUSTian",
-            "url": "https://www.facebook.com/groups/AMRASUSTIAN"
-        },
-        {
-            "title": "Amra SUSTian",
-            "url": "https://www.facebook.com/groups/AMRASUSTIAN"
-        }
-    ],
-    "OFFICIAL_LINKS": [
-        {
-            "title": "SUST",
-            "url": "https://www.sust.edu/"
-        },
-        {
-            "title": "SUST",
-            "url": "https://www.sust.edu/"
-        },
-        {
-            "title": "E-Payment",
-            "url": "https://epayment.sust.edu/"
-        },
-        {
+    },
+    "OFFICIAL_LINKS": {
+        "Services": {
             "title": "Services",
             "url": "https://services.student.sust.edu/"
         },
-        {
+        "SUST": {
+            "title": "SUST",
+            "url": "https://www.sust.edu/"
+        },
+        "E-Payment": {
+            "title": "E-Payment",
+            "url": "https://epayment.sust.edu/"
+        },
+        "Library": {
             "title": "Library",
             "url": "http://library.sust.edu/"
         },
-        {
+        "Course Registration": {
             "title": "Course Registration",
             "url": "http://services.student.sust.edu:9090/student_login.jsp"
         }
-    ]
+    }
 }

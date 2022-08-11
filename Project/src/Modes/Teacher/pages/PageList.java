@@ -9,7 +9,6 @@ import Common.pages.pageView.updates.routine.routine;
 import Components.Buttons.AssignmentButton;
 import Components.Buttons.ClassButton;
 import Components.Buttons.ExamButton;
-import Components.pageView.Box.ResultSummary;
 import Components.pageView.Panels.ViewPortBasicPanel;
 import Constants.Icons;
 import Server.Datapoints;
@@ -65,11 +64,7 @@ public class PageList {
                 new Page(
                     "Results",
                     Icons.Pages.RESULT,
-                    new ViewPortBasicPanel(
-                            "Results", 
-                            new ResultSummary(), 
-                            Components.pageView.Box.MainCardListItem.Type.RESULT
-                    )
+                    new Results()
                 ),
                 new Page(
                     "Attendance", 
@@ -88,7 +83,7 @@ public class PageList {
                     new links(
                         null
                     )
-                    )
+                )
             },
             { 
                 new Page(

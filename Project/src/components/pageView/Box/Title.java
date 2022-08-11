@@ -27,12 +27,4 @@ public class Title extends Box {
             component.setAlignmentY(Component.TOP_ALIGNMENT);
         }
     }
-    
-    public Title(Label label){
-        super(BoxLayout.X_AXIS);
-        setAlignmentX(Component.LEFT_ALIGNMENT);
-        titleLabel = label;
-        titleLabel.setAlignmentY(Component.CENTER_ALIGNMENT);
-        add(titleLabel);
-    }
 }
