@@ -20,8 +20,8 @@ public class Fetcher {
     {
         fetchLinks();
         fetchEvents();
-        // fetchStudentDetails("2019332064");
-        fetchStudentDetails("2019331053");
+        fetchStudentDetails("2019332064");
+        // fetchStudentDetails("2019331053");
     }
     
     private static void fetchLinks() throws FileNotFoundException {

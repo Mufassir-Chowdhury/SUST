@@ -6,13 +6,16 @@ import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
+import Constants.Sizes;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.Box;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
+
 import java.awt.Component;
 
 public class RegisterProfile extends AccentButton implements ActionListener {
@@ -50,11 +53,16 @@ public class RegisterProfile extends AccentButton implements ActionListener {
             proceed.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e) {
+                    fetchData();
                     dialog.dispose();
-                    
+
                 }
             });
             add(proceed);
+        }
+
+        private void fetchData() {
+            
         }
     }
     public RegisterProfile(){
@@ -79,6 +87,9 @@ public class RegisterProfile extends AccentButton implements ActionListener {
         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         dialog.pack();
 
+        Dimension size = Sizes.DEFAULT_WINDOW_SIZE;
+        dialog.setLocation((int)(size.getWidth()-dialog.getWidth())/2, (int)(size.getHeight()-dialog.getHeight())/2);
+        
         dialog.setVisible(true);
 
     }

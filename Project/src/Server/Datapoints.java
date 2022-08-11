@@ -25,6 +25,7 @@ import Constants.Fonts;
 import Constants.Icons;
 
 public class Datapoints {
+
     public Client client;
 
     public static interface Tilable {
@@ -298,7 +299,8 @@ public class Datapoints {
             this.grade = result.grade;
             this.gpa = result.gpa;
             this.regular = regular;
-            assignments.add(new Assignment(name, "Assignment 1" + this.name, this.attendance + "th April","This is assignment 1", 100, 80));
+            assignments.add(new Assignment(name, "Assignment 1" + this.name, this.attendance + "th April",
+                    "This is assignment 1", 100, 80));
             exams.add(new Exam(name, "Exam 1" + this.name, this.attendance + "th April", "This is exam 1", 100, 80));
             exams.add(new Exam(name, "Exam 2" + this.name, this.attendance + "th April", "This is exam 2", 100, 80));
         }
@@ -688,17 +690,27 @@ public class Datapoints {
         }
 
         private float getGPA(String grade) {
-            if (grade == "F") return 0f; 
-            if (grade == "C-") return 2f;
-            if (grade == "C") return 2.25f;
-            if (grade == "C+") return 2.50f;
-            if (grade == "B-") return 2.75f;
-            if (grade == "B") return 3f;
-            if (grade == "B+") return 3.25f;
-            if (grade == "A-") return 3.5f;
-            if (grade == "A") return 3.75f;
-            if (grade == "A+") return 4f;
-            
+            if (grade == "F")
+                return 0f;
+            if (grade == "C-")
+                return 2f;
+            if (grade == "C")
+                return 2.25f;
+            if (grade == "C+")
+                return 2.50f;
+            if (grade == "B-")
+                return 2.75f;
+            if (grade == "B")
+                return 3f;
+            if (grade == "B+")
+                return 3.25f;
+            if (grade == "A-")
+                return 3.5f;
+            if (grade == "A")
+                return 3.75f;
+            if (grade == "A+")
+                return 4f;
+
             return 0;
         }
 
