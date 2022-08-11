@@ -11,13 +11,12 @@ import Server.Datapoints;
 import Server.Datapoints.Information;
 
 public class InformationPanel extends ListPanel {
-    public InformationPanel(String title, JComponent component, Information[] informations){
+    public InformationPanel(String title, JComponent component, Information[] informations) {
         super(
-            new CurrentTime(), 
-            new Title(new Label(title, Fonts.BODY_LARGE), component),
-            0
-        );        
-        for(Datapoints.Information info: informations){
+                new CurrentTime(),
+                new Title(new Label(title, Fonts.BODY_LARGE), component),
+                0);
+        for (Datapoints.Information info : informations) {
             add(info.getInformation());
             add(Box.createVerticalStrut(5));
         }

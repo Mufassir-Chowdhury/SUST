@@ -26,6 +26,7 @@ import Constants.Icons;
 
 public class Datapoints {
     public final static String ADD_STUDENT = "13";
+    public static final String ADD_TEACHER = "14";
 
     public Client client;
 
@@ -130,7 +131,7 @@ public class Datapoints {
         public Map<String, String[]> courses = new HashMap<>();
 
         public Student(String registration, String name, String email, String number, String blood, String birthDay,
-                String hometown, String session, Integer semester, String[] regular, String[] drop) {
+                String hometown, String session, String semester, String[] regular, String[] drop) {
 
             this.DP = Icons.DP;
             this.deptCode = getDeptCode(registration);
@@ -138,7 +139,7 @@ public class Datapoints {
             this.registration = registration;
             this.name = name;
             this.session = session;
-            this.semester = semester;
+            this.semester = getSemester(semester);
             this.email = email;
             this.number = number;
             this.blood = blood;
@@ -147,6 +148,13 @@ public class Datapoints {
             this.courses.put("regular", regular);
             this.courses.put("drop", drop);
 
+        }
+
+        private Integer getSemester(String semester) {
+            String[] s = semester.split("-");
+            int one = Integer.parseInt(s[0]) - 1;
+            int two = Integer.parseInt(s[1]);
+            return one * 2 + two;
         }
 
         public int getDeptCode(String registration) {
@@ -192,6 +200,52 @@ public class Datapoints {
             return gson.fromJson(json, (Type) this);
         }
     }
+    
+    public static class Teacher implements Serializable, Tilable {
+        public transient BufferedImage DP;
+        public String name, email, email2, number, designation, blood, birthDay, hometown, department;
+
+        public Teacher(String department, String name, String email, String designation, String number, String blood, String birthDay,
+                String hometown) {
+
+            this.DP = Icons.DP;
+            this.department = department;
+            this.designation = designation;
+            this.name = name;
+            this.email = email;
+            this.number = number;
+            this.blood = blood;
+            this.birthDay = birthDay;
+            this.hometown = hometown;
+
+        }
+
+        @Override
+        public Line getListItem() {
+            return new Line(
+                    "",
+                    DP,
+                    name,
+                    blood + " | " + birthDay + " | " + hometown,
+                    email,
+                    "+880" + number);
+        }
+
+        @Override
+        public String getTitle() {
+            return name;
+        }
+
+        @Override
+        public Post getPost() {
+            return new Post(
+                    name,
+                    blood + " | " + birthDay + " | " + hometown,
+                    email,
+                    "+880" + number, false);
+        }
+    }
+
 
     public static class Courses implements Serializable, Information, JsonConversion {
         public String code;
@@ -802,8 +856,10 @@ public class Datapoints {
     public Notification[] REGISTRATION = null;
     public Notification[] NOTIFICATION = null;
     public static Student[] STUDENTS = null;
+    public static Teacher[] TEACHERS = null;
     public static Notice[] NOTICES = null;
     public String[] Departments = null;
+
 
     private static Datapoints single_instance = null;
 

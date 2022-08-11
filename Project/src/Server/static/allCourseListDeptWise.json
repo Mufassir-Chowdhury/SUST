@@ -1,0 +1,28 @@
+{
+  "Computer Science and Engineering": {
+    "3": [
+      "CSE101",
+      "CSE102",
+      "CSE103"
+    ]
+  },
+  "Physics": {
+    "3": [
+      "PHY102",
+      "PHY103"
+    ]
+  },
+  "Sociology": {
+    "3": [
+      "SOC102",
+      "SOC101",
+      "SOC103"
+    ]
+  },
+  "Electrical and Electronics Engineering": {
+    "3": [
+      "EEE102",
+      "EEE105"
+    ]
+  }
+}

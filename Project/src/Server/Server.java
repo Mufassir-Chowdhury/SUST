@@ -24,6 +24,8 @@ public class Server {
 
     public static Student[] STUDENTS;
 
+    public static Teacher[] TEACHERS;
+
     /*
      * public static Student[] STUDENTS = {
      * new Student("2019331053", "M. M. Kabid Hasan", "kabidhasan34@gmail.com",
@@ -183,7 +185,7 @@ class ServerConnection {
         }
     }
 
-    public void run() throws FileNotFoundException, ClassNotFoundException {
+    public void run() throws ClassNotFoundException, IOException {
         Fetcher.fetch();
         try {
             System.out.println("Received connection request from - " + in.readLine());
@@ -203,6 +205,7 @@ class ServerConnection {
              * 11. REQUEST DETAILS
              * 12. ADD DEPARTMENT
              * 13. ADD STUDENT
+             * 14. ADD TEACHER
              * 0. TERMINATE CONNECTION
              */
             while (true) {
@@ -238,6 +241,7 @@ class ServerConnection {
                         oos.writeObject(Server.NOTICES);
                         break;
                     case "10":
+                        // oos.writeObject(Server.TEACHERS);
                         oos.writeObject(Server.STUDENTS);
                         break;
                     case "11":
@@ -249,6 +253,11 @@ class ServerConnection {
                     case Datapoints.ADD_STUDENT:
                         Student student = (Student) ois.readObject();
                         Adder.addNewStudent(student);
+                        System.err.println("done");
+                        break;
+                    case Datapoints.ADD_TEACHER:
+                        Teacher teacher = (Teacher) ois.readObject();
+                        Adder.addNewTeacher(teacher);
                         System.err.println("done");
                         break;
                     default:

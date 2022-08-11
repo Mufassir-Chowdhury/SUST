@@ -19,24 +19,24 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 
 public class resources extends ViewPortPanel {
-    public resources(){
+    public resources() {
         super("Resources", new PostResource());
 
-        String[] secondOptions = {"Course", "Course 2"};
+        String[] secondOptions = { "Course", "Course 2" };
         add(new Options(Datapoints.getInstance().SEMESTER, secondOptions));
         add(Box.createVerticalStrut(20));
 
         TilesPanel list = new TilesPanel(2, 3, Padding.CARD_SPACING_LONG);
-        
-        for(Resource resource: Collections.RESOURCES){
+
+        for (Resource resource : Collections.RESOURCES) {
             Card card = new Card(resource.title, Icons.Pages.PAYMENT);
             list.add(card);
-            card.addMouseListener(new MouseAdapter(){
+            card.addMouseListener(new MouseAdapter() {
                 @Override
-                public void mouseClicked(MouseEvent e){
+                public void mouseClicked(MouseEvent e) {
                     getTitle().setText("Resources > " + resource.title);
                     panel.add(resource.getInformation(), resource.title);
-                    CardLayout cl = (CardLayout)(panel.getLayout());
+                    CardLayout cl = (CardLayout) (panel.getLayout());
                     cl.show(panel, resource.title);
                 }
             });

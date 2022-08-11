@@ -91,8 +91,8 @@ public class TextField extends JPasswordField implements MouseListener, FocusLis
         }
     }
     @Override
-    public String getText(){
-        return getPassword().toString();
+    public String getText() {
+        return String.valueOf(getPassword());
     }
 
     @Override

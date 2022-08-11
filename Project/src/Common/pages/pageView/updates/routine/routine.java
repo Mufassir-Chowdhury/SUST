@@ -19,44 +19,41 @@ import javax.swing.JComponent;
 
 import Common.pages.pageView.misc.bus.Day;
 
-public class routine extends ViewPort{
-    public routine(JComponent update, AccentButton button){
-        super("Class Routine", update);
+public class routine extends ViewPort {
+        public routine(JComponent update, AccentButton button) {
+                super("Class Routine", update);
 
-        GridBagPanel list = new GridBagPanel();
-        
-        list.add(
-            new InformationPanel("Your Courses", button , Datapoints.getInstance().COURSES), 
-            GridBagPanel.GetConstant(1, 0, 0, 1, 1, 2, 1, Margins.INFORMATION_PANEL)
-        );
+                GridBagPanel list = new GridBagPanel();
 
-        list.add(
-            new timeline(), 
-            GridBagPanel.GetConstant(1, 2, 0, .5, 1, 1, 1, null)
-        );
+                list.add(
+                                new InformationPanel("Your Courses", button, Datapoints.getInstance().COURSES),
+                                GridBagPanel.GetConstant(1, 0, 0, 1, 1, 2, 1, Margins.INFORMATION_PANEL));
 
-        for(int i=0; i<3; i++){
-            list.add(
-                new Column(
-                    new Title(
-                        new Label(
-                            DateTimeFormatter.ofPattern("EEEE")
-                                                .format(LocalDate.now()
-                                                                .plusDays(i)), 
-                            Fonts.SUBTITLE
-                        ), 
-                        new Label(
-                            DateTimeFormatter.ofPattern("dd/MM")
-                                                .format(LocalDate.now()
-                                                                .plusDays(i))
-                        )
-                    ), 
-                    new Day(i%2 == 1 ? "2": "1")
-                ), 
-                GridBagPanel.GetConstant(1, 2*i+3, 0, 1, 1, 2, 1, Margins.COLUMN)
-            );
+                list.add(
+                                new timeline(),
+                                GridBagPanel.GetConstant(1, 2, 0, .5, 1, 1, 1, null));
+
+                for (int i = 0; i < 3; i++) {
+                        list.add(
+                                        new Column(
+                                                        new Title(
+                                                                        new Label(
+                                                                                        DateTimeFormatter.ofPattern(
+                                                                                                        "EEEE")
+                                                                                                        .format(LocalDate
+                                                                                                                        .now()
+                                                                                                                        .plusDays(i)),
+                                                                                        Fonts.SUBTITLE),
+                                                                        new Label(
+                                                                                        DateTimeFormatter.ofPattern(
+                                                                                                        "dd/MM")
+                                                                                                        .format(LocalDate
+                                                                                                                        .now()
+                                                                                                                        .plusDays(i)))),
+                                                        new Day(i % 2 == 1 ? "2" : "1")),
+                                        GridBagPanel.GetConstant(1, 2 * i + 3, 0, 1, 1, 2, 1, Margins.COLUMN));
+                }
+
+                add(new ScrollPane(list));
         }
-        
-        add(new ScrollPane(list));
-    }
 }

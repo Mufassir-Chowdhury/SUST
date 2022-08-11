@@ -21,45 +21,41 @@ import Constants.Sizes;
 import Server.Datapoints;
 
 class DashBoard extends JPanel {
-    public DashBoard(){
+    public DashBoard() {
         setOpaque(false);
         setLayout(new GridBagLayout());
 
         add(
-            new Profile(), 
-            GridBagPanel.GetConstant(1, 0, 0, 1, .5, 1, 1, Margins.DASHBOARD)
-        );
+                new Profile(),
+                GridBagPanel.GetConstant(1, 0, 0, 1, .5, 1, 1, Margins.DASHBOARD));
 
         add(
-            new Due(),
-            GridBagPanel.GetConstant(1, 0, 1, 1, .5, 1, 1, Margins.DASHBOARD)
-        );
-        
-        add(
-            new DashBoardItem("Due Registrations", Datapoints.getInstance().REGISTRATION), 
-            GridBagPanel.GetConstant(1, 0, 2, 1, .5, 1, 1, Margins.DASHBOARD)
-        );
+                new Due(),
+                GridBagPanel.GetConstant(1, 0, 1, 1, .5, 1, 1, Margins.DASHBOARD));
 
         add(
-            new DashBoardItem("Notifications", Datapoints.getInstance().NOTIFICATION), 
-            GridBagPanel.GetConstant(1, 0, 3, 1, 1, 1, 2, Margins.DASHBOARD)
-        );
+                new DashBoardItem("Due Registrations", Datapoints.getInstance().REGISTRATION),
+                GridBagPanel.GetConstant(1, 0, 2, 1, .5, 1, 1, Margins.DASHBOARD));
+
+        add(
+                new DashBoardItem("Notifications", Datapoints.getInstance().NOTIFICATION),
+                GridBagPanel.GetConstant(1, 0, 3, 1, 1, 1, 2, Margins.DASHBOARD));
     }
 
-    class Profile extends JPanel{
-        public Profile(){
+    class Profile extends JPanel {
+        public Profile() {
             setOpaque(false);
             setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-            Card card = new Card(Icons.DP, (int)Sizes.DP.getWidth(), Sizes.DP);
+            Card card = new Card(Icons.DP, (int) Sizes.DP.getWidth(), Sizes.DP);
             add(card);
             add(Box.createHorizontalGlue());
-            
+
             Box line = Box.createVerticalBox();
             line.add(Box.createVerticalGlue());
-            for(int i=0; i<Datapoints.getInstance().DETAILS.length; i++){
+            for (int i = 0; i < Datapoints.getInstance().DETAILS.length; i++) {
                 line.add(new Label(Datapoints.getInstance().DETAILS[i], Fonts.PLAIN_TEXT, Component.RIGHT_ALIGNMENT));
-                if(i == 0)
+                if (i == 0)
                     line.add(Box.createVerticalGlue());
             }
             line.add(Box.createVerticalGlue());
@@ -67,8 +63,9 @@ class DashBoard extends JPanel {
             add(line);
         }
     }
+
     class Due extends JPanel {
-        public Due(){
+        public Due() {
             setLayout(new GridLayout(1, 2, Padding.CARD_SPACING, 0));
             setOpaque(false);
             add(new DashBoardItem("Upcoming Exams", Datapoints.getInstance().EXAM));

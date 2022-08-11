@@ -28,9 +28,9 @@ public class links extends ViewPort {
 
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
             list.add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
-            for(Datapoints.Link link: Datapoints.getInstance().LINKS[i]){
+            for (Datapoints.Link link : Datapoints.getInstance().LINKS[i]) {
                 Line info = new Line(link.title, "", "", link.title);
-                
+
                 info.addMouseListener(new MouseAdapter() {
                     @Override
                     public void mouseClicked(java.awt.event.MouseEvent e) {

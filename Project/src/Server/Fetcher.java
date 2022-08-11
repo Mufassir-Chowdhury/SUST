@@ -1,8 +1,8 @@
 package Server;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 import com.google.gson.*;
@@ -15,29 +15,32 @@ public class Fetcher {
     static GsonBuilder builder = new GsonBuilder();
     static Gson gson = builder.create();
     static BufferedReader bufferedReader;
-    
-    public static void fetch() throws FileNotFoundException
-    {
+    static String filePath;
+
+    public static void fetch() throws IOException {
         fetchDept();
         fetchLinks();
         fetchEvents();
-        fetchStudentDetails("2019332064");
+        fetchStudentDetails("2019331019");
         // fetchStudentDetails("2019331053");
     }
-    
-    private static void fetchDept() throws FileNotFoundException {
-        bufferedReader = new BufferedReader(new FileReader("allDepartment.json"));
+
+    private static void fetchDept() throws IOException {
+        filePath = Adder.extractFilePath("allDepartment.json");
+        bufferedReader = new BufferedReader(new FileReader(filePath));
         Set<String> allDepartment = new HashSet<>();
 
         allDepartment = gson.fromJson(bufferedReader, new TypeToken<Set<String>>() {
         }.getType());
 
         Server.Departments = allDepartment.toArray(new String[0]);
+        bufferedReader.close();
     }
 
-    private static void fetchLinks() throws FileNotFoundException {
-        
-        bufferedReader = new BufferedReader(new FileReader("links.json"));
+    private static void fetchLinks() throws IOException {
+
+        filePath = Adder.extractFilePath("links.json");
+        bufferedReader = new BufferedReader(new FileReader(filePath));
 
         Map<String, Map<String, Link>> links = new HashMap<>();
         links = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Link>>>() {
@@ -53,20 +56,25 @@ public class Fetcher {
 
         Server.LINK_TITLES = titleTypeList.toArray(new String[titleTypeList.size()]);
         Server.LINKS = linkList.toArray(new Link[linkList.size()][]);
+        bufferedReader.close();
+
     }
-    
-    private static void fetchEvents() throws FileNotFoundException {
-        bufferedReader = new BufferedReader(new FileReader("events.json"));
+
+    private static void fetchEvents() throws IOException {
+        filePath = Adder.extractFilePath("events.json");
+        bufferedReader = new BufferedReader(new FileReader(filePath));
 
         Map<String, Event> events = new HashMap<>();
         events = gson.fromJson(bufferedReader, new TypeToken<Map<String, Event>>() {
         }.getType());
 
         Server.EVENTS = events.values().toArray(new Event[0]);
+        bufferedReader.close();
     }
 
-    private static void fetchStudentDetails(String registration) throws FileNotFoundException {
-        bufferedReader = new BufferedReader(new FileReader("students.json"));
+    private static void fetchStudentDetails(String registration) throws IOException {
+        filePath = Adder.extractFilePath("allStudentsSortedByRegistration.json");
+        bufferedReader = new BufferedReader(new FileReader(filePath));
 
         Map<String, Student> students = new HashMap<>();
         students = gson.fromJson(bufferedReader, new TypeToken<Map<String, Student>>() {
@@ -76,19 +84,21 @@ public class Fetcher {
         Server.Profile = student;
 
         String semester = findYear(student.semester) + " year " + FindSemester(student.semester) + " semester";
+        System.err.println(semester);
 
         String[] details = { student.name, "Student", student.department, semester };
 
         Server.DETAILS = details;
 
         Server.STUDENTS = fetchPeople(student).toArray(new Student[0]);
+        bufferedReader.close();
 
     }
-    
-    private static Vector<Student> fetchPeople(Student student) throws FileNotFoundException
-    {
-        bufferedReader = new BufferedReader(new FileReader("peoples.json"));
-        
+
+    private static Vector<Student> fetchPeople(Student student) throws IOException {
+        filePath = Adder.extractFilePath("allStudentsSortedByDepartment.json");
+        bufferedReader = new BufferedReader(new FileReader(filePath));
+
         Map<String, Map<String, Set<String>>> sortedStudents = new HashMap<>();
 
         sortedStudents = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Set<String>>>>() {
@@ -97,13 +107,14 @@ public class Fetcher {
         Set<String> yourPeople = sortedStudents.get(student.department).get(student.session);
 
         yourPeople.remove(student.registration);
+        bufferedReader.close();
 
         return fetchPeoplesDetails(yourPeople);
     }
 
-    private static Vector<Student> fetchPeoplesDetails(Set<String> yourPeople) throws FileNotFoundException
-    {
-        bufferedReader = new BufferedReader(new FileReader("students.json"));
+    private static Vector<Student> fetchPeoplesDetails(Set<String> yourPeople) throws IOException {
+        filePath = Adder.extractFilePath("allStudentsSortedByRegistration.json");
+        bufferedReader = new BufferedReader(new FileReader(filePath));
 
         Map<String, Student> students = new HashMap<>();
         students = gson.fromJson(bufferedReader, new TypeToken<Map<String, Student>>() {
@@ -111,28 +122,37 @@ public class Fetcher {
 
         Vector<Student> yourPeopleDetails = new Vector<>();
 
-        for(String registration : yourPeople)
+        for (String registration : yourPeople)
             yourPeopleDetails.add(students.get(registration));
-        
+
+        bufferedReader.close();
+
         return yourPeopleDetails;
-    }
-    
-    private static String FindSemester(int semester) {
-        return (semester % 2 == 1) ? "1st" : "2nd";
+
     }
 
-    private static String findYear (int semester)
-    {
+    private static String FindSemester(Integer semester) {
+        if (semester == null)
+            return "";
+        if (semester % 2 == 1)
+            return "1st";
+
+        return "2nd";
+    }
+
+    private static String findYear(Integer semester) {
+        if (semester == null)
+            return "";
         int year = (semester + 1) / 2;
         if (year == 1)
             return "1st";
         if (year == 2)
             return "2nd";
-        if (year == 1)
+        if (year == 3)
             return "3rd";
-        if (year == 1)
+        if (year == 4)
             return "4th";
-        return null;
+        return "";
     }
-    
+
 }

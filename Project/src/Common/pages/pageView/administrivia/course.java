@@ -20,7 +20,7 @@ import java.awt.Component;
 import Server.Datapoints;
 
 public class course extends ViewPort {
-    public course(){
+    public course() {
         super("Course", null);
 
         add(new Options(Datapoints.getInstance().USN, Datapoints.getInstance().SEMESTER));
@@ -37,7 +37,7 @@ public class course extends ViewPort {
 
         ListPanel availableCourses = new ListPanel();
         Vector<String> courseNames = new Vector<>();
-        for(Datapoints.Courses course: Datapoints.getInstance().COURSES){
+        for (Datapoints.Courses course : Datapoints.getInstance().COURSES) {
             courseNames.add(course.name);
         }
         List<String> available = new List<String>(courseNames, false, ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);

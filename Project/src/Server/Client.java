@@ -3,12 +3,7 @@ package Server;
 import java.io.*;
 import java.net.*;
 
-import Server.Datapoints.Courses;
-import Server.Datapoints.Event;
-import Server.Datapoints.Link;
-import Server.Datapoints.Notice;
-import Server.Datapoints.Notification;
-import Server.Datapoints.Student;
+import Server.Datapoints.*;
 
 public class Client {
     Socket clientSocket = null;
@@ -16,14 +11,13 @@ public class Client {
     ObjectOutputStream oos;
     PrintWriter out;
     BufferedReader in;
-    
+
     public void add(Object object, String type) throws IOException {
-        out.println(Datapoints.ADD_STUDENT);
+        out.println(type);
         oos.writeObject(object);
     }
 
-    public void addNewStudent(Student student) throws IOException
-    {
+    public void addNewStudent(Student student) throws IOException {
         out.println("addNewStudent");
         oos.writeObject(student);
     }
@@ -50,16 +44,14 @@ public class Client {
             System.err.println("Something is wrong. One variable is null.");
             return;
         }
-        out.println("2019331053");
+        out.println("2019331013");
         System.out.println("sent connection request - 2019331053");
         System.out.println("received response - " + in.readLine());
-
 
         out.println(1);
         // out.print(obj);
         Link[][] links = (Link[][]) ois.readObject();
-        System.out.println("received links");
-        
+
         out.println(2);
         String[] linkTitles = (String[]) ois.readObject();
         System.out.println("received link titles");
@@ -93,6 +85,7 @@ public class Client {
         System.out.println("received notices");
 
         out.println(10);
+        // Teacher[] teachers = (Teacher[]) ois.readObject();
         Student[] students = (Student[]) ois.readObject();
         System.out.println("received students");
 
@@ -115,11 +108,7 @@ public class Client {
         Datapoints.getInstance().REGISTRATION = registration;
         Datapoints.getInstance().NOTIFICATION = notification;
         Datapoints.STUDENTS = students;
+        // Datapoints.TEACHERS = teachers;
         Datapoints.NOTICES = notices;
-    }           
+    }
 }
-
-
-
-        
-

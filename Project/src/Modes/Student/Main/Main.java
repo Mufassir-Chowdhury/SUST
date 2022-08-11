@@ -14,14 +14,15 @@ import Modes.Student.pages.PageList;
 
 public class Main extends Common.Main.Main {
 
-    public Main() throws ClassNotFoundException, IOException {
-        super();
-        panel.add(new sideNavView(PageList.getPages()), "sideNav");
+	public Main() throws ClassNotFoundException, IOException {
+		super();
+		panel.add(new sideNavView(PageList.getPages()), "sideNav");
 		panel.add(new MainPage(this, PageList.getPages()), "mainPage");
 		panel.add(new LogInPage(this, "Student"), "logInPage");
-        cl.show(panel, "logInPage");
-    }
-    public static void main(String[] args) throws ClassNotFoundException, IOException {
+		cl.show(panel, "logInPage");
+	}
+
+	public static void main(String[] args) throws ClassNotFoundException, IOException {
 		Datapoints.getInstance().client = new Client();
 
 		SwingUtilities.invokeLater(new Runnable() {
@@ -34,5 +35,5 @@ public class Main extends Common.Main.Main {
 			}
 		});
 	}
-    
+
 }

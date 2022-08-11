@@ -1,0 +1,72 @@
+{
+  "CSE101": {
+    "courseCode": "CSE101",
+    "courseTitle": "CSE 1",
+    "credit": "3",
+    "department": "Computer Science and Engineering",
+    "semester": 3
+  },
+  "CSE102": {
+    "courseCode": "CSE102",
+    "courseTitle": "CSE 2",
+    "credit": "3",
+    "department": "Computer Science and Engineering",
+    "semester": 3
+  },
+  "CSE103": {
+    "courseCode": "CSE103",
+    "courseTitle": "CSE 3",
+    "credit": "3",
+    "department": "Computer Science and Engineering",
+    "semester": 3
+  },
+  "PHY102": {
+    "courseCode": "PHY102",
+    "courseTitle": "PHY 2",
+    "credit": "3",
+    "department": "Physics",
+    "semester": 3
+  },
+  "PHY103": {
+    "courseCode": "PHY103",
+    "courseTitle": "PHY 3",
+    "credit": "3",
+    "department": "Physics",
+    "semester": 3
+  },
+  "SOC102": {
+    "courseCode": "SOC102",
+    "courseTitle": "SOC 2",
+    "credit": "3",
+    "department": "Sociology",
+    "semester": 3
+  },
+  "SOC101": {
+    "courseCode": "SOC101",
+    "courseTitle": "SOC 1",
+    "credit": "3",
+    "department": "Sociology",
+    "semester": 3
+  },
+  "SOC103": {
+    "courseCode": "SOC103",
+    "courseTitle": "SOC 3",
+    "credit": "3",
+    "department": "Sociology",
+    "semester": 3
+  },
+  "EEE102": {
+    "courseCode": "EEE102",
+    "courseTitle": "EEE 2",
+    "credit": "3",
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3
+  },
+  "EEE105": {
+    "courseCode": "EEE105",
+    "courseTitle": "EEE 5",
+    "credit": "3",
+    "department": "Electrical and Electronics Engineering",
+    "semester": 3
+  }
+}
