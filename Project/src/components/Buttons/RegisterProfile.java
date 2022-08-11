@@ -7,6 +7,7 @@ import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
 import Constants.Sizes;
+import Server.Datapoints.Student;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -22,27 +23,37 @@ public class RegisterProfile extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel{
         public Dialog(JDialog dialog){
             add(Box.createVerticalStrut(50));
-            String[] types = {"Teacher", "Student"};
+            String[] types = { "Teacher", "Student" };
+
+            ComboBox<String> comboBox = new ComboBox<>(types);
+            TextField registrationField= new TextField("Write Registration", TYPE.PLAIN);
+            TextField nameField= new TextField("Write Name", TYPE.PLAIN);
+            TextField positionField= new TextField("Write Position", TYPE.PLAIN);
+            TextField numberField= new TextField("Write Number", TYPE.PLAIN);
+            TextField emailField= new TextField("Write Email", TYPE.PLAIN);
+            TextField bloodField= new TextField("Write Blood Group", TYPE.PLAIN);
+            TextField birthdayField= new TextField("Write Birthday", TYPE.PLAIN);
+            TextField hometownField= new TextField("Write Hometown", TYPE.PLAIN);
 
             TilesPanel tilesPanel = new TilesPanel(9, 2, 10);
             tilesPanel.add(new Label("Type"));
-            tilesPanel.add(new ComboBox<>(types));
+            tilesPanel.add(comboBox);
             tilesPanel.add(new Label("Registration"));
-            tilesPanel.add(new TextField("Write Registration", TYPE.PLAIN));
+            tilesPanel.add(registrationField);
             tilesPanel.add(new Label("Name"));
-            tilesPanel.add(new TextField("Write Name", TYPE.PLAIN));
+            tilesPanel.add(nameField);
             tilesPanel.add(new Label("Position (20xx-xx) / designation for teachers"));
-            tilesPanel.add(new TextField("Write Position", TYPE.PLAIN));
+            tilesPanel.add(positionField);
             tilesPanel.add(new Label("Number (Without +88)"));
-            tilesPanel.add(new TextField("Write Number", TYPE.PLAIN));
+            tilesPanel.add(numberField);
             tilesPanel.add(new Label("Email"));
-            tilesPanel.add(new TextField("Write Email", TYPE.PLAIN));
+            tilesPanel.add(emailField);
             tilesPanel.add(new Label("Blood Group (X+/-)"));
-            tilesPanel.add(new TextField("Write Blood Group", TYPE.PLAIN));
+            tilesPanel.add(bloodField);
             tilesPanel.add(new Label("Birthday (DD/MM/YYYY)"));
-            tilesPanel.add(new TextField("Write Birthday", TYPE.PLAIN));
+            tilesPanel.add(birthdayField);
             tilesPanel.add(new Label("Hometown"));
-            tilesPanel.add(new TextField("Write Hometown", TYPE.PLAIN));
+            tilesPanel.add(hometownField);
             tilesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(tilesPanel);
             add(new FileButton("Choose a photo"));
@@ -61,7 +72,7 @@ public class RegisterProfile extends AccentButton implements ActionListener {
         }
 
         private void fetchData() {
-            
+            Student student = new Student(registration, name, email, number, blood, birthDay, hometown, session, semester, regular, drop)
         }
     }
     public RegisterProfile(){
