@@ -20,7 +20,7 @@ public class Sizes {
     public static final Dimension TEXT_FIELD_SIZE = new Dimension(350, 32);
 
     public static final Dimension ICON_SIZE = new Dimension(15, 15);
-    public static final Dimension GUI_BIG_SIZE = new Dimension(150, 150);
+    public static final Dimension GUI_BIG_SIZE = new Dimension(35, 35);
     public static final Dimension GUI_SMALL_SIZE = new Dimension(25, 25);
 
     public static final Dimension LOGO_SIZE = new Dimension(156, 173);

@@ -1,6 +1,7 @@
 package Components;
 
 import javax.swing.JPanel;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import java.awt.Dimension;
@@ -9,9 +10,12 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.WindowEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.SpringLayout;
+import javax.swing.WindowConstants;
+import javax.swing.event.AncestorListener;
 
 import Common.Main.Main;
 import Constants.Colors;
@@ -38,6 +42,40 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 		this.frame = frame;
 		setSize(width, Sizes.TITLE_BAR_HEIGHT);
 		decorateTitleBar();
+	}
+
+	public TitleBar(Background frame, int width, JFrame s) {
+		this.frame = frame;
+		setSize(width, Sizes.TITLE_BAR_HEIGHT);
+
+		setOpaque(false);
+		setLayout(springLayout);
+
+		closeIcon = new JLabel(Icons.TitleBar.CLOSE);
+		springLayout.putConstraint(SpringLayout.NORTH, closeIcon, 2, SpringLayout.NORTH, this);
+		springLayout.putConstraint(SpringLayout.EAST, closeIcon, -4, SpringLayout.EAST, this);
+		closeIcon.setBorder(Padding.TITLE_BAR_ITEM);
+		add(closeIcon);
+
+		closeIcon.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				closeIcon.setOpaque(true);
+				closeIcon.setBackground(Colors.Button.CLOSE_BUTTON_HOVER);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				closeIcon.setOpaque(false);
+				closeIcon.setBackground(null);
+			}
+		});
+		
+
+		addMouseListener(this);
+		addMouseMotionListener(this);
 	}
 	
 	public TitleBar(Background frame, int width, String s) {
@@ -80,13 +118,6 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 				Main.getInstance().changeFrame("mainPage");
 			}
 		});
-		// if(Main.currentPage == "sideNav"){
-		// 	backIcon.setVisible(true);
-		// 	repaint();
-		// } else{
-		// 	backIcon.setVisible(false);
-		// 	repaint();
-		// }
 		add(backIcon);
 
 		addListeners();
@@ -126,7 +157,6 @@ public class TitleBar extends JPanel implements MouseMotionListener, MouseListen
 	}
 
 	@Override
-	//https://javapointers.com/java/java-se/mouse-listener/
 	public void mouseClicked(MouseEvent e) {
 		if(e.getSource() == closeIcon) {
 			System.exit(0);

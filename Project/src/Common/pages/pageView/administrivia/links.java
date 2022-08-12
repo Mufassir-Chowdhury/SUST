@@ -28,6 +28,7 @@ public class links extends ViewPort {
 
         for (int i = 0; i < Datapoints.getInstance().LINK_TITLES.length; i++) {
             list.add(new Label(Datapoints.getInstance().LINK_TITLES[i], Fonts.TITLE));
+            list.add(Box.createVerticalStrut(4));
             for (Datapoints.Link link : Datapoints.getInstance().LINKS[i]) {
                 Line info = new Line(link.title, "", "", link.title);
 

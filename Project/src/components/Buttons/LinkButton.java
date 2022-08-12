@@ -1,63 +1,92 @@
 package Components.Buttons;
 
+import Components.Background;
 import Components.Label;
+import Components.InputFields.ComboBox;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
+import Constants.Padding;
+import Constants.Sizes;
+import Server.Datapoints;
+import Server.Datapoints.Link;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.Box;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
 import java.awt.Component;
+import java.awt.Dimension;
 
 public class LinkButton extends AccentButton implements ActionListener {
-    public class Dialog extends ListPanel{
-        public Dialog(JDialog dialog){
-            add(Box.createVerticalStrut(50));
+    public class Dialog extends ListPanel {
 
+        ComboBox<String> linkTypeField = new ComboBox<>(Datapoints.getInstance().LINK_TITLES);
+        
+        TextField titleField = new TextField("Write Link Title",TYPE.PLAIN);
+        TextField linkField = new TextField("Write Link URL",TYPE.PLAIN);;
+
+        public Dialog(Dimension size, JFrame frame) {
+            setBorder(Padding.DIALOG_VIEW_PORT);
+            setSize(size);
+            
             TilesPanel tilesPanel = new TilesPanel(3, 2, 10);
-            tilesPanel.add(new Label("Link Group"));
-            tilesPanel.add(new TextField("Which group does the link belong to", TYPE.PLAIN));
+            
+            tilesPanel.add(new Label("Link Type"));
+            tilesPanel.add(linkTypeField);
             tilesPanel.add(new Label("Link Title"));
-            tilesPanel.add(new TextField("Write Link Title", TYPE.PLAIN));
+            tilesPanel.add(titleField);
             tilesPanel.add(new Label("Link URL"));
-            tilesPanel.add(new TextField("Write Link URL", TYPE.PLAIN));
+            tilesPanel.add(linkField);
+
             tilesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(tilesPanel);
-            
+
             add(Box.createVerticalGlue());
             AccentButton proceed = new AccentButton("Proceed");
             proceed.setAlignmentX(Component.CENTER_ALIGNMENT);
-            proceed.addActionListener(new ActionListener(){
+            proceed.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    dialog.dispose();
+                    try {
+                        fetchDataAndPassToClient();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    frame.dispose();
                 }
             });
             add(proceed);
         }
+
+        protected void fetchDataAndPassToClient() throws IOException {
+            Link link = new Link(titleField.getText(), linkField.getText());
+            Datapoints.getInstance().client.add(linkTypeField.getSelectedItem().toString(), link, Datapoints.ADD_LINK);
+        }
     }
-    public LinkButton(){
+
+    public LinkButton() {
         super("Post New Link");
         addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        final JDialog dialog = new JDialog();
-        final JOptionPane optionPane = new JOptionPane(new Dialog(dialog), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
 
-        dialog.setTitle("Add a link");
-        dialog.setModal(true);
-        dialog.setContentPane(optionPane);
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.pack();
+        JFrame frame = new JFrame();
 
-        dialog.setVisible(true);
+        Dimension size = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/2.4));
+
+        frame = new Background(size, frame);
+        frame.add(new Dialog(size, frame));
+
+        frame.setLocation((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() - size.getWidth()) / 2,
+                (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() - size.getHeight()) / 2);
+
+        frame.setVisible(true);
     }
 }

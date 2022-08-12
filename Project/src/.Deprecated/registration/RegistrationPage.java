@@ -29,6 +29,7 @@ public class RegistrationPage extends JPanel {
         Box line = Box.createHorizontalBox();
         // for (int i = 1; i <= Datapoints.CLIENT.length; i++)
         // {
+            //
         // Datapoints.Page pair = Datapoints.CLIENT[i-1];
         // line.add(new Card(20, pair.name, pair.icon, Color.white));
         // if (i != Datapoints.CLIENT.length)

@@ -17,10 +17,12 @@ public class Client {
         oos.writeObject(object);
     }
 
-    public void addNewStudent(Student student) throws IOException {
-        out.println("addNewStudent");
-        oos.writeObject(student);
+    public void add(String title, Link link, String type) throws IOException {
+        out.println(type);
+        oos.writeObject(title);
+        oos.writeObject(link);
     }
+
 
     public Client() throws IOException, ClassNotFoundException {
         String hostname = "localhost";

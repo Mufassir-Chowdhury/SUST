@@ -27,6 +27,7 @@ import Constants.Icons;
 public class Datapoints {
     public final static String ADD_STUDENT = "13";
     public static final String ADD_TEACHER = "14";
+    public static final String ADD_LINK = "15";
 
     public Client client;
 

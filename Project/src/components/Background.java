@@ -11,6 +11,7 @@ import java.awt.*;
 public class Background extends JFrame {
     private JLabel backgroundImage = new JLabel();
 	private String sourceBackgroundImage2 = "static/images/background-2.png";
+	private String sourceBackgroundImage3 = "static/images/background-3.png";
     private TitleBar logInTitleBar;
     private Dimension size;
 
@@ -50,6 +51,22 @@ public class Background extends JFrame {
         this.size = size;
         decorateFrame();
         logInTitleBar = new TitleBar(this, (int) size.getWidth());
+        addTitleBar();
+    }
+
+    public Background(Dimension size, JFrame frame)
+    {
+        this.size = size;
+
+        setSize(size);
+        setUndecorated(true);
+        setResizable(true);
+        setLayout(new BorderLayout());
+
+        backgroundImage.setIcon(Tools.imageScale(sourceBackgroundImage3, size));
+        setContentPane(backgroundImage);
+
+        logInTitleBar = new TitleBar(this, (int) size.getWidth(),frame);
         addTitleBar();
     }
     

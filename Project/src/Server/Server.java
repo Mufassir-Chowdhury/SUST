@@ -206,6 +206,8 @@ class ServerConnection {
              * 12. ADD DEPARTMENT
              * 13. ADD STUDENT
              * 14. ADD TEACHER
+             * 15. ADD LINK
+             * 
              * 0. TERMINATE CONNECTION
              */
             while (true) {
@@ -253,12 +255,18 @@ class ServerConnection {
                     case Datapoints.ADD_STUDENT:
                         Student student = (Student) ois.readObject();
                         Adder.addNewStudent(student);
-                        System.err.println("done");
+                        System.err.println("done adding student");
                         break;
                     case Datapoints.ADD_TEACHER:
                         Teacher teacher = (Teacher) ois.readObject();
                         Adder.addNewTeacher(teacher);
-                        System.err.println("done");
+                        System.err.println("done adding teacher");
+                        break;
+                    case Datapoints.ADD_LINK:
+                        String title = (String) ois.readObject();
+                        Link link = (Link) ois.readObject();
+                        Adder.addNewLink(title, link);
+                        System.err.println("done adding link");
                         break;
                     default:
                         System.out.println("Terminating connection");
