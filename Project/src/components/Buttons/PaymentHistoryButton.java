@@ -1,21 +1,32 @@
 package Components.Buttons;
 
+import Components.Background;
+import Components.Label;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.ScrollPane;
 import Components.pageView.Panels.Table;
+import Constants.Fonts;
+import Constants.Padding;
+import Constants.Sizes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
+import java.awt.Dimension;
 import java.awt.Component;
 
 public class PaymentHistoryButton extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel{
-        public Dialog(JDialog dialog){
+        public Dialog(Dimension size, JFrame frame){
+            setBorder(Padding.DIALOG_VIEW_PORT);
+            setSize(size);
+
+            add(new Label("See Payment History", Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
+            add(Box.createVerticalGlue());
+
             add(Box.createVerticalStrut(50));
 
             Object[] columnNames = {"ID", "Registration", "Type", "Amount", "Date"};
@@ -71,7 +82,7 @@ public class PaymentHistoryButton extends AccentButton implements ActionListener
             proceed.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    dialog.dispose();
+                    frame.dispose();
                 }
             });
             add(proceed);
@@ -84,15 +95,14 @@ public class PaymentHistoryButton extends AccentButton implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        final JDialog dialog = new JDialog();
-        final JOptionPane optionPane = new JOptionPane(new Dialog(dialog), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+        JFrame frame = new JFrame();
 
-        dialog.setTitle("See Payment History");
-        dialog.setModal(true);
-        dialog.setContentPane(optionPane);
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.pack();
+        Dimension size = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.4), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/1.2));
 
-        dialog.setVisible(true);
+        frame = new Background(size, frame);
+        frame.add(new Dialog(size, frame));
+
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }

@@ -27,13 +27,6 @@ import javax.swing.JFrame;
 import java.awt.Component;
 
 public class RegisterProfile extends AccentButton implements ActionListener {
-
-    JFrame frame = new JFrame();
-    JFrame frame2 = new JFrame();
-    JFrame frame3 = new JFrame();
-
-    Dimension size;
-
     public class Dialog extends ListPanel {
 
         ComboBox<String> departmentField = new ComboBox<>(Datapoints.getInstance().Departments);
@@ -135,15 +128,16 @@ public class RegisterProfile extends AccentButton implements ActionListener {
         }
 
         protected void again(String Type) {
-            size = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 1.2),
+
+            JFrame frame = new JFrame();
+
+            Dimension size = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 1.2),
                     (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 1.15));
 
             frame = new Background(size, frame);
             frame.add(new Dialog(size, frame, Type));
 
-            frame.setLocation((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() - size.getWidth()) / 2,
-                    (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() - size.getHeight()) / 2);
-
+            frame.setLocationRelativeTo(null);
             frame.setVisible(true);
         }
 
@@ -171,15 +165,15 @@ public class RegisterProfile extends AccentButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        size = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 2.5),
+        JFrame frame = new JFrame();
+
+        Dimension size = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 2.5),
                 (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 2.5));
 
         frame = new Background(size, frame);
 
         frame.add(new Dialog(size, frame, "Choose"));
-        frame.setLocation((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() - size.getWidth()) / 2,
-                (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() - size.getHeight()) / 2);
-
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
     }

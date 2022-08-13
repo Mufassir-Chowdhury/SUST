@@ -88,9 +88,7 @@ public class LinkButton extends AccentButton implements ActionListener {
         frame = new Background(size, frame);
         frame.add(new Dialog(size, frame));
 
-        frame.setLocation((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() - size.getWidth()) / 2,
-                (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() - size.getHeight()) / 2);
-
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 }

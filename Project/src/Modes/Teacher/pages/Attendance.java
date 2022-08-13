@@ -74,7 +74,7 @@ public class Attendance extends ViewPort {
                 return canEdit[columnIndex];
             }
             @Override
-            public Class getColumnClass(int column) {
+            public Class<? extends Object> getColumnClass(int column) {
                 switch (column) {
                     case 0:
                         return String.class;
