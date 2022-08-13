@@ -127,18 +127,11 @@ public class RegisterProfile extends AccentButton implements ActionListener {
             }
         }
 
-        protected void again(String Type) {
-
-            JFrame frame = new JFrame();
-
+        protected void again(String type) {
             Dimension size = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 1.2),
                     (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 1.15));
-
-            frame = new Background(size, frame);
-            frame.add(new Dialog(size, frame, Type));
-
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
+            Background frame = new Background(size, new JFrame());
+            frame.add(new Dialog(size, frame, type));            
         }
 
         private void fetchDataAndPassToClient(String type) throws IOException {
@@ -165,16 +158,9 @@ public class RegisterProfile extends AccentButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame();
-
         Dimension size = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 2.5),
                 (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 2.5));
-
-        frame = new Background(size, frame);
-
-        frame.add(new Dialog(size, frame, "Choose"));
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
+        Background frame = new Background(size, new JFrame());
+        frame.add(new Dialog(size, frame, "Choose"));        
     }
 }

@@ -10,12 +10,9 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
-import java.awt.event.WindowEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseAdapter;
 import javax.swing.SpringLayout;
-import javax.swing.WindowConstants;
-import javax.swing.event.AncestorListener;
 
 import Common.Main.Main;
 import Constants.Colors;

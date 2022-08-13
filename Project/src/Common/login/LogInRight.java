@@ -197,7 +197,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         repaint();
     }
 
-    private void updateEmailStatus(Class x)
+    private void updateEmailStatus(Object x)
     {
         fetchData();
         if (fieldChecker.isEmailFieldFilled(email)) {

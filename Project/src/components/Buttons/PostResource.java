@@ -58,16 +58,9 @@ public class PostResource extends AccentButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        JFrame frame = new JFrame();
-
         Dimension size = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/2.2));
-
-        frame = new Background(size, frame);
+        Background frame = new Background(size, new JFrame());
         frame.add(new Dialog(size, frame));
-
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-
     }
 }
 

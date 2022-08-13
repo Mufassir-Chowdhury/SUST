@@ -68,6 +68,8 @@ public class Background extends JFrame {
 
         logInTitleBar = new TitleBar(this, (int) size.getWidth(),frame);
         addTitleBar();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
     
     private void decorateFrame()
