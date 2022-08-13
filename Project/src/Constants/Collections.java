@@ -39,4 +39,8 @@ public class Collections {
                         "ADMINISTRIVIA",
                         "MISCELLANEOUS"
         };
+        public static String[] BLOOD_GROUPS = { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" };
+        public static String[] SEMESTERS = { "1-1", "1-2", "2-1", "2-2", "3-1", "3-2", "4-1", "4-2" };
+        public static String[] DESIGNATIONS = { "Lecturer", "Assistant Professor", "Professor" };
+        public static String[] ROLES = { "Teacher", "Student" };
 }
