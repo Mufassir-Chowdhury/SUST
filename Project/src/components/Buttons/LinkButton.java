@@ -7,6 +7,7 @@ import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
+import Constants.Fonts;
 import Constants.Padding;
 import Constants.Sizes;
 import Server.Datapoints;
@@ -34,6 +35,9 @@ public class LinkButton extends AccentButton implements ActionListener {
             setBorder(Padding.DIALOG_VIEW_PORT);
             setSize(size);
             
+            add(new Label("Add New Link", Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
+            add(Box.createVerticalGlue());
+
             TilesPanel tilesPanel = new TilesPanel(3, 2, 10);
             
             tilesPanel.add(new Label("Link Type"));
@@ -79,7 +83,7 @@ public class LinkButton extends AccentButton implements ActionListener {
 
         JFrame frame = new JFrame();
 
-        Dimension size = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/2.4));
+        Dimension size = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/2.2));
 
         frame = new Background(size, frame);
         frame.add(new Dialog(size, frame));

@@ -20,8 +20,9 @@ public class Experiment {
                 // Gson gson = builder.create();
 
                 try {
-
-                        Adder.addCourse(new Course("CSE101", "CSE 1", "3", "Computer Science and Engineering", 3));
+                        Adder.addNewEvent(new Event("Student", "Job Fair", "25 June", "We have arranged a Job Fair for Students", "Central Auditorium", "9AM - 5PM", "Sust", "Admin", "13/8/2022",0 , 0));
+                        Adder.addNewEvent(new Event("Teacher", "Re-union for Physics Department", "27 August", "At last we are meeting after 10 years", "Central Auditorium", "9AM - 5PM", "Physics Department", "Admin", "13/8/2022",0 , 0));
+                        // Adder.addCourse(new Course("CSE101", "CSE 1", "3", "Computer Science and Engineering", 3));
                         
 
                 } catch (FileNotFoundException e) {

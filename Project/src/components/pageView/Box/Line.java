@@ -44,12 +44,13 @@ public class Line extends Box {
         }
     }
 
-    public Line(String title, String caption, String center, String trailing){
+    public Line(String title, String caption, String center, String trailing) {
         super(BoxLayout.X_AXIS);
         setMaximumSize(Sizes.LIST_ITEM);
         setAlignmentX(Component.LEFT_ALIGNMENT);
         add(new ListItem(null, null, title, caption, center, trailing));
-    }  
+    }
+      
     public Line(String serial, BufferedImage image, String title, String caption, String center, String trailing){
         super(BoxLayout.X_AXIS);
         setMaximumSize(Sizes.LIST_ITEM);

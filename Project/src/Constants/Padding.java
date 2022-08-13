@@ -8,7 +8,8 @@ public class Padding {
 
     public static final EmptyBorder TITLE_BAR_ITEM = new EmptyBorder(10, 20, 10, 20);
     public static final EmptyBorder MAIN_VIEW_PORT = new EmptyBorder(Sizes.TITLE_BAR_HEIGHT, 0, 0, 0);
-    public static final EmptyBorder DIALOG_VIEW_PORT = new EmptyBorder(Sizes.TITLE_BAR_HEIGHT+20, 100, 20, 100);
+    public static final EmptyBorder DIALOG_VIEW_PORT = new EmptyBorder(Sizes.TITLE_BAR_HEIGHT+10, 100, 20, 100);
+    public static final EmptyBorder MINI_DIALOG_VIEW_PORT = new EmptyBorder(Sizes.TITLE_BAR_HEIGHT+20, 0, 40, 0);
     public static final EmptyBorder REGISTRATION_VIEW_PORT = new EmptyBorder(Sizes.TITLE_BAR_HEIGHT, 30, Sizes.TITLE_BAR_HEIGHT, 30);
     public static final EmptyBorder TITLE_LINE_HEIGHT = new EmptyBorder(4, 0, 4, 0  );
     public static final EmptyBorder TEXT_FIELD = new EmptyBorder(8, 10, 8, 10);

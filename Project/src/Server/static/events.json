@@ -1,38 +1,71 @@
 {
-    "SUSTian Event 1": {
-        "title": "SUSTian Event 1",
-        "date": "1st April",
-        "description": "This is event 1",
-        "location": "SUST",
-        "duration": "This is event 1",
-        "interested": 0,
-        "going": 0
+  "Student": {
+    "Event # 1 (Job Fair)": {
+      "For": "Student",
+      "organizer": "Sust",
+      "title": "Event # 1 (Job Fair)",
+      "date": "25 June",
+      "description": "We have arranged a Job Fair for Students",
+      "location": "Central Auditorium",
+      "duration": "9AM - 5PM",
+      "interested": 0,
+      "going": 0,
+      "uploader": "Admin",
+      "dateOfPost": "August 12, 2022"
     },
-    "SUSTian Event 2": {
-        "title": "SUSTian Event 2",
-        "date": "2nd April",
-        "description": "This is event 2",
-        "location": "SUST",
-        "duration": "This is event 2",
-        "interested": 0,
-        "going": 0
+    "Event # 2 (Cultural Program)": {
+      "For": "Student",
+      "organizer": "Dik-Theater",
+      "title": "Event # 2 (Cultural Program)",
+      "date": "15 September",
+      "description": "A cultural program was organized in our college on February 21, 2022. The program was held on the occasion of International Mother Language Day. On that day a big stage was made in the college playground and a canopy was raised overhead. Hundreds of chairs were arranged in rows for the audience. It was indeed an event of great joy and festivity for the students as well as for the teachers. The program was scheduled to be started at 4 PM. As the day was a national holiday there were no classes on that day. Guardians and students began to gather for the cultural program from 3:30 PM. The function started on time with the recitation from the holy Quran. Our English teacher Mr. Harun anchored the program and our principal",
+      "location": "Central Auditorium",
+      "duration": "9AM - 1PM",
+      "interested": 0,
+      "going": 0,
+      "uploader": "Admin",
+      "dateOfPost": "August 13, 2022"
     },
-    "SUSTian Event 3": {
-        "title": "SUSTian Event 3",
-        "date": "3rd April",
-        "description": "This is event 3",
-        "location": "SUST",
-        "duration": "This is event 3",
-        "interested": 0,
-        "going": 0
-    },
-    "SUSTian Event 4": {
-        "title": "SUSTian Event 4",
-        "date": "4th April",
-        "description": "This is event 4",
-        "location": "SUST",
-        "duration": "This is event 4",
-        "interested": 0,
-        "going": 0
+    "Event # 3 (Basketball Final)": {
+      "For": "Both",
+      "organizer": "Sports Sust",
+      "title": "Event # 2 (Event # 3 (Basketball Final))",
+      "date": "7 June",
+      "description": "This is the final match between Math and CSE",
+      "location": "Basketball Ground",
+      "duration": "3PM",
+      "interested": 0,
+      "going": 0,
+      "uploader": "Admin",
+      "dateOfPost": "August 13, 2022"
     }
+  },
+  "Teacher": {
+    "Event # 1 (Re-union for Physics Department)": {
+      "For": "Teacher",
+      "organizer": "Physics Department",
+      "title": "Event # 1 (Re-union for Physics Department)",
+      "date": "27 August",
+      "description": "At last we are meeting after 10 years",
+      "location": "Central Auditorium",
+      "duration": "9AM - 5PM",
+      "interested": 0,
+      "going": 0,
+      "uploader": "Admin",
+      "dateOfPost": "August 13, 2022"
+    },
+    "Event # 2 (Basketball Final)": {
+      "For": "Both",
+      "organizer": "Sports Sust",
+      "title": "Event # 2 (Event # 3 (Basketball Final))",
+      "date": "7 June",
+      "description": "This is the final match between Math and CSE",
+      "location": "Basketball Ground",
+      "duration": "3PM",
+      "interested": 0,
+      "going": 0,
+      "uploader": "Admin",
+      "dateOfPost": "August 13, 2022"
+    }
+  }
 }

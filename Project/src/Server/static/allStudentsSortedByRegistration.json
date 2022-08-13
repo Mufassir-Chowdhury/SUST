@@ -12,5 +12,19 @@
     "semester": 3,
     "department": "Computer Science and Engineering",
     "courses": {}
+  },
+  "2019331013": {
+    "registration": "2019331013",
+    "name": "Asanul Haque Kiron",
+    "email": "asanul13@student.sust.edu",
+    "number": "01774782347",
+    "blood": "A+",
+    "birthDay": "3/12/2000",
+    "hometown": "Rajshahi",
+    "session": "2019-20",
+    "deptCode": 331,
+    "semester": 3,
+    "department": "Computer Science and Engineering",
+    "courses": {}
   }
 }

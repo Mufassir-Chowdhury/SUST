@@ -1,49 +1,101 @@
 package Components.Buttons;
 
+import Components.Background;
 import Components.Label;
+import Components.InputFields.ComboBox;
+import Components.InputFields.TextArea;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
+import Constants.Fonts;
+import Constants.Padding;
+import Constants.Sizes;
+import Server.Datapoints;
+import Server.Datapoints.Event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.Box;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
-import java.awt.Component;
+
+// import java.time.LocalTime;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import java.awt.*;
 
 public class EventButton extends AccentButton implements ActionListener {
-    public class Dialog extends ListPanel{
-        public Dialog(JDialog dialog){
-            add(Box.createVerticalStrut(50));
+    public class Dialog extends ListPanel {
+        
+        String[] eventFor = { "Student", "Teacher", "Both"};
+        ComboBox<String> eventForField = new ComboBox<>(eventFor);
+        TextField titleField = new TextField("Write Title", TYPE.PLAIN);
+        TextField dateField = new TextField("Write Date", TYPE.PLAIN);
+        TextField durationField = new TextField("Write Duration (9AM - 5PM)", TYPE.PLAIN);
+        TextField locationField = new TextField("Write Location", TYPE.PLAIN);
+        TextField organizerField = new TextField("Write Organizer", TYPE.PLAIN);
+        TextArea descriptionField = new TextArea("Write Description", true);
 
-            TilesPanel tilesPanel = new TilesPanel(5, 2, 10);
+        public Dialog(Dimension size, JFrame frame) {
+            
+            setBorder(Padding.DIALOG_VIEW_PORT);
+            setSize(size);
+
+            add(new Label("Post New Event", Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
+            add(Box.createVerticalGlue());
+
+            TilesPanel tilesPanel = new TilesPanel(6, 2, 0, 10);
+            tilesPanel.add(new Label("Event For"));
+            tilesPanel.add(eventForField);
             tilesPanel.add(new Label("Title"));
-            tilesPanel.add(new TextField("Write Title", TYPE.PLAIN));
-            tilesPanel.add(new Label("Description"));
-            tilesPanel.add(new TextField("Write Description", TYPE.PLAIN));
+            tilesPanel.add(titleField);
             tilesPanel.add(new Label("Date"));
-            tilesPanel.add(new TextField("Write Date", TYPE.PLAIN));
+            tilesPanel.add(dateField);
+            tilesPanel.add(new Label("Duration"));
+            tilesPanel.add(durationField);
             tilesPanel.add(new Label("Location"));
-            tilesPanel.add(new TextField("Write Location", TYPE.PLAIN));
-            tilesPanel.add(new Label("Organiser"));
-            tilesPanel.add(new TextField("Write Organiser", TYPE.PLAIN));
+            tilesPanel.add(locationField);
+            tilesPanel.add(new Label("Organizer"));
+            tilesPanel.add(organizerField);
             tilesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(tilesPanel);
-            
             add(Box.createVerticalGlue());
+            
+            add(descriptionField);
+            
+            add(Box.createVerticalStrut(10));
+            
             AccentButton proceed = new AccentButton("Proceed");
             proceed.setAlignmentX(Component.CENTER_ALIGNMENT);
             proceed.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    dialog.dispose();
+                    try {
+                        fetchDataAndPassToClient();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    frame.dispose();
+
                 }
+
+                
             });
             add(proceed);
+        }
+
+
+        protected void fetchDataAndPassToClient() throws IOException {
+            DateTimeFormatter date = DateTimeFormatter.ofPattern("MMMM dd, u");
+            LocalDate localDate = LocalDate.now();
+            Event event = new Event(eventForField.getSelectedItem().toString(), titleField.getText(),
+                    dateField.getText(), descriptionField.getText(), locationField.getText(), durationField.getText(),
+                    organizerField.getText(),"Admin",date.format(localDate), 0, 0);
+            Datapoints.getInstance().client.add(event, Datapoints.ADD_EVENT);
         }
     }
     public EventButton(){
@@ -53,15 +105,16 @@ public class EventButton extends AccentButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        final JDialog dialog = new JDialog();
-        final JOptionPane optionPane = new JOptionPane(new Dialog(dialog), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+        JFrame frame = new JFrame();
 
-        dialog.setTitle("Add an event");
-        dialog.setModal(true);
-        dialog.setContentPane(optionPane);
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.pack();
+        Dimension size = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.4), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/1.2));
 
-        dialog.setVisible(true);
+        frame = new Background(size, frame);
+        frame.add(new Dialog(size, frame));
+
+        frame.setLocation((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() - size.getWidth()) / 2,
+                (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() - size.getHeight()) / 2);
+
+        frame.setVisible(true);
     }
 }

@@ -8,6 +8,7 @@ import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
+import Constants.Fonts;
 import Constants.Icons;
 import Constants.Padding;
 import Constants.Sizes;
@@ -58,6 +59,8 @@ public class RegisterProfile extends AccentButton implements ActionListener {
             setSize(size);
 
             if (type == "Choose") {
+                setBorder(Padding.MINI_DIALOG_VIEW_PORT);
+                add(new Label("CHOOSE", Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
                 Box line = Box.createHorizontalBox();
 
                 Card Teacher = new Card("Teacher",Icons.Role.TEACHER);
@@ -84,17 +87,21 @@ public class RegisterProfile extends AccentButton implements ActionListener {
                 add(line);
             } else {
                 setBorder(Padding.DIALOG_VIEW_PORT);
+                
                 TilesPanel tilesPanel;
                 if (type == "Student") {
+                    add(new Label("Student  Registration", Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
                     tilesPanel = new TilesPanel(9, 2, 10);
                     tilesPanel.add(new Label("Registration"));
                     tilesPanel.add(registrationField);
                 } else {
+                    add(new Label("Teacher  Registration", Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
                     tilesPanel = new TilesPanel(8, 2, 10);
                     tilesPanel.add(new Label("Department"));
                     tilesPanel.add(departmentField);
                 }
 
+                add(Box.createVerticalGlue());
                 tilesPanel.add(new Label("Name"));
                 tilesPanel.add(nameField);
 
@@ -167,7 +174,7 @@ public class RegisterProfile extends AccentButton implements ActionListener {
             if (type == "Teacher") {
                 Teacher teacher = new Teacher(departmentField.getSelectedItem().toString(), nameField.getText(),
                         emailField.getText(), DesignationField.getSelectedItem().toString(), numberField.getText(),
-                        bloodField.getSelectedItem().toString(), birthdayField.getText(), hometownField.getText());
+                        bloodField.getSelectedItem().toString(), birthdayField.getText(), hometownField.getText(), null);
                 Datapoints.getInstance().client.add(teacher, Datapoints.ADD_TEACHER);
             }
         }

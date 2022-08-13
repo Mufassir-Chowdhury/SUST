@@ -15,11 +15,16 @@ public class Adder {
     static String filePath;
 
     public static String extractFilePath(String file) {
-        file = "Server/static/" + file;
-        String s = ClassLoader.getSystemResource(file).toString();
-        String ss = System.getProperty("user.dir").replace("\\", "/");
+        file = "src/Server/static/" + file;
 
-        return s.replace(ss, "").replace("bin", "src").replace("file://", "");
+        file = "Project/" + file;
+
+        return file;
+
+        // String s = ClassLoader.getSystemResource(file).toString();
+        // String ss = System.getProperty("user.dir").replace("\\", "/");
+
+        // return s.replace(ss, "").replace("bin", "src").replace("file://", "");
     }
 
     public static void addNewLink(String title, Link link) throws IOException {
@@ -51,15 +56,29 @@ public class Adder {
         bufferedReader = new BufferedReader(
                 new FileReader(filePath));
 
-        Map<String, Event> events = new HashMap<>();
-        events = gson.fromJson(bufferedReader, new TypeToken<Map<String, Event>>() {
+        Map<String, Map<String, Event>> events = new HashMap<>();
+        events = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Event>>>() {
         }.getType());
 
         if (events == null)
             events = new HashMap<>();
 
-        events.put(event.title, event);
+        
+        if(event.For.equals("Both")==true)
+        {
+            System.err.println("coming");
+            String title = event.title;
+            event.title = "Event # " + Integer.toString(events.get("Student").size() + 1) + " (" + title + ")";
+            events.get("Student").put(event.title, event);
 
+            event.title = "Event # " + Integer.toString(events.get("Teacher").size() + 1) + " (" + title + ")";
+            events.get("Teacher").put(event.title, event);
+        }
+        else {
+            event.title = "Event # " + Integer.toString(events.get(event.For).size() + 1) + " (" + event.title + ")";
+            events.get(event.For).put(event.title, event);
+        }
+        
         writer = new FileWriter(filePath);
         writer.write(gson.toJson(events));
         writer.close();

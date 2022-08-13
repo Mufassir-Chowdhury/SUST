@@ -17,10 +17,10 @@ public class Fetcher {
     static BufferedReader bufferedReader;
     static String filePath;
 
-    public static void fetch() throws IOException {
+    public static void fetch(String Type) throws IOException {
         fetchDept();
         fetchLinks();
-        fetchEvents();
+        fetchEvents(Type);
         fetchStudentDetails("2019331019");
         // fetchStudentDetails("2019331053");
     }
@@ -60,15 +60,26 @@ public class Fetcher {
 
     }
 
-    private static void fetchEvents() throws IOException {
+    private static void fetchEvents(String command) throws IOException {
         filePath = Adder.extractFilePath("events.json");
         bufferedReader = new BufferedReader(new FileReader(filePath));
 
-        Map<String, Event> events = new HashMap<>();
-        events = gson.fromJson(bufferedReader, new TypeToken<Map<String, Event>>() {
+        Map<String, Map<String, Event>> events = new HashMap<>();
+        events = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Event>>>() {
         }.getType());
 
-        Server.EVENTS = events.values().toArray(new Event[0]);
+        
+        if(command == "Student") Server.EVENTS = events.get(command).values().toArray(new Event[0]);
+        if(command == "Teacher") Server.EVENTS = events.get(command).values().toArray(new Event[0]);
+        if (command == "Admin")
+        {
+            Map<String, Event> toPass = new HashMap<>();
+            toPass.putAll( events.get("Student"));
+            toPass.putAll(events.get("Teacher"));
+            Server.EVENTS = toPass.values().toArray(new Event[0]);
+        }
+
+        // Server.EVENTS = events.values().toArray(new Event[0]);
         bufferedReader.close();
     }
 

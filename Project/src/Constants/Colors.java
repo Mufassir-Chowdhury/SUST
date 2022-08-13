@@ -155,6 +155,7 @@ public class Colors {
      * Background for custom List component when hovered.
      */
     public static final Color LIST_ITEM_HOVER = new Color(45, 45, 45);
+    public static final Color SCROLLBAR = new Color(0,0,0);
 
     /**
      * Colors for custom CheckBox component.

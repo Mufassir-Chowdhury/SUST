@@ -28,6 +28,7 @@ public class Datapoints {
     public final static String ADD_STUDENT = "13";
     public static final String ADD_TEACHER = "14";
     public static final String ADD_LINK = "15";
+    public static final String ADD_EVENT = "16";
 
     public Client client;
 
@@ -184,6 +185,7 @@ public class Datapoints {
                     name,
                     blood + " | " + birthDay + " | " + hometown,
                     email,
+                    "uploader","dateOfUpload",
                     "+880" + number, false);
         }
 
@@ -205,9 +207,11 @@ public class Datapoints {
     public static class Teacher implements Serializable, Tilable {
         public transient BufferedImage DP;
         public String name, email, email2, number, designation, blood, birthDay, hometown, department;
+        public String[] courses;
 
-        public Teacher(String department, String name, String email, String designation, String number, String blood, String birthDay,
-                String hometown) {
+        public Teacher(String department, String name, String email, String designation, String number, String blood,
+                String birthDay,
+                String hometown, String[] courses) {
 
             this.DP = Icons.DP;
             this.department = department;
@@ -218,7 +222,7 @@ public class Datapoints {
             this.blood = blood;
             this.birthDay = birthDay;
             this.hometown = hometown;
-
+            this.courses = courses;
         }
 
         @Override
@@ -243,11 +247,12 @@ public class Datapoints {
                     name,
                     blood + " | " + birthDay + " | " + hometown,
                     email,
+                    "uploader", "dateOfUpload",
                     "+880" + number, false);
         }
     }
 
-
+    
     public static class Courses implements Serializable, Information, JsonConversion {
         public String code;
         public String name;
@@ -357,14 +362,11 @@ public class Datapoints {
             this.gpa = result.gpa;
             this.regular = regular;
             assignments.add(new Assignment(name, "Assignment 1" + this.name, this.attendance + "th April",
-                    "This is assignment 1", 100, 80));
-            exams.add(new Exam(name, "Exam 1" + this.name, this.attendance + "th April", "This is exam 1", 100, 80));
-            exams.add(new Exam(name, "Exam 2" + this.name, this.attendance + "th April", "This is exam 2", 100, 80));
+                    "This is assignment 1","Sir","12/12/2022", 100, 80));
+            exams.add(new Exam(name, "Exam 1" + this.name, this.attendance + "th April", "This is exam 1", "Sir", "12/12/2022",100, 80));
+            exams.add(new Exam(name, "Exam 2" + this.name, this.attendance + "th April", "This is exam 2", "Sir", "12/12/2022",100, 80));
         }
 
-        public void addAssignment(String title, String date, String description, int totalMarks, int marksObtained) {
-            assignments.add(new Assignment(name, title, date, description, totalMarks, marksObtained));
-        }
 
         public Line getAttendance() {
             return new Line(
@@ -406,13 +408,17 @@ public class Datapoints {
         public String description;
         public int totalMarks;
         public int marksObtained;
+        public String uploader;
+        public String dateOfPost;
 
-        public EvaluationItem(String courseName, String title, String date, String description, int totalMarks,
+        public EvaluationItem(String courseName, String title, String date, String description, String uploader, String dateOfPost, int totalMarks,
                 int marksObtained) {
             this.courseName = courseName;
             this.title = title;
             this.date = date;
             this.description = description;
+            this.uploader = uploader;
+            this.dateOfPost = dateOfPost;
             this.totalMarks = totalMarks;
             this.marksObtained = marksObtained;
         }
@@ -437,9 +443,10 @@ public class Datapoints {
                     title,
                     "Due Date: " + date,
                     "Total Marks: " + totalMarks,
+                    uploader, dateOfPost,
                     description, true);
         }
-
+        
         @Override
         public String toJSON() {
             GsonBuilder builder = new GsonBuilder();
@@ -456,16 +463,16 @@ public class Datapoints {
     }
 
     public static class Assignment extends EvaluationItem {
-        public Assignment(String courseName, String title, String date, String description, int totalMarks,
+        public Assignment(String courseName, String title, String date, String description, String uploader, String dateOfPost, int totalMarks,
                 int marksObtained) {
-            super(courseName, title, date, description, totalMarks, marksObtained);
+            super(courseName, title, date, description, uploader, dateOfPost, totalMarks, marksObtained);
         }
     }
 
     public static class Exam extends EvaluationItem {
-        public Exam(String courseName, String title, String date, String description, int totalMarks,
+        public Exam(String courseName, String title, String date, String description,String uploader, String dateOfPost, int totalMarks,
                 int marksObtained) {
-            super(courseName, title, date, description, totalMarks, marksObtained);
+            super(courseName, title, date, description, uploader, dateOfPost, totalMarks, marksObtained);
         }
     }
 
@@ -494,6 +501,8 @@ public class Datapoints {
     }
 
     public static class Event implements Serializable, Tilable, JsonConversion {
+        public String For;
+        public String organizer;
         public String title;
         public String date;
         public String description;
@@ -501,22 +510,29 @@ public class Datapoints {
         public String duration;
         public int interested;
         public int going;
+        public String uploader;
+        public String dateOfPost;
 
-        public Event(String title, String date, String description, String location, String duration, int interested,
+        public Event(String For, String title, String date, String description, String location, String duration, String organizer, String uploader, String dateOfPost, int interested,
                 int going) {
+            this.For = For;
+            this.organizer = organizer;
             this.title = title;
             this.date = date;
             this.description = description;
             this.location = location;
             this.duration = duration;
             this.interested = interested;
+            this.going = going;
+            this.uploader = uploader;
+            this.dateOfPost = dateOfPost;
         }
 
         @Override
         public Line getListItem() {
             return new Line(
                     title,
-                    location,
+                    location + ", "+organizer,
                     duration + " at  " + date,
                     String.format("%03d", interested) + "   " + String.format("%03d", going));
         }
@@ -532,6 +548,7 @@ public class Datapoints {
                     title,
                     "Date: " + date,
                     "Location: " + location,
+                    uploader, dateOfPost,
                     description, false);
         }
 
@@ -567,8 +584,8 @@ public class Datapoints {
         public Line getListItem() {
             return new Line(
                     title,
-                    "",
-                    "",
+                    "uploader",
+                    "dateOfUpload",
                     date);
         }
 
@@ -583,6 +600,7 @@ public class Datapoints {
                     title,
                     date,
                     "",
+                    "uploader","dateOfUpload",
                     description, false);
         }
 
