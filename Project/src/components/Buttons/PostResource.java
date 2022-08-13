@@ -1,25 +1,34 @@
 package Components.Buttons;
 
+import Components.Background;
 import Components.Label;
 import Components.InputFields.ComboBox;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
+import Constants.Fonts;
+import Constants.Padding;
+import Constants.Sizes;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
-import javax.swing.JDialog;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 
+import java.awt.Dimension;
 import java.awt.Component;
 
 public class PostResource extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel{
-        public Dialog(JDialog dialog){
-            add(Box.createVerticalStrut(50));
+        public Dialog(Dimension size, JFrame frame){
+            setBorder(Padding.DIALOG_VIEW_PORT);
+            setSize(size);
+
+            add(new Label("Post New Resource", Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
+            add(Box.createVerticalGlue());
+
             String[] options = {"Class Videos", "CT Questions", "Term Final Questions", "Lecture Notes", "Books"};
             TilesPanel tilesPanel = new TilesPanel(3, 2, 10);
             tilesPanel.add(new Label("Resource Type"));
@@ -36,7 +45,7 @@ public class PostResource extends AccentButton implements ActionListener {
             proceed.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    dialog.dispose();
+                    frame.dispose();
                 }
             });
             add(proceed);
@@ -49,16 +58,17 @@ public class PostResource extends AccentButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        final JDialog dialog = new JDialog();
-        final JOptionPane optionPane = new JOptionPane(new Dialog(dialog), JOptionPane.INFORMATION_MESSAGE, JOptionPane.DEFAULT_OPTION, null, new Object[]{}, null);
+        JFrame frame = new JFrame();
 
-        dialog.setTitle("Add a material");
-        dialog.setModal(true);
-        dialog.setContentPane(optionPane);
-        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        dialog.pack();
+        Dimension size = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/2.2));
 
-        dialog.setVisible(true);
+        frame = new Background(size, frame);
+        frame.add(new Dialog(size, frame));
+
+        frame.setLocation((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() - size.getWidth()) / 2,
+                (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() - size.getHeight()) / 2);
+
+        frame.setVisible(true);
 
     }
 }

@@ -21,12 +21,11 @@ import java.io.IOException;
 import javax.swing.Box;
 import javax.swing.JFrame;
 
-
-// import java.time.LocalTime;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import java.awt.*;
+import java.awt.Component;
+import java.awt.Dimension;
 
 public class EventButton extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel {
@@ -80,10 +79,7 @@ public class EventButton extends AccentButton implements ActionListener {
                         e1.printStackTrace();
                     }
                     frame.dispose();
-
                 }
-
-                
             });
             add(proceed);
         }
