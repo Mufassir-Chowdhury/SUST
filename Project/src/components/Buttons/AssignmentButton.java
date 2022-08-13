@@ -61,7 +61,7 @@ public class AssignmentButton extends AccentButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Dimension size = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/1.4));
+        Dimension size = Sizes.DIALOG.ASSIGNMENT;
         Background frame = new Background(size, new JFrame());
         frame.add(new Dialog(size, frame));
     }

@@ -128,8 +128,7 @@ public class RegisterProfile extends AccentButton implements ActionListener {
         }
 
         protected void again(String type) {
-            Dimension size = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 1.2),
-                    (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 1.15));
+            Dimension size = Sizes.DIALOG.REGISTER_PROFILE;
             Background frame = new Background(size, new JFrame());
             frame.add(new Dialog(size, frame, type));            
         }
@@ -158,8 +157,7 @@ public class RegisterProfile extends AccentButton implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Dimension size = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 2.5),
-                (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 2.5));
+        Dimension size = Sizes.DIALOG.REGISTER_PROFILE_CHOOSE;
         Background frame = new Background(size, new JFrame());
         frame.add(new Dialog(size, frame, "Choose"));        
     }

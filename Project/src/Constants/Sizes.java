@@ -19,6 +19,18 @@ public class Sizes {
     public static       Dimension USABLE_WINDOW_SIZE = Sizes.DEFAULT_WINDOW_SIZE;
     public static final Dimension TEXT_FIELD_SIZE = new Dimension(350, 32);
 
+    public static class DIALOG{
+        public static final Dimension ASSIGNMENT = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/1.4));
+        public static final Dimension CLASS = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 1.2), (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 1.15));
+        public static final Dimension EVENT = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.4), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/1.2));
+        public static final Dimension EXAM = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/1.4));
+        public static final Dimension LINK = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/2.2));
+        public static final Dimension PAYMENT_HISTORY = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.4), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/1.2));
+        public static final Dimension RESOURCES = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/2.2));
+        public static final Dimension REGISTER_PROFILE = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 1.2), (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 1.15));
+        public static final Dimension REGISTER_PROFILE_CHOOSE = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 2.5), (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 2.5));
+    }
+
     public static final Dimension ICON_SIZE = new Dimension(15, 15);
     public static final Dimension GUI_BIG_SIZE = new Dimension(35, 35);
     public static final Dimension GUI_SMALL_SIZE = new Dimension(25, 25);

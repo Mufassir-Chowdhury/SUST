@@ -95,7 +95,7 @@ public class PaymentHistoryButton extends AccentButton implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Dimension size = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.4), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/1.2));
+        Dimension size = Sizes.DIALOG.PAYMENT_HISTORY;
         Background frame = new Background(size, new JFrame());
         frame.add(new Dialog(size, frame));
     }
