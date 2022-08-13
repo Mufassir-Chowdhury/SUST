@@ -13,6 +13,7 @@ import Constants.Fonts;
 import Constants.Padding;
 import Constants.Sizes;
 import Server.Datapoints;
+import Server.Datapoints.Course;
 import Server.Datapoints.Event;
 
 import java.awt.event.ActionEvent;
@@ -30,17 +31,16 @@ import java.awt.Dimension;
 
 public class AddCourseButton extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel {
-        
+        String[] courseType = { "Theory", "Lab" };
+
         ComboBox<String> departmentField = new ComboBox<>(Datapoints.getInstance().Departments);
         ComboBox<String> semesterField = new ComboBox<>(Collections.SEMESTERS);
         TextField titleField = new TextField("Write Course Title", TYPE.PLAIN);
         TextField courseCodeField = new TextField("Write Course Code", TYPE.PLAIN);
-        TextField creditField = new TextField("Write Duration (9AM - 5PM)", TYPE.PLAIN);
+        ComboBox<String> courseTypeField = new ComboBox<>(courseType);
+        TextField creditField = new TextField("Write Credit", TYPE.PLAIN);
+        TextArea syllabusField = new TextArea("Write syllabus", true);
         
-        
-        TextField locationField = new TextField("Write Location", TYPE.PLAIN);
-        TextField organizerField = new TextField("Write Organizer", TYPE.PLAIN);
-        TextArea descriptionField = new TextArea("Write Description", true);
 
         public Dialog(Dimension size, JFrame frame) {
             
@@ -51,23 +51,23 @@ public class AddCourseButton extends AccentButton implements ActionListener {
             add(Box.createVerticalGlue());
 
             TilesPanel tilesPanel = new TilesPanel(6, 2, 0, 10);
-            tilesPanel.add(new Label("Event For"));
-            // tilesPanel.add(eventForField);
-            tilesPanel.add(new Label("Title"));
+            tilesPanel.add(new Label("Department"));
+            tilesPanel.add(departmentField);
+            tilesPanel.add(new Label("Semester"));
+            tilesPanel.add(semesterField);
+            tilesPanel.add(new Label("Course Title"));
             tilesPanel.add(titleField);
-            tilesPanel.add(new Label("Date"));
-            // tilesPanel.add(dateField);
-            tilesPanel.add(new Label("Duration"));
-            // tilesPanel.add(durationField);
-            tilesPanel.add(new Label("Location"));
-            tilesPanel.add(locationField);
-            tilesPanel.add(new Label("Organizer"));
-            tilesPanel.add(organizerField);
+            tilesPanel.add(new Label("Course Code"));
+            tilesPanel.add(courseCodeField);
+            tilesPanel.add(new Label("Course Type"));
+            tilesPanel.add(courseTypeField);
+            tilesPanel.add(new Label("Course Credit"));
+            tilesPanel.add(creditField);
             tilesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(tilesPanel);
             add(Box.createVerticalGlue());
             
-            add(descriptionField);
+            add(syllabusField);
             
             add(Box.createVerticalStrut(10));
             
@@ -89,12 +89,12 @@ public class AddCourseButton extends AccentButton implements ActionListener {
 
 
         protected void fetchDataAndPassToClient() throws IOException {
-            DateTimeFormatter date = DateTimeFormatter.ofPattern("MMMM dd, u");
-            LocalDate localDate = LocalDate.now();
-            // Event event = new Event(eventForField.getSelectedItem().toString(), titleField.getText(),
-            //         dateField.getText(), descriptionField.getText(), locationField.getText(), durationField.getText(),
-            //         organizerField.getText(),"Admin",date.format(localDate), 0, 0);
-            // Datapoints.getInstance().client.add(event, Datapoints.ADD_EVENT);
+
+            Course course = new Course(courseCodeField.getText(), titleField.getText(), creditField.getText(),
+                    departmentField.getSelectedItem().toString(), semesterField.getSelectedItem().toString(),
+                    courseTypeField.getSelectedItem().toString(), syllabusField.getText());
+            
+            Datapoints.getInstance().client.add(course, Datapoints.ADD_COURSE);
         }
     }
     public AddCourseButton(){

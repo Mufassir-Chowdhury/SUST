@@ -106,5 +106,14 @@
     "syllabus": "syllabus",
     "type": "Lab",
     "semester": 4
+  },
+  "CSE137": {
+    "courseCode": "CSE137",
+    "courseTitle": "Structured Programming Language",
+    "credit": "3",
+    "department": "Computer Science and Engineering",
+    "syllabus": "this is syllabus\nline 2\nline 3\n\n",
+    "type": "Theory",
+    "semester": 1
   }
 }

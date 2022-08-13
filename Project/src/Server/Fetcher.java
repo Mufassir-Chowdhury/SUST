@@ -68,15 +68,15 @@ public class Fetcher {
         events = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Event>>>() {
         }.getType());
 
-        
-        if(command == "Student") Server.EVENTS = events.get(command).values().toArray(new Event[0]);
-        if(command == "Teacher") Server.EVENTS = events.get(command).values().toArray(new Event[0]);
-        if (command == "Admin")
-        {
+        if (command == "Student")
+            Server.EVENTS = events.get(command).values().toArray(new Event[0]);
+        if (command == "Teacher")
+            Server.EVENTS = events.get(command).values().toArray(new Event[0]);
+        if (command == "Admin") {
             Map<String, Event> toPass = new HashMap<>();
             toPass.putAll(events.get("Student"));
             for (Event event : events.get("Teacher").values())
-                if(event.For.equals("Teacher"))
+                if (event.For.equals("Teacher"))
                     toPass.put(event.title, event);
 
             Server.EVENTS = toPass.values().toArray(new Event[0]);
@@ -104,28 +104,50 @@ public class Fetcher {
         Server.DETAILS = details;
 
         Server.STUDENTS = fetchPeople(student).toArray(new Student[0]);
+        Server.TEACHERS = fetchPeople(student.department).toArray(new Teacher[0]);
         bufferedReader.close();
 
     }
 
     private static Vector<Student> fetchPeople(Student student) throws IOException {
-        filePath = Adder.extractFilePath("allStudentsSortedByDepartment.json");
-        bufferedReader = new BufferedReader(new FileReader(filePath));
+        {
+            filePath = Adder.extractFilePath("allStudentsSortedByDepartment.json");
+            bufferedReader = new BufferedReader(new FileReader(filePath));
 
-        Map<String, Map<String, Set<String>>> sortedStudents = new HashMap<>();
+            Map<String, Map<String, Set<String>>> sortedStudents = new HashMap<>();
 
-        sortedStudents = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Set<String>>>>() {
-        }.getType());
+            sortedStudents = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Set<String>>>>() {
+            }.getType());
 
-        Set<String> yourPeople = sortedStudents.get(student.department).get(student.session);
+            Set<String> yourBatch = sortedStudents.get(student.department).get(student.session);
 
-        yourPeople.remove(student.registration);
-        bufferedReader.close();
+            yourBatch.remove(student.registration);
+            bufferedReader.close();
 
-        return fetchPeoplesDetails(yourPeople);
+            return fetchBatchDetails(yourBatch);
+        }
     }
 
-    private static Vector<Student> fetchPeoplesDetails(Set<String> yourPeople) throws IOException {
+    private static Vector<Teacher> fetchPeople(String department) throws IOException {
+        {
+            filePath = Adder.extractFilePath("allTeachersSortedByDepartment.json");
+            bufferedReader = new BufferedReader(new FileReader(filePath));
+
+            Map<String, Set<String>> sortedTeachers = new HashMap<>();
+
+            sortedTeachers = gson.fromJson(bufferedReader, new TypeToken<Map<String, Set<String>>>() {
+            }.getType());
+
+            Set<String> yourFaculty = sortedTeachers.get(department);
+
+            // yourFaculty.remove();
+            bufferedReader.close();
+
+            return fetchFacultyDetails(yourFaculty);
+        }
+    }
+
+    private static Vector<Student> fetchBatchDetails(Set<String> yourPeople) throws IOException {
         filePath = Adder.extractFilePath("allStudentsSortedByRegistration.json");
         bufferedReader = new BufferedReader(new FileReader(filePath));
 
@@ -142,6 +164,24 @@ public class Fetcher {
 
         return yourPeopleDetails;
 
+    }
+
+    private static Vector<Teacher> fetchFacultyDetails(Set<String> yourFaculty) throws IOException {
+        filePath = Adder.extractFilePath("allTeachersSortedByEmail.json");
+        bufferedReader = new BufferedReader(new FileReader(filePath));
+
+        Map<String, Teacher> teachers = new HashMap<>();
+        teachers = gson.fromJson(bufferedReader, new TypeToken<Map<String, Teacher>>() {
+        }.getType());
+
+        Vector<Teacher> yourFacultyDetails = new Vector<>();
+
+        for (String email : yourFaculty)
+            yourFacultyDetails.add(teachers.get(email));
+
+        bufferedReader.close();
+
+        return yourFacultyDetails;
     }
 
     private static String FindSemester(Integer semester) {

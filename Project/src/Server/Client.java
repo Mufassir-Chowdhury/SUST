@@ -87,7 +87,7 @@ public class Client {
         System.out.println("received notices");
 
         out.println(10);
-        // Teacher[] teachers = (Teacher[]) ois.readObject();
+        Teacher[] teachers = (Teacher[]) ois.readObject();
         Student[] students = (Student[]) ois.readObject();
         System.out.println("received students");
 
@@ -110,7 +110,7 @@ public class Client {
         Datapoints.getInstance().REGISTRATION = registration;
         Datapoints.getInstance().NOTIFICATION = notification;
         Datapoints.STUDENTS = students;
-        // Datapoints.TEACHERS = teachers;
+        Datapoints.TEACHERS = teachers;
         Datapoints.NOTICES = notices;
     }
 }

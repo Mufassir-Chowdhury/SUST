@@ -8,5 +8,15 @@
     "birthDay": "1/1/1995",
     "hometown": "Dhaka",
     "department": "Computer Science and Engineering"
+  },
+  "teacher2@sust.edu": {
+    "name": "CSE Teacher 2",
+    "email": "teacher2@sust.edu",
+    "number": "01711110000",
+    "designation": "Lecturer",
+    "blood": "A+",
+    "birthDay": "1/1/1990",
+    "hometown": "Dhaka",
+    "department": "Computer Science and Engineering"
   }
 }

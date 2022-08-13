@@ -69,13 +69,13 @@ public class Server {
      */
 
     public static Courses[] COURSES = {
-            new Courses(new Course("CSE101", "Data Structure", "3", "Computer Science and Engineering", 2,"Theory", "syllabus"),
+            new Courses(new Course("CSE101", "Data Structure", "3", "Computer Science and Engineering", "1-2","Theory", "syllabus"),
                     new Attendance(20, 0, 0),
                     new Result(79,
                             new Assignment("Assignment", "Assignment 1 " + "Assignment", "20" + "th April",
                                     "This is assignment 1", "uploader", "dateOfUpload", 100, 80)),
                     true),
-            new Courses(new Course("CSE102", "Data Structure 2", "3", "Computer Science and Engineering", 1,"Theory", "syllabus"),
+            new Courses(new Course("CSE102", "Data Structure 2", "3", "Computer Science and Engineering", "1-1","Theory", "syllabus"),
                     new Attendance(20, 0, 0), new Result(79, new Assignment("Assignment",
                             "Assignment 1 " + "Assignment", "20" + "th April", "This is assignment 1", "uploader", "dateOfUpload", 100, 80)),
                     true),
@@ -245,7 +245,7 @@ class ServerConnection {
                         oos.writeObject(Server.NOTICES);
                         break;
                     case "10":
-                        // oos.writeObject(Server.TEACHERS);
+                        oos.writeObject(Server.TEACHERS);
                         oos.writeObject(Server.STUDENTS);
                         break;
                     case "11":
@@ -274,6 +274,11 @@ class ServerConnection {
                         Event event = (Event) ois.readObject();
                         Adder.addNewEvent(event);
                         System.err.println("done adding event");
+                        break;
+                    case Datapoints.ADD_COURSE:
+                        Course course = (Course) ois.readObject();
+                        Adder.addCourse(course);
+                        System.err.println("done adding course");
                         break;
                     default:
                         System.out.println("Terminating connection");

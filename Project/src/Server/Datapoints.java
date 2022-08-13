@@ -29,6 +29,7 @@ public class Datapoints {
     public static final String ADD_TEACHER = "14";
     public static final String ADD_LINK = "15";
     public static final String ADD_EVENT = "16";
+    public static final String ADD_COURSE = "17";
 
     public Client client;
 
@@ -48,6 +49,13 @@ public class Datapoints {
 
     public static interface Information {
         public JComponent getInformation();
+    }
+
+    public static Integer getSemester(String semester) {
+        String[] s = semester.split("-");
+        int one = Integer.parseInt(s[0]) - 1;
+        int two = Integer.parseInt(s[1]);
+        return one * 2 + two;
     }
 
     public static class Notification implements Serializable, JsonConversion {
@@ -150,13 +158,6 @@ public class Datapoints {
             this.courses.put("regular", regular);
             this.courses.put("drop", drop);
 
-        }
-
-        private Integer getSemester(String semester) {
-            String[] s = semester.split("-");
-            int one = Integer.parseInt(s[0]) - 1;
-            int two = Integer.parseInt(s[1]);
-            return one * 2 + two;
         }
 
         public int getDeptCode(String registration) {
@@ -755,16 +756,16 @@ public class Datapoints {
         }
     }
 
-    public static class Course {
+    public static class Course implements Serializable {
         String courseCode, courseTitle, credit, department, syllabus, type;
         int semester;
 
-        public Course(String courseCode, String courseTitle, String credit, String department, int semester, String type, String syllabus) {
+        public Course(String courseCode, String courseTitle, String credit, String department, String semester, String type, String syllabus) {
             this.courseCode = courseCode;
             this.courseTitle = courseTitle;
             this.credit = credit;
             this.department = department;
-            this.semester = semester;
+            this.semester = getSemester(semester);
             this.syllabus = syllabus;
             this.type = type;
         }
