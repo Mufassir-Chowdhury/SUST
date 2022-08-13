@@ -13,11 +13,23 @@ public class Adder {
     static BufferedReader bufferedReader;
     static FileWriter writer;
     static String filePath;
+    
+    public static String LINK = "links.json";
+    public static String EVENT = "events.json";
+    public static String STUDENT_BY_REGISTRATION = "allStudentsSortedByRegistration.json";
+    public static String STUDENT_BY_DEPARTMENT = "allStudentsSortedByDepartment.json";
+    public static String TEACHER_BY_EMAIL = "allTeachersSortedByEmail.json";
+    public static String TEACHER_BY_DEPARTMENT = "allTeachersSortedByDepartment.json";
+    public static String PASSWORD = "password.json";
+    public static String COURSE_BY_DEPARTMENT = "allCourseListDeptWise.json";
+    public static String COURSE_BY_CODE = "allCourseListCourseCodeWise.json";
+    public static String ASSIGNMENT_EXAM_DETAILS = "allAssignmentExamDetails.json";
+    public static String ASSIGNMENT_EXAM_RESULTS = "allAssignmentExamResults.json"; 
 
     public static String extractFilePath(String file) {
         file = "src/Server/static/" + file;
 
-        file = "Project/" + file;
+        // file = "Project/" + file;
 
         return file;
 
@@ -26,18 +38,29 @@ public class Adder {
 
         // return s.replace(ss, "").replace("bin", "src").replace("file://", "");
     }
+    
+    public static <K, V> Map<K, V> getFromJson(String file) throws IOException{
+        filePath = extractFilePath(file);
+        bufferedReader = new BufferedReader(
+            new FileReader(filePath)
+        );
+        Map<K, V> object = new HashMap<>();
+        object = gson.fromJson(bufferedReader, new TypeToken<Map<K, V>>(){}.getType());
+        if(object == null){
+            object = new HashMap<>();
+        }
+        bufferedReader.close();
+        return object;
+    }
+    public static <T> void writeFile(String file, T object) throws IOException{
+        filePath = extractFilePath(file);
+        writer = new FileWriter(filePath);
+        writer.write(gson.toJson(object));
+        writer.close();
+    }
 
     public static void addNewLink(String title, Link link) throws IOException {
-        filePath = extractFilePath("links.json");
-        bufferedReader = new BufferedReader(
-                new FileReader(filePath));
-
-        Map<String, Map<String, Link>> links = new HashMap<>();
-        links = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Link>>>() {
-        }.getType());
-
-        if (links == null)
-            links = new HashMap<>();
+        Map<String, Map<String, Link>> links = getFromJson(LINK);
 
         if (links.containsKey(title) == false) {
             links.put(title, new HashMap<>());
@@ -45,27 +68,13 @@ public class Adder {
         }
         links.get(title).put(link.title, link);
 
-        FileWriter writer = new FileWriter(filePath);
-        writer.write(gson.toJson(links));
-        writer.close();
-        bufferedReader.close();
+        writeFile(LINK, links);
     }
 
     public static void addNewEvent(Event event) throws IOException {
-        filePath = extractFilePath("events.json");
-        bufferedReader = new BufferedReader(
-                new FileReader(filePath));
-
-        Map<String, Map<String, Event>> events = new HashMap<>();
-        events = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Event>>>() {
-        }.getType());
-
-        if (events == null)
-            events = new HashMap<>();
-
+        Map<String, Map<String, Event>> events = getFromJson(EVENT);
         
-        if(event.For.equals("Both")==true)
-        {
+        if(event.For.equals("Both")==true){
             String title = event.title;
             event.title = "Student Event # " + Integer.toString(events.get("Student").size() + 1) + " (" + title + ")";
             events.get("Student").put(event.title, event);
@@ -78,51 +87,26 @@ public class Adder {
             events.get(event.For).put(event.title, event);
         }
         
-        writer = new FileWriter(filePath);
-        writer.write(gson.toJson(events));
-        writer.close();
-        bufferedReader.close();
+        writeFile(EVENT, events);
     }
 
     public static void addNewStudent(Student student) throws IOException {
 
         {
-            filePath = extractFilePath("allStudentsSortedByRegistration.json");
-            bufferedReader = new BufferedReader(
-                    new FileReader(filePath));
-
-            Map<String, Student> students = new HashMap<>();
-            students = gson.fromJson(bufferedReader, new TypeToken<Map<String, Student>>() {
-            }.getType());
-
-            if (students == null)
-                students = new HashMap<>();
+            Map<String, Student> students = getFromJson(STUDENT_BY_REGISTRATION);
 
             if (students.containsKey(student.registration))
                 return;
 
             students.put(student.registration, student);
 
-            writer = new FileWriter(filePath);
-            writer.write(gson.toJson(students));
-            writer.close();
-            bufferedReader.close();
+            writeFile(STUDENT_BY_REGISTRATION, students);
         }
 
         updatePasswordDatabase("Student", student.email, student.registration);
 
         {
-            filePath = extractFilePath("allStudentsSortedByDepartment.json");
-            bufferedReader = new BufferedReader(
-                    new FileReader(filePath));
-
-            Map<String, Map<String, Set<String>>> sortedStudents = new HashMap<>();
-
-            sortedStudents = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Set<String>>>>() {
-            }.getType());
-
-            if (sortedStudents == null)
-                sortedStudents = new HashMap<>();
+            Map<String, Map<String, Set<String>>> sortedStudents = getFromJson(STUDENT_BY_DEPARTMENT);
 
             String department = student.department;
             String session = student.session;
@@ -135,52 +119,27 @@ public class Adder {
 
             sortedStudents.get(department).get(session).add(student.registration);
 
-            writer = new FileWriter(filePath);
-            writer.write(gson.toJson(sortedStudents));
-            writer.close();
-            bufferedReader.close();
+            writeFile(STUDENT_BY_DEPARTMENT, sortedStudents);
         }
     }
 
     public static void addNewTeacher(Teacher teacher) throws IOException {
 
         {
-            filePath = extractFilePath("allTeachersSortedByEmail.json");
-            bufferedReader = new BufferedReader(
-                    new FileReader(filePath));
-
-            Map<String, Teacher> teachers = new HashMap<>();
-            teachers = gson.fromJson(bufferedReader, new TypeToken<Map<String, Teacher>>() {
-            }.getType());
-
-            if (teachers == null)
-                teachers = new HashMap<>();
+            Map<String, Teacher> teachers = getFromJson(TEACHER_BY_EMAIL);
 
             if (teachers.containsKey(teacher.email))
                 return;
 
             teachers.put(teacher.email, teacher);
 
-            writer = new FileWriter(filePath);
-            writer.write(gson.toJson(teachers));
-            writer.close();
-            bufferedReader.close();
+            writeFile(TEACHER_BY_EMAIL, teachers);
         }
 
         updatePasswordDatabase("Teacher", teacher.email, teacher.email);
 
         {
-            filePath = extractFilePath("allTeachersSortedByDepartment.json");
-            bufferedReader = new BufferedReader(
-                    new FileReader(filePath));
-
-            Map<String, Set<String>> sortedTeachers = new HashMap<>();
-
-            sortedTeachers = gson.fromJson(bufferedReader, new TypeToken<Map<String, Set<String>>>() {
-            }.getType());
-
-            if (sortedTeachers == null)
-                sortedTeachers = new HashMap<>();
+            Map<String, Set<String>> sortedTeachers = getFromJson(TEACHER_BY_DEPARTMENT);
 
             String department = teacher.department;
 
@@ -189,50 +148,25 @@ public class Adder {
 
             sortedTeachers.get(department).add(teacher.email);
 
-            writer = new FileWriter(filePath);
-            writer.write(gson.toJson(sortedTeachers));
-            writer.close();
-            bufferedReader.close();
+            writeFile(TEACHER_BY_DEPARTMENT, sortedTeachers);
         }
     }
 
     private static void updatePasswordDatabase(String Type, String email, String registration) throws IOException {
         System.err.println("calling");
-        filePath = extractFilePath("password.json");
-        bufferedReader = new BufferedReader(
-                new FileReader(filePath));
-
-        Map<String, Map<String, String>> passwords = new HashMap<>();
-        passwords = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, String>>>() {
-        }.getType());
-
-        if (passwords == null)
-            passwords = new HashMap<>();
+        Map<String, Map<String, String>> passwords = getFromJson(PASSWORD);
 
         if (passwords.containsKey(Type) == false)
             passwords.put(Type, new HashMap<>());
 
         passwords.get(Type).put(email, registration);
 
-        writer = new FileWriter(filePath);
-        writer.write(gson.toJson(passwords));
-        writer.close();
-        bufferedReader.close();
+        writeFile(PASSWORD, passwords);
     }
 
     public static void addCourse(Course course) throws IOException {
         {
-            filePath = extractFilePath("allCourseListDeptWise.json");
-            bufferedReader = new BufferedReader(
-                    new FileReader(filePath));
-
-            Map<String, Map<Integer, Set<String>>> allCourseList = new HashMap<>();
-
-            allCourseList = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<Integer, Set<String>>>>() {
-            }.getType());
-
-            if (allCourseList == null)
-                allCourseList = new HashMap<>();
+            Map<String, Map<Integer, Set<String>>> allCourseList = getFromJson(COURSE_BY_DEPARTMENT);
 
             if (allCourseList.containsKey(course.department) == false)
                 allCourseList.put(course.department, new HashMap<>());
@@ -242,47 +176,20 @@ public class Adder {
 
             allCourseList.get(course.department).get(course.semester).add(course.courseCode);
 
-            writer = new FileWriter(filePath);
-            writer.write(gson.toJson(allCourseList));
-            writer.close();
-            bufferedReader.close();
+            writeFile(COURSE_BY_DEPARTMENT, allCourseList);
         }
 
         {
-            filePath = extractFilePath("allCourseListCourseCodeWise.json");
-            bufferedReader = new BufferedReader(
-                    new FileReader(filePath));
-
-            Map<String, Course> allCourseList = new HashMap<>();
-
-            allCourseList = gson.fromJson(bufferedReader, new TypeToken<Map<String, Course>>() {
-            }.getType());
-
-            if (allCourseList == null)
-                allCourseList = new HashMap<>();
+            Map<String, Course> allCourseList = getFromJson(COURSE_BY_CODE);
 
             if (allCourseList.containsKey(course.department) == false)
                 allCourseList.put(course.courseCode, course);
 
-            writer = new FileWriter(filePath);
-            writer.write(gson.toJson(allCourseList));
-            writer.close();
-            bufferedReader.close();
-
+            writeFile(COURSE_BY_CODE, allCourseList);
         }
 
         {
-            filePath = extractFilePath("allAssignmentExamDetails.json");
-            bufferedReader = new BufferedReader(new FileReader(filePath));
-
-            Map<String, Map<String, Map<String, Map<String, EvaluationItem>>>> allAssignmentExamDetails = new HashMap<>();
-
-            allAssignmentExamDetails = gson.fromJson(bufferedReader,
-                    new TypeToken<Map<String, Map<String, Map<String, Map<String, EvaluationItem>>>>>() {
-                    }.getType());
-
-            if (allAssignmentExamDetails == null)
-                allAssignmentExamDetails = new HashMap<>();
+            Map<String, Map<String, Map<String, Map<String, EvaluationItem>>>> allAssignmentExamDetails = getFromJson(ASSIGNMENT_EXAM_DETAILS);
 
             if (allAssignmentExamDetails.containsKey(course.courseCode) == false) {
                 allAssignmentExamDetails.put(course.courseCode, new HashMap<>());
@@ -290,23 +197,11 @@ public class Adder {
                 allAssignmentExamDetails.get(course.courseCode).put("Exam", new HashMap<>());
             }
 
-            writer = new FileWriter(filePath);
-            writer.write(gson.toJson(allAssignmentExamDetails));
-            writer.close();
-            bufferedReader.close();
+            writeFile(ASSIGNMENT_EXAM_DETAILS, allAssignmentExamDetails);
         }
 
         {
-            filePath = extractFilePath("allAssignmentExamResults.json");
-            bufferedReader = new BufferedReader(new FileReader(filePath));
-            Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>> allAssignmentExamResults = new HashMap<>();
-
-            allAssignmentExamResults = gson.fromJson(bufferedReader,
-                    new TypeToken<Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>>>() {
-                    }.getType());
-
-            if (allAssignmentExamResults == null)
-                allAssignmentExamResults = new HashMap<>();
+            Map<String, Map<String, Map<String, Map<String, Map<String, String>>>>> allAssignmentExamResults = getFromJson(ASSIGNMENT_EXAM_RESULTS);
 
             if (allAssignmentExamResults.containsKey(course.courseCode) == false) {
                 allAssignmentExamResults.put(course.courseCode, new HashMap<>());
@@ -314,11 +209,7 @@ public class Adder {
                 allAssignmentExamResults.get(course.courseCode).put("Exam", new HashMap<>());
             }
 
-            writer = new FileWriter(filePath);
-            System.out.println("yes");
-            writer.write(gson.toJson(allAssignmentExamResults));
-            writer.close();
-            bufferedReader.close();
+            writeFile(ASSIGNMENT_EXAM_RESULTS, allAssignmentExamResults);
         }
     }
 }
