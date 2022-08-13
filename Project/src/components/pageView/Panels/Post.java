@@ -46,7 +46,9 @@ public class Post extends ListPanel {
         details.setLayout(new BoxLayout(details, BoxLayout.Y_AXIS));
         details.setOpaque(false);
         details.setAlignmentX(Component.LEFT_ALIGNMENT);
-        details.add(new TextArea(description));
+        TextArea descriptionArea = new TextArea(description);
+        descriptionArea.setEditable(false);
+        details.add(descriptionArea);
         
         info.add(
             new ScrollPane(details),
