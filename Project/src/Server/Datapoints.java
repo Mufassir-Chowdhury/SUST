@@ -253,7 +253,7 @@ public class Datapoints {
     }
 
     
-    public static class Courses implements Serializable, Information, JsonConversion {
+    public static class Courses implements Serializable, Information, Tilable, JsonConversion {
         public String code;
         public String name;
         public String credit;
@@ -398,6 +398,33 @@ public class Datapoints {
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             return gson.fromJson(json, (Type) this);
+        }
+
+
+        @Override
+        public Line getListItem() {
+            return new Line(
+                name,
+                code,
+                credit,
+                "Course Teachers:");
+        }
+
+
+        @Override
+        public String getTitle() {
+            return name;
+        }
+
+
+        @Override
+        public Post getPost() {
+            return new Post(
+                    name,
+                    code,
+                    "Total Credits: " + credit,
+                    "Teachers: ", "Total Students: ",
+                    "Syllabus: ", false);
         }
     }
 
