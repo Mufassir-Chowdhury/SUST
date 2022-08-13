@@ -1,9 +1,9 @@
 {
   "Student": {
-    "Event # 1 (Job Fair)": {
+    "Student Event # 1 (Job Fair)": {
       "For": "Student",
       "organizer": "Sust",
-      "title": "Event # 1 (Job Fair)",
+      "title": "Student Event # 1 (Job Fair)",
       "date": "25 June",
       "description": "We have arranged a Job Fair for Students",
       "location": "Central Auditorium",
@@ -13,10 +13,10 @@
       "uploader": "Admin",
       "dateOfPost": "August 12, 2022"
     },
-    "Event # 2 (Cultural Program)": {
+    "Student Event # 2 (Cultural Program)": {
       "For": "Student",
       "organizer": "Dik-Theater",
-      "title": "Event # 2 (Cultural Program)",
+      "title": "Student Event # 2 (Cultural Program)",
       "date": "15 September",
       "description": "A cultural program was organized in our college on February 21, 2022. The program was held on the occasion of International Mother Language Day. On that day a big stage was made in the college playground and a canopy was raised overhead. Hundreds of chairs were arranged in rows for the audience. It was indeed an event of great joy and festivity for the students as well as for the teachers. The program was scheduled to be started at 4 PM. As the day was a national holiday there were no classes on that day. Guardians and students began to gather for the cultural program from 3:30 PM. The function started on time with the recitation from the holy Quran. Our English teacher Mr. Harun anchored the program and our principal",
       "location": "Central Auditorium",
@@ -26,10 +26,10 @@
       "uploader": "Admin",
       "dateOfPost": "August 13, 2022"
     },
-    "Event # 3 (Basketball Final)": {
+    "Student Event # 3 (Basketball Final)": {
       "For": "Both",
       "organizer": "Sports Sust",
-      "title": "Event # 2 (Event # 3 (Basketball Final))",
+      "title": "Student Event # 3 (Basketball Final)",
       "date": "7 June",
       "description": "This is the final match between Math and CSE",
       "location": "Basketball Ground",
@@ -41,10 +41,10 @@
     }
   },
   "Teacher": {
-    "Event # 1 (Re-union for Physics Department)": {
+    "Teacher Event # 1 (Re-union for Physics Department)": {
       "For": "Teacher",
       "organizer": "Physics Department",
-      "title": "Event # 1 (Re-union for Physics Department)",
+      "title": "Teacher Event # 1 (Re-union for Physics Department)",
       "date": "27 August",
       "description": "At last we are meeting after 10 years",
       "location": "Central Auditorium",
@@ -54,14 +54,27 @@
       "uploader": "Admin",
       "dateOfPost": "August 13, 2022"
     },
-    "Event # 2 (Basketball Final)": {
+    "Teacher Event # 2 (Basketball Final)": {
       "For": "Both",
       "organizer": "Sports Sust",
-      "title": "Event # 2 (Event # 3 (Basketball Final))",
+      "title": "Teacher Event # 2 (Basketball Final)",
       "date": "7 June",
       "description": "This is the final match between Math and CSE",
       "location": "Basketball Ground",
       "duration": "3PM",
+      "interested": 0,
+      "going": 0,
+      "uploader": "Admin",
+      "dateOfPost": "August 13, 2022"
+    },
+    "Teacher Event # 3 (Write Title)": {
+      "For": "Teacher",
+      "organizer": "Write Organizer",
+      "title": "Teacher Event # 3 (Write Title)",
+      "date": "Write Date",
+      "description": "Write Description",
+      "location": "Write Location",
+      "duration": "Write Duration (9AM - 5PM)",
       "interested": 0,
       "going": 0,
       "uploader": "Admin",

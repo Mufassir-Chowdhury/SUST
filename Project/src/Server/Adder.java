@@ -66,16 +66,15 @@ public class Adder {
         
         if(event.For.equals("Both")==true)
         {
-            System.err.println("coming");
             String title = event.title;
-            event.title = "Event # " + Integer.toString(events.get("Student").size() + 1) + " (" + title + ")";
+            event.title = "Student Event # " + Integer.toString(events.get("Student").size() + 1) + " (" + title + ")";
             events.get("Student").put(event.title, event);
 
-            event.title = "Event # " + Integer.toString(events.get("Teacher").size() + 1) + " (" + title + ")";
+            event.title = "Teacher Event # " + Integer.toString(events.get("Teacher").size() + 1) + " (" + title + ")";
             events.get("Teacher").put(event.title, event);
         }
         else {
-            event.title = "Event # " + Integer.toString(events.get(event.For).size() + 1) + " (" + event.title + ")";
+            event.title =event.For+ " Event # " + Integer.toString(events.get(event.For).size() + 1) + " (" + event.title + ")";
             events.get(event.For).put(event.title, event);
         }
         

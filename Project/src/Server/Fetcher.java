@@ -74,12 +74,14 @@ public class Fetcher {
         if (command == "Admin")
         {
             Map<String, Event> toPass = new HashMap<>();
-            toPass.putAll( events.get("Student"));
-            toPass.putAll(events.get("Teacher"));
+            toPass.putAll(events.get("Student"));
+            for (Event event : events.get("Teacher").values())
+                if(event.For.equals("Teacher"))
+                    toPass.put(event.title, event);
+
             Server.EVENTS = toPass.values().toArray(new Event[0]);
         }
 
-        // Server.EVENTS = events.values().toArray(new Event[0]);
         bufferedReader.close();
     }
 
