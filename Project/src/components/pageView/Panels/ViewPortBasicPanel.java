@@ -9,9 +9,9 @@ public class ViewPortBasicPanel extends ViewPortPanel {
                 super(title, component);
 
                 getPanel().add(
-                                new ScrollPane(
-                                                new MainCardList(title, getTitle(), getPanel(), tiles)),
-                                title);
+                        new ScrollPane(
+                                new MainCardList(title, getTitle(), getPanel(), tiles)),
+                        title);
         }
 
         public ViewPortBasicPanel(String title, JComponent component,
@@ -19,14 +19,14 @@ public class ViewPortBasicPanel extends ViewPortPanel {
                 super(title, component);
                 if (type == Type.EXAM || type == Type.ASSIGNMENT) {
                         getPanel().add(
-                                        new ScrollPane(
-                                                        new MainCardList(title, getTitle(), getPanel(), type)),
-                                        title);
+                                new ScrollPane(
+                                        new MainCardList(title, getTitle(), getPanel(), type)),
+                                title);
                 } else {
                         getPanel().add(
-                                        new ScrollPane(
-                                                        new MainCardList(title, getTitle(), type)),
-                                        title);
+                                new ScrollPane(
+                                        new MainCardList(title, getTitle(), type)),
+                                title);
                 }
         }
 }

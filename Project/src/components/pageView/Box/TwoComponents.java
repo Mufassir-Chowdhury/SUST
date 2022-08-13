@@ -4,7 +4,6 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 
-import Components.Label;
 import java.awt.Component;
 
 public class TwoComponents extends Box {

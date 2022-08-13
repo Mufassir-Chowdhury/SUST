@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 
 import Components.Card;
 import Components.Label;
+import Components.Buttons.AccentButton;
 import Components.pageView.Panels.ListPanel;
 import Constants.Collections;
 import Constants.Fonts;
@@ -40,5 +41,15 @@ class AllPages extends ListPanel {
             add(title);
             add(line);
         }
+        add(Box.createVerticalStrut(10));
+        AccentButton logout = new AccentButton("Logout");
+        logout.setAlignmentX(Component.LEFT_ALIGNMENT);
+        logout.addMouseListener(new MouseAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                main.changeFrame("logInPage");
+            }
+        });
+        add(logout);
     }
 }

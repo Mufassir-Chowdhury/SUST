@@ -47,12 +47,12 @@ public class MainCardListItem extends Box {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (open == false) {
-                    line.add(marks);
-                    open = true;
-                } else {
+                if (open) {
                     line.remove(marks);
                     open = false;
+                } else {
+                    line.add(marks);
+                    open = true;
                 }
                 repaint();
                 revalidate();

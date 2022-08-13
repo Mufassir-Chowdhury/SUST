@@ -26,7 +26,7 @@ public class Line extends Box {
             setBorder(Padding.LIST_ITEM);
             if(serial != null){
                 add(Box.createHorizontalStrut(10));
-                add(new Label(serial.substring(serial.length()-3), Fonts.CAPTION));
+                add(new Label(serial, Fonts.CAPTION));
             }
             if(image != null){
                 add(Box.createHorizontalStrut(10));
