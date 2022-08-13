@@ -18,23 +18,53 @@ public class Fetcher {
     static String filePath;
 
     public static void fetch(String Type) throws IOException {
-        fetchDept();
+        fetchDeptAndTeacherAndCourses();
         fetchLinks();
         fetchEvents(Type);
         fetchStudentDetails("2019331019");
         // fetchStudentDetails("2019331053");
     }
 
-    private static void fetchDept() throws IOException {
-        filePath = Adder.extractFilePath("allDepartment.json");
-        bufferedReader = new BufferedReader(new FileReader(filePath));
-        Set<String> allDepartment = new HashSet<>();
+    private static void fetchDeptAndTeacherAndCourses() throws IOException {
+        {
+            filePath = Adder.extractFilePath("allDepartment.json");
+            bufferedReader = new BufferedReader(new FileReader(filePath));
+            Set<String> allDepartment = new HashSet<>();
 
-        allDepartment = gson.fromJson(bufferedReader, new TypeToken<Set<String>>() {
-        }.getType());
+            allDepartment = gson.fromJson(bufferedReader, new TypeToken<Set<String>>() {
+            }.getType());
 
-        Server.Departments = allDepartment.toArray(new String[0]);
-        bufferedReader.close();
+            Server.Departments = allDepartment.toArray(new String[0]);
+            bufferedReader.close();
+        }
+
+        {
+            for (String dept : Server.Departments) {
+                Vector<Teacher> teachers = fetchPeople(dept);
+                Vector<String> oneDept = new Vector<>();
+                for (Teacher teacher : teachers)
+                    oneDept.add(teacher.name);
+                Server.TeachersName.put(dept, oneDept.toArray(new String[0]));
+            }
+        }
+
+        {
+            filePath = Adder.extractFilePath(Adder.COURSE_BY_DEPARTMENT);
+            bufferedReader = new BufferedReader(
+                    new FileReader(filePath));
+
+            Map<String, Map<Integer, Set<String>>> allCourseList = new HashMap<>();
+
+            allCourseList = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<Integer, Set<String>>>>() {
+            }.getType());
+
+            for (String dept : Server.Departments) 
+                if(allCourseList.containsKey(dept) == false)
+                    allCourseList.put(dept, new HashMap<>());
+
+            Server.CourseCode = allCourseList;
+        }
+
     }
 
     private static void fetchLinks() throws IOException {
@@ -140,6 +170,11 @@ public class Fetcher {
 
             Set<String> yourFaculty = sortedTeachers.get(department);
 
+            if(yourFaculty == null) 
+                yourFaculty = new HashSet<>();
+
+            if (yourFaculty.isEmpty())
+                return new Vector<Teacher>();
             // yourFaculty.remove();
             bufferedReader.close();
 

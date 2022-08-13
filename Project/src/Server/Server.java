@@ -2,6 +2,9 @@ package Server;
 
 import java.io.*;
 import java.net.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 import Server.Datapoints.*;
 
@@ -11,6 +14,10 @@ public class Server {
     static String[] drop = { "CSE301", "CSE401" };
 
     public static String[] Departments;
+
+    public static Map<String, String[]> TeachersName = new HashMap<>();
+
+    public static Map<String, Map<Integer, Set<String>>> CourseCode = new HashMap<>();
 
     public static String[] LINK_TITLES;
 
@@ -253,6 +260,8 @@ class ServerConnection {
                         break;
                     case "12":
                         oos.writeObject(Server.Departments);
+                        oos.writeObject(Server.TeachersName);
+                        oos.writeObject(Server.CourseCode);
                         break;
                     case Datapoints.ADD_STUDENT:
                         Student student = (Student) ois.readObject();
