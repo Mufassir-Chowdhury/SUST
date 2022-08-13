@@ -5,6 +5,7 @@ import Common.pages.pageView.administrivia.*;
 import Common.pages.pageView.course_information.*;
 import Common.pages.pageView.misc.bus.bus;
 import Common.pages.pageView.misc.map.map;
+import Common.pages.pageView.misc.people.People;
 import Components.Buttons.AccentButton;
 import Components.Buttons.AddCourseButton;
 import Components.Buttons.AssignCourseButton;
@@ -71,10 +72,9 @@ public class PageList {
                                 new Page(
                                         "People",
                                         Icons.Pages.STUDENT_INFO,
-                                        new ViewPortBasicPanel(
-                                                "People",
-                                                new RegisterProfile(),
-                                                Datapoints.STUDENTS)),
+                                        new People(
+                                                new RegisterProfile()
+                                        )),
                                 new Page(
                                         "Events",
                                         Icons.Pages.EVENTS,

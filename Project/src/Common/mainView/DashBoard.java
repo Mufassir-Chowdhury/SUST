@@ -3,15 +3,20 @@ package Common.mainView;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+import javax.swing.event.MouseInputAdapter;
 
+import Common.Main.Main;
 import Components.Card;
 import Components.DashBoardItem;
 import Components.Label;
+import Components.Buttons.AccentButton;
 import Components.pageView.Panels.GridBagPanel;
+import Components.pageView.Panels.ListPanel;
 
 import java.awt.GridBagLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
 
 import Constants.Fonts;
 import Constants.Icons;
@@ -21,12 +26,12 @@ import Constants.Sizes;
 import Server.Datapoints;
 
 class DashBoard extends JPanel {
-    public DashBoard() {
+    public DashBoard(Main main) {
         setOpaque(false);
         setLayout(new GridBagLayout());
-
+        
         add(
-                new Profile(),
+                new Profile(main),
                 GridBagPanel.GetConstant(1, 0, 0, 1, .5, 1, 1, Margins.DASHBOARD));
 
         add(
@@ -43,12 +48,24 @@ class DashBoard extends JPanel {
     }
 
     class Profile extends JPanel {
-        public Profile() {
+        public Profile(Main main) {
             setOpaque(false);
             setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
+            ListPanel list = new ListPanel();
             Card card = new Card(Icons.DP, (int) Sizes.DP.getWidth(), Sizes.DP);
-            add(card);
+            list.add(card);
+            list.add(Box.createVerticalGlue());
+            AccentButton logout = new AccentButton("Logout");
+            logout.setAlignmentX(Component.LEFT_ALIGNMENT);
+            logout.addMouseListener(new MouseInputAdapter(){
+                @Override
+                public void mouseClicked(MouseEvent e){
+                    main.changeFrame("logInPage");
+                }
+            });
+            list.add(logout);
+            add(list);
             add(Box.createHorizontalGlue());
 
             Box line = Box.createVerticalBox();

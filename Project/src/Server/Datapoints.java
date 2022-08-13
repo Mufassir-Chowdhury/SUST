@@ -131,13 +131,25 @@ public class Datapoints {
             return ByDeptCode.get(deptCode).labFee;
         }
     }
+    public abstract static class Person implements Serializable{
+        public String   department,
+                        registration,
+                        designation,
+                        name,
+                        email,
+                        session,
+                        number,
+                        blood,
+                        birthDay,
+                        hometown;
+        public abstract Line getListItem();
+    }
 
-    public static class Student implements Serializable, Tilable, JsonConversion {
+    public static class Student extends Person implements Tilable, JsonConversion {
         public transient BufferedImage DP;
-        public String registration, name, email, email2, number, blood, birthDay, hometown, session;
+        public String email2;
         public int deptCode;
         Integer semester;
-        public String department;
         public Map<String, String[]> courses = new HashMap<>();
 
         public Student(String registration, String name, String email, String number, String blood, String birthDay,
@@ -205,9 +217,9 @@ public class Datapoints {
         }
     }
     
-    public static class Teacher implements Serializable, Tilable {
+    public static class Teacher extends Person implements Tilable {
         public transient BufferedImage DP;
-        public String name, email, email2, number, designation, blood, birthDay, hometown, department;
+        public String email2;
         public String[] courses;
 
         public Teacher(String department, String name, String email, String designation, String number, String blood,
@@ -229,7 +241,7 @@ public class Datapoints {
         @Override
         public Line getListItem() {
             return new Line(
-                    "",
+                    null,
                     DP,
                     name,
                     blood + " | " + birthDay + " | " + hometown,

@@ -11,7 +11,7 @@ import Common.Main.Main;
 import Common.pages.Page;
 
 public class MainPage extends GridBagPanel {
-    public MainPage(Main main, Page pageList[][]) throws ClassNotFoundException, IOException{
+    public MainPage(Main main, Page[][] pageList) throws ClassNotFoundException, IOException{
         setOpaque(false);
         setSize(Sizes.USABLE_WINDOW_SIZE);
         setBorder(Padding.MAIN_VIEW_PORT);
@@ -22,7 +22,7 @@ public class MainPage extends GridBagPanel {
         );
 
         add(
-            new DashBoard(), 
+            new DashBoard(main), 
             GridBagPanel.GetConstant(1, 2, 0, 0, 1, 1, 1, Margins.MAJOR_PANEL)
         );
 
