@@ -69,13 +69,13 @@ public class Server {
      */
 
     public static Courses[] COURSES = {
-            new Courses(new Course("CSE101", "Data Structure", "3", "Computer Science and Engineering", 2),
+            new Courses(new Course("CSE101", "Data Structure", "3", "Computer Science and Engineering", 2,"Theory", "syllabus"),
                     new Attendance(20, 0, 0),
                     new Result(79,
                             new Assignment("Assignment", "Assignment 1 " + "Assignment", "20" + "th April",
                                     "This is assignment 1", "uploader", "dateOfUpload", 100, 80)),
                     true),
-            new Courses(new Course("CSE102", "Data Structure 2", "3", "Computer Science and Engineering", 1),
+            new Courses(new Course("CSE102", "Data Structure 2", "3", "Computer Science and Engineering", 1,"Theory", "syllabus"),
                     new Attendance(20, 0, 0), new Result(79, new Assignment("Assignment",
                             "Assignment 1 " + "Assignment", "20" + "th April", "This is assignment 1", "uploader", "dateOfUpload", 100, 80)),
                     true),

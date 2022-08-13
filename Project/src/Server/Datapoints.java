@@ -756,15 +756,17 @@ public class Datapoints {
     }
 
     public static class Course {
-        String courseCode, courseTitle, credit, department;
+        String courseCode, courseTitle, credit, department, syllabus, type;
         int semester;
 
-        public Course(String courseCode, String courseTitle, String credit, String department, int semester) {
+        public Course(String courseCode, String courseTitle, String credit, String department, int semester, String type, String syllabus) {
             this.courseCode = courseCode;
             this.courseTitle = courseTitle;
             this.credit = credit;
             this.department = department;
             this.semester = semester;
+            this.syllabus = syllabus;
+            this.type = type;
         }
     }
 

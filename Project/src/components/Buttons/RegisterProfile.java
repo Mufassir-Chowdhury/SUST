@@ -130,7 +130,8 @@ public class RegisterProfile extends AccentButton implements ActionListener {
         protected void again(String type) {
             Dimension size = Sizes.DIALOG.REGISTER_PROFILE;
             Background frame = new Background(size, new JFrame());
-            frame.add(new Dialog(size, frame, type));            
+            frame.add(new Dialog(size, frame, type));
+            frame.setVisible(true);           
         }
 
         private void fetchDataAndPassToClient(String type) throws IOException {
@@ -159,6 +160,7 @@ public class RegisterProfile extends AccentButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Dimension size = Sizes.DIALOG.REGISTER_PROFILE_CHOOSE;
         Background frame = new Background(size, new JFrame());
-        frame.add(new Dialog(size, frame, "Choose"));        
+        frame.add(new Dialog(size, frame, "Choose"));
+        frame.setVisible(true);      
     }
 }

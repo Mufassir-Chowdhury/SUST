@@ -105,5 +105,6 @@ public class AssignCourseButton extends AccentButton implements ActionListener {
         Dimension size = Sizes.DIALOG.EVENT;
         Background frame = new Background(size, new JFrame());
         frame.add(new Dialog(size, frame));
+        frame.setVisible(true);
     }
 }

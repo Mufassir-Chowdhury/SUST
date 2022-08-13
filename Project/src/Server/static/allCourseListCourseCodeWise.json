@@ -4,6 +4,8 @@
     "courseTitle": "CSE 1",
     "credit": "3",
     "department": "Computer Science and Engineering",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
   },
   "CSE102": {
@@ -11,6 +13,8 @@
     "courseTitle": "CSE 2",
     "credit": "3",
     "department": "Computer Science and Engineering",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
   },
   "CSE103": {
@@ -18,6 +22,8 @@
     "courseTitle": "CSE 3",
     "credit": "3",
     "department": "Computer Science and Engineering",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
   },
   "PHY102": {
@@ -25,6 +31,8 @@
     "courseTitle": "PHY 2",
     "credit": "3",
     "department": "Physics",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
   },
   "PHY103": {
@@ -32,6 +40,8 @@
     "courseTitle": "PHY 3",
     "credit": "3",
     "department": "Physics",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
   },
   "SOC102": {
@@ -39,6 +49,8 @@
     "courseTitle": "SOC 2",
     "credit": "3",
     "department": "Sociology",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
   },
   "SOC101": {
@@ -46,6 +58,8 @@
     "courseTitle": "SOC 1",
     "credit": "3",
     "department": "Sociology",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
   },
   "SOC103": {
@@ -53,6 +67,8 @@
     "courseTitle": "SOC 3",
     "credit": "3",
     "department": "Sociology",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
   },
   "EEE102": {
@@ -60,6 +76,8 @@
     "courseTitle": "EEE 2",
     "credit": "3",
     "department": "Electrical and Electronics Engineering",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
   },
   "EEE105": {
@@ -67,6 +85,26 @@
     "courseTitle": "EEE 5",
     "credit": "3",
     "department": "Electrical and Electronics Engineering",
+    "syllabus": "syllabus",
+    "type": "Theory",
     "semester": 3
+  },
+  "CSE150": {
+    "courseCode": "CSE150",
+    "courseTitle": "Project 150",
+    "credit": "1",
+    "department": "Computer Science and Engineering",
+    "syllabus": "syllabus",
+    "type": "Lab",
+    "semester": 2
+  },
+  "CSE250": {
+    "courseCode": "CSE250",
+    "courseTitle": "Project 250",
+    "credit": "1",
+    "department": "Computer Science and Engineering",
+    "syllabus": "syllabus",
+    "type": "Lab",
+    "semester": 4
   }
 }
