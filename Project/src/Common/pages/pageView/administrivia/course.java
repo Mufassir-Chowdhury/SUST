@@ -57,16 +57,14 @@ public class course extends ViewPort {
         ListPanel registeredCourses = new ListPanel();
         DefaultListModel<String> registeredModel = new DefaultListModel();
         registeredModel.addAll(courseNames);
-        // List<String> registered = new List<>();
         List<String> registered = new List<>(courseNames, false, ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         registered.setModel(registeredModel);
         registeredCourses.add(new Label("Registered Course List", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         registeredCourses.add(registered);
 
         ListPanel transfer = new ListPanel();
-        // TODO add icons for transfer
         transfer.add(new JLabel(Icons.TitleBar.BACK));
-        transfer.add(new JLabel(Icons.TitleBar.BACK));
+        transfer.add(new JLabel(Icons.TitleBar.FORWARD));
 
         resources.add(availableCourses);
         resources.add(Box.createHorizontalGlue());
@@ -104,6 +102,9 @@ public class course extends ViewPort {
                     if(!registeredModel.contains(course)){
                         registeredModel.addElement(course);
                     }
+                }
+                for(String course: registered.getSelectedValuesList()){
+                    registeredModel.removeElement(course);
                 }
                 registered.setModel(registeredModel);
             }

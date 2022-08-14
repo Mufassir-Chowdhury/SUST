@@ -49,6 +49,7 @@ public class Icons {
          * Icon to go back to the previous page.
          */
         public static final ImageIcon BACK = Tools.imageScale("static/images/back-white.png", Sizes.ICON_SIZE);
+        public static final ImageIcon FORWARD = Tools.imageScale("static/images/forward-white.png", Sizes.ICON_SIZE);
         /**
          * Icon to go back to the previous page.
          */
