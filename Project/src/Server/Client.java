@@ -25,6 +25,13 @@ public class Client {
         oos.writeObject(link);
     }
 
+    public String login(String mode, String email, String password) throws IOException, ClassNotFoundException {
+        out.println(Datapoints.LOGIN);
+        oos.writeObject(new String[] { mode, email, password});
+        String condition = (String) ois.readObject();
+        return condition;
+    }
+
 
     public Client() throws IOException, ClassNotFoundException {
         String hostname = "localhost";
@@ -121,4 +128,6 @@ public class Client {
         Datapoints.TEACHERS = teachers;
         Datapoints.NOTICES = notices;
     }
+
+    
 }

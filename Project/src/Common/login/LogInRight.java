@@ -18,6 +18,7 @@ import Constants.Colors;
 import Constants.Fonts;
 import Constants.Sizes;
 import Constants.Values;
+import Server.Datapoints;
 
 
 public class LogInRight extends JPanel implements KeyListener, FocusListener {
@@ -27,18 +28,19 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     public TextField passwordField = new TextField(false, TextField.TYPE.PASSWORD);
     private showPassword showPasswordCheckBox = new Utilities.showPassword();
     private HyperLinkButton forgetPasswordText = new HyperLinkButton("Forgotten  Password?");
-    private HyperLinkButton registerText = new HyperLinkButton("Create an account!");
+    
     private static final long serialVersionUID = 1L;  
     private Box line = Box.createHorizontalBox();
     private LogInPage page;
     private Component source;
     private Character key = KeyEvent.VK_ENTER;
     private String email, password;
+    private String mode;
     private boolean condition;
     private FieldValidity fieldChecker = new FieldValidity();
-    private Query database = new Query();
     
     public LogInRight(LogInPage page, String mode) {
+        this.mode = mode;
         this.page = page;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setOpaque(false);
@@ -64,9 +66,6 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         forgetPasswordText.setFocusable(false);
         line.add(forgetPasswordText);
         line.add(Box.createHorizontalGlue());
-        registerText.setFocusable(false);
-        // line.add(registerText);
-        // line.add(Box.createHorizontalGlue());
         add(line);
 
         add(Box.createVerticalGlue());
@@ -98,14 +97,15 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
         showPasswordCheckBox.addActionListener(e -> showPassword());
         logInButton.addActionListener(e -> {
-            logInWithoutFetch();
-            logInWithFetch();
+            try {
+                System.err.println("cicked");
+                logInWithFetch(mode);
+            } catch (IOException | ClassNotFoundException e1) {
+                e1.printStackTrace();
+            }
 
         });
         forgetPasswordText.addActionListener(l -> forgetPassword());
-        registerText.addActionListener(e -> {
-            register();
-        });
 
         addKeyListener(this);
         addFocusListener(this);
@@ -114,10 +114,6 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     
     private void forgetPassword(){
 
-    }
-
-    private void register(){
-        nextPage("regiPage");
     }
 
     @Override
@@ -129,7 +125,10 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
 
             updateEmailStatus(key.getClass());
             logInWithoutFetch();
-            logInWithFetch();
+            try {
+                logInWithFetch(mode);
+            } catch (IOException | ClassNotFoundException e1) {
+            }
             return;
         }
     }
@@ -172,18 +171,6 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
         email = emailField.getText();
         password = passwordField.getText();
     }
-
-    private void showFieldInstruction(String fieldName)
-    {
-        if(fieldName == "emailField")
-        {
-            //TODO emailfieldlabel change to the email is not is right format
-        }
-        else 
-        {
-            //TODO passswordfieldlabel change to please fill up this field
-        }
-    }
     
     private void showFieldValidity(TextField field, boolean condition)
     {
@@ -191,7 +178,6 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
             field.border = Colors.TextField.VALID;
         else {
             field.border = Colors.TextField.INVALID;
-            showFieldInstruction(field.getName());
         }
 
         repaint();
@@ -201,7 +187,7 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     {
         fetchData();
         if (fieldChecker.isEmailFieldFilled(email)) {
-            condition = fieldChecker.checkThisEmail(email);
+            condition = fieldChecker.checkThisEmail(email, mode);
             showFieldValidity(emailField, condition);
         }
         else if(x == key.getClass())
@@ -214,51 +200,39 @@ public class LogInRight extends JPanel implements KeyListener, FocusListener {
     {
         if (emailField.border == Colors.TextField.VALID)
         {
-            System.err.println("checking");
             if(fieldChecker.isPasswordFieldFilled(password.toCharArray()))
                 return true;
-            else 
-            {
-                showFieldInstruction(passwordField.getName());
-                return false;
-            }
         }
-        else 
-        {
-            if(!fieldChecker.isPasswordFieldFilled(password.toCharArray()))
-                showFieldInstruction(passwordField.getName());
-            return false;
-        }
+        return false;
     }
     
     private void nextPage(String panel)
     {
         try {
             page.LogIn(panel);
-            // page.logIn()
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void logInWithFetch()
+    private void logInWithFetch(String mode) throws IOException, ClassNotFoundException
     {
+        fetchData();
         if (isGreen()) {
-            String result = database.runQuery(email, password);
-            // System.err.println(password);
-            if (result == Values.ValidationHints.WRONG_EMAIL)
-            {
-                //TODO show wrong email and password
+            condition = Datapoints.getInstance().client.login(mode, email, password).equals("true");
+
+            if (mode.equals("Administrator")) {
+
             }
-            else if (result == Values.ValidationHints.WRONG_PASSWORD)
-            {
-                //TODO show wrong password
+            if (mode.equals("Student")) {
+
             }
-            else if (result == Values.ValidationHints.PASSED)
-            {
-                nextPage("mainPage");
+            if (mode.equals("Teacher")) {
+
             }
+
         }
+        logInWithoutFetch();
     }
 
     private void logInWithoutFetch()

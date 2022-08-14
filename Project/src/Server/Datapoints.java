@@ -33,6 +33,7 @@ public class Datapoints {
     public static final String ADD_COURSE = "17";
     public static final String ASSIGN_COURSE = "18";
     public static final String ADD_NOTICE = "19";
+    public static final String LOGIN = "20";
 
     public Client client;
 

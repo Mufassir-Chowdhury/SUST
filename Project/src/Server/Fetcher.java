@@ -1,6 +1,7 @@
 package Server;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
@@ -16,6 +17,23 @@ public class Fetcher {
     static Gson gson = builder.create();
     static BufferedReader bufferedReader;
     static String filePath;
+
+    public static String login(String[] data) throws FileNotFoundException
+    {
+        filePath = Adder.extractFilePath(Adder.PASSWORD);
+        bufferedReader = new BufferedReader(
+                new FileReader(filePath));
+
+        Map<String, Map<String, String>> passwords = new HashMap<>();
+        passwords = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, String>>>() {
+        }.getType());
+
+        if (passwords.get(data[0]).containsKey(data[1]))
+            if (passwords.get(data[0]).get(data[1]).equals(data[2]))
+                return "true";        
+        
+        return "false";
+    }
 
     public static void fetch(String Type) throws IOException {
         fetchDeptAndTeacherAndCourses();

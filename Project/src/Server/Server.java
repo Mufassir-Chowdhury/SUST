@@ -302,6 +302,10 @@ class ServerConnection {
                         Adder.assignCourse(obj);
                         System.err.println("done assigning course");
                         break;
+                    case Datapoints.LOGIN:
+                        String[] data = (String[]) ois.readObject();
+                        oos.writeObject(Fetcher.login(data));
+                        break;
                     default:
                         System.out.println("Terminating connection");
                         finalize();

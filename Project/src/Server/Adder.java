@@ -30,7 +30,7 @@ public class Adder {
     public static String extractFilePath(String file) {
         file = "src/Server/static/" + file;
 
-        // file = "Project/" + file;
+        file = "Project/" + file;
 
         return file;
 

@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.swing.JPanel;
 
 import Common.Main.Main;
+import Components.pageView.Box.MainCardListItem.Type;
 import Components.pageView.Panels.GridBagPanel;
 import Constants.Margins;
 import Constants.Sizes;
@@ -21,6 +22,7 @@ public class LogInPage extends JPanel {
 
     public LogInPage(Main frame, String mode) {
         this.frame = frame;
+        
         setSize(Sizes.USABLE_WINDOW_SIZE);
         setLayout(new GridBagLayout());
 

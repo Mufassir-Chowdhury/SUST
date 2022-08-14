@@ -6,7 +6,7 @@ import Constants.Values;
 
 public class FieldValidity {
     private String email, identity;
-    private boolean condition;
+    private boolean condition = false;
     private String STUDENT = "student", OFFICIAL = "official";
 
     FieldValidity()
@@ -27,40 +27,38 @@ public class FieldValidity {
 
     }
 
-    public boolean checkThisEmail(String email)
+    public boolean checkThisEmail(String email, String mode)
     {
         this.email = email;
         condition = email.split("@").length == 2;
-        System.err.println(condition);
-        if(condition)
-            condition = isValidInput();
+        if (mode == "Administrator")
+        {
+            condition = email.equals("admin");
+        }
+        else
+        {
+            if(condition)
+            condition = isValidInput(mode);
+        }
         
         return condition;
     }
 
-    private boolean isValidInput()
+    private boolean isValidInput(String mode)
     {
         String[] parts = email.split("@");
-        condition = checkDomain(parts[1]);
-        if (condition) {
-
-            if (identity == STUDENT)
+        if(mode.equals("Student"))
+        {
+            condition = parts[1].endsWith(Values.STUDENT_EMAIL_DOMAIN);
+            if (condition) {
                 condition = checkUsernameForStudent(parts[0]);
-            if (identity == OFFICIAL)
-                condition = checkUsernameForOfficial(parts[0]);
+            }
         }
-        return condition;
-    }
-
-    private boolean checkDomain(String domain)
-    {
-        condition = domain.endsWith(Values.STUDENT_EMAIL_DOMAIN);
-        if (condition)
-            identity = STUDENT;
-        else {
-            condition = domain.endsWith(Values.OFFICIALS_EMAIL_DOMAIN);
+        if(mode.equals("Teacher"))
+        {
+            condition = parts[1].endsWith(Values.OFFICIALS_EMAIL_DOMAIN);
             if (condition)
-                identity = OFFICIAL;
+                condition = checkUsernameForOfficial(parts[0]);
         }
         return condition;
     }
