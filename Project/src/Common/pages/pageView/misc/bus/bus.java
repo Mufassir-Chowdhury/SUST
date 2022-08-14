@@ -20,7 +20,7 @@ public class bus extends ViewPort {
         GridBagPanel list = new GridBagPanel();
 
         list.add(
-                new InformationPanel("Buses", null, Datapoints.getInstance().BUSES),
+                new InformationPanel("Buses", Datapoints.getInstance().BUSES),
                 GridBagPanel.GetConstant(1, 0, 0, 1, 1, 1, 1, Margins.INFORMATION_PANEL));
 
         for (int i = 0; i < Datapoints.getInstance().BUSES.length; i++) {

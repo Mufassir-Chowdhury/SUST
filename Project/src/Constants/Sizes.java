@@ -12,6 +12,7 @@ public class Sizes {
     public static final int TITLE_AND_PANEL_GAP = 20;
 
     public static final Dimension DP = new Dimension(50, 50);
+    public static final Dimension DP_PROFILE_PAGE = new Dimension( 100, 100);
 
     public static final Dimension BUTTON_SIZE = new Dimension(120, 32);
     public static final Dimension DEFAULT_WINDOW_SIZE = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds().getSize();
@@ -29,7 +30,7 @@ public class Sizes {
         public static final Dimension RESOURCES = new Dimension((int)(Sizes.DEFAULT_WINDOW_SIZE.getWidth()/1.7), (int)(Sizes.DEFAULT_WINDOW_SIZE.getHeight()/2.2));
         public static final Dimension REGISTER_PROFILE = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 1.2), (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 1.15));
         public static final Dimension REGISTER_PROFILE_CHOOSE = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 2.5), (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 2.5));
-        public static final Dimension PERSON = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 1.2), (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 1.15));
+        public static final Dimension PERSON = new Dimension((int) (Sizes.DEFAULT_WINDOW_SIZE.getWidth() / 2), (int) (Sizes.DEFAULT_WINDOW_SIZE.getHeight() / 1.3));
     }
 
     public static final Dimension ICON_SIZE = new Dimension(15, 15);

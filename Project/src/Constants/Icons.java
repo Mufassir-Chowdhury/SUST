@@ -23,6 +23,7 @@ public class Icons {
      */
     // public static final ImageIcon DP = Tools.imageScale("static/images/2019331073.png", Sizes.DP);
     public static final BufferedImage DP = Tools.bufferImage("static/images/2019331073.png", Sizes.DP);
+    public static final BufferedImage DP_PROFILE_PAGE = Tools.bufferImage("static/images/2019331073.png", Sizes.DP_PROFILE_PAGE);
     // public static final BufferedImage DP = Tools.makeRoundedCorner(DPB,50);
 
     /**
@@ -49,6 +50,7 @@ public class Icons {
          * Icon to go back to the previous page.
          */
         public static final ImageIcon BACK = Tools.imageScale("static/images/back-white.png", Sizes.ICON_SIZE);
+        public static final ImageIcon FORWARD = Tools.imageScale("static/images/forward-white.png", Sizes.ICON_SIZE);
         /**
          * Icon to go back to the previous page.
          */

@@ -10,10 +10,12 @@ import javax.swing.event.MouseInputAdapter;
 import java.awt.CardLayout;
 
 import Components.Background;
+import Components.Card;
 import Components.Label;
 import Components.Buttons.AccentButton;
 import Constants.Collections;
 import Constants.Fonts;
+import Constants.Icons;
 import Constants.Padding;
 import Constants.Sizes;
 
@@ -38,6 +40,11 @@ public class People extends ViewPortPanel {
             setBorder(Padding.DIALOG_VIEW_PORT);
             
             TilesPanel informationPanel;
+            Box line = Box.createHorizontalBox();
+            line.add(Box.createHorizontalGlue());
+            line.add(new Card(Icons.DP, (int)Sizes.DP.getWidth(), Sizes.DP));
+            line.add(Box.createHorizontalGlue());
+            add(line);
             add(new Label(person.name, Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
             add(Box.createVerticalGlue());
             if (type.equals("Student")) {

@@ -26,7 +26,7 @@ public class routine extends ViewPort {
                 GridBagPanel list = new GridBagPanel();
 
                 list.add(
-                                new InformationPanel("Your Courses", button, Datapoints.getInstance().COURSES),
+                                new InformationPanel("Your Courses", Datapoints.getInstance().COURSES),
                                 GridBagPanel.GetConstant(1, 0, 0, 1, 1, 2, 1, Margins.INFORMATION_PANEL));
 
                 list.add(

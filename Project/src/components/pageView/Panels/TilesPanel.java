@@ -20,7 +20,7 @@ public class TilesPanel extends JPanel {
     public TilesPanel(int row, int column, int gap) {
         setBorder(new EmptyBorder(new Insets(gap, gap, gap, gap)));
         setOpaque(false);
-        setAlignmentX(Component.CENTER_ALIGNMENT);
+        setAlignmentX(Component.LEFT_ALIGNMENT);
         setLayout(new GridLayout(row, column, gap, gap));
     }
 
