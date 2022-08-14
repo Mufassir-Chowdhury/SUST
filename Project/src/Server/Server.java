@@ -33,6 +33,8 @@ public class Server {
 
     public static Teacher[] TEACHERS;
 
+    public static Notice[] NOTICES;
+
     /*
      * public static Student[] STUDENTS = {
      * new Student("2019331053", "M. M. Kabid Hasan", "kabidhasan34@gmail.com",
@@ -118,16 +120,16 @@ public class Server {
                     true),
     };
 
-    public static Notice[] NOTICES = {
-            new Notice("Example Notice 1", "14 March, 2022", "Example Notice 1\nDate : 2022/03/14 - 2022/06/30",
-                    "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
-            new Notice("Example Notice 2", "14 March, 2022", "Example Notice 2\nDate : 2022/03/14 - 2022/06/30",
-                    "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
-            new Notice("Example Notice 3", "14 March, 2022", "Example Notice 3\nDate : 2022/03/14 - 2022/06/30",
-                    "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
-            new Notice("Example Notice 4", "14 March, 2022", "Example Notice 4\nDate : 2022/03/14 - 2022/06/30",
-                    "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf")
-    };
+    // public static Notice[] NOTICES = {
+    //         new Notice("Example Notice 1", "14 March, 2022", "Example Notice 1\nDate : 2022/03/14 - 2022/06/30",
+    //                 "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
+    //         new Notice("Example Notice 2", "14 March, 2022", "Example Notice 2\nDate : 2022/03/14 - 2022/06/30",
+    //                 "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
+    //         new Notice("Example Notice 3", "14 March, 2022", "Example Notice 3\nDate : 2022/03/14 - 2022/06/30",
+    //                 "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf"),
+    //         new Notice("Example Notice 4", "14 March, 2022", "Example Notice 4\nDate : 2022/03/14 - 2022/06/30",
+    //                 "https://www.sust.edu/uploads/notice-board/attachment-1647250167.pdf")
+    // };
 
     public static void main(String args[]) throws ClassNotFoundException {
         int port = 6789;
@@ -257,6 +259,7 @@ class ServerConnection {
                         break;
                     case "11":
                         oos.writeObject(Server.DETAILS);
+                        oos.writeObject(Server.Profile);
                         break;
                     case "12":
                         oos.writeObject(Server.Departments);
@@ -283,6 +286,11 @@ class ServerConnection {
                         Event event = (Event) ois.readObject();
                         Adder.addNewEvent(event);
                         System.err.println("done adding event");
+                        break;
+                    case Datapoints.ADD_NOTICE:
+                        Notice notice = (Notice) ois.readObject();
+                        Adder.addNewNotice(notice);
+                        System.err.println("done adding notice");
                         break;
                     case Datapoints.ADD_COURSE:
                         Course course = (Course) ois.readObject();

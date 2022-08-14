@@ -32,6 +32,7 @@ public class Datapoints {
     public static final String ADD_EVENT = "16";
     public static final String ADD_COURSE = "17";
     public static final String ASSIGN_COURSE = "18";
+    public static final String ADD_NOTICE = "19";
 
     public Client client;
 
@@ -610,25 +611,28 @@ public class Datapoints {
     }
 
     public static class Notice implements Serializable, Tilable, JsonConversion {
+        public String For;
         public String title;
-        public String date;
         public String description;
-        public String file;
+        public String uploader;
+        public String dateOfPost;
 
-        public Notice(String title, String date, String description, String file) {
+        public Notice(String For, String title, String description, String uploader, String dateOfPost) 
+        {
+            this.For = For;
             this.title = title;
-            this.date = date;
             this.description = description;
-            this.file = file;
+            this.uploader = uploader;
+            this.dateOfPost = dateOfPost;
         }
 
         @Override
         public Line getListItem() {
             return new Line(
                     title,
-                    "uploader",
-                    "dateOfUpload",
-                    date);
+                    uploader,
+                    dateOfPost,
+                    "");
         }
 
         @Override
@@ -640,9 +644,9 @@ public class Datapoints {
         public Post getPost() {
             return new Post(
                     title,
-                    date,
                     "",
-                    "uploader","dateOfUpload",
+                    "",
+                    uploader,dateOfPost,
                     description, false);
         }
 
@@ -911,6 +915,7 @@ public class Datapoints {
     public Link[][] LINKS = null;
     public Courses[] COURSES = null;
     public String[] DETAILS = null;
+    public Student Profile = null;
     public Notification[] EXAM = null;
     public Notification[] ASSIGNMENT = null;
     public Notification[] REGISTRATION = null;
