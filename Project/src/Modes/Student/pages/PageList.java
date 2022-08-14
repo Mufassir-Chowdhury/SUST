@@ -100,12 +100,7 @@ public class PageList {
                                                                 new ViewPortBasicPanel(
                                                                                 "Events",
                                                                                 null,
-                                                                                Datapoints.EVENTS)),
-                                                new Page(
-                                                                "Map",
-                                                                Icons.Pages.MAP,
-                                                                new map())
-                                },
+                                                                                Datapoints.EVENTS))                                },
                 };
         }
 }

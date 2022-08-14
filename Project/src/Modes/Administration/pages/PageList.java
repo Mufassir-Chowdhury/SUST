@@ -82,10 +82,6 @@ public class PageList {
                                                 "Events",
                                                 new EventButton(),
                                                 Datapoints.EVENTS)),
-                                new Page(
-                                        "Map",
-                                        Icons.Pages.MAP,
-                                        new map())
                         },
                 };
         }

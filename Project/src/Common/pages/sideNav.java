@@ -65,8 +65,11 @@ public class sideNav extends JPanel {
         add(Box.createVerticalGlue());
         add(new JSeparator());
         add(Box.createVerticalStrut(10));
-        AccentButton logout = new AccentButton("Logout");
-        logout.setAlignmentX(Component.LEFT_ALIGNMENT);
+        Label logout = new Label("Logout", Fonts.BODY, Component.LEFT_ALIGNMENT);
+        logout.setIcon(Icons.Pages.SETTINGS);
+        logout.setOpaque(false);
+        logout.setIconTextGap(20);
+        logout.setBorder(Padding.LIST);
         logout.addMouseListener(new MouseInputAdapter(){
             @Override
             public void mouseClicked(MouseEvent e){

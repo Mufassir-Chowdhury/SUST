@@ -85,10 +85,6 @@ public class PageList {
                                                                                 "Events",
                                                                                 null,
                                                                                 Datapoints.EVENTS)),
-                                                new Page(
-                                                                "Map",
-                                                                Icons.Pages.MAP,
-                                                                new map())
                                 },
                 };
         }
