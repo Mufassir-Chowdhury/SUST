@@ -862,18 +862,24 @@ public class Datapoints {
         }
     }
 
-    public String[] route = {
-            "Place", "Place", "Place", "Place", "Place", "Place", "Place"
+    public String[][] route = {
+            { "Camupus", "Ambarkhana", "Eidgah", "Kumarpara", "Shibgong", "Tilagor", "Ambarkhana", "Campus" },
+            { "Camupus", "Ambarkhana", "Eidgah", "Kumarpara", "Shibgong", "Tilagor", "Ambarkhana", "Campus" },
+            { "Camupus", "Ambarkhana", "Eidgah", "Ambarkhana", "Campus"},
+            { "Camupus", "Ambarkhana", "Eidgah", "Ambarkhana", "Campus"},
+            { "Camupus", "Ambarkhana", "Lakkatura", "Place", "Place", "Place", "Place" },
+            { "Camupus", "Ambarkhana", "Chouhatta", "RikabiBazar", "Subidbazar", "Campus" },
+            { "Camupus", "SubidBazar", "Chouhatta", "Kumarpaara", "Naiorpul", "Ambarkhana", "Campus" },
     };
 
     public Bus[] BUSES = {
-            new Bus(1, "busName", "license", "driverName", route, "time"),
-            new Bus(2, "busName", "license", "driverName", route, "time"),
-            new Bus(3, "busName", "license", "driverName", route, "time"),
-            new Bus(4, "busName", "license", "driverName", route, "time"),
-            new Bus(5, "busName", "license", "driverName", route, "time"),
-            new Bus(6, "busName", "license", "driverName", route, "time"),
-            new Bus(7, "busName", "license", "driverName", route, "time"),
+            new Bus(1, "busName", "license", "driverName", route[0], "time"),
+            new Bus(2, "busName", "license", "driverName", route[1], "time"),
+            new Bus(3, "busName", "license", "driverName", route[2], "time"),
+            new Bus(4, "busName", "license", "driverName", route[3], "time"),
+            new Bus(5, "busName", "license", "driverName", route[4], "time"),
+            new Bus(6, "busName", "license", "driverName", route[5], "time"),
+            new Bus(7, "busName", "license", "driverName", route[6], "time"),
     };
     public String[] USN = {
             "USN", "USN 2"
