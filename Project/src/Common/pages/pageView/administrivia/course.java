@@ -2,10 +2,12 @@ package Common.pages.pageView.administrivia;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.MouseInputAdapter;
 
 import Components.Label;
 import Components.List;
@@ -22,6 +24,7 @@ import java.util.Vector;
 import java.awt.Component;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
 
 import Server.Datapoints;
 
@@ -35,7 +38,7 @@ public class course extends ViewPort {
         add(new Label("Registration Date: 2019-03-05 to 2019-04-03"));
         add(Box.createVerticalStrut(25));
         add(new Label("Last Admitted Semester: 3rd Semester"));
-        add(Box.createVerticalGlue());
+        add(Box.createVerticalStrut(10));
 
         JPanel resources = new JPanel();
         resources.setAlignmentX(Component.LEFT_ALIGNMENT);
@@ -52,8 +55,11 @@ public class course extends ViewPort {
         availableCourses.add(available);
 
         ListPanel registeredCourses = new ListPanel();
+        DefaultListModel<String> registeredModel = new DefaultListModel();
+        registeredModel.addAll(courseNames);
+        // List<String> registered = new List<>();
         List<String> registered = new List<>(courseNames, false, ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-
+        registered.setModel(registeredModel);
         registeredCourses.add(new Label("Registered Course List", Fonts.TITLE, Component.LEFT_ALIGNMENT));
         registeredCourses.add(registered);
 
@@ -82,17 +88,24 @@ public class course extends ViewPort {
             @Override
             public void actionPerformed(ActionEvent e) {
                 available.removeAll();
-                // String[] value = Datapoints.getInstance().CourseCode
-                //         .get(Datapoints.getInstance().DETAILS)
-                //         .get(Datapoints.getSemester(semester.getSelectedItem().toString()))
-                //         .toArray(new String[0]);
                 String[] value = Datapoints.getInstance().CourseCode
-                            .get("CSE")
+                            .get("Computer Science and Engineering")
                             .get(Datapoints.getSemester(semester.getSelectedItem().toString()))
                             .toArray(new String[0]);
                 available.setListData(value);
-                // availableCourses.add(available);
 
+            }
+        });
+        transfer.addMouseListener(new MouseInputAdapter() {
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                for(String course : available.getSelectedValuesList()){
+                    if(!registeredModel.contains(course)){
+                        registeredModel.addElement(course);
+                    }
+                }
+                registered.setModel(registeredModel);
             }
         });
     }
