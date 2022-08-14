@@ -16,7 +16,7 @@ public class Main extends Common.Main.Main {
 
 	public Main() throws ClassNotFoundException, IOException {
 		super();
-		panel.add(new sideNavView(PageList.getPages()), "sideNav");
+		panel.add(new sideNavView(this, PageList.getPages()), "sideNav");
 		panel.add(new MainPage(this, PageList.getPages()), "mainPage");
 		panel.add(new LogInPage(this, "Teacher"), "logInPage");
 		cl.show(panel, "logInPage");

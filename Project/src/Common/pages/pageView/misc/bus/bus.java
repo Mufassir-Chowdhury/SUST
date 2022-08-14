@@ -11,6 +11,7 @@ import Components.pageView.Panels.ViewPort;
 import Constants.Fonts;
 import Constants.Margins;
 import Server.Datapoints;
+import Server.Datapoints.Bus;
 
 public class bus extends ViewPort {
     public bus(JComponent component) {
@@ -22,10 +23,11 @@ public class bus extends ViewPort {
                 new InformationPanel("Buses", null, Datapoints.getInstance().BUSES),
                 GridBagPanel.GetConstant(1, 0, 0, 1, 1, 1, 1, Margins.INFORMATION_PANEL));
 
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 0; i < Datapoints.getInstance().BUSES.length; i++) {
+            Bus bus = Datapoints.getInstance().BUSES[i];
             list.add(
-                    new Column(new Title(new Label("Bus 1", Fonts.SUBTITLE), null), new Day()),
-                    GridBagPanel.GetConstant(1, i, 0, 1, 1, 1, 1, Margins.COLUMN));
+                new Column(new Title(new Label("Bus " + bus.busNo, Fonts.SUBTITLE), null), new Day(bus)),
+                GridBagPanel.GetConstant(1, i+1, 0, 1, 1, 1, 1, Margins.COLUMN));
         }
 
         add(list);

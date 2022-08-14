@@ -2,6 +2,7 @@ package Common.pages;
 
 import javax.swing.JPanel;
 
+import Common.Main.Main;
 import Components.pageView.Panels.GridBagPanel;
 import Constants.Margins;
 import Constants.Padding;
@@ -25,7 +26,7 @@ public class sideNavView extends JPanel{
         buttonPane.setSelected(nameOfPage);
     }
 
-    public sideNavView(Page[][] pages) throws ClassNotFoundException, IOException{
+    public sideNavView(Main main, Page[][] pages) throws ClassNotFoundException, IOException{
         setOpaque(false);
         setSize(Sizes.USABLE_WINDOW_SIZE);
         setBorder(Padding.MAIN_VIEW_PORT);
@@ -40,7 +41,7 @@ public class sideNavView extends JPanel{
                 cards.add(pair.panel, pair.name);
             }
         }
-        buttonPane = new sideNav(this, pages);
+        buttonPane = new sideNav(main, this, pages);
 
         add(
             buttonPane, 

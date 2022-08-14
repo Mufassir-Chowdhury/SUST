@@ -9,6 +9,7 @@ import Components.pageView.Panels.TilesPanel;
 import Constants.Colors;
 import Constants.Fonts;
 import Constants.Sizes;
+import Server.Datapoints.Bus;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -34,11 +35,11 @@ public class Day extends TilesPanel {
         }
     }
     
-    public Day(){
+    public Day(Bus bus){
         super(16, 1, 0);
-        for(int i=0;i<8; i++){
-            add(new IndividualPlace("place", "", "", Colors.Theme.ACCENT_FILL));
-            add(new Label("", Fonts.BODY_LARGE, Component.CENTER_ALIGNMENT));
+        for(int i = 0; i < bus.route.length; i++){
+            add(new IndividualPlace(bus.route[i], "", "", Colors.Theme.ACCENT_FILL));
+            add(new Label(""));
         }
     }
     public Day(String item){
