@@ -3,20 +3,17 @@ package Common.mainView;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.event.MouseInputAdapter;
 
 import Common.Main.Main;
 import Components.Card;
 import Components.DashBoardItem;
 import Components.Label;
-import Components.Buttons.AccentButton;
 import Components.pageView.Panels.GridBagPanel;
 import Components.pageView.Panels.ListPanel;
 
 import java.awt.GridBagLayout;
 import java.awt.Component;
 import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
 
 import Constants.Fonts;
 import Constants.Icons;
@@ -56,15 +53,6 @@ class DashBoard extends JPanel {
             Card card = new Card(Icons.DP, (int) Sizes.DP.getWidth(), Sizes.DP);
             list.add(card);
             list.add(Box.createVerticalGlue());
-            AccentButton logout = new AccentButton("Logout");
-            logout.setAlignmentX(Component.LEFT_ALIGNMENT);
-            logout.addMouseListener(new MouseInputAdapter(){
-                @Override
-                public void mouseClicked(MouseEvent e){
-                    main.changeFrame("logInPage");
-                }
-            });
-            list.add(logout);
             add(list);
             add(Box.createHorizontalGlue());
 
