@@ -1,22 +1,46 @@
 {
   "enam-cse@sust.edu": {
+    "courses": [
+      "CSE101",
+      "CSE102"
+    ],
+    "department": "Computer Science and Engineering",
+    "designation": "Assistant Professor",
     "name": "Enamul Hassan",
     "email": "enam-cse@sust.edu",
     "number": "01914061632",
-    "designation": "Assistant Professor",
     "blood": "A+",
     "birthDay": "1/1/1995",
-    "hometown": "Dhaka",
-    "department": "Computer Science and Engineering"
+    "hometown": "Dhaka"
   },
   "teacher2@sust.edu": {
+    "department": "Computer Science and Engineering",
+    "designation": "Lecturer",
     "name": "CSE Teacher 2",
     "email": "teacher2@sust.edu",
     "number": "01711110000",
-    "designation": "Lecturer",
     "blood": "A+",
     "birthDay": "1/1/1990",
-    "hometown": "Dhaka",
-    "department": "Computer Science and Engineering"
+    "hometown": "Dhaka"
+  },
+  "Write Email": {
+    "department": "Computer Science and Engineering",
+    "designation": "Lecturer",
+    "name": "Write Name",
+    "email": "Write Email",
+    "number": "Write Number",
+    "blood": "A+",
+    "birthDay": "Write Birthday",
+    "hometown": "Write Hometown"
+  },
+  "summit-cse@sust.edu": {
+    "department": "Computer Science and Engineering",
+    "designation": "Assistant Professor",
+    "name": "Summit Haque",
+    "email": "summit-cse@sust.edu",
+    "number": "01711110000",
+    "blood": "A+",
+    "birthDay": "1/1/1990",
+    "hometown": "Dhaka"
   }
 }

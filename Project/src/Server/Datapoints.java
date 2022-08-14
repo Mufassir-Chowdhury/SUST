@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 import java.util.Vector;
 
 import com.google.gson.*;
@@ -30,6 +31,7 @@ public class Datapoints {
     public static final String ADD_LINK = "15";
     public static final String ADD_EVENT = "16";
     public static final String ADD_COURSE = "17";
+    public static final String ASSIGN_COURSE = "18";
 
     public Client client;
 
@@ -920,6 +922,8 @@ public class Datapoints {
     public static Teacher[] TEACHERS = null;
     public static Notice[] NOTICES = null;
     public String[] Departments = null;
+    public Map<String, String[]> TeachersName = null;
+    public Map<String, Map<Integer, Set<String>>> CourseCode = null;
 
 
     private static Datapoints single_instance = null;

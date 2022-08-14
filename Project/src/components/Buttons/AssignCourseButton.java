@@ -8,6 +8,7 @@ import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
+import Constants.Collections;
 import Constants.Fonts;
 import Constants.Padding;
 import Constants.Sizes;
@@ -29,48 +30,78 @@ import java.awt.Dimension;
 
 public class AssignCourseButton extends AccentButton implements ActionListener {
     public class Dialog extends ListPanel {
-        
-        String[] eventFor = { "Student", "Teacher", "Both"};
-        ComboBox<String> eventForField = new ComboBox<>(eventFor);
-        TextField titleField = new TextField("Write Title", TYPE.PLAIN);
-        TextField dateField = new TextField("Write Date", TYPE.PLAIN);
-        TextField durationField = new TextField("Write Duration (9AM - 5PM)", TYPE.PLAIN);
-        TextField locationField = new TextField("Write Location", TYPE.PLAIN);
-        TextField organizerField = new TextField("Write Organizer", TYPE.PLAIN);
-        TextArea descriptionField = new TextArea("Write Description", true);
+
+        String[] s = { " Select Department" };
+        String[] ss = { " Select Semester" };
+        String[] sss = { " Auto Generated after Selecting Semester" };
+        String[] ssss = { " Auto Generated after Selecting Department" };
+
+        ComboBox<String> departmentField = new ComboBox<>(s);
+        // ComboBox<String> departmentField = new
+        // ComboBox<>(Datapoints.getInstance().Departments);
+        // ComboBox<String> semesterField = new ComboBox<>(Collections.SEMESTERS);
+        ComboBox<String> semesterField = new ComboBox<>(ss);
+        ComboBox<String> courseCodeField = new ComboBox<>(sss);
+        ComboBox<String> teacherField = new ComboBox<>(ssss);
 
         public Dialog(Dimension size, JFrame frame) {
-            
+
             setBorder(Padding.DIALOG_VIEW_PORT);
             setSize(size);
 
             add(new Label("Assign Course", Fonts.DISPLAY, Component.CENTER_ALIGNMENT));
             add(Box.createVerticalGlue());
 
-            TilesPanel tilesPanel = new TilesPanel(6, 2, 0, 10);
-            tilesPanel.add(new Label("Event For"));
-            tilesPanel.add(eventForField);
-            tilesPanel.add(new Label("Title"));
-            tilesPanel.add(titleField);
-            tilesPanel.add(new Label("Date"));
-            tilesPanel.add(dateField);
-            tilesPanel.add(new Label("Duration"));
-            tilesPanel.add(durationField);
-            tilesPanel.add(new Label("Location"));
-            tilesPanel.add(locationField);
-            tilesPanel.add(new Label("Organizer"));
-            tilesPanel.add(organizerField);
+            for (String item : Datapoints.getInstance().Departments)
+                departmentField.addItem(item);
+
+            for (String item : Collections.SEMESTERS)
+                semesterField.addItem(item);
+
+            TilesPanel tilesPanel = new TilesPanel(4, 2, 0, 10);
+            tilesPanel.add(new Label("Department"));
+            tilesPanel.add(departmentField);
+            tilesPanel.add(new Label("Semester"));
+            tilesPanel.add(semesterField);
+            tilesPanel.add(new Label("Course Code"));
+            tilesPanel.add(courseCodeField);
+            tilesPanel.add(new Label("Teacher"));
+            tilesPanel.add(teacherField);
+
             tilesPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
             add(tilesPanel);
+
+            departmentField.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    teacherField.removeAllItems();
+                    String[] value = Datapoints.getInstance().TeachersName
+                            .get(departmentField.getSelectedItem().toString());
+                    for (String item : value)
+                        teacherField.addItem(item);
+                }
+            });
+
+            semesterField.addActionListener(new ActionListener() {
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    courseCodeField.removeAllItems();
+                    String[] value = Datapoints.getInstance().CourseCode
+                            .get(departmentField.getSelectedItem().toString())
+                            .get(Datapoints.getSemester(semesterField.getSelectedItem().toString()))
+                            .toArray(new String[0]);
+                    for (String item : value)
+                        courseCodeField.addItem(item);
+                }
+            });
+
             add(Box.createVerticalGlue());
-            
-            add(descriptionField);
-            
-            add(Box.createVerticalStrut(10));
-            
-            AccentButton proceed = new AccentButton("Proceed");
+
+            AccentButton proceed = new AccentButton("Assign");
             proceed.setAlignmentX(Component.CENTER_ALIGNMENT);
-            proceed.addActionListener(new ActionListener(){
+            proceed.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
@@ -84,17 +115,14 @@ public class AssignCourseButton extends AccentButton implements ActionListener {
             add(proceed);
         }
 
-
         protected void fetchDataAndPassToClient() throws IOException {
-            DateTimeFormatter date = DateTimeFormatter.ofPattern("MMMM dd, u");
-            LocalDate localDate = LocalDate.now();
-            Event event = new Event(eventForField.getSelectedItem().toString(), titleField.getText(),
-                    dateField.getText(), descriptionField.getText(), locationField.getText(), durationField.getText(),
-                    organizerField.getText(),"Admin",date.format(localDate), 0, 0);
-            Datapoints.getInstance().client.add(event, Datapoints.ADD_EVENT);
+            Datapoints.getInstance().client.add(new String[] { departmentField.getSelectedItem().toString(),
+                    teacherField.getSelectedItem().toString(),
+                    courseCodeField.getSelectedItem().toString() }, Datapoints.ASSIGN_COURSE);
         }
     }
-    public AssignCourseButton(){
+
+    public AssignCourseButton() {
         super("Assign Course");
         addActionListener(this);
     }

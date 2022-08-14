@@ -2,6 +2,8 @@ package Server;
 
 import java.io.*;
 import java.net.*;
+import java.util.Map;
+import java.util.Set;
 
 import Server.Datapoints.*;
 
@@ -97,10 +99,14 @@ public class Client {
 
         out.println(12);
         String[] depts = (String[]) ois.readObject();
+        Map<String, String[]> teachersName = (Map<String, String[]>) ois.readObject();
+        Map<String, Map<Integer, Set<String>>> courseCode = (Map<String, Map<Integer, Set<String>>>) ois.readObject();
         System.out.println("received depts");
 
         Datapoints.getInstance().LINKS = links;
         Datapoints.getInstance().Departments = depts;
+        Datapoints.getInstance().TeachersName = teachersName;
+        Datapoints.getInstance().CourseCode = courseCode;
         Datapoints.EVENTS = events;
         Datapoints.getInstance().LINK_TITLES = linkTitles;
         Datapoints.getInstance().COURSES = courses;

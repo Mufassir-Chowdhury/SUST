@@ -14,7 +14,6 @@ import Constants.Padding;
 import Constants.Sizes;
 import Server.Datapoints;
 import Server.Datapoints.Course;
-import Server.Datapoints.Event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,8 +22,6 @@ import java.io.IOException;
 import javax.swing.Box;
 import javax.swing.JFrame;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import java.awt.Component;
 import java.awt.Dimension;
