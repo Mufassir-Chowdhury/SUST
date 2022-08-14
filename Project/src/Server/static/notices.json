@@ -1,0 +1,27 @@
+{
+  "Student": {
+    "Student Notice # 1 (Course Registration)": {
+      "For": "Student",
+      "title": "Student Notice # 1 (Course Registration)",
+      "description": "Make it before 29 August",
+      "uploader": "Admin",
+      "dateOfPost": "1/1/2022"
+    }
+  },
+  "Teacher": {
+    "Teacher Notice # 1 (Submit Bank Details)": {
+      "For": "Teacher",
+      "title": "Teacher Notice # 1 (Submit Bank Details)",
+      "description": "Make it before 29 August",
+      "uploader": "Admin",
+      "dateOfPost": "1/1/2022"
+    },
+    "Teacher Notice # 1 (Submit The Result)": {
+      "For": "Teacher",
+      "title": "Teacher Notice # 1 (Submit The Result)",
+      "description": "Submit the semsester final result",
+      "uploader": "Admin",
+      "dateOfPost": "August 14, 2022"
+    }
+  }
+}

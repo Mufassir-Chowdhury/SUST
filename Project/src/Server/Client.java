@@ -95,6 +95,7 @@ public class Client {
 
         out.println(11);
         String[] details = (String[]) ois.readObject();
+        Student profile = (Student) ois.readObject();
         System.out.println("received details");
 
         out.println(12);
@@ -111,6 +112,7 @@ public class Client {
         Datapoints.getInstance().LINK_TITLES = linkTitles;
         Datapoints.getInstance().COURSES = courses;
         Datapoints.getInstance().DETAILS = details;
+        Datapoints.getInstance().Profile = profile;
         Datapoints.getInstance().EXAM = exam;
         Datapoints.getInstance().ASSIGNMENT = assignment;
         Datapoints.getInstance().REGISTRATION = registration;

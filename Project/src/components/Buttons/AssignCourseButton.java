@@ -3,9 +3,6 @@ package Components.Buttons;
 import Components.Background;
 import Components.Label;
 import Components.InputFields.ComboBox;
-import Components.InputFields.TextArea;
-import Components.InputFields.TextField;
-import Components.InputFields.TextField.TYPE;
 import Components.pageView.Panels.ListPanel;
 import Components.pageView.Panels.TilesPanel;
 import Constants.Collections;
@@ -13,7 +10,6 @@ import Constants.Fonts;
 import Constants.Padding;
 import Constants.Sizes;
 import Server.Datapoints;
-import Server.Datapoints.Event;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,9 +17,6 @@ import java.io.IOException;
 
 import javax.swing.Box;
 import javax.swing.JFrame;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import java.awt.Component;
 import java.awt.Dimension;

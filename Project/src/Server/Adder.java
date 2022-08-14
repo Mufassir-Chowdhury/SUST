@@ -16,6 +16,7 @@ public class Adder {
 
     public static String LINK = "links.json";
     public static String EVENT = "events.json";
+    public static String NOTICE = "notices.json";
     public static String STUDENT_BY_REGISTRATION = "allStudentsSortedByRegistration.json";
     public static String STUDENT_BY_DEPARTMENT = "allStudentsSortedByDepartment.json";
     public static String TEACHER_BY_EMAIL = "allTeachersSortedByEmail.json";
@@ -59,6 +60,41 @@ public class Adder {
 
         FileWriter writer = new FileWriter(filePath);
         writer.write(gson.toJson(links));
+        writer.close();
+        bufferedReader.close();
+    }
+
+    public static void addNewNotice(Notice notice) throws IOException {
+        filePath = extractFilePath(NOTICE);
+        bufferedReader = new BufferedReader(
+                new FileReader(filePath));
+
+        Map<String, Map<String, Notice>> notices = new HashMap<>();
+        notices = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Notice>>>() {
+        }.getType());
+
+        if (notices == null)
+            notices = new HashMap<>();
+
+        if (notice.For.equals("Both") == true) {
+            String title = notice.title;
+            notice.title = "Student Notice # " + Integer.toString(notices.get("Student").size() + 1) + " (" + title
+                    + ")";
+            notices.get("Student").put(notice.title, notice);
+
+            notice.title = "Teacher Notice # " + Integer.toString(notices.get("Teacher").size() + 1) + " (" + title
+                    + ")";
+            notices.get("Teacher").put(notice.title, notice);
+        } else {
+            if (notices.get(notice.For) == null)
+                notices.put(notice.For, new HashMap<>());
+            notice.title = notice.For + " Notice # " + Integer.toString(1) + " ("
+                    + notice.title + ")";
+            notices.get(notice.For).put(notice.title, notice);
+        }
+
+        writer = new FileWriter(filePath);
+        writer.write(gson.toJson(notices));
         writer.close();
         bufferedReader.close();
     }
@@ -359,24 +395,19 @@ public class Adder {
 
             String department = obj[0];
 
-            for (String email : sortedTeachers.get(department))
-            {
-                if(teachers.get(email).name.equals(obj[1]))
-                {
+            for (String email : sortedTeachers.get(department)) {
+                if (teachers.get(email).name.equals(obj[1])) {
                     Vector<String> v;
-                    if(teachers.get(email).courses==null)
-                    {
-                         v = new Vector<String>();
-                    }
-                    else 
-                    {
+                    if (teachers.get(email).courses == null) {
+                        v = new Vector<String>();
+                    } else {
                         v = new Vector<String>(Arrays.asList(teachers.get(email).courses));
                     }
                     v.add(obj[2]);
                     teachers.get(email).courses = v.toArray(new String[0]);
                 }
             }
-            
+
             writer = new FileWriter(filePath);
             writer.write(gson.toJson(teachers));
             writer.close();

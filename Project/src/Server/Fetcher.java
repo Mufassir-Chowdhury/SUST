@@ -22,6 +22,7 @@ public class Fetcher {
         fetchLinks();
         fetchEvents(Type);
         fetchStudentDetails("2019331019");
+        fetchNotice(Type);
         // fetchStudentDetails("2019331053");
     }
 
@@ -88,6 +89,34 @@ public class Fetcher {
         Server.LINKS = linkList.toArray(new Link[linkList.size()][]);
         bufferedReader.close();
 
+    }
+
+    private static void fetchNotice(String command) throws IOException {
+        filePath = Adder.extractFilePath(Adder.NOTICE);
+        bufferedReader = new BufferedReader(new FileReader(filePath));
+
+        Map<String, Map<String, Notice>> notices = new HashMap<>();
+        notices = gson.fromJson(bufferedReader, new TypeToken<Map<String, Map<String, Notice>>>() {
+        }.getType());
+
+        if (notices == null)
+            notices = new HashMap<>();
+
+        if (command == "Student")
+            Server.NOTICES = notices.get(command).values().toArray(new Notice[0]);
+        if (command == "Teacher")
+            Server.NOTICES = notices.get(command).values().toArray(new Notice[0]);
+        if (command == "Admin") {
+            Map<String, Notice> toPass = new HashMap<>();
+            toPass.putAll(notices.get("Student"));
+            for (Notice notice : notices.get("Teacher").values())
+                if (notice.For.equals("Teacher"))
+                    toPass.put(notice.title, notice);
+
+            Server.NOTICES = toPass.values().toArray(new Notice[0]);
+        }
+
+        bufferedReader.close();
     }
 
     private static void fetchEvents(String command) throws IOException {
