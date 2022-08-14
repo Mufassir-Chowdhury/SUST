@@ -31,6 +31,7 @@ public class Datapoints {
     public static final String ADD_LINK = "15";
     public static final String ADD_EVENT = "16";
     public static final String ADD_COURSE = "17";
+    public static final String ASSIGN_COURSE = "18";
 
     public Client client;
 

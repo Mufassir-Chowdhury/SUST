@@ -289,6 +289,11 @@ class ServerConnection {
                         Adder.addCourse(course);
                         System.err.println("done adding course");
                         break;
+                    case Datapoints.ASSIGN_COURSE:
+                        String[] obj = (String[]) ois.readObject();
+                        Adder.assignCourse(obj);
+                        System.err.println("done assigning course");
+                        break;
                     default:
                         System.out.println("Terminating connection");
                         finalize();

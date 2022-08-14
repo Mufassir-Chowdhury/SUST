@@ -116,7 +116,9 @@ public class AssignCourseButton extends AccentButton implements ActionListener {
         }
 
         protected void fetchDataAndPassToClient() throws IOException {
-
+            Datapoints.getInstance().client.add(new String[] { departmentField.getSelectedItem().toString(),
+                    teacherField.getSelectedItem().toString(),
+                    courseCodeField.getSelectedItem().toString() }, Datapoints.ASSIGN_COURSE);
         }
     }
 
