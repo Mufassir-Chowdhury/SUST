@@ -874,9 +874,6 @@ public class Datapoints {
     public String[] USN = {
             "USN", "USN 2"
     };
-    public String[] SEMESTER = {
-            "Semester", "Semester 2"
-    };
     public Object[][] SYLLABUS = {
             {
                     "Programming Language",

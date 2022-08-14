@@ -6,6 +6,7 @@ import java.awt.CardLayout;
 
 import Components.Card;
 import Components.Buttons.PostResource;
+import Components.InputFields.ComboBox;
 import Components.pageView.Box.Options;
 import Components.pageView.Panels.TilesPanel;
 import Components.pageView.Panels.ViewPortPanel;
@@ -23,7 +24,9 @@ public class resources extends ViewPortPanel {
         super("Resources", new PostResource());
 
         String[] secondOptions = { "Course", "Course 2" };
-        add(new Options(Datapoints.getInstance().SEMESTER, secondOptions));
+        ComboBox semester = new ComboBox(Collections.SEMESTERS);
+        ComboBox course = new ComboBox(secondOptions);
+        add(new Options(semester, course));
         add(Box.createVerticalStrut(20));
 
         TilesPanel list = new TilesPanel(2, 3, Padding.CARD_SPACING_LONG);
