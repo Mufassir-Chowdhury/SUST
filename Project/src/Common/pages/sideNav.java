@@ -5,8 +5,12 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.MouseInputAdapter;
+
+import Common.Main.Main;
 import Components.Label;
 import Components.List;
+import Components.Buttons.AccentButton;
 import Components.InputFields.TextField;
 import Components.InputFields.TextField.TYPE;
 import Constants.Fonts;
@@ -17,6 +21,7 @@ import Constants.Sizes;
 import java.awt.Component;
 import java.io.IOException;
 import java.util.Vector;
+import java.awt.event.MouseEvent;
 
 public class sideNav extends JPanel {
     List<Page> list;
@@ -26,7 +31,7 @@ public class sideNav extends JPanel {
         list.setSelectedIndex(pageNames.indexOf(nameOfPage));
         list.repaint();
     }
-    public sideNav(sideNavView view, Page[][] pages) throws ClassNotFoundException, IOException {
+    public sideNav(Main main, sideNavView view, Page[][] pages) throws ClassNotFoundException, IOException {
         setOpaque(false);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         Box line = Box.createHorizontalBox();
@@ -57,6 +62,17 @@ public class sideNav extends JPanel {
         });
         
         add(list);
-        
+        add(Box.createVerticalGlue());
+        add(new JSeparator());
+        add(Box.createVerticalStrut(10));
+        AccentButton logout = new AccentButton("Logout");
+        logout.setAlignmentX(Component.LEFT_ALIGNMENT);
+        logout.addMouseListener(new MouseInputAdapter(){
+            @Override
+            public void mouseClicked(MouseEvent e){
+                main.changeFrame("logInPage");
+            }
+        });
+        add(logout);
     }
 }
