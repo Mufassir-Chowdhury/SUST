@@ -23,6 +23,7 @@ public class Icons {
      */
     // public static final ImageIcon DP = Tools.imageScale("static/images/2019331073.png", Sizes.DP);
     public static final BufferedImage DP = Tools.bufferImage("static/images/2019331073.png", Sizes.DP);
+    public static final BufferedImage DP_PROFILE_PAGE = Tools.bufferImage("static/images/2019331073.png", Sizes.DP_PROFILE_PAGE);
     // public static final BufferedImage DP = Tools.makeRoundedCorner(DPB,50);
 
     /**

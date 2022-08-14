@@ -145,11 +145,11 @@ public class Datapoints {
                         blood,
                         birthDay,
                         hometown;
+        public transient BufferedImage DP;
         public abstract Line getListItem();
     }
 
     public static class Student extends Person implements Tilable, JsonConversion {
-        public transient BufferedImage DP;
         public String email2;
         public int deptCode;
         Integer semester;
@@ -221,7 +221,6 @@ public class Datapoints {
     }
     
     public static class Teacher extends Person implements Tilable {
-        public transient BufferedImage DP;
         public String email2;
         public String[] courses;
 
